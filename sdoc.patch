@@ -1,0 +1,19 @@
+*** old/lib/sdoc/merge.rb	Sat Mar 16 14:20:39 2013
+--- new/lib/sdoc/merge.rb	Sat Mar 16 13:15:14 2013
+*************** class SDoc::Merge
+*** 123,129 ****
+      end
+      items.sort! do |a, b|
+        # type (class/method/file) or name or doc part or namespace
+!       [a[:info][5], a[:info][0], a[:info][6], a[:info][1]] <=> [b[:info][5], b[:info][0], b[:info][6], b[:info][1]]
+      end
+  
+      index = {
+--- 123,129 ----
+      end
+      items.sort! do |a, b|
+        # type (class/method/file) or name or doc part or namespace
+!       [a[:info][5], a[:info][0], a[:info][6], a[:info][1]] <=> [b[:info][5], b[:info][0], b[:info][6], b[:info][1]] rescue 0
+      end
+  
+      index = {

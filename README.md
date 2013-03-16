@@ -1,7 +1,11 @@
-RGSSDoc
-=======
+RGSS3Doc
+========
 
-```sh
+Building on your own
+--------------------
+```bash
+git clone https://github.com/orzFly/RGSS3Doc.git
+cd RGSS3Doc
 gem install sdoc
 origin=`pwd`
 pushd /path/to/your/gems/sdoc-0.3.20

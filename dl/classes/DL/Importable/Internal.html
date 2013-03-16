@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DL::Importable::Internal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            DL::Importable::Internal 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/import_rb.html">import.rb</a></li>
+            
+            <li><a href="../../../files/struct_rb.html">struct.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Internal/Memory.html">DL::Importable::Internal::Memory</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Internal/Struct.html">DL::Importable::Internal::Struct</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Internal/Union.html">DL::Importable::Internal::Union</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_args_">_args_</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_retval_">_retval_</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-callback">callback</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-define_struct">define_struct</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-define_union">define_union</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-dllink">dllink</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-dlload">dlload</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-encode_argument_types">encode_argument_types</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extern">extern</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-import">import</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-init_sym">init_sym</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-init_types">init_types</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parse_cproto">parse_cproto</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-struct">struct</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-symbol">symbol</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-typealias">typealias</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-union">union</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>[]</b>(name)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-keyword ruby-title">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@SYM</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-number">0</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_args_">
+            
+              <b>_args_</b>()
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-_args_" name="method-i-_args_" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_args__source')" id="l_method-i-_args__source">show</a>
+                
+              </p>
+              <div id="method-i-_args__source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_args_</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@args</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_retval_">
+            
+              <b>_retval_</b>()
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-_retval_" name="method-i-_retval_" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_retval__source')" id="l_method-i-_retval__source">show</a>
+                
+              </p>
+              <div id="method-i-_retval__source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_retval_</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@retval</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-callback">
+            
+              <b>callback</b>(proto)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-callback" name="method-i-callback" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>example:</p>
+
+<pre>callback &quot;int method_name(int, char*)&quot;</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-callback_source')" id="l_method-i-callback_source">show</a>
+                
+              </p>
+              <div id="method-i-callback_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">callback</span>(<span class="ruby-identifier">proto</span>)
+  <span class="ruby-identifier">func</span>,<span class="ruby-identifier">ret</span>,<span class="ruby-identifier">args</span> = <span class="ruby-identifier">parse_cproto</span>(<span class="ruby-identifier">proto</span>)
+
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-identifier">init_sym</span>()
+
+  <span class="ruby-identifier">rty</span>,<span class="ruby-identifier">renc</span>,<span class="ruby-identifier">rdec</span> = <span class="ruby-ivar">@types</span>.<span class="ruby-identifier">encode_return_type</span>(<span class="ruby-identifier">ret</span>)
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">rty</span> )
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;unsupported type: #{ret}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ty</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span> = <span class="ruby-identifier">encode_argument_types</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">symty</span> = <span class="ruby-identifier">rty</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ty</span>
+
+  <span class="ruby-identifier">module_eval</span>(<span class="ruby-node">&quot;module_function :#{func}&quot;</span>)
+  <span class="ruby-identifier">sym</span> = <span class="ruby-identifier">module_eval</span>([
+    <span class="ruby-node">&quot;DL::callback(\&quot;#{symty}\&quot;){|*args|&quot;</span>,
+    <span class="ruby-node">&quot;  sym,rdec,enc,dec  = @SYM['#{func}']&quot;</span>,
+    <span class="ruby-string">&quot;  args = enc.call(args) if enc&quot;</span>,
+    <span class="ruby-node">&quot;  r,rs = #{func}(*args)&quot;</span>,
+    <span class="ruby-string">&quot;  r  = renc.call(r) if rdec&quot;</span>,
+    <span class="ruby-string">&quot;  rs = dec.call(rs) if (dec &amp;&amp; rs)&quot;</span>,
+    <span class="ruby-string">&quot;  @retval = r&quot;</span>,
+    <span class="ruby-string">&quot;  @args   = rs&quot;</span>,
+    <span class="ruby-string">&quot;  r&quot;</span>,
+    <span class="ruby-string">&quot;}&quot;</span>,
+  ].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>))
+
+  <span class="ruby-ivar">@SYM</span>[<span class="ruby-identifier">func</span>] = [<span class="ruby-identifier">sym</span>,<span class="ruby-identifier">rdec</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span>]
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">sym</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-define_struct">
+            
+              <b>define_struct</b>(contents)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-define_struct" name="method-i-define_struct" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Internal.html#method-i-struct">struct</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-define_struct_source')" id="l_method-i-define_struct_source">show</a>
+                
+              </p>
+              <div id="method-i-define_struct_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">define_struct</span>(<span class="ruby-identifier">contents</span>)
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-constant">Struct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@types</span>, <span class="ruby-identifier">contents</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-define_union">
+            
+              <b>define_union</b>(contents)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-define_union" name="method-i-define_union" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Internal.html#method-i-union">union</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-define_union_source')" id="l_method-i-define_union_source">show</a>
+                
+              </p>
+              <div id="method-i-define_union_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">define_union</span>(<span class="ruby-identifier">contents</span>)
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-constant">Union</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@types</span>, <span class="ruby-identifier">contents</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dllink">
+            
+              <b>dllink</b>(*libnames)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-dllink" name="method-i-dllink" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dlload">
+            
+              <b>dlload</b>(*libnames)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-dlload" name="method-i-dlload" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Internal.html#method-i-dllink">dllink</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dlload_source')" id="l_method-i-dlload_source">show</a>
+                
+              </p>
+              <div id="method-i-dlload_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dlload</span>(*<span class="ruby-identifier">libnames</span>)
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@LIBS</span>) )
+    <span class="ruby-ivar">@LIBS</span> = []
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">libnames</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">libname</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-constant">LIB_MAP</span>[<span class="ruby-identifier">libname</span>] )
+      <span class="ruby-constant">LIB_MAP</span>[<span class="ruby-identifier">libname</span>] = <span class="ruby-constant">DL</span>.<span class="ruby-identifier">dlopen</span>(<span class="ruby-identifier">libname</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@LIBS</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">LIB_MAP</span>[<span class="ruby-identifier">libname</span>])
+  }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-encode_argument_types">
+            
+              <b>encode_argument_types</b>(tys)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-encode_argument_types" name="method-i-encode_argument_types" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-encode_argument_types_source')" id="l_method-i-encode_argument_types_source">show</a>
+                
+              </p>
+              <div id="method-i-encode_argument_types_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">encode_argument_types</span>(<span class="ruby-identifier">tys</span>)
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-identifier">encty</span> = []
+  <span class="ruby-identifier">enc</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">dec</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">tys</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ty</span>,<span class="ruby-identifier">idx</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ty</span>,<span class="ruby-identifier">c1</span>,<span class="ruby-identifier">c2</span> = <span class="ruby-ivar">@types</span>.<span class="ruby-identifier">encode_argument_type</span>(<span class="ruby-identifier">ty</span>)
+    <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">ty</span> )
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;unsupported type: #{ty}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">encty</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">ty</span>)
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">enc</span> )
+      <span class="ruby-keyword">if</span>( <span class="ruby-identifier">c1</span> )
+        <span class="ruby-identifier">conv1</span> = <span class="ruby-identifier">enc</span>
+        <span class="ruby-identifier">enc</span> = <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> = <span class="ruby-identifier">conv1</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>); <span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>] = <span class="ruby-identifier">c1</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>]); <span class="ruby-identifier">v</span>}
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">if</span>( <span class="ruby-identifier">c1</span> )
+        <span class="ruby-identifier">enc</span> = <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>] = <span class="ruby-identifier">c1</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>]); <span class="ruby-identifier">v</span>}
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">dec</span> )
+      <span class="ruby-keyword">if</span>( <span class="ruby-identifier">c2</span> )
+        <span class="ruby-identifier">conv2</span> = <span class="ruby-identifier">dec</span>
+        <span class="ruby-identifier">dec</span> = <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span> = <span class="ruby-identifier">conv2</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>); <span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>] = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>]); <span class="ruby-identifier">v</span>}
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">if</span>( <span class="ruby-identifier">c2</span> )
+        <span class="ruby-identifier">dec</span> = <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>] = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">v</span>[<span class="ruby-identifier">idx</span>]); <span class="ruby-identifier">v</span>}
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">encty</span>.<span class="ruby-identifier">join</span>, <span class="ruby-identifier">enc</span>, <span class="ruby-identifier">dec</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extern">
+            
+              <b>extern</b>(proto)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-extern" name="method-i-extern" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>example:</p>
+
+<pre>extern &quot;int strlen(char*)&quot;</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extern_source')" id="l_method-i-extern_source">show</a>
+                
+              </p>
+              <div id="method-i-extern_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extern</span>(<span class="ruby-identifier">proto</span>)
+  <span class="ruby-identifier">func</span>,<span class="ruby-identifier">ret</span>,<span class="ruby-identifier">args</span> = <span class="ruby-identifier">parse_cproto</span>(<span class="ruby-identifier">proto</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">import</span>(<span class="ruby-identifier">func</span>, <span class="ruby-identifier">ret</span>, <span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-import">
+            
+              <b>import</b>(name, rettype, argtypes = nil)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-import" name="method-i-import" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>example:</p>
+
+<pre>import(&quot;get_length&quot;, &quot;int&quot;, [&quot;void*&quot;, &quot;int&quot;])</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-import_source')" id="l_method-i-import_source">show</a>
+                
+              </p>
+              <div id="method-i-import_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">import</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">rettype</span>, <span class="ruby-identifier">argtypes</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-identifier">init_sym</span>()
+
+  <span class="ruby-identifier">rty</span>,<span class="ruby-identifier">_</span>,<span class="ruby-identifier">rdec</span> = <span class="ruby-ivar">@types</span>.<span class="ruby-identifier">encode_return_type</span>(<span class="ruby-identifier">rettype</span>)
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">rty</span> )
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;unsupported type: #{rettype}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ty</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span> = <span class="ruby-identifier">encode_argument_types</span>(<span class="ruby-identifier">argtypes</span>)
+  <span class="ruby-identifier">symty</span> = <span class="ruby-identifier">rty</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ty</span>
+
+  <span class="ruby-identifier">sym</span> = <span class="ruby-identifier">symbol</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">symty</span>)
+
+  <span class="ruby-identifier">mname</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">if</span>( <span class="ruby-string">A</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">mname</span>[<span class="ruby-number">0</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">mname</span>[<span class="ruby-number">0</span>] <span class="ruby-operator">&lt;=</span> <span class="ruby-string">Z</span> )
+    <span class="ruby-identifier">mname</span>[<span class="ruby-number">0</span>,<span class="ruby-number">1</span>] = <span class="ruby-identifier">mname</span>[<span class="ruby-number">0</span>,<span class="ruby-number">1</span>].<span class="ruby-identifier">downcase</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@SYM</span>[<span class="ruby-identifier">mname</span>] = [<span class="ruby-identifier">sym</span>,<span class="ruby-identifier">rdec</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span>]
+  
+  <span class="ruby-identifier">module_eval</span> [
+    <span class="ruby-node">&quot;def #{mname}(*args)&quot;</span>,
+    <span class="ruby-node">&quot;  sym,rdec,enc,dec  = @SYM['#{mname}']&quot;</span>,
+    <span class="ruby-string">&quot;  args = enc.call(args) if enc&quot;</span>,
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">$DEBUG</span> )
+      <span class="ruby-node">&quot;  p \&quot;[DL] call #{mname} with \#{args.inspect}\&quot;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">end</span>,
+    <span class="ruby-string">&quot;  r,rs = sym.call(*args)&quot;</span>,
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">$DEBUG</span> )
+      <span class="ruby-string">&quot;  p \&quot;[DL] retval=\#{r.inspect} args=\#{rs.inspect}\&quot;&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">end</span>,
+    <span class="ruby-string">&quot;  r  = rdec.call(r) if rdec&quot;</span>,
+    <span class="ruby-string">&quot;  rs = dec.call(rs) if dec&quot;</span>,
+    <span class="ruby-string">&quot;  @retval = r&quot;</span>,
+    <span class="ruby-string">&quot;  @args   = rs&quot;</span>,
+    <span class="ruby-string">&quot;  return r&quot;</span>,
+    <span class="ruby-string">&quot;end&quot;</span>,
+    <span class="ruby-node">&quot;module_function :#{mname}&quot;</span>,
+  ].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">sym</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-init_sym">
+            
+              <b>init_sym</b>()
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-init_sym" name="method-i-init_sym" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-init_sym_source')" id="l_method-i-init_sym_source">show</a>
+                
+              </p>
+              <div id="method-i-init_sym_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">init_sym</span>()
+  <span class="ruby-ivar">@SYM</span> <span class="ruby-operator">||=</span> {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-init_types">
+            
+              <b>init_types</b>()
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-init_types" name="method-i-init_types" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-init_types_source')" id="l_method-i-init_types_source">show</a>
+                
+              </p>
+              <div id="method-i-init_types_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">init_types</span>()
+  <span class="ruby-ivar">@types</span> <span class="ruby-operator">||=</span> <span class="ruby-operator">::</span><span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse_cproto">
+            
+              <b>parse_cproto</b>(proto)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-parse_cproto" name="method-i-parse_cproto" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_cproto_source')" id="l_method-i-parse_cproto_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_cproto_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse_cproto</span>(<span class="ruby-identifier">proto</span>)
+  <span class="ruby-identifier">proto</span> = <span class="ruby-identifier">proto</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/</span>, <span class="ruby-string">&quot; &quot;</span>).<span class="ruby-identifier">strip</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">proto</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^([\d\w\*_\s]+)\(([\d\w\*_\s\,\[\]]*)\)$/</span>
+    <span class="ruby-identifier">ret</span> = <span class="ruby-node">$1</span>
+    <span class="ruby-identifier">args</span> = <span class="ruby-node">$2</span>.<span class="ruby-identifier">strip</span>()
+    <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s+/</span>)
+    <span class="ruby-identifier">args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s*,\s*/</span>)
+    <span class="ruby-identifier">func</span> = <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">pop</span>()
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">func</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^\*/</span> )
+      <span class="ruby-identifier">func</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/^\*+/</span>,<span class="ruby-string">&quot;&quot;</span>)
+      <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">push</span>(<span class="ruby-string">&quot;*&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ret</span>  = <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">func</span>, <span class="ruby-identifier">ret</span>, <span class="ruby-identifier">args</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">RuntimeError</span>,<span class="ruby-node">&quot;can't parse the function prototype: #{proto}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-struct">
+            
+              <b>struct</b>(contents)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-struct" name="method-i-struct" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-symbol">
+            
+              <b>symbol</b>(name, ty = nil)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-symbol" name="method-i-symbol" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>example:</p>
+
+<pre>symbol &quot;foo_value&quot;
+symbol &quot;foo_func&quot;, &quot;IIP&quot;</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-symbol_source')" id="l_method-i-symbol_source">show</a>
+                
+              </p>
+              <div id="method-i-symbol_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">symbol</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">ty</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">sym</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@LIBS</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">lib</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-keyword">if</span>( <span class="ruby-identifier">ty</span> )
+        <span class="ruby-identifier">sym</span> = <span class="ruby-identifier">lib</span>[<span class="ruby-identifier">name</span>, <span class="ruby-identifier">ty</span>]
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">sym</span> = <span class="ruby-identifier">lib</span>[<span class="ruby-identifier">name</span>]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">rescue</span>
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">sym</span> )
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">RuntimeError</span>, <span class="ruby-node">&quot;can't find the symbol `#{name}'&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">sym</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-typealias">
+            
+              <b>typealias</b>(alias_type, ty1, enc1=nil, dec1=nil, ty2=nil, enc2=nil, dec2=nil)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-typealias" name="method-i-typealias" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>example:</p>
+
+<pre>typealias(&quot;uint&quot;, &quot;unsigned int&quot;)</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-typealias_source')" id="l_method-i-typealias_source">show</a>
+                
+              </p>
+              <div id="method-i-typealias_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File import.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">typealias</span>(<span class="ruby-identifier">alias_type</span>, <span class="ruby-identifier">ty1</span>, <span class="ruby-identifier">enc1</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">dec1</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">ty2</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">enc2</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">dec2</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">init_types</span>()
+  <span class="ruby-ivar">@types</span>.<span class="ruby-identifier">typealias</span>(<span class="ruby-identifier">alias_type</span>, <span class="ruby-identifier">ty1</span>, <span class="ruby-identifier">enc1</span>, <span class="ruby-identifier">dec1</span>,
+                               <span class="ruby-identifier">ty2</span><span class="ruby-operator">||</span><span class="ruby-identifier">ty1</span>, <span class="ruby-identifier">enc2</span>, <span class="ruby-identifier">dec2</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-union">
+            
+              <b>union</b>(contents)
+            
+            <a href="../../../classes/DL/Importable/Internal.html#method-i-union" name="method-i-union" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

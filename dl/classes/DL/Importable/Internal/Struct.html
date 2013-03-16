@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DL::Importable::Internal::Struct</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            DL::Importable::Internal::Struct 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/struct_rb.html">struct.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-malloc">malloc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-members">members</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parse">parse</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parse_elem">parse_elem</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(types, contents)
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">types</span>, <span class="ruby-identifier">contents</span>)
+  <span class="ruby-ivar">@names</span> = []
+  <span class="ruby-ivar">@ty</span>   = {}
+  <span class="ruby-ivar">@len</span>  = {}
+  <span class="ruby-ivar">@enc</span>  = {}
+  <span class="ruby-ivar">@dec</span>  = {}
+  <span class="ruby-ivar">@size</span> = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@tys</span>  = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-ivar">@types</span> = <span class="ruby-identifier">types</span>
+  <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">contents</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-malloc">
+            
+              <b>malloc</b>(size = nil)
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-malloc" name="method-i-malloc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-malloc_source')" id="l_method-i-malloc_source">show</a>
+                
+              </p>
+              <div id="method-i-malloc_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">malloc</span>(<span class="ruby-identifier">size</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">size</span> )
+    <span class="ruby-identifier">size</span> = <span class="ruby-ivar">@size</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ptr</span> = <span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-identifier">malloc</span>(<span class="ruby-identifier">size</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">ptr</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-members">
+            
+              <b>members</b>()
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-members" name="method-i-members" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-members_source')" id="l_method-i-members_source">show</a>
+                
+              </p>
+              <div id="method-i-members_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">members</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@names</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-new">
+            
+              <b>new</b>(ptr)
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-new" name="method-i-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>ptr must be a PtrData object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-new_source')" id="l_method-i-new_source">show</a>
+                
+              </p>
+              <div id="method-i-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new</span>(<span class="ruby-identifier">ptr</span>)
+  <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">struct!</span>(<span class="ruby-ivar">@tys</span>, *<span class="ruby-ivar">@names</span>)
+  <span class="ruby-identifier">mem</span> = <span class="ruby-constant">Memory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ptr</span>, <span class="ruby-ivar">@names</span>, <span class="ruby-ivar">@ty</span>, <span class="ruby-ivar">@len</span>, <span class="ruby-ivar">@enc</span>, <span class="ruby-ivar">@dec</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">mem</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse">
+            
+              <b>parse</b>(contents)
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-parse" name="method-i-parse" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_source')" id="l_method-i-parse_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse</span>(<span class="ruby-identifier">contents</span>)
+  <span class="ruby-identifier">contents</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">elem</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">name</span>,<span class="ruby-identifier">ty</span>,<span class="ruby-identifier">num</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span> = <span class="ruby-identifier">parse_elem</span>(<span class="ruby-identifier">elem</span>)
+    <span class="ruby-ivar">@names</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@ty</span>[<span class="ruby-identifier">name</span>]  = <span class="ruby-identifier">ty</span>
+    <span class="ruby-ivar">@len</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">num</span>
+    <span class="ruby-ivar">@enc</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">enc</span>
+    <span class="ruby-ivar">@dec</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">dec</span>
+    <span class="ruby-keyword">if</span>( <span class="ruby-identifier">num</span> )
+      <span class="ruby-ivar">@tys</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;#{ty}#{num}&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@tys</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">ty</span>
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-ivar">@size</span> = <span class="ruby-constant">DL</span>.<span class="ruby-identifier">sizeof</span>(<span class="ruby-ivar">@tys</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse_elem">
+            
+              <b>parse_elem</b>(elem)
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-parse_elem" name="method-i-parse_elem" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_elem_source')" id="l_method-i-parse_elem_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_elem_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse_elem</span>(<span class="ruby-identifier">elem</span>)
+  <span class="ruby-identifier">elem</span>.<span class="ruby-identifier">strip!</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">elem</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^([\w\d_\*]+)([\*\s]+)([\w\d_]+)$/</span>
+    <span class="ruby-identifier">ty</span> = (<span class="ruby-node">$1</span> <span class="ruby-operator">+</span> <span class="ruby-node">$2</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-node">$3</span>
+    <span class="ruby-identifier">num</span> = <span class="ruby-keyword">nil</span>;
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^([\w\d_\*]+)([\*\s]+)([\w\d_]+)\[(\d+)\]$/</span>
+    <span class="ruby-identifier">ty</span> = (<span class="ruby-node">$1</span> <span class="ruby-operator">+</span> <span class="ruby-node">$2</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-node">$3</span>
+    <span class="ruby-identifier">num</span> = <span class="ruby-node">$4</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">RuntimeError</span>, <span class="ruby-node">&quot;invalid element: #{elem}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ty</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span> = <span class="ruby-ivar">@types</span>.<span class="ruby-identifier">encode_struct_type</span>(<span class="ruby-identifier">ty</span>)
+  <span class="ruby-keyword">if</span>( <span class="ruby-operator">!</span><span class="ruby-identifier">ty</span> )
+    <span class="ruby-identifier">raise</span>(<span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;unsupported type: #{ty}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> [<span class="ruby-identifier">name</span>,<span class="ruby-identifier">ty</span>,<span class="ruby-identifier">num</span>,<span class="ruby-identifier">enc</span>,<span class="ruby-identifier">dec</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>size</b>()
+            
+            <a href="../../../../classes/DL/Importable/Internal/Struct.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File struct.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">size</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@size</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

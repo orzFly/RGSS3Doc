@@ -1,0 +1,2028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Complex</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Complex 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Numeric.html">Numeric</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/complex_c.html">complex.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A complex number can be represented as a paired real number with imaginary
+unit; a+bi.  Where a is real part, b is imaginary part and i is imaginary
+unit.  Real a equals complex a+0i mathematically.</p>
+
+<p>In ruby, you can create complex object with <a
+href="Complex.html">Complex</a>, <a
+href="Complex.html#method-c-rect">::rect</a>, <a
+href="Complex.html#method-c-polar">::polar</a> or to_c method.</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">1</span>)           <span class="ruby-comment">#=&gt; (1+0i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-value">2</span>, <span class="ruby-value">3</span>)        <span class="ruby-comment">#=&gt; (2+3i)</span>
+<span class="ruby-constant">Complex</span>.<span class="ruby-identifier">polar</span>(<span class="ruby-value">2</span>, <span class="ruby-value">3</span>)  <span class="ruby-comment">#=&gt; (-1.9799849932008908+0.2822400161197344i)</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">to_c</span>               <span class="ruby-comment">#=&gt; (3+0i)</span>
+</pre>
+
+<p>You can also create complex object from floating-point numbers or strings.</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">0.3</span>)         <span class="ruby-comment">#=&gt; (0.3+0i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-string">'0.3-0.5i'</span>)  <span class="ruby-comment">#=&gt; (0.3-0.5i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-string">'2/3+3/4i'</span>)  <span class="ruby-comment">#=&gt; ((2/3)+(3/4)*i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-string">'1@2'</span>)       <span class="ruby-comment">#=&gt; (-0.4161468365471424+0.9092974268256817i)</span>
+
+<span class="ruby-value">0.3</span>.<span class="ruby-identifier">to_c</span>             <span class="ruby-comment">#=&gt; (0.3+0i)</span>
+<span class="ruby-string">'0.3-0.5i'</span>.<span class="ruby-identifier">to_c</span>      <span class="ruby-comment">#=&gt; (0.3-0.5i)</span>
+<span class="ruby-string">'2/3+3/4i'</span>.<span class="ruby-identifier">to_c</span>      <span class="ruby-comment">#=&gt; ((2/3)+(3/4)*i)</span>
+<span class="ruby-string">'1@2'</span>.<span class="ruby-identifier">to_c</span>           <span class="ruby-comment">#=&gt; (-0.4161468365471424+0.9092974268256817i)</span>
+</pre>
+
+<p>A complex object is either an exact or an inexact number.</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">1</span>, <span class="ruby-value">1</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>    <span class="ruby-comment">#=&gt; ((1/2)+(1/2)*i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-value">1</span>, <span class="ruby-value">1</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2.0</span>  <span class="ruby-comment">#=&gt; (0.5+0.5i)</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-2A">*</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2A-2A">**</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2B">+</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D">-</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D-40">-@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2F">/</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-abs">abs</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-abs2">abs2</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-angle">angle</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-arg">arg</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-conj">conj</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-conjugate">conjugate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-denominator">denominator</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fdiv">fdiv</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-imag">imag</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-imaginary">imaginary</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-magnitude">magnitude</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-numerator">numerator</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-phase">phase</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-polar">polar</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-polar">polar</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Q</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-quo">quo</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-rationalize">rationalize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-real">real</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-real-3F">real?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-rect">rect</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-rect">rect</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-rectangular">rectangular</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-rectangular">rectangular</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_f">to_f</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_r">to_r</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-7E">~</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">I</td>
+            <td>=</td>
+            <td class="attr-value">f_complex_new_bang2(rb_cComplex, ZERO, ONE)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-polar">
+            
+              <b>Complex.polar(abs[, arg])  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-c-polar" name="method-c-polar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a complex object which denotes the given polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-polar_source')" id="l_method-c-polar_source">show</a>
+                
+              </p>
+              <div id="method-c-polar_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_s_polar(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE abs, arg;
+
+    switch (rb_scan_args(argc, argv, &quot;11&quot;, &amp;abs, &amp;arg)) {
+      case 1:
+        nucomp_real_check(abs);
+        arg = ZERO;
+        break;
+      default:
+        nucomp_real_check(abs);
+        nucomp_real_check(arg);
+        break;
+    }
+    return f_complex_polar(klass, abs, arg);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-rect">
+            
+              <b>Complex.rect(real[, imag])         &rarr;  complex
+Complex.rectangular(real[, imag])  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-c-rect" name="method-c-rect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a complex object which denotes the given rectangular form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-rect_source')" id="l_method-c-rect_source">show</a>
+                
+              </p>
+              <div id="method-c-rect_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_s_new(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE real, imag;
+
+    switch (rb_scan_args(argc, argv, &quot;11&quot;, &amp;real, &amp;imag)) {
+      case 1:
+        nucomp_real_check(real);
+        imag = ZERO;
+        break;
+      default:
+        nucomp_real_check(real);
+        nucomp_real_check(imag);
+        break;
+    }
+
+    return nucomp_s_canonicalize_internal(klass, real, imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-rectangular">
+            
+              <b>Complex.rect(real[, imag])         &rarr;  complex
+Complex.rectangular(real[, imag])  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-c-rectangular" name="method-c-rectangular" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a complex object which denotes the given rectangular form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-rectangular_source')" id="l_method-c-rectangular_source">show</a>
+                
+              </p>
+              <div id="method-c-rectangular_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_s_new(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE real, imag;
+
+    switch (rb_scan_args(argc, argv, &quot;11&quot;, &amp;real, &amp;imag)) {
+      case 1:
+        nucomp_real_check(real);
+        imag = ZERO;
+        break;
+      default:
+        nucomp_real_check(real);
+        nucomp_real_check(imag);
+        break;
+    }
+
+    return nucomp_s_canonicalize_internal(klass, real, imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-2A">
+            
+              <b>cmp * numeric  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2A" name="method-i-2A" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs multiplication.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2A_source')" id="l_method-i-2A_source">show</a>
+                
+              </p>
+              <div id="method-i-2A_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_mul(VALUE self, VALUE other)
+{
+    if (k_complex_p(other)) {
+        VALUE real, imag;
+
+        get_dat2(self, other);
+
+        real = f_sub(f_mul(adat-&gt;real, bdat-&gt;real),
+                     f_mul(adat-&gt;imag, bdat-&gt;imag));
+        imag = f_add(f_mul(adat-&gt;real, bdat-&gt;imag),
+                     f_mul(adat-&gt;imag, bdat-&gt;real));
+
+        return f_complex_new2(CLASS_OF(self), real, imag);
+    }
+    if (k_numeric_p(other) &amp;&amp; f_real_p(other)) {
+        get_dat1(self);
+
+        return f_complex_new2(CLASS_OF(self),
+                              f_mul(dat-&gt;real, other),
+                              f_mul(dat-&gt;imag, other));
+    }
+    return rb_num_coerce_bin(self, other, '*');
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2A-2A">
+            
+              <b>cmp ** numeric  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2A-2A" name="method-i-2A-2A" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs exponentiation.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-string">'i'</span>) <span class="ruby-operator">**</span> <span class="ruby-value">2</span>             <span class="ruby-comment">#=&gt; (-1+0i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-value">-8</span>) <span class="ruby-operator">**</span> <span class="ruby-constant">Rational</span>(<span class="ruby-value">1</span>,<span class="ruby-value">3</span>)  <span class="ruby-comment">#=&gt; (1.0000000000000002+1.7320508075688772i)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2A-2A_source')" id="l_method-i-2A-2A_source">show</a>
+                
+              </p>
+              <div id="method-i-2A-2A_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_expt(VALUE self, VALUE other)
+{
+    if (k_exact_zero_p(other))
+        return f_complex_new_bang1(CLASS_OF(self), ONE);
+
+    if (k_rational_p(other) &amp;&amp; f_one_p(f_denominator(other)))
+        other = f_numerator(other); /* c14n */
+
+    if (k_complex_p(other)) {
+        get_dat1(other);
+
+        if (k_exact_zero_p(dat-&gt;imag))
+            other = dat-&gt;real; /* c14n */
+    }
+
+    if (k_complex_p(other)) {
+        VALUE r, theta, nr, ntheta;
+
+        get_dat1(other);
+
+        r = f_abs(self);
+        theta = f_arg(self);
+
+        nr = m_exp_bang(f_sub(f_mul(dat-&gt;real, m_log_bang(r)),
+                              f_mul(dat-&gt;imag, theta)));
+        ntheta = f_add(f_mul(theta, dat-&gt;real),
+                       f_mul(dat-&gt;imag, m_log_bang(r)));
+        return f_complex_polar(CLASS_OF(self), nr, ntheta);
+    }
+    if (k_fixnum_p(other)) {
+        if (f_gt_p(other, ZERO)) {
+            VALUE x, z;
+            long n;
+
+            x = self;
+            z = x;
+            n = FIX2LONG(other) - 1;
+
+            while (n) {
+                long q, r;
+
+                while (1) {
+                    get_dat1(x);
+
+                    q = n / 2;
+                    r = n % 2;
+
+                    if (r)
+                        break;
+
+                    x = f_complex_new2(CLASS_OF(self),
+                                       f_sub(f_mul(dat-&gt;real, dat-&gt;real),
+                                             f_mul(dat-&gt;imag, dat-&gt;imag)),
+                                       f_mul(f_mul(TWO, dat-&gt;real), dat-&gt;imag));
+                    n = q;
+                }
+                z = f_mul(z, x);
+                n--;
+            }
+            return z;
+        }
+        return f_expt(f_reciprocal(self), f_negate(other));
+    }
+    if (k_numeric_p(other) &amp;&amp; f_real_p(other)) {
+        VALUE r, theta;
+
+        if (k_bignum_p(other))
+            rb_warn(&quot;in a**b, b may be too big&quot;);
+
+        r = f_abs(self);
+        theta = f_arg(self);
+
+        return f_complex_polar(CLASS_OF(self), f_expt(r, other),
+                               f_mul(theta, other));
+    }
+    return rb_num_coerce_bin(self, other, id_expt);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2B">
+            
+              <b>cmp + numeric  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2B" name="method-i-2B" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs addition.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B_source')" id="l_method-i-2B_source">show</a>
+                
+              </p>
+              <div id="method-i-2B_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_add(VALUE self, VALUE other)
+{
+    return f_addsub(self, other, f_add, '+');
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D">
+            
+              <b>cmp - numeric  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2D" name="method-i-2D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs subtraction.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D_source')" id="l_method-i-2D_source">show</a>
+                
+              </p>
+              <div id="method-i-2D_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_sub(VALUE self, VALUE other)
+{
+    return f_addsub(self, other, f_sub, '-');
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D-40">
+            
+              <b>-cmp  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2D-40" name="method-i-2D-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns negation of the value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D-40_source')" id="l_method-i-2D-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2D-40_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_negate(VALUE self)
+{
+  get_dat1(self);
+  return f_complex_new2(CLASS_OF(self),
+                        f_negate(dat-&gt;real), f_negate(dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2F">
+            
+              <b>cmp / numeric     &rarr;  complex
+cmp.quo(numeric)  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-2F" name="method-i-2F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs division.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">10.0</span>) <span class="ruby-operator">/</span> <span class="ruby-value">3</span>  <span class="ruby-comment">#=&gt; (3.3333333333333335+(0/1)*i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-value">10</span>)   <span class="ruby-operator">/</span> <span class="ruby-value">3</span>  <span class="ruby-comment">#=&gt; ((10/3)+(0/1)*i)  # not (3+0i)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2F_source')" id="l_method-i-2F_source">show</a>
+                
+              </p>
+              <div id="method-i-2F_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_div(VALUE self, VALUE other)
+{
+    return f_divide(self, other, f_quo, id_quo);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>cmp == object  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Complex.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if cmp equals object numerically.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_eqeq_p(VALUE self, VALUE other)
+{
+    if (k_complex_p(other)) {
+        get_dat2(self, other);
+
+        return f_boolcast(f_eqeq_p(adat-&gt;real, bdat-&gt;real) &amp;&amp;
+                          f_eqeq_p(adat-&gt;imag, bdat-&gt;imag));
+    }
+    if (k_numeric_p(other) &amp;&amp; f_real_p(other)) {
+        get_dat1(self);
+
+        return f_boolcast(f_eqeq_p(dat-&gt;real, other) &amp;&amp; f_zero_p(dat-&gt;imag));
+    }
+    return f_eqeq_p(other, self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-abs">
+            
+              <b>cmp.abs        &rarr;  real
+cmp.magnitude  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-abs" name="method-i-abs" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute part of its polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-abs_source')" id="l_method-i-abs_source">show</a>
+                
+              </p>
+              <div id="method-i-abs_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_abs(VALUE self)
+{
+    get_dat1(self);
+
+    if (f_zero_p(dat-&gt;real)) {
+        VALUE a = f_abs(dat-&gt;imag);
+        if (k_float_p(dat-&gt;real) &amp;&amp; !k_float_p(dat-&gt;imag))
+            a = f_to_f(a);
+        return a;
+    }
+    if (f_zero_p(dat-&gt;imag)) {
+        VALUE a = f_abs(dat-&gt;real);
+        if (!k_float_p(dat-&gt;real) &amp;&amp; k_float_p(dat-&gt;imag))
+            a = f_to_f(a);
+        return a;
+    }
+    return m_hypot(dat-&gt;real, dat-&gt;imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-abs2">
+            
+              <b>cmp.abs2  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-abs2" name="method-i-abs2" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns square of the absolute value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-abs2_source')" id="l_method-i-abs2_source">show</a>
+                
+              </p>
+              <div id="method-i-abs2_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_abs2(VALUE self)
+{
+    get_dat1(self);
+    return f_add(f_mul(dat-&gt;real, dat-&gt;real),
+                 f_mul(dat-&gt;imag, dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-angle">
+            
+              <b>cmp.arg    &rarr;  float
+cmp.angle  &rarr;  float
+cmp.phase  &rarr;  float
+</b>
+            
+            <a href="../classes/Complex.html#method-i-angle" name="method-i-angle" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the angle part of its polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-angle_source')" id="l_method-i-angle_source">show</a>
+                
+              </p>
+              <div id="method-i-angle_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_arg(VALUE self)
+{
+    get_dat1(self);
+    return m_atan2_bang(dat-&gt;imag, dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-arg">
+            
+              <b>cmp.arg    &rarr;  float
+cmp.angle  &rarr;  float
+cmp.phase  &rarr;  float
+</b>
+            
+            <a href="../classes/Complex.html#method-i-arg" name="method-i-arg" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the angle part of its polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-arg_source')" id="l_method-i-arg_source">show</a>
+                
+              </p>
+              <div id="method-i-arg_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_arg(VALUE self)
+{
+    get_dat1(self);
+    return m_atan2_bang(dat-&gt;imag, dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-conj">
+            
+              <b>cmp.conj       &rarr;  complex
+cmp.conjugate  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-conj" name="method-i-conj" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the complex conjugate.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-conj_source')" id="l_method-i-conj_source">show</a>
+                
+              </p>
+              <div id="method-i-conj_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_conj(VALUE self)
+{
+    get_dat1(self);
+    return f_complex_new2(CLASS_OF(self), dat-&gt;real, f_negate(dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-conjugate">
+            
+              <b>cmp.conj       &rarr;  complex
+cmp.conjugate  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-conjugate" name="method-i-conjugate" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the complex conjugate.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-conjugate_source')" id="l_method-i-conjugate_source">show</a>
+                
+              </p>
+              <div id="method-i-conjugate_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_conj(VALUE self)
+{
+    get_dat1(self);
+    return f_complex_new2(CLASS_OF(self), dat-&gt;real, f_negate(dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-denominator">
+            
+              <b>cmp.denominator  &rarr;  integer
+</b>
+            
+            <a href="../classes/Complex.html#method-i-denominator" name="method-i-denominator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the denominator (lcm of both denominator, real and imag).</p>
+
+<p>See numerator.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-denominator_source')" id="l_method-i-denominator_source">show</a>
+                
+              </p>
+              <div id="method-i-denominator_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_denominator(VALUE self)
+{
+    get_dat1(self);
+    return rb_lcm(f_denominator(dat-&gt;real), f_denominator(dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fdiv">
+            
+              <b>cmp.fdiv(numeric)  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-fdiv" name="method-i-fdiv" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs division as each part is a float, never returns a float.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">11</span>,<span class="ruby-value">22</span>).<span class="ruby-identifier">fdiv</span>(<span class="ruby-value">3</span>)  <span class="ruby-comment">#=&gt; (3.6666666666666665+7.333333333333333i)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fdiv_source')" id="l_method-i-fdiv_source">show</a>
+                
+              </p>
+              <div id="method-i-fdiv_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_fdiv(VALUE self, VALUE other)
+{
+    return f_divide(self, other, f_fdiv, id_fdiv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-imag">
+            
+              <b>cmp.imag       &rarr;  real
+cmp.imaginary  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-imag" name="method-i-imag" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the imaginary part.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-imag_source')" id="l_method-i-imag_source">show</a>
+                
+              </p>
+              <div id="method-i-imag_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_imag(VALUE self)
+{
+    get_dat1(self);
+    return dat-&gt;imag;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-imaginary">
+            
+              <b>cmp.imag       &rarr;  real
+cmp.imaginary  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-imaginary" name="method-i-imaginary" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the imaginary part.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-imaginary_source')" id="l_method-i-imaginary_source">show</a>
+                
+              </p>
+              <div id="method-i-imaginary_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_imag(VALUE self)
+{
+    get_dat1(self);
+    return dat-&gt;imag;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>cmp.inspect  &rarr;  string
+</b>
+            
+            <a href="../classes/Complex.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a string for inspection.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_inspect(VALUE self)
+{
+    VALUE s;
+
+    s = rb_usascii_str_new2(&quot;(&quot;);
+    rb_str_concat(s, f_format(self, f_inspect));
+    rb_str_cat2(s, &quot;)&quot;);
+
+    return s;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-magnitude">
+            
+              <b>cmp.abs        &rarr;  real
+cmp.magnitude  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-magnitude" name="method-i-magnitude" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute part of its polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-magnitude_source')" id="l_method-i-magnitude_source">show</a>
+                
+              </p>
+              <div id="method-i-magnitude_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_abs(VALUE self)
+{
+    get_dat1(self);
+
+    if (f_zero_p(dat-&gt;real)) {
+        VALUE a = f_abs(dat-&gt;imag);
+        if (k_float_p(dat-&gt;real) &amp;&amp; !k_float_p(dat-&gt;imag))
+            a = f_to_f(a);
+        return a;
+    }
+    if (f_zero_p(dat-&gt;imag)) {
+        VALUE a = f_abs(dat-&gt;real);
+        if (!k_float_p(dat-&gt;real) &amp;&amp; k_float_p(dat-&gt;imag))
+            a = f_to_f(a);
+        return a;
+    }
+    return m_hypot(dat-&gt;real, dat-&gt;imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-numerator">
+            
+              <b>cmp.numerator  &rarr;  numeric
+</b>
+            
+            <a href="../classes/Complex.html#method-i-numerator" name="method-i-numerator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the numerator.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">    <span class="ruby-value">1</span>   <span class="ruby-value">2</span>       <span class="ruby-value">3</span><span class="ruby-operator">+</span><span class="ruby-value">4</span><span class="ruby-identifier">i</span>  <span class="ruby-operator">&lt;</span><span class="ruby-operator">-</span>  <span class="ruby-identifier">numerator</span>
+    <span class="ruby-operator">-</span> <span class="ruby-operator">+</span> <span class="ruby-operator">-</span><span class="ruby-identifier">i</span>  <span class="ruby-operator">-</span><span class="ruby-operator">&gt;</span>  <span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span>
+    <span class="ruby-value">2</span>   <span class="ruby-value">3</span>        <span class="ruby-value">6</span>    <span class="ruby-operator">&lt;</span><span class="ruby-operator">-</span>  <span class="ruby-identifier">denominator</span>
+
+<span class="ruby-identifier">c</span> = <span class="ruby-constant">Complex</span>(<span class="ruby-string">'1/2+2/3i'</span>)  <span class="ruby-comment">#=&gt; ((1/2)+(2/3)*i)</span>
+<span class="ruby-identifier">n</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">numerator</span>          <span class="ruby-comment">#=&gt; (3+4i)</span>
+<span class="ruby-identifier">d</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">denominator</span>        <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">n</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">d</span>                    <span class="ruby-comment">#=&gt; ((1/2)+(2/3)*i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-constant">Rational</span>(<span class="ruby-identifier">n</span>.<span class="ruby-identifier">real</span>, <span class="ruby-identifier">d</span>), <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">n</span>.<span class="ruby-identifier">imag</span>, <span class="ruby-identifier">d</span>))
+                         <span class="ruby-comment">#=&gt; ((1/2)+(2/3)*i)</span>
+</pre>
+
+<p>See denominator.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-numerator_source')" id="l_method-i-numerator_source">show</a>
+                
+              </p>
+              <div id="method-i-numerator_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_numerator(VALUE self)
+{
+    VALUE cd;
+
+    get_dat1(self);
+
+    cd = f_denominator(self);
+    return f_complex_new2(CLASS_OF(self),
+                          f_mul(f_numerator(dat-&gt;real),
+                                f_div(cd, f_denominator(dat-&gt;real))),
+                          f_mul(f_numerator(dat-&gt;imag),
+                                f_div(cd, f_denominator(dat-&gt;imag))));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-phase">
+            
+              <b>cmp.arg    &rarr;  float
+cmp.angle  &rarr;  float
+cmp.phase  &rarr;  float
+</b>
+            
+            <a href="../classes/Complex.html#method-i-phase" name="method-i-phase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the angle part of its polar form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-phase_source')" id="l_method-i-phase_source">show</a>
+                
+              </p>
+              <div id="method-i-phase_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_arg(VALUE self)
+{
+    get_dat1(self);
+    return m_atan2_bang(dat-&gt;imag, dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-polar">
+            
+              <b>cmp.polar  &rarr;  array
+</b>
+            
+            <a href="../classes/Complex.html#method-i-polar" name="method-i-polar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [cmp.abs, cmp.arg].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-polar_source')" id="l_method-i-polar_source">show</a>
+                
+              </p>
+              <div id="method-i-polar_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_polar(VALUE self)
+{
+    return rb_assoc_new(f_abs(self), f_arg(self));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-quo">
+            
+              <b>cmp / numeric     &rarr;  complex
+cmp.quo(numeric)  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-quo" name="method-i-quo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs division.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Complex</span>(<span class="ruby-value">10.0</span>) <span class="ruby-operator">/</span> <span class="ruby-value">3</span>  <span class="ruby-comment">#=&gt; (3.3333333333333335+(0/1)*i)</span>
+<span class="ruby-constant">Complex</span>(<span class="ruby-value">10</span>)   <span class="ruby-operator">/</span> <span class="ruby-value">3</span>  <span class="ruby-comment">#=&gt; ((10/3)+(0/1)*i)  # not (3+0i)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-quo_source')" id="l_method-i-quo_source">show</a>
+                
+              </p>
+              <div id="method-i-quo_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_div(VALUE self, VALUE other)
+{
+    return f_divide(self, other, f_quo, id_quo);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rationalize">
+            
+              <b>cmp.rationalize([eps])  &rarr;  rational
+</b>
+            
+            <a href="../classes/Complex.html#method-i-rationalize" name="method-i-rationalize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a rational if possible.  An optional argument eps is
+always ignored.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rationalize_source')" id="l_method-i-rationalize_source">show</a>
+                
+              </p>
+              <div id="method-i-rationalize_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_rationalize(int argc, VALUE *argv, VALUE self)
+{
+    rb_scan_args(argc, argv, &quot;01&quot;, NULL);
+    return nucomp_to_r(self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-real">
+            
+              <b>cmp.real  &rarr;  real
+</b>
+            
+            <a href="../classes/Complex.html#method-i-real" name="method-i-real" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the real part.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-real_source')" id="l_method-i-real_source">show</a>
+                
+              </p>
+              <div id="method-i-real_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_real(VALUE self)
+{
+    get_dat1(self);
+    return dat-&gt;real;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-real-3F">
+            
+              <b>cmp.real?  &rarr;  false
+</b>
+            
+            <a href="../classes/Complex.html#method-i-real-3F" name="method-i-real-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-real-3F_source')" id="l_method-i-real-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-real-3F_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_false(VALUE self)
+{
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rect">
+            
+              <b>cmp.rect         &rarr;  array
+cmp.rectangular  &rarr;  array
+</b>
+            
+            <a href="../classes/Complex.html#method-i-rect" name="method-i-rect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [cmp.real, cmp.imag].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rect_source')" id="l_method-i-rect_source">show</a>
+                
+              </p>
+              <div id="method-i-rect_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_rect(VALUE self)
+{
+    get_dat1(self);
+    return rb_assoc_new(dat-&gt;real, dat-&gt;imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rectangular">
+            
+              <b>cmp.rect         &rarr;  array
+cmp.rectangular  &rarr;  array
+</b>
+            
+            <a href="../classes/Complex.html#method-i-rectangular" name="method-i-rectangular" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [cmp.real, cmp.imag].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rectangular_source')" id="l_method-i-rectangular_source">show</a>
+                
+              </p>
+              <div id="method-i-rectangular_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_rect(VALUE self)
+{
+    get_dat1(self);
+    return rb_assoc_new(dat-&gt;real, dat-&gt;imag);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_f">
+            
+              <b>cmp.to_f  &rarr;  float
+</b>
+            
+            <a href="../classes/Complex.html#method-i-to_f" name="method-i-to_f" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a float if possible.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_f_source')" id="l_method-i-to_f_source">show</a>
+                
+              </p>
+              <div id="method-i-to_f_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_to_f(VALUE self)
+{
+    get_dat1(self);
+
+    if (k_inexact_p(dat-&gt;imag) || f_nonzero_p(dat-&gt;imag)) {
+        VALUE s = f_to_s(self);
+        rb_raise(rb_eRangeError, &quot;can't convert %s into Float&quot;,
+                 StringValuePtr(s));
+    }
+    return f_to_f(dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>cmp.to_i  &rarr;  integer
+</b>
+            
+            <a href="../classes/Complex.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as an integer if possible.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_to_i(VALUE self)
+{
+    get_dat1(self);
+
+    if (k_inexact_p(dat-&gt;imag) || f_nonzero_p(dat-&gt;imag)) {
+        VALUE s = f_to_s(self);
+        rb_raise(rb_eRangeError, &quot;can't convert %s into Integer&quot;,
+                 StringValuePtr(s));
+    }
+    return f_to_i(dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_r">
+            
+              <b>cmp.to_r  &rarr;  rational
+</b>
+            
+            <a href="../classes/Complex.html#method-i-to_r" name="method-i-to_r" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a rational if possible.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_r_source')" id="l_method-i-to_r_source">show</a>
+                
+              </p>
+              <div id="method-i-to_r_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_to_r(VALUE self)
+{
+    get_dat1(self);
+
+    if (k_inexact_p(dat-&gt;imag) || f_nonzero_p(dat-&gt;imag)) {
+        VALUE s = f_to_s(self);
+        rb_raise(rb_eRangeError, &quot;can't convert %s into Rational&quot;,
+                 StringValuePtr(s));
+    }
+    return f_to_r(dat-&gt;real);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>cmp.to_s  &rarr;  string
+</b>
+            
+            <a href="../classes/Complex.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a string.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_to_s(VALUE self)
+{
+    return f_format(self, f_to_s);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-7E">
+            
+              <b>cmp.conj       &rarr;  complex
+cmp.conjugate  &rarr;  complex
+</b>
+            
+            <a href="../classes/Complex.html#method-i-7E" name="method-i-7E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the complex conjugate.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-7E_source')" id="l_method-i-7E_source">show</a>
+                
+              </p>
+              <div id="method-i-7E_source" class="dyn-source">
+                <pre>static VALUE
+nucomp_conj(VALUE self)
+{
+    get_dat1(self);
+    return f_complex_new2(CLASS_OF(self), dat-&gt;real, f_negate(dat-&gt;imag));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

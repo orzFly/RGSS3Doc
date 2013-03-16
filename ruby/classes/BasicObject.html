@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>BasicObject</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            BasicObject 
+            
+                <span class="parent">&lt; 
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/class_c.html">class.c</a></li>
+            
+            <li><a href="../files/object_c.html">object.c</a></li>
+            
+            <li><a href="../files/vm_eval_c.html">vm_eval.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="BasicObject.html">BasicObject</a> is the parent class of all
+classes in Ruby.  It’s an explicit blank class.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-21">!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-21-3D">!=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-__send__">__send__</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-equal-3F">equal?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-instance_eval">instance_eval</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_exec">instance_exec</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(*args)
+            
+            <a href="../classes/BasicObject.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Not documented</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_dummy(void)
+{
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-21">
+            
+              <b>!obj    &rarr; true or false
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-21" name="method-i-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Boolean negate.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-21_source')" id="l_method-i-21_source">show</a>
+                
+              </p>
+              <div id="method-i-21_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_not(VALUE obj)
+{
+    return RTEST(obj) ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-21-3D">
+            
+              <b>obj != other        &rarr; true or false
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-21-3D" name="method-i-21-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if two objects are not-equal, otherwise false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-21-3D_source')" id="l_method-i-21-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-21-3D_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_not_equal(VALUE obj1, VALUE obj2)
+{
+    VALUE result = rb_funcall(obj1, id_eq, 1, obj2);
+    return RTEST(result) ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>obj == other        &rarr; true or false
+obj.equal?(other)   &rarr; true or false
+obj.eql?(other)     &rarr; true or false
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—At the <code>Object</code> level, <code>==</code> returns
+<code>true</code> only if <em>obj</em> and <em>other</em> are the same
+object. Typically, this method is overridden in descendant classes to
+provide class-specific meaning.</p>
+
+<p>Unlike <code>==</code>, the <code>equal?</code> method should never be
+overridden by subclasses: it is used to determine object identity (that is,
+<code>a.equal?(b)</code> iff <code>a</code> is the same object as
+<code>b</code>).</p>
+
+<p>The <code>eql?</code> method returns <code>true</code> if <em>obj</em> and
+<em>an<a href="Object.html">Object</a></em> have the same value. Used by
+<code>Hash</code> to test members for equality.  For objects of class
+<code>Object</code>, <code>eql?</code> is synonymous with <code>==</code>.
+Subclasses normally continue this tradition, but there are exceptions.
+<code>Numeric</code> types, for example, perform type conversion across
+<code>==</code>, but not across <code>eql?</code>, so:</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>     <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-value">1.0</span>   <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_equal(VALUE obj1, VALUE obj2)
+{
+    if (obj1 == obj2) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-__send__">
+            
+              <b>obj.send(symbol [, args...])        &rarr; obj
+obj.__send__(symbol [, args...])      &rarr; obj
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-__send__" name="method-i-__send__" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the method identified by <em>symbol</em>, passing it any arguments
+specified. You can use <code>__send__</code> if the name <code>send</code>
+clashes with an existing method in <em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Klass</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>(*<span class="ruby-identifier">args</span>)
+    <span class="ruby-string">&quot;Hello &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">send</span> :<span class="ruby-identifier">hello</span>, <span class="ruby-string">&quot;gentle&quot;</span>, <span class="ruby-string">&quot;readers&quot;</span>   <span class="ruby-comment">#=&gt; &quot;Hello gentle readers&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-__send___source')" id="l_method-i-__send___source">show</a>
+                
+              </p>
+              <div id="method-i-__send___source" class="dyn-source">
+                <pre>VALUE
+rb_f_send(int argc, VALUE *argv, VALUE recv)
+{
+    return send_internal(argc, argv, recv, CALL_FCALL);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-equal-3F">
+            
+              <b>obj == other        &rarr; true or false
+obj.equal?(other)   &rarr; true or false
+obj.eql?(other)     &rarr; true or false
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-equal-3F" name="method-i-equal-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—At the <code>Object</code> level, <code>==</code> returns
+<code>true</code> only if <em>obj</em> and <em>other</em> are the same
+object. Typically, this method is overridden in descendant classes to
+provide class-specific meaning.</p>
+
+<p>Unlike <code>==</code>, the <code>equal?</code> method should never be
+overridden by subclasses: it is used to determine object identity (that is,
+<code>a.equal?(b)</code> iff <code>a</code> is the same object as
+<code>b</code>).</p>
+
+<p>The <code>eql?</code> method returns <code>true</code> if <em>obj</em> and
+<em>an<a href="Object.html">Object</a></em> have the same value. Used by
+<code>Hash</code> to test members for equality.  For objects of class
+<code>Object</code>, <code>eql?</code> is synonymous with <code>==</code>.
+Subclasses normally continue this tradition, but there are exceptions.
+<code>Numeric</code> types, for example, perform type conversion across
+<code>==</code>, but not across <code>eql?</code>, so:</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>     <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-value">1.0</span>   <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-equal-3F_source')" id="l_method-i-equal-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-equal-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_equal(VALUE obj1, VALUE obj2)
+{
+    if (obj1 == obj2) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_eval">
+            
+              <b>obj.instance_eval(string [, filename [, lineno]] )   &rarr; obj
+obj.instance_eval {| | block }                       &rarr; obj
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-instance_eval" name="method-i-instance_eval" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Evaluates a string containing Ruby source code, or the given block, within
+the context of the receiver (<em>obj</em>). In order to set the context,
+the variable <code>self</code> is set to <em>obj</em> while the code is
+executing, giving the code access to <em>obj</em>’s instance variables.
+In the version of <code>instance_eval</code> that takes a
+<code>String</code>, the optional second and third parameters supply a
+filename and starting line number that are used when reporting compilation
+errors.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">KlassWithSecret</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-ivar">@secret</span> = <span class="ruby-value">99</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">KlassWithSecret</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">instance_eval</span> { <span class="ruby-ivar">@secret</span> }   <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_eval_source')" id="l_method-i-instance_eval_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_eval_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_instance_eval(int argc, VALUE *argv, VALUE self)
+{
+    VALUE klass;
+
+    if (SPECIAL_CONST_P(self)) {
+        klass = Qnil;
+    }
+    else {
+        klass = rb_singleton_class(self);
+    }
+    return specific_eval(argc, argv, klass, self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_exec">
+            
+              <b>obj.instance_exec(arg...) {|var...| block }                       &rarr; obj
+</b>
+            
+            <a href="../classes/BasicObject.html#method-i-instance_exec" name="method-i-instance_exec" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Executes the given block within the context of the receiver (<em>obj</em>).
+In order to set the context, the variable <code>self</code> is set to
+<em>obj</em> while the code is executing, giving the code access to
+<em>obj</em>’s instance variables.  Arguments are passed as block
+parameters.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">KlassWithSecret</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-ivar">@secret</span> = <span class="ruby-value">99</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">KlassWithSecret</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">instance_exec</span>(<span class="ruby-value">5</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@secret</span><span class="ruby-operator">+</span><span class="ruby-identifier">x</span> }   <span class="ruby-comment">#=&gt; 104</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_exec_source')" id="l_method-i-instance_exec_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_exec_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_instance_exec(int argc, VALUE *argv, VALUE self)
+{
+    VALUE klass;
+
+    if (SPECIAL_CONST_P(self)) {
+        klass = Qnil;
+    }
+    else {
+        klass = rb_singleton_class(self);
+    }
+    return yield_under(klass, self, rb_ary_new4(argc, argv));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

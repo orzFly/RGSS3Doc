@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>EOFError</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            EOFError 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="IOError.html">IOError</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/io_c.html">io.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Raised by some <a href="IO.html">IO</a> operations when reaching the end of
+file. Many <a href="IO.html">IO</a> methods exist in two forms,</p>
+
+<p>one that returns <code>nil</code> when the end of file is reached, the
+other raises <a href="EOFError.html">EOFError</a> <code>EOFError</code>.</p>
+
+<p><code>EOFError</code> is a subclass of <code>IOError</code>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;/etc/hosts&quot;</span>)
+<span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>
+<span class="ruby-identifier">file</span>.<span class="ruby-identifier">gets</span>     <span class="ruby-comment">#=&gt; nil</span>
+<span class="ruby-identifier">file</span>.<span class="ruby-identifier">readline</span> <span class="ruby-comment">#=&gt; EOFError: end of file reached</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>    

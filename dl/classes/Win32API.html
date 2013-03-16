@@ -31,7 +31,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/win32_rb.html">win32.rb</a></li>
+            <li><a href="../files/Win32API_rb.html">Win32API.rb</a></li>
             
         </ul>
     </div>
@@ -114,6 +114,18 @@
             </tr>
           
         
+          <tr valign='top'>
+            <td class="attr-name">TYPEMAP</td>
+            <td>=</td>
+            <td class="attr-value">{&quot;0&quot; =&gt; DL::TYPE_VOID, &quot;S&quot; =&gt; DL::TYPE_VOIDP, &quot;I&quot; =&gt; DL::TYPE_LONG}</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
       </table>
     
 
@@ -128,7 +140,7 @@
         <div class="method">
           <div class="title method-title" id="method-c-new">
             
-              <b>new</b>(dllname, func, import, export = &quot;0&quot;)
+              <b>new</b>(dllname, func, import, export = &quot;0&quot;, calltype = :stdcall)
             
             <a href="../classes/Win32API.html#method-c-new" name="method-c-new" class="permalink">Link</a>
           </div>
@@ -151,11 +163,13 @@
                 
               </p>
               <div id="method-c-new_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File win32.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">dllname</span>, <span class="ruby-identifier">func</span>, <span class="ruby-identifier">import</span>, <span class="ruby-identifier">export</span> = <span class="ruby-string">&quot;0&quot;</span>)
-  <span class="ruby-identifier">prototype</span> = (<span class="ruby-identifier">export</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">import</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;VPpNnLlIi&quot;</span>, <span class="ruby-string">&quot;0SSI&quot;</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/^(.)0*$/</span>, <span class="ruby-string">'\1'</span>)
-  <span class="ruby-identifier">handle</span> = <span class="ruby-constant">DLL</span>[<span class="ruby-identifier">dllname</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-constant">Handle</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dllname</span>)
-  <span class="ruby-ivar">@sym</span> = <span class="ruby-identifier">handle</span>.<span class="ruby-identifier">sym</span>(<span class="ruby-identifier">func</span>, <span class="ruby-identifier">prototype</span>)
+                <pre><span class="ruby-comment"># File Win32API.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">dllname</span>, <span class="ruby-identifier">func</span>, <span class="ruby-identifier">import</span>, <span class="ruby-identifier">export</span> = <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-identifier">calltype</span> = <span class="ruby-value">:stdcall</span>)
+  <span class="ruby-ivar">@proto</span> = [<span class="ruby-identifier">import</span>].<span class="ruby-identifier">join</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;VPpNnLlIi&quot;</span>, <span class="ruby-string">&quot;0SSI&quot;</span>).<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/^(.)0*$/</span>, <span class="ruby-string">'\1'</span>)
+  <span class="ruby-identifier">handle</span> = <span class="ruby-constant">DLL</span>[<span class="ruby-identifier">dllname</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DL</span>.<span class="ruby-identifier">dlopen</span>(<span class="ruby-identifier">dllname</span>)
+  <span class="ruby-ivar">@func</span> = <span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-constant">CFunc</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">handle</span>[<span class="ruby-identifier">func</span>], <span class="ruby-constant">TYPEMAP</span>[<span class="ruby-identifier">export</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;VPpNnLlIi&quot;</span>, <span class="ruby-string">&quot;0SSI&quot;</span>)], <span class="ruby-identifier">func</span>, <span class="ruby-identifier">calltype</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-constant">DLError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">backtrace</span>
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>
@@ -213,14 +227,14 @@
                 
               </p>
               <div id="method-i-call_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File win32.rb, line 14</span>
+                <pre><span class="ruby-comment"># File Win32API.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">call</span>(*<span class="ruby-identifier">args</span>)
-  <span class="ruby-identifier">import</span> = <span class="ruby-ivar">@sym</span>.<span class="ruby-identifier">proto</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-number">2</span>)[<span class="ruby-number">1</span>]
+  <span class="ruby-identifier">import</span> = <span class="ruby-ivar">@proto</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;&quot;</span>)
   <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">args</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">import</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-string">S</span>
-    <span class="ruby-identifier">args</span>[<span class="ruby-identifier">i</span>], = [<span class="ruby-identifier">x</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;I&quot;</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;i&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">import</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-string">I</span>
+    <span class="ruby-identifier">args</span>[<span class="ruby-identifier">i</span>], = [<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;p&quot;</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;l!*&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">import</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;S&quot;</span>
+    <span class="ruby-identifier">args</span>[<span class="ruby-identifier">i</span>], = [<span class="ruby-identifier">x</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;I&quot;</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;i&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">import</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;I&quot;</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">ret</span>, = <span class="ruby-ivar">@sym</span>.<span class="ruby-identifier">call</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">ret</span>, = <span class="ruby-ivar">@func</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">ret</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
 <span class="ruby-keyword">end</span></pre>
               </div>

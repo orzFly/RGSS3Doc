@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Zlib</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Zlib 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/zlib_c.html">zlib.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>GZIP_SUPPORT</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/BufError.html">Zlib::BufError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/DataError.html">Zlib::DataError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/Deflate.html">Zlib::Deflate</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/Error.html">Zlib::Error</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/GzipFile.html">Zlib::GzipFile</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/GzipReader.html">Zlib::GzipReader</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/GzipWriter.html">Zlib::GzipWriter</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/Inflate.html">Zlib::Inflate</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/MemError.html">Zlib::MemError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/NeedDict.html">Zlib::NeedDict</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/StreamEnd.html">Zlib::StreamEnd</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/StreamError.html">Zlib::StreamError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/VersionError.html">Zlib::VersionError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Zlib/ZStream.html">Zlib::ZStream</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-adler32">adler32</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-adler32_combine">adler32_combine</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-crc32">crc32</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-crc32_combine">crc32_combine</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-crc_table">crc_table</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Z</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-zlib_version">zlib_version</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">VERSION</td>
+            <td>=</td>
+            <td class="attr-value">rb_str_new2(RUBY_ZLIB_VERSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ZLIB_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">rb_str_new2(ZLIB_VERSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">BINARY</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_BINARY)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ASCII</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_ASCII)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">UNKNOWN</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_UNKNOWN)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">NO_COMPRESSION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_NO_COMPRESSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">BEST_SPEED</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_BEST_SPEED)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">BEST_COMPRESSION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_BEST_COMPRESSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEFAULT_COMPRESSION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_DEFAULT_COMPRESSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FILTERED</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_FILTERED)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">HUFFMAN_ONLY</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_HUFFMAN_ONLY)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEFAULT_STRATEGY</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_DEFAULT_STRATEGY)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">MAX_WBITS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(MAX_WBITS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEF_MEM_LEVEL</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(DEF_MEM_LEVEL)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">MAX_MEM_LEVEL</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(MAX_MEM_LEVEL)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">NO_FLUSH</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_NO_FLUSH)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SYNC_FLUSH</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_SYNC_FLUSH)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FULL_FLUSH</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_FULL_FLUSH)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FINISH</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(Z_FINISH)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_CODE</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_CODE)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_MSDOS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_MSDOS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_AMIGA</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_AMIGA)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_VMS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_VMS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_UNIX</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_UNIX)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_ATARI</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_ATARI)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_OS2</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_OS2)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_MACOS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_MACOS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_TOPS20</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_TOPS20)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_WIN32</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_WIN32)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_VMCMS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_VMCMS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_ZSYSTEM</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_ZSYSTEM)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_CPM</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_CPM)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_QDOS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_QDOS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_RISCOS</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_RISCOS)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">OS_UNKNOWN</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(OS_UNKNOWN)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-adler32">
+            
+              <b>Zlib.adler32(string, adler)
+</b>
+            
+            <a href="../classes/Zlib.html#method-c-adler32" name="method-c-adler32" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Calculates Adler-32 checksum for <code>string</code>, and returns updated
+value of <code>adler</code>. If <code>string</code> is omitted, it returns
+the Adler-32 initial value. If <code>adler</code> is omitted, it assumes
+that the initial value is given to <code>adler</code>.</p>
+
+<p>FIXME: expression.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-adler32_source')" id="l_method-c-adler32_source">show</a>
+                
+              </p>
+              <div id="method-c-adler32_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_adler32(int argc, VALUE *argv, VALUE klass)
+{
+    return do_checksum(argc, argv, adler32);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-adler32_combine">
+            
+              <b>Zlib.adler32_combine(adler1, adler2, len2)
+</b>
+            
+            <a href="../classes/Zlib.html#method-c-adler32_combine" name="method-c-adler32_combine" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Combine two Adler-32 check values in to one.  <code>alder1</code> is the
+first Adler-32 value, <code>adler2</code> is the second Adler-32 value. 
+<code>len2</code> is the length of the string used to generate
+<code>adler2</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-adler32_combine_source')" id="l_method-c-adler32_combine_source">show</a>
+                
+              </p>
+              <div id="method-c-adler32_combine_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_adler32_combine(VALUE klass, VALUE adler1, VALUE adler2, VALUE len2)
+{
+  return ULONG2NUM(
+        adler32_combine(NUM2ULONG(adler1), NUM2ULONG(adler2), NUM2LONG(len2)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-crc32">
+            
+              <b>Zlib.crc32(string, adler)
+</b>
+            
+            <a href="../classes/Zlib.html#method-c-crc32" name="method-c-crc32" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Calculates CRC checksum for <code>string</code>, and returns updated value
+of <code>crc</code>. If <code>string</code> is omitted, it returns the CRC
+initial value. If <code>crc</code> is omitted, it assumes that the initial
+value is given to <code>crc</code>.</p>
+
+<p>FIXME: expression.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-crc32_source')" id="l_method-c-crc32_source">show</a>
+                
+              </p>
+              <div id="method-c-crc32_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_crc32(int argc, VALUE *argv, VALUE klass)
+{
+    return do_checksum(argc, argv, crc32);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-crc32_combine">
+            
+              <b>Zlib.crc32_combine(crc1, crc2, len2)
+</b>
+            
+            <a href="../classes/Zlib.html#method-c-crc32_combine" name="method-c-crc32_combine" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Combine two CRC-32 check values in to one.  <code>crc1</code> is the first
+CRC-32 value, <code>crc2</code> is the second CRC-32 value. 
+<code>len2</code> is the length of the string used to generate
+<code>crc2</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-crc32_combine_source')" id="l_method-c-crc32_combine_source">show</a>
+                
+              </p>
+              <div id="method-c-crc32_combine_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_crc32_combine(VALUE klass, VALUE crc1, VALUE crc2, VALUE len2)
+{
+  return ULONG2NUM(
+        crc32_combine(NUM2ULONG(crc1), NUM2ULONG(crc2), NUM2LONG(len2)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-crc_table">
+            
+              <b>crc_table</b>()
+            
+            <a href="../classes/Zlib.html#method-c-crc_table" name="method-c-crc_table" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the table for calculating CRC checksum as an array.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-crc_table_source')" id="l_method-c-crc_table_source">show</a>
+                
+              </p>
+              <div id="method-c-crc_table_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_crc_table(VALUE obj)
+{
+    const unsigned long *crctbl;
+    VALUE dst;
+    int i;
+
+    crctbl = get_crc_table();
+    dst = rb_ary_new2(256);
+
+    for (i = 0; i &lt; 256; i++) {
+        rb_ary_push(dst, rb_uint2inum(crctbl[i]));
+    }
+    return dst;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-zlib_version">
+            
+              <b>zlib_version</b>()
+            
+            <a href="../classes/Zlib.html#method-c-zlib_version" name="method-c-zlib_version" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the string which represents the version of zlib library.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-zlib_version_source')" id="l_method-c-zlib_version_source">show</a>
+                
+              </p>
+              <div id="method-c-zlib_version_source" class="dyn-source">
+                <pre>static VALUE
+rb_zlib_version(VALUE klass)
+{
+    VALUE str;
+
+    str = rb_str_new2(zlibVersion());
+    OBJ_TAINT(str);  /* for safe */
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>    

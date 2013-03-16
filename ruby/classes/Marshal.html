@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Marshal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Marshal 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/marshal_c.html">marshal.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The marshaling library converts collections of Ruby objects into a byte
+stream, allowing them to be stored outside the currently active script.
+This data may subsequently be read and the original objects reconstituted.</p>
+
+<p>Marshaled data has major and minor version numbers stored along with the
+object information. In normal use, marshaling can only load data written
+with the same major version number and an equal or lower minor version
+number. If Ruby’s “verbose” flag is set (normally using -d, -v, -w,
+or –verbose) the major and minor numbers must match exactly. <a
+href="Marshal.html">Marshal</a> versioning is independent of Ruby’s
+version numbers. You can extract the version by reading the first two bytes
+of marshaled data.</p>
+
+<pre class="ruby"><span class="ruby-identifier">str</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-string">&quot;thing&quot;</span>)
+<span class="ruby-constant">RUBY_VERSION</span>   <span class="ruby-comment">#=&gt; &quot;1.9.0&quot;</span>
+<span class="ruby-identifier">str</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span>     <span class="ruby-comment">#=&gt; 4</span>
+<span class="ruby-identifier">str</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">ord</span>     <span class="ruby-comment">#=&gt; 8</span>
+</pre>
+
+<p>Some objects cannot be dumped: if the objects to be dumped include
+bindings, procedure or method objects, instances of class <a
+href="IO.html">IO</a>, or singleton objects, a <a
+href="TypeError.html">TypeError</a> will be raised.</p>
+
+<p>If your class has special serialization needs (for example, if you want to
+serialize in some specific format), or if it contains objects that would
+otherwise not be serializable, you can implement your own serialization
+strategy.</p>
+
+<p>There are two methods of doing this, your object can define either
+marshal_dump and marshal_load or _dump and _load.  marshal_dump will take
+precedence over _dump if both are defined.  marshal_dump may result in
+smaller <a href="Marshal.html">Marshal</a> strings.</p>
+
+<h2 id="label-marshal_dump+and+marshal_load">marshal_dump and marshal_load</h2>
+
+<p>When dumping an object the method marshal_dump will be called. marshal_dump
+must return a result containing the information necessary for marshal_load
+to reconstitute the object.  The result can be any object.</p>
+
+<p>When loading an object dumped using marshal_dump the object is first
+allocated then marshal_load is called with the result from marshal_dump.
+marshal_load must recreate the object from the information in the result.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">MyObj</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">version</span>, <span class="ruby-identifier">data</span>
+    <span class="ruby-ivar">@name</span>    = <span class="ruby-identifier">name</span>
+    <span class="ruby-ivar">@version</span> = <span class="ruby-identifier">version</span>
+    <span class="ruby-ivar">@data</span>    = <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">marshal_dump</span>
+    [<span class="ruby-ivar">@name</span>, <span class="ruby-ivar">@version</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">marshal_load</span> <span class="ruby-identifier">array</span>
+    <span class="ruby-ivar">@name</span>, <span class="ruby-ivar">@version</span> = <span class="ruby-identifier">array</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h2 id="label-_dump+and+_load">_dump and _load</h2>
+
+<p>Use _dump and _load when you need to allocate the object you’re restoring
+yourself.</p>
+
+<p>When dumping an object the instance method _dump is called with an <a
+href="Integer.html">Integer</a> which indicates the maximum depth of
+objects to dump (a value of -1 implies that you should disable depth
+checking).  _dump must return a <a href="String.html">String</a> containing
+the information necessary to reconstitute the object.</p>
+
+<p>The class method _load should take a <a href="String.html">String</a> and
+use it to return an object of the same class.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">MyObj</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">version</span>, <span class="ruby-identifier">data</span>
+    <span class="ruby-ivar">@name</span>    = <span class="ruby-identifier">name</span>
+    <span class="ruby-ivar">@version</span> = <span class="ruby-identifier">version</span>
+    <span class="ruby-ivar">@data</span>    = <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">_dump</span> <span class="ruby-identifier">level</span>
+    [<span class="ruby-ivar">@name</span>, <span class="ruby-ivar">@version</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">':'</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">_load</span> <span class="ruby-identifier">args</span>
+    <span class="ruby-identifier">new</span>(*<span class="ruby-identifier">args</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Since Marhsal.dump outputs a string you can have _dump return a <a
+href="Marshal.html">Marshal</a> string which is Marshal.loaded in _load for
+complex objects.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-dump">dump</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-load">load</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-restore">restore</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">MAJOR_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(MARSHAL_MAJOR)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">MINOR_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(MARSHAL_MINOR)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-dump">
+            
+              <b>dump( obj [, anIO] , limit=--1 ) &rarr; anIO
+</b>
+            
+            <a href="../classes/Marshal.html#method-c-dump" name="method-c-dump" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Serializes obj and all descendant objects. If an<a href="IO.html">IO</a> is
+specified, the serialized data will be written to it, otherwise the data
+will be returned as a <a href="String.html">String</a>. If limit is
+specified, the traversal of subobjects will be limited to that depth. If
+limit is negative, no checking of depth will be performed.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Klass</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">str</span>)
+    <span class="ruby-ivar">@str</span> = <span class="ruby-identifier">str</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">sayHello</span>
+    <span class="ruby-ivar">@str</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>(produces no output)</p>
+
+<pre class="ruby"><span class="ruby-identifier">o</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;hello\n&quot;</span>)
+<span class="ruby-identifier">data</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">o</span>)
+<span class="ruby-identifier">obj</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">data</span>)
+<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">sayHello</span>   <span class="ruby-comment">#=&gt; &quot;hello\n&quot;</span>
+</pre>
+
+<p><a href="Marshal.html">Marshal</a> can’t dump following objects:</p>
+<ul><li>
+<p>anonymous Class/Module.</p>
+</li><li>
+<p>objects which related to its system (ex: <a href="Dir.html">Dir</a>, <a
+href="File/Stat.html">File::Stat</a>, <a href="IO.html">IO</a>, <a
+href="File.html">File</a>, Socket and so on)</p>
+</li><li>
+<p>an instance of <a href="MatchData.html">MatchData</a>, <a
+href="Data.html">Data</a>, <a href="Method.html">Method</a>, <a
+href="UnboundMethod.html">UnboundMethod</a>, <a href="Proc.html">Proc</a>,
+<a href="Thread.html">Thread</a>, <a
+href="ThreadGroup.html">ThreadGroup</a>, <a
+href="Continuation.html">Continuation</a></p>
+</li><li>
+<p>objects which defines singleton methods</p>
+</li></ul>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-dump_source')" id="l_method-c-dump_source">show</a>
+                
+              </p>
+              <div id="method-c-dump_source" class="dyn-source">
+                <pre>static VALUE
+marshal_dump(int argc, VALUE *argv)
+{
+    VALUE obj, port, a1, a2;
+    int limit = -1;
+    struct dump_arg *arg;
+    volatile VALUE wrapper;
+
+    port = Qnil;
+    rb_scan_args(argc, argv, &quot;12&quot;, &amp;obj, &amp;a1, &amp;a2);
+    if (argc == 3) {
+        if (!NIL_P(a2)) limit = NUM2INT(a2);
+        if (NIL_P(a1)) goto type_error;
+        port = a1;
+    }
+    else if (argc == 2) {
+        if (FIXNUM_P(a1)) limit = FIX2INT(a1);
+        else if (NIL_P(a1)) goto type_error;
+        else port = a1;
+    }
+    wrapper = TypedData_Make_Struct(rb_cData, struct dump_arg, &amp;dump_arg_data, arg);
+    arg-&gt;dest = 0;
+    arg-&gt;symbols = st_init_numtable();
+    arg-&gt;data    = st_init_numtable();
+    arg-&gt;infection = 0;
+    arg-&gt;compat_tbl = st_init_numtable();
+    arg-&gt;encodings = 0;
+    arg-&gt;str = rb_str_buf_new(0);
+    if (!NIL_P(port)) {
+        if (!rb_respond_to(port, s_write)) {
+          type_error:
+            rb_raise(rb_eTypeError, &quot;instance of IO needed&quot;);
+        }
+        arg-&gt;dest = port;
+        if (rb_respond_to(port, s_binmode)) {
+            rb_funcall2(port, s_binmode, 0, 0);
+            check_dump_arg(arg, s_binmode);
+        }
+    }
+    else {
+        port = arg-&gt;str;
+    }
+
+    w_byte(MARSHAL_MAJOR, arg);
+    w_byte(MARSHAL_MINOR, arg);
+
+    w_object(obj, arg, limit);
+    if (arg-&gt;dest) {
+        rb_io_write(arg-&gt;dest, arg-&gt;str);
+        rb_str_resize(arg-&gt;str, 0);
+    }
+    clear_dump_arg(arg);
+    RB_GC_GUARD(wrapper);
+
+    return port;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load">
+            
+              <b>load( source [, proc] ) &rarr; obj
+restore( source [, proc] ) &rarr; obj
+</b>
+            
+            <a href="../classes/Marshal.html#method-c-load" name="method-c-load" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the result of converting the serialized data in source into a Ruby
+object (possibly with associated subordinate objects). source may be either
+an instance of <a href="IO.html">IO</a> or an object that responds to
+to_str. If proc is specified, it will be passed each object as it is
+deserialized.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_source')" id="l_method-c-load_source">show</a>
+                
+              </p>
+              <div id="method-c-load_source" class="dyn-source">
+                <pre>static VALUE
+marshal_load(int argc, VALUE *argv)
+{
+    VALUE port, proc;
+    int major, minor, infection = 0;
+    VALUE v;
+    volatile VALUE wrapper;
+    struct load_arg *arg;
+
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;port, &amp;proc);
+    v = rb_check_string_type(port);
+    if (!NIL_P(v)) {
+        infection = (int)FL_TEST(port, MARSHAL_INFECTION); /* original taintedness */
+        port = v;
+    }
+    else if (rb_respond_to(port, s_getbyte) &amp;&amp; rb_respond_to(port, s_read)) {
+        if (rb_respond_to(port, s_binmode)) {
+            rb_funcall2(port, s_binmode, 0, 0);
+        }
+        infection = (int)(FL_TAINT | FL_TEST(port, FL_UNTRUSTED));
+    }
+    else {
+        rb_raise(rb_eTypeError, &quot;instance of IO needed&quot;);
+    }
+    wrapper = TypedData_Make_Struct(rb_cData, struct load_arg, &amp;load_arg_data, arg);
+    arg-&gt;infection = infection;
+    arg-&gt;src = port;
+    arg-&gt;offset = 0;
+    arg-&gt;symbols = st_init_numtable();
+    arg-&gt;data    = st_init_numtable();
+    arg-&gt;compat_tbl = st_init_numtable();
+    arg-&gt;proc = 0;
+
+    major = r_byte(arg);
+    minor = r_byte(arg);
+    if (major != MARSHAL_MAJOR || minor &gt; MARSHAL_MINOR) {
+        clear_load_arg(arg);
+        rb_raise(rb_eTypeError, &quot;incompatible marshal file format (can't be read)\n\
+\tformat version %d.%d required; %d.%d given&quot;,
+                 MARSHAL_MAJOR, MARSHAL_MINOR, major, minor);
+    }
+    if (RTEST(ruby_verbose) &amp;&amp; minor != MARSHAL_MINOR) {
+        rb_warn(&quot;incompatible marshal file format (can be read)\n\
+\tformat version %d.%d required; %d.%d given&quot;,
+                MARSHAL_MAJOR, MARSHAL_MINOR, major, minor);
+    }
+
+    if (!NIL_P(proc)) arg-&gt;proc = proc;
+    v = r_object(arg);
+    clear_load_arg(arg);
+    RB_GC_GUARD(wrapper);
+
+    return v;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-restore">
+            
+              <b>load( source [, proc] ) &rarr; obj
+restore( source [, proc] ) &rarr; obj
+</b>
+            
+            <a href="../classes/Marshal.html#method-c-restore" name="method-c-restore" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the result of converting the serialized data in source into a Ruby
+object (possibly with associated subordinate objects). source may be either
+an instance of <a href="IO.html">IO</a> or an object that responds to
+to_str. If proc is specified, it will be passed each object as it is
+deserialized.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-restore_source')" id="l_method-c-restore_source">show</a>
+                
+              </p>
+              <div id="method-c-restore_source" class="dyn-source">
+                <pre>static VALUE
+marshal_load(int argc, VALUE *argv)
+{
+    VALUE port, proc;
+    int major, minor, infection = 0;
+    VALUE v;
+    volatile VALUE wrapper;
+    struct load_arg *arg;
+
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;port, &amp;proc);
+    v = rb_check_string_type(port);
+    if (!NIL_P(v)) {
+        infection = (int)FL_TEST(port, MARSHAL_INFECTION); /* original taintedness */
+        port = v;
+    }
+    else if (rb_respond_to(port, s_getbyte) &amp;&amp; rb_respond_to(port, s_read)) {
+        if (rb_respond_to(port, s_binmode)) {
+            rb_funcall2(port, s_binmode, 0, 0);
+        }
+        infection = (int)(FL_TAINT | FL_TEST(port, FL_UNTRUSTED));
+    }
+    else {
+        rb_raise(rb_eTypeError, &quot;instance of IO needed&quot;);
+    }
+    wrapper = TypedData_Make_Struct(rb_cData, struct load_arg, &amp;load_arg_data, arg);
+    arg-&gt;infection = infection;
+    arg-&gt;src = port;
+    arg-&gt;offset = 0;
+    arg-&gt;symbols = st_init_numtable();
+    arg-&gt;data    = st_init_numtable();
+    arg-&gt;compat_tbl = st_init_numtable();
+    arg-&gt;proc = 0;
+
+    major = r_byte(arg);
+    minor = r_byte(arg);
+    if (major != MARSHAL_MAJOR || minor &gt; MARSHAL_MINOR) {
+        clear_load_arg(arg);
+        rb_raise(rb_eTypeError, &quot;incompatible marshal file format (can't be read)\n\
+\tformat version %d.%d required; %d.%d given&quot;,
+                 MARSHAL_MAJOR, MARSHAL_MINOR, major, minor);
+    }
+    if (RTEST(ruby_verbose) &amp;&amp; minor != MARSHAL_MINOR) {
+        rb_warn(&quot;incompatible marshal file format (can be read)\n\
+\tformat version %d.%d required; %d.%d given&quot;,
+                MARSHAL_MAJOR, MARSHAL_MINOR, major, minor);
+    }
+
+    if (!NIL_P(proc)) arg-&gt;proc = proc;
+    v = r_object(arg);
+    clear_load_arg(arg);
+    RB_GC_GUARD(wrapper);
+
+    return v;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>    

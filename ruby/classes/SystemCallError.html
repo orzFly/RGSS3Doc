@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>SystemCallError</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            SystemCallError 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="StandardError.html">StandardError</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/error_c.html">error.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="SystemCallError.html">SystemCallError</a> is the base class for
+all low-level platform-dependent errors.</p>
+
+<p>The errors available on the current platform are subclasses of <a
+href="SystemCallError.html">SystemCallError</a> and are defined in the <a
+href="Errno.html">Errno</a> module.</p>
+
+<pre>File.open(&quot;does/not/exist&quot;)</pre>
+
+<p><em>raises the exception:</em></p>
+
+<pre>Errno::ENOENT: No such file or directory - does/not/exist</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-3D-3D-3D">===</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-errno">errno</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-3D-3D-3D">
+            
+              <b>system_call_error === other  &rarr; true or false
+</b>
+            
+            <a href="../classes/SystemCallError.html#method-c-3D-3D-3D" name="method-c-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if the receiver is a generic
+<code>SystemCallError</code>, or if the error numbers <code>self</code> and
+<em>other</em> are the same.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-3D-3D-3D_source')" id="l_method-c-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-c-3D-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+syserr_eqq(VALUE self, VALUE exc)
+{
+    VALUE num, e;
+    ID en;
+
+    CONST_ID(en, &quot;errno&quot;);
+
+    if (!rb_obj_is_kind_of(exc, rb_eSystemCallError)) {
+        if (!rb_respond_to(exc, en)) return Qfalse;
+    }
+    else if (self == rb_eSystemCallError) return Qtrue;
+
+    num = rb_attr_get(exc, rb_intern(&quot;errno&quot;));
+    if (NIL_P(num)) {
+        num = rb_funcall(exc, en, 0, 0);
+    }
+    e = rb_const_get(self, rb_intern(&quot;Errno&quot;));
+    if (FIXNUM_P(num) ? num == e : rb_equal(num, e))
+        return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>SystemCallError.new(msg, errno)  &rarr; system_call_error_subclass
+</b>
+            
+            <a href="../classes/SystemCallError.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>If <em>errno</em> corresponds to a known system error code, constructs the
+appropriate <code>Errno</code> class for that error, otherwise constructs a
+generic <code>SystemCallError</code> object. The error number is
+subsequently available via the <code>errno</code> method.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+syserr_initialize(int argc, VALUE *argv, VALUE self)
+{
+#if !defined(_WIN32)
+    char *strerror();
+#endif
+    const char *err;
+    VALUE mesg, error;
+    VALUE klass = rb_obj_class(self);
+
+    if (klass == rb_eSystemCallError) {
+        rb_scan_args(argc, argv, &quot;11&quot;, &amp;mesg, &amp;error);
+        if (argc == 1 &amp;&amp; FIXNUM_P(mesg)) {
+            error = mesg; mesg = Qnil;
+        }
+        if (!NIL_P(error) &amp;&amp; st_lookup(syserr_tbl, NUM2LONG(error), &amp;klass)) {
+            /* change class */
+            if (TYPE(self) != T_OBJECT) { /* insurance to avoid type crash */
+                rb_raise(rb_eTypeError, &quot;invalid instance type&quot;);
+            }
+            RBASIC(self)-&gt;klass = klass;
+        }
+    }
+    else {
+        rb_scan_args(argc, argv, &quot;01&quot;, &amp;mesg);
+        error = rb_const_get(klass, rb_intern(&quot;Errno&quot;));
+    }
+    if (!NIL_P(error)) err = strerror(NUM2INT(error));
+    else err = &quot;unknown error&quot;;
+    if (!NIL_P(mesg)) {
+        VALUE str = mesg;
+
+        StringValue(str);
+        mesg = rb_sprintf(&quot;%s - %.*s&quot;, err,
+                          (int)RSTRING_LEN(str), RSTRING_PTR(str));
+    }
+    else {
+        mesg = rb_str_new2(err);
+    }
+    rb_enc_associate(mesg, rb_locale_encoding());
+    rb_call_super(1, &amp;mesg);
+    rb_iv_set(self, &quot;errno&quot;, error);
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-errno">
+            
+              <b>system_call_error.errno   &rarr; fixnum
+</b>
+            
+            <a href="../classes/SystemCallError.html#method-i-errno" name="method-i-errno" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return this SystemCallError’s error number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-errno_source')" id="l_method-i-errno_source">show</a>
+                
+              </p>
+              <div id="method-i-errno_source" class="dyn-source">
+                <pre>static VALUE
+syserr_errno(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;errno&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

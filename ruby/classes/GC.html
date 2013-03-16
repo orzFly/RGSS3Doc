@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>GC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            GC 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/gc_c.html">gc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The <code>GC</code> module provides an interface to Ruby’s mark and sweep
+garbage collection mechanism. Some of the underlying methods are also
+available via the <code>ObjectSpace</code> module.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="GC/Profiler.html">GC::Profiler</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-count">count</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-disable">disable</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-enable">enable</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-garbage_collect">garbage_collect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-malloc_allocated_size">malloc_allocated_size</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-malloc_allocations">malloc_allocations</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-start">start</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-stress">stress</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-stress-3D">stress=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-count">
+            
+              <b>GC.count &rarr; Integer
+</b>
+            
+            <a href="../classes/GC.html#method-c-count" name="method-c-count" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The number of times <a href="GC.html">GC</a> occurred.</p>
+
+<p>It returns the number of times <a href="GC.html">GC</a> occurred since the
+process started.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-count_source')" id="l_method-c-count_source">show</a>
+                
+              </p>
+              <div id="method-c-count_source" class="dyn-source">
+                <pre>static VALUE
+gc_count(VALUE self)
+{
+    return UINT2NUM((&amp;rb_objspace)-&gt;count);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-disable">
+            
+              <b>GC.disable    &rarr; true or false
+</b>
+            
+            <a href="../classes/GC.html#method-c-disable" name="method-c-disable" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Disables garbage collection, returning <code>true</code> if garbage
+collection was already disabled.</p>
+
+<pre class="ruby"><span class="ruby-constant">GC</span>.<span class="ruby-identifier">disable</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">GC</span>.<span class="ruby-identifier">disable</span>   <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-disable_source')" id="l_method-c-disable_source">show</a>
+                
+              </p>
+              <div id="method-c-disable_source" class="dyn-source">
+                <pre>VALUE
+rb_gc_disable(void)
+{
+    rb_objspace_t *objspace = &amp;rb_objspace;
+    int old = dont_gc;
+
+    dont_gc = TRUE;
+    return old ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-enable">
+            
+              <b>GC.enable    &rarr; true or false
+</b>
+            
+            <a href="../classes/GC.html#method-c-enable" name="method-c-enable" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Enables garbage collection, returning <code>true</code> if garbage
+collection was previously disabled.</p>
+
+<pre class="ruby"><span class="ruby-constant">GC</span>.<span class="ruby-identifier">disable</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">GC</span>.<span class="ruby-identifier">enable</span>    <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-constant">GC</span>.<span class="ruby-identifier">enable</span>    <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-enable_source')" id="l_method-c-enable_source">show</a>
+                
+              </p>
+              <div id="method-c-enable_source" class="dyn-source">
+                <pre>VALUE
+rb_gc_enable(void)
+{
+    rb_objspace_t *objspace = &amp;rb_objspace;
+    int old = dont_gc;
+
+    dont_gc = FALSE;
+    return old ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-malloc_allocated_size">
+            
+              <b>GC.malloc_allocated_size &rarr; Integer
+</b>
+            
+            <a href="../classes/GC.html#method-c-malloc_allocated_size" name="method-c-malloc_allocated_size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The allocated size by malloc().</p>
+
+<p>It returns the allocated size by malloc().</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-malloc_allocated_size_source')" id="l_method-c-malloc_allocated_size_source">show</a>
+                
+              </p>
+              <div id="method-c-malloc_allocated_size_source" class="dyn-source">
+                <pre>static VALUE
+gc_malloc_allocated_size(VALUE self)
+{
+    return UINT2NUM((&amp;rb_objspace)-&gt;malloc_params.allocated_size);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-malloc_allocations">
+            
+              <b>GC.malloc_allocations &rarr; Integer
+</b>
+            
+            <a href="../classes/GC.html#method-c-malloc_allocations" name="method-c-malloc_allocations" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The number of allocated memory object by malloc().</p>
+
+<p>It returns the number of allocated memory object by malloc().</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-malloc_allocations_source')" id="l_method-c-malloc_allocations_source">show</a>
+                
+              </p>
+              <div id="method-c-malloc_allocations_source" class="dyn-source">
+                <pre>static VALUE
+gc_malloc_allocations(VALUE self)
+{
+    return UINT2NUM((&amp;rb_objspace)-&gt;malloc_params.allocations);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-start">
+            
+              <b>GC.start                     &rarr; nil
+gc.garbage_collect           &rarr; nil
+ObjectSpace.garbage_collect  &rarr; nil
+</b>
+            
+            <a href="../classes/GC.html#method-c-start" name="method-c-start" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Initiates garbage collection, unless manually disabled.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-start_source')" id="l_method-c-start_source">show</a>
+                
+              </p>
+              <div id="method-c-start_source" class="dyn-source">
+                <pre>VALUE
+rb_gc_start(void)
+{
+    rb_gc();
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-stress">
+            
+              <b>GC.stress                 &rarr; true or false
+</b>
+            
+            <a href="../classes/GC.html#method-c-stress" name="method-c-stress" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>returns current status of <a href="GC.html">GC</a> stress mode.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-stress_source')" id="l_method-c-stress_source">show</a>
+                
+              </p>
+              <div id="method-c-stress_source" class="dyn-source">
+                <pre>static VALUE
+gc_stress_get(VALUE self)
+{
+    rb_objspace_t *objspace = &amp;rb_objspace;
+    return ruby_gc_stress ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-stress-3D">
+            
+              <b>GC.stress = bool          &rarr; bool
+</b>
+            
+            <a href="../classes/GC.html#method-c-stress-3D" name="method-c-stress-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>updates <a href="GC.html">GC</a> stress mode.</p>
+
+<p>When <a href="GC.html#method-c-stress">::stress</a> = true, <a
+href="GC.html">GC</a> is invoked for all <a href="GC.html">GC</a>
+opportunity: all memory and object allocation.</p>
+
+<p>Since it makes Ruby very slow, it is only for debugging.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-stress-3D_source')" id="l_method-c-stress-3D_source">show</a>
+                
+              </p>
+              <div id="method-c-stress-3D_source" class="dyn-source">
+                <pre>static VALUE
+gc_stress_set(VALUE self, VALUE flag)
+{
+    rb_objspace_t *objspace = &amp;rb_objspace;
+    rb_secure(2);
+    ruby_gc_stress = RTEST(flag);
+    return flag;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-garbage_collect">
+            
+              <b>GC.start                     &rarr; nil
+gc.garbage_collect           &rarr; nil
+ObjectSpace.garbage_collect  &rarr; nil
+</b>
+            
+            <a href="../classes/GC.html#method-i-garbage_collect" name="method-i-garbage_collect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Initiates garbage collection, unless manually disabled.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-garbage_collect_source')" id="l_method-i-garbage_collect_source">show</a>
+                
+              </p>
+              <div id="method-i-garbage_collect_source" class="dyn-source">
+                <pre>VALUE
+rb_gc_start(void)
+{
+    rb_gc();
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Process::Sys</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Process::Sys 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/process_c.html">process.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The <code>Process::Sys</code> module contains <a href="UID.html">UID</a>
+and <a href="GID.html">GID</a> functions which provide direct bindings to
+the system calls of the same names instead of the more-portable versions of
+the same functionality found in the <code>Process</code>,
+<code>Process::UID</code>, and <code>Process::GID</code> modules.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-getegid">getegid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-geteuid">geteuid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-getgid">getgid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-getuid">getuid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-issetugid">issetugid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-setegid">setegid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-seteuid">seteuid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setgid">setgid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setregid">setregid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setresgid">setresgid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setresuid">setresuid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setreuid">setreuid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setrgid">setrgid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setruid">setruid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-setuid">setuid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-getegid">
+            
+              <b>Process.egid          &rarr; fixnum
+Process::GID.eid      &rarr; fixnum
+Process::Sys.geteid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-getegid" name="method-c-getegid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the effective group ID for this process. Not available on all
+platforms.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>   <span class="ruby-comment">#=&gt; 500</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-getegid_source')" id="l_method-c-getegid_source">show</a>
+                
+              </p>
+              <div id="method-c-getegid_source" class="dyn-source">
+                <pre>static VALUE
+proc_getegid(VALUE obj)
+{
+    rb_gid_t egid = getegid();
+
+    return GIDT2NUM(egid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-geteuid">
+            
+              <b>Process.euid           &rarr; fixnum
+Process::UID.eid       &rarr; fixnum
+Process::Sys.geteuid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-geteuid" name="method-c-geteuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the effective user ID for this process.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">euid</span>   <span class="ruby-comment">#=&gt; 501</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-geteuid_source')" id="l_method-c-geteuid_source">show</a>
+                
+              </p>
+              <div id="method-c-geteuid_source" class="dyn-source">
+                <pre>static VALUE
+proc_geteuid(VALUE obj)
+{
+    rb_uid_t euid = geteuid();
+    return UIDT2NUM(euid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-getgid">
+            
+              <b>Process.gid           &rarr; fixnum
+Process::GID.rid      &rarr; fixnum
+Process::Sys.getgid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-getgid" name="method-c-getgid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the (real) group ID for this process.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>   <span class="ruby-comment">#=&gt; 500</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-getgid_source')" id="l_method-c-getgid_source">show</a>
+                
+              </p>
+              <div id="method-c-getgid_source" class="dyn-source">
+                <pre>static VALUE
+proc_getgid(VALUE obj)
+{
+    rb_gid_t gid = getgid();
+    return GIDT2NUM(gid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-getuid">
+            
+              <b>Process.uid           &rarr; fixnum
+Process::UID.rid      &rarr; fixnum
+Process::Sys.getuid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-getuid" name="method-c-getuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the (real) user ID of this process.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">uid</span>   <span class="ruby-comment">#=&gt; 501</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-getuid_source')" id="l_method-c-getuid_source">show</a>
+                
+              </p>
+              <div id="method-c-getuid_source" class="dyn-source">
+                <pre>static VALUE
+proc_getuid(VALUE obj)
+{
+    rb_uid_t uid = getuid();
+    return UIDT2NUM(uid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-issetugid">
+            
+              <b>Process::Sys.issetugid   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-issetugid" name="method-c-issetugid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the process was created as a result of an
+execve(2) system call which had either of the setuid or setgid bits set
+(and extra privileges were given as a result) or if it has changed any of
+its real, effective or saved user or group IDs since it began execution.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-issetugid_source')" id="l_method-c-issetugid_source">show</a>
+                
+              </p>
+              <div id="method-c-issetugid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_issetugid(VALUE obj)
+{
+    rb_secure(2);
+    if (issetugid()) {
+        return Qtrue;
+    } else {
+        return Qfalse;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setegid">
+            
+              <b>Process::Sys.setegid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setegid" name="method-c-setegid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the effective group ID of the calling process to <em>integer</em>.  Not
+available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setegid_source')" id="l_method-c-setegid_source">show</a>
+                
+              </p>
+              <div id="method-c-setegid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setegid(VALUE obj, VALUE id)
+{
+    check_gid_switch();
+    if (setegid(NUM2GIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-seteuid">
+            
+              <b>Process::Sys.seteuid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-seteuid" name="method-c-seteuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the effective user ID of the calling process to <em>integer</em>.  Not
+available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-seteuid_source')" id="l_method-c-seteuid_source">show</a>
+                
+              </p>
+              <div id="method-c-seteuid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_seteuid(VALUE obj, VALUE id)
+{
+    check_uid_switch();
+    if (seteuid(NUM2UIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setgid">
+            
+              <b>Process::Sys.setgid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setgid" name="method-c-setgid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the group ID of the current process to <em>integer</em>. Not available
+on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setgid_source')" id="l_method-c-setgid_source">show</a>
+                
+              </p>
+              <div id="method-c-setgid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setgid(VALUE obj, VALUE id)
+{
+    check_gid_switch();
+    if (setgid(NUM2GIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setregid">
+            
+              <b>Process::Sys.setregid(rid, eid)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setregid" name="method-c-setregid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the (integer) real and/or effective group IDs of the current process
+to <em>rid</em> and <em>eid</em>, respectively. A value of <code>-1</code>
+for either means to leave that ID unchanged. Not available on all
+platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setregid_source')" id="l_method-c-setregid_source">show</a>
+                
+              </p>
+              <div id="method-c-setregid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setregid(VALUE obj, VALUE rid, VALUE eid)
+{
+    check_gid_switch();
+    if (setregid(NUM2GIDT(rid),NUM2GIDT(eid)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setresgid">
+            
+              <b>Process::Sys.setresgid(rid, eid, sid)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setresgid" name="method-c-setresgid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the (integer) real, effective, and saved user IDs of the current
+process to <em>rid</em>, <em>eid</em>, and <em>sid</em> respectively. A
+value of <code>-1</code> for any value means to leave that ID unchanged.
+Not available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setresgid_source')" id="l_method-c-setresgid_source">show</a>
+                
+              </p>
+              <div id="method-c-setresgid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setresgid(VALUE obj, VALUE rid, VALUE eid, VALUE sid)
+{
+    check_gid_switch();
+    if (setresgid(NUM2GIDT(rid),NUM2GIDT(eid),NUM2GIDT(sid)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setresuid">
+            
+              <b>Process::Sys.setresuid(rid, eid, sid)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setresuid" name="method-c-setresuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the (integer) real, effective, and saved user IDs of the current
+process to <em>rid</em>, <em>eid</em>, and <em>sid</em> respectively. A
+value of <code>-1</code> for any value means to leave that ID unchanged.
+Not available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setresuid_source')" id="l_method-c-setresuid_source">show</a>
+                
+              </p>
+              <div id="method-c-setresuid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setresuid(VALUE obj, VALUE rid, VALUE eid, VALUE sid)
+{
+    check_uid_switch();
+    if (setresuid(NUM2UIDT(rid),NUM2UIDT(eid),NUM2UIDT(sid)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setreuid">
+            
+              <b>Process::Sys.setreuid(rid, eid)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setreuid" name="method-c-setreuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the (integer) real and/or effective user IDs of the current process to
+<em>rid</em> and <em>eid</em>, respectively. A value of <code>-1</code> for
+either means to leave that ID unchanged. Not available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setreuid_source')" id="l_method-c-setreuid_source">show</a>
+                
+              </p>
+              <div id="method-c-setreuid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setreuid(VALUE obj, VALUE rid, VALUE eid)
+{
+    check_uid_switch();
+    if (setreuid(NUM2UIDT(rid),NUM2UIDT(eid)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setrgid">
+            
+              <b>Process::Sys.setrgid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setrgid" name="method-c-setrgid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the real group ID of the calling process to <em>integer</em>. Not
+available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setrgid_source')" id="l_method-c-setrgid_source">show</a>
+                
+              </p>
+              <div id="method-c-setrgid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setrgid(VALUE obj, VALUE id)
+{
+    check_gid_switch();
+    if (setrgid(NUM2GIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setruid">
+            
+              <b>Process::Sys.setruid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setruid" name="method-c-setruid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the real user ID of the calling process to <em>integer</em>. Not
+available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setruid_source')" id="l_method-c-setruid_source">show</a>
+                
+              </p>
+              <div id="method-c-setruid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setruid(VALUE obj, VALUE id)
+{
+    check_uid_switch();
+    if (setruid(NUM2UIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-setuid">
+            
+              <b>Process::Sys.setuid(integer)   &rarr; nil
+</b>
+            
+            <a href="../../classes/Process/Sys.html#method-c-setuid" name="method-c-setuid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the user ID of the current process to <em>integer</em>. Not available
+on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-setuid_source')" id="l_method-c-setuid_source">show</a>
+                
+              </p>
+              <div id="method-c-setuid_source" class="dyn-source">
+                <pre>static VALUE
+p_sys_setuid(VALUE obj, VALUE id)
+{
+    check_uid_switch();
+    if (setuid(NUM2UIDT(id)) != 0) rb_sys_fail(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>    

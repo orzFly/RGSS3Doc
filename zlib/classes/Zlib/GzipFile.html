@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Zlib::GzipFile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Zlib::GzipFile 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/zlib_c.html">zlib.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="GzipFile.html">Zlib::GzipFile</a> is an abstract class for
+handling a gzip formatted compressed file. The operations are defined in
+the subclasses, <a href="GzipReader.html">Zlib::GzipReader</a> for reading,
+and <a href="GzipWriter.html">Zlib::GzipWriter</a> for writing.</p>
+
+<p><a href="GzipReader.html">GzipReader</a> should be used by associating an
+IO, or IO-like, object.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="GzipFile/CRCError.html">Zlib::GzipFile::CRCError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="GzipFile/Error.html">Zlib::GzipFile::Error</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="GzipFile/LengthError.html">Zlib::GzipFile::LengthError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="GzipFile/NoFooter.html">Zlib::GzipFile::NoFooter</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-close">close</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-closed-3F">closed?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-comment">comment</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-crc">crc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-finish">finish</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-level">level</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mtime">mtime</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-orig_name">orig_name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-os_code">os_code</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-sync">sync</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-sync-3D">sync=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_io">to_io</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-wrap">wrap</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-wrap">
+            
+              <b>Zlib::GzipFile.wrap(io) { |gz| ... }
+</b>
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-c-wrap" name="method-c-wrap" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a <a href="GzipFile.html">GzipFile</a> object associated with
+<code>io</code>, and executes the block with the newly created <a
+href="GzipFile.html">GzipFile</a> object, just like File.open. The <a
+href="GzipFile.html">GzipFile</a> object will be closed automatically after
+executing the block. If you want to keep the associated IO object opening,
+you may call +<a href="GzipFile.html#method-i-finish">#finish</a>+ method
+in the block.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-wrap_source')" id="l_method-c-wrap_source">show</a>
+                
+              </p>
+              <div id="method-c-wrap_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_s_wrap(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE obj = rb_class_new_instance(argc, argv, klass);
+
+    if (rb_block_given_p()) {
+        return rb_ensure(rb_yield, obj, gzfile_ensure_close, obj);
+    }
+    else {
+        return obj;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-close">
+            
+              <b>close</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-close" name="method-i-close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Closes the <a href="GzipFile.html">GzipFile</a> object. This method calls
+close method of the associated IO object. Returns the associated IO object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_source')" id="l_method-i-close_source">show</a>
+                
+              </p>
+              <div id="method-i-close_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_close(VALUE obj)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE io;
+
+    io = gz-&gt;io;
+    gzfile_close(gz, 1);
+    return io;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-closed-3F">
+            
+              <b>closed?</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-closed-3F" name="method-i-closed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-closed-3F_source')" id="l_method-i-closed-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-closed-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_closed_p(VALUE obj)
+{
+    struct gzfile *gz;
+    Data_Get_Struct(obj, struct gzfile, gz);
+    return NIL_P(gz-&gt;io) ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-comment">
+            
+              <b>comment</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-comment" name="method-i-comment" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns comments recorded in the gzip file header, or nil if the comments
+is not present.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-comment_source')" id="l_method-i-comment_source">show</a>
+                
+              </p>
+              <div id="method-i-comment_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_comment(VALUE obj)
+{
+    VALUE str = get_gzfile(obj)-&gt;comment;
+    if (!NIL_P(str)) {
+        str = rb_str_dup(str);
+    }
+    OBJ_TAINT(str);  /* for safe */
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-crc">
+            
+              <b>crc</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-crc" name="method-i-crc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns CRC value of the uncompressed data.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-crc_source')" id="l_method-i-crc_source">show</a>
+                
+              </p>
+              <div id="method-i-crc_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_crc(VALUE obj)
+{
+    return rb_uint2inum(get_gzfile(obj)-&gt;crc);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-finish">
+            
+              <b>finish</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-finish" name="method-i-finish" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Closes the <a href="GzipFile.html">GzipFile</a> object. Unlike <a
+href="GzipFile.html#method-i-close">#close</a>, this method never calls the
+close method of the associated IO object. Returns the associated IO object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-finish_source')" id="l_method-i-finish_source">show</a>
+                
+              </p>
+              <div id="method-i-finish_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_finish(VALUE obj)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE io;
+
+    io = gz-&gt;io;
+    gzfile_close(gz, 0);
+    return io;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-level">
+            
+              <b>level</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-level" name="method-i-level" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns compression level.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-level_source')" id="l_method-i-level_source">show</a>
+                
+              </p>
+              <div id="method-i-level_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_level(VALUE obj)
+{
+    return INT2FIX(get_gzfile(obj)-&gt;level);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mtime">
+            
+              <b>mtime</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-mtime" name="method-i-mtime" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns last modification time recorded in the gzip file header.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mtime_source')" id="l_method-i-mtime_source">show</a>
+                
+              </p>
+              <div id="method-i-mtime_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_mtime(VALUE obj)
+{
+    return rb_time_new(get_gzfile(obj)-&gt;mtime, (time_t)0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-orig_name">
+            
+              <b>orig_name</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-orig_name" name="method-i-orig_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns original filename recorded in the gzip file header, or
+<code>nil</code> if original filename is not present.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-orig_name_source')" id="l_method-i-orig_name_source">show</a>
+                
+              </p>
+              <div id="method-i-orig_name_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_orig_name(VALUE obj)
+{
+    VALUE str = get_gzfile(obj)-&gt;orig_name;
+    if (!NIL_P(str)) {
+        str = rb_str_dup(str);
+    }
+    OBJ_TAINT(str);  /* for safe */
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-os_code">
+            
+              <b>os_code</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-os_code" name="method-i-os_code" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns OS code number recorded in the gzip file header.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-os_code_source')" id="l_method-i-os_code_source">show</a>
+                
+              </p>
+              <div id="method-i-os_code_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_os_code(VALUE obj)
+{
+    return INT2FIX(get_gzfile(obj)-&gt;os_code);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sync">
+            
+              <b>sync</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-sync" name="method-i-sync" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sync_source')" id="l_method-i-sync_source">show</a>
+                
+              </p>
+              <div id="method-i-sync_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_sync(VALUE obj)
+{
+    return (get_gzfile(obj)-&gt;z.flags &amp; GZFILE_FLAG_SYNC) ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sync-3D">
+            
+              <b>sync = flag
+</b>
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-sync-3D" name="method-i-sync-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.  If flag is <code>true</code>, the associated IO object must
+respond to the <code>flush</code> method.  While <code>sync</code> mode is
+<code>true</code>, the compression ratio decreases sharply.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sync-3D_source')" id="l_method-i-sync-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-sync-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_set_sync(VALUE obj, VALUE mode)
+{
+    struct gzfile *gz = get_gzfile(obj);
+
+    if (RTEST(mode)) {
+        gz-&gt;z.flags |= GZFILE_FLAG_SYNC;
+    }
+    else {
+        gz-&gt;z.flags &amp;= ~GZFILE_FLAG_SYNC;
+    }
+    return mode;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_io">
+            
+              <b>to_io</b>()
+            
+            <a href="../../classes/Zlib/GzipFile.html#method-i-to_io" name="method-i-to_io" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_io_source')" id="l_method-i-to_io_source">show</a>
+                
+              </p>
+              <div id="method-i-to_io_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_to_io(VALUE obj)
+{
+    return get_gzfile(obj)-&gt;io;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

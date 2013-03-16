@@ -1,0 +1,2922 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ARGF</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            ARGF 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/io_c.html">io.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>ARGF</code> is a stream designed for use in scripts that process
+files given as command-line arguments, or passed in via STDIN.</p>
+
+<p>The arguments passed to your script are stored in the <code>ARGV</code> <a
+href="Array.html">Array</a>, one argument per element. <code>ARGF</code>
+assumes that any arguments that aren’t filenames have been removed from
+<code>ARGV</code>. For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-identifier">verbose</span> <span class="ruby-identifier">file1</span> <span class="ruby-identifier">file2</span>
+
+<span class="ruby-constant">ARGV</span>  <span class="ruby-comment">#=&gt; [&quot;--verbose&quot;, &quot;file1&quot;, &quot;file2&quot;]</span>
+<span class="ruby-identifier">option</span> = <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">shift</span> <span class="ruby-comment">#=&gt; &quot;--verbose&quot;</span>
+<span class="ruby-constant">ARGV</span>  <span class="ruby-comment">#=&gt; [&quot;file1&quot;, &quot;file2&quot;]</span>
+</pre>
+
+<p>You can now use <code>ARGF</code> to work with a concatenation of each of
+these named files. For instance, <code>ARGF.read</code> will return the
+contents of <em>file1</em> followed by the contents of <em>file2</em>.</p>
+
+<p>After a file in <code>ARGV</code> has been read, <code>ARGF</code> removes
+it from the <a href="Array.html">Array</a>. Thus, after all files have been
+read <code>ARGV</code> will be empty.</p>
+
+<p>You can manipulate <code>ARGV</code> yourself to control what
+<code>ARGF</code> operates on. If you remove a file from <code>ARGV</code>,
+it is ignored by <code>ARGF</code>; if you add files to <code>ARGV</code>,
+they are treated as if they were named on the command line. For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">replace</span> [<span class="ruby-string">&quot;file1&quot;</span>]
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readlines</span> <span class="ruby-comment"># Returns the contents of file1 as an Array</span>
+<span class="ruby-constant">ARGV</span>           <span class="ruby-comment">#=&gt; []</span>
+<span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">replace</span> [<span class="ruby-string">&quot;file2&quot;</span>, <span class="ruby-string">&quot;file3&quot;</span>]
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>      <span class="ruby-comment"># Returns the contents of file2 and file3</span>
+</pre>
+
+<p>If <code>ARGV</code> is empty, <code>ARGF</code> acts as if it contained
+STDIN, i.e. the data piped to your script. For example:</p>
+
+<pre>$ echo &quot;glark&quot; | ruby -e 'p ARGF.read'
+&quot;glark\n&quot;</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-argv">argv</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-binmode">binmode</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-binmode-3F">binmode?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-bytes">bytes</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-chars">chars</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-close">close</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-closed-3F">closed?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-each_byte">each_byte</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-each_char">each_char</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-each_line">each_line</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-eof">eof</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-eof-3F">eof?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-external_encoding">external_encoding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-file">file</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-filename">filename</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-fileno">fileno</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-getbyte">getbyte</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-getc">getc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-gets">gets</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inplace_mode">inplace_mode</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-inplace_mode-3D">inplace_mode=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-internal_encoding">internal_encoding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-lineno">lineno</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-lineno-3D">lineno=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-lines">lines</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-path">path</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-pos">pos</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-pos-3D">pos=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-read">read</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readbyte">readbyte</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readchar">readchar</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readline">readline</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readlines">readlines</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readpartial">readpartial</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-rewind">rewind</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-seek">seek</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-set_encoding">set_encoding</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-skip">skip</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tell">tell</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_a">to_a</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_io">to_io</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Enumerable.html">
+              Enumerable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-argv">
+            
+              <b>ARGF.argv  &rarr; ARGV
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-argv" name="method-i-argv" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <code>ARGV</code> array, which contains the arguments passed to
+your script, one per element.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-operator">-</span><span class="ruby-identifier">v</span> <span class="ruby-identifier">glark</span>.<span class="ruby-identifier">txt</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">argv</span>   <span class="ruby-comment">#=&gt; [&quot;-v&quot;, &quot;glark.txt&quot;]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-argv_source')" id="l_method-i-argv_source">show</a>
+                
+              </p>
+              <div id="method-i-argv_source" class="dyn-source">
+                <pre>static VALUE
+argf_argv(VALUE argf)
+{
+    return ARGF.argv;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-binmode">
+            
+              <b>ARGF.binmode  &rarr; ARGF
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-binmode" name="method-i-binmode" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Puts <code>ARGF</code> into binary mode. Once a stream is in binary mode,
+it cannot be reset to non-binary mode. This option has the following
+effects:</p>
+<ul><li>
+<p>Newline conversion is disabled.</p>
+</li><li>
+<p><a href="Encoding.html">Encoding</a> conversion is disabled.</p>
+</li><li>
+<p>Content is treated as ASCII-8BIT.</p>
+</li></ul>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-binmode_source')" id="l_method-i-binmode_source">show</a>
+                
+              </p>
+              <div id="method-i-binmode_source" class="dyn-source">
+                <pre>static VALUE
+argf_binmode_m(VALUE argf)
+{
+    ARGF.binmode = 1;
+    next_argv();
+    ARGF_FORWARD(0, 0);
+    rb_io_ascii8bit_binmode(ARGF.current_file);
+    return argf;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-binmode-3F">
+            
+              <b>ARGF.binmode?  &rarr; true or false
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-binmode-3F" name="method-i-binmode-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Returns true if +ARGF+ is being read in binary mode; false otherwise. (To
+enable binary mode use +ARGF.binmode+.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">binmode?</span>  <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">binmode</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">binmode?</span>  <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-binmode-3F_source')" id="l_method-i-binmode-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-binmode-3F_source" class="dyn-source">
+                <pre>static VALUE
+argf_binmode_p(VALUE argf)
+{
+    return ARGF.binmode ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-bytes">
+            
+              <b>ARGF.bytes     {|byte| block }  &rarr; ARGF
+ARGF.bytes                      &rarr; an_enumerator
+ARGF.each_byte {|byte| block }  &rarr; ARGF
+ARGF.each_byte                  &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-bytes" name="method-i-bytes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Iterates over each byte of each file in +ARGV+.
+A byte is returned as a +Fixnum+ in the range 0..255.
+
+This method allows you to treat the files supplied on the command line as
+a single file consisting of the concatenation of each named file. After
+the last byte of the first file has been returned, the first byte of the
+second file is returned. The +ARGF.filename+ method can be used to
+determine the filename of the current byte.
+
+If no block is given, an enumerator is returned instead.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">to_a</span>  <span class="ruby-comment">#=&gt; [35, 32, ... 95, 10]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-bytes_source')" id="l_method-i-bytes_source">show</a>
+                
+              </p>
+              <div id="method-i-bytes_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_byte(VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, 0, 0);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_byte&quot;), 0, 0, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-chars">
+            
+              <b>ARGF.chars      {|char| block }  &rarr; ARGF
+ARGF.chars                       &rarr; an_enumerator
+ARGF.each_char  {|char| block }  &rarr; ARGF
+ARGF.each_char                   &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-chars" name="method-i-chars" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates over each character of each file in <code>ARGF</code>.</p>
+
+<p>This method allows you to treat the files supplied on the command line as a
+single file consisting of the concatenation of each named file. After the
+last character of the first file has been returned, the first character of
+the second file is returned. The <code>ARGF.filename</code> method can be
+used to determine the name of the file in which the current character
+appears.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-chars_source')" id="l_method-i-chars_source">show</a>
+                
+              </p>
+              <div id="method-i-chars_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_char(VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, 0, 0);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_char&quot;), 0, 0, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-close">
+            
+              <b>ARGF.close  &rarr; ARGF
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-close" name="method-i-close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Closes the current file and skips to the next in the stream. Trying to
+close a file that has already been closed causes an +IOError+ to be
+raised.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">foo</span> <span class="ruby-identifier">bar</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;foo&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;bar&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">close</span>     <span class="ruby-comment">#=&gt; closed stream (IOError)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_source')" id="l_method-i-close_source">show</a>
+                
+              </p>
+              <div id="method-i-close_source" class="dyn-source">
+                <pre>static VALUE
+argf_close_m(VALUE argf)
+{
+    next_argv();
+    argf_close(ARGF.current_file);
+    if (ARGF.next_p != -1) {
+        ARGF.next_p = 1;
+    }
+    ARGF.lineno = 0;
+    return argf;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-closed-3F">
+            
+              <b>ARGF.closed?  &rarr; true or false
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-closed-3F" name="method-i-closed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <em>true</em> if the current file has been closed; <em>false</em>
+otherwise. Use <code>ARGF.close</code> to actually close the current file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-closed-3F_source')" id="l_method-i-closed-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-closed-3F_source" class="dyn-source">
+                <pre>static VALUE
+argf_closed(VALUE argf)
+{
+    next_argv();
+    ARGF_FORWARD(0, 0);
+    return rb_io_closed(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>ARGF.each(sep=$/)            {|line| block }  &rarr; ARGF
+ARGF.each(sep=$/,limit)      {|line| block }  &rarr; ARGF
+ARGF.each(...)                                &rarr; an_enumerator
+ARGF.each_line(sep=$/)       {|line| block }  &rarr; ARGF
+ARGF.each_line(sep=$/,limit) {|line| block }  &rarr; ARGF
+ARGF.each_line(...)                           &rarr; an_enumerator
+ARGF.lines(sep=$/)           {|line| block }   &rarr; ARGF
+ARGF.lines(sep=$/,limit)     {|line| block }   &rarr; ARGF
+ARGF.lines(...)                                &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an enumerator which iterates over each line (separated by
+<em>sep</em>, which defaults to your platform’s newline character) of
+each file in <code>ARGV</code>. If a block is supplied, each line in turn
+will be yielded to the block, otherwise an enumerator is returned. The
+optional <em>limit</em> argument is a <code>Fixnum</code> specifying the
+maximum length of each line; longer lines will be split according to this
+limit.</p>
+
+<p>This method allows you to treat the files supplied on the command line as a
+single file consisting of the concatenation of each named file. After the
+last line of the first file has been returned, the first line of the second
+file is returned. The <code>ARGF.filename</code> and
+<code>ARGF.lineno</code> methods can be used to determine the filename and
+line number, respectively, of the current line.</p>
+
+<p>For example, the following code prints out each line of each named file
+prefixed with its line number, displaying the filename once per file:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lines</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ARGF.lineno}: #{line}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_source')" id="l_method-i-each_source">show</a>
+                
+              </p>
+              <div id="method-i-each_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_line(int argc, VALUE *argv, VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, argc, argv);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_line&quot;), argc, argv, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_byte">
+            
+              <b>ARGF.bytes     {|byte| block }  &rarr; ARGF
+ARGF.bytes                      &rarr; an_enumerator
+ARGF.each_byte {|byte| block }  &rarr; ARGF
+ARGF.each_byte                  &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-each_byte" name="method-i-each_byte" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Iterates over each byte of each file in +ARGV+.
+A byte is returned as a +Fixnum+ in the range 0..255.
+
+This method allows you to treat the files supplied on the command line as
+a single file consisting of the concatenation of each named file. After
+the last byte of the first file has been returned, the first byte of the
+second file is returned. The +ARGF.filename+ method can be used to
+determine the filename of the current byte.
+
+If no block is given, an enumerator is returned instead.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">to_a</span>  <span class="ruby-comment">#=&gt; [35, 32, ... 95, 10]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_byte_source')" id="l_method-i-each_byte_source">show</a>
+                
+              </p>
+              <div id="method-i-each_byte_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_byte(VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, 0, 0);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_byte&quot;), 0, 0, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_char">
+            
+              <b>ARGF.chars      {|char| block }  &rarr; ARGF
+ARGF.chars                       &rarr; an_enumerator
+ARGF.each_char  {|char| block }  &rarr; ARGF
+ARGF.each_char                   &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-each_char" name="method-i-each_char" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates over each character of each file in <code>ARGF</code>.</p>
+
+<p>This method allows you to treat the files supplied on the command line as a
+single file consisting of the concatenation of each named file. After the
+last character of the first file has been returned, the first character of
+the second file is returned. The <code>ARGF.filename</code> method can be
+used to determine the name of the file in which the current character
+appears.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_char_source')" id="l_method-i-each_char_source">show</a>
+                
+              </p>
+              <div id="method-i-each_char_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_char(VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, 0, 0);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_char&quot;), 0, 0, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each_line">
+            
+              <b>ARGF.each(sep=$/)            {|line| block }  &rarr; ARGF
+ARGF.each(sep=$/,limit)      {|line| block }  &rarr; ARGF
+ARGF.each(...)                                &rarr; an_enumerator
+ARGF.each_line(sep=$/)       {|line| block }  &rarr; ARGF
+ARGF.each_line(sep=$/,limit) {|line| block }  &rarr; ARGF
+ARGF.each_line(...)                           &rarr; an_enumerator
+ARGF.lines(sep=$/)           {|line| block }   &rarr; ARGF
+ARGF.lines(sep=$/,limit)     {|line| block }   &rarr; ARGF
+ARGF.lines(...)                                &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-each_line" name="method-i-each_line" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an enumerator which iterates over each line (separated by
+<em>sep</em>, which defaults to your platform’s newline character) of
+each file in <code>ARGV</code>. If a block is supplied, each line in turn
+will be yielded to the block, otherwise an enumerator is returned. The
+optional <em>limit</em> argument is a <code>Fixnum</code> specifying the
+maximum length of each line; longer lines will be split according to this
+limit.</p>
+
+<p>This method allows you to treat the files supplied on the command line as a
+single file consisting of the concatenation of each named file. After the
+last line of the first file has been returned, the first line of the second
+file is returned. The <code>ARGF.filename</code> and
+<code>ARGF.lineno</code> methods can be used to determine the filename and
+line number, respectively, of the current line.</p>
+
+<p>For example, the following code prints out each line of each named file
+prefixed with its line number, displaying the filename once per file:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lines</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ARGF.lineno}: #{line}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_line_source')" id="l_method-i-each_line_source">show</a>
+                
+              </p>
+              <div id="method-i-each_line_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_line(int argc, VALUE *argv, VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, argc, argv);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_line&quot;), argc, argv, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eof">
+            
+              <b>ARGF.eof?  &rarr; true or false
+ARGF.eof   &rarr; true or false
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-eof" name="method-i-eof" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the current file in <code>ARGF</code> is at end of file,
+i.e. it has no data to read. The stream must be opened for reading or an
+<code>IOError</code> will be raised.</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;eof&quot;</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">times</span> { <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span> }
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>             <span class="ruby-comment">#=&gt; &quot;\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eof_source')" id="l_method-i-eof_source">show</a>
+                
+              </p>
+              <div id="method-i-eof_source" class="dyn-source">
+                <pre>static VALUE
+argf_eof(VALUE argf)
+{
+    next_argv();
+    if (RTEST(ARGF.current_file)) {
+        if (ARGF.init_p == 0) return Qtrue;
+        next_argv();
+        ARGF_FORWARD(0, 0);
+        if (rb_io_eof(ARGF.current_file)) {
+            return Qtrue;
+        }
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eof-3F">
+            
+              <b>ARGF.eof?  &rarr; true or false
+ARGF.eof   &rarr; true or false
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-eof-3F" name="method-i-eof-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the current file in <code>ARGF</code> is at end of file,
+i.e. it has no data to read. The stream must be opened for reading or an
+<code>IOError</code> will be raised.</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;eof&quot;</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">times</span> { <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span> }
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>             <span class="ruby-comment">#=&gt; &quot;\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">eof?</span>                 <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eof-3F_source')" id="l_method-i-eof-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eof-3F_source" class="dyn-source">
+                <pre>static VALUE
+argf_eof(VALUE argf)
+{
+    next_argv();
+    if (RTEST(ARGF.current_file)) {
+        if (ARGF.init_p == 0) return Qtrue;
+        next_argv();
+        ARGF_FORWARD(0, 0);
+        if (rb_io_eof(ARGF.current_file)) {
+            return Qtrue;
+        }
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-external_encoding">
+            
+              <b>ARGF.external_encoding   &rarr; encoding
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-external_encoding" name="method-i-external_encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Returns the external encoding for files read from +ARGF+ as an +Encoding+
+object. The external encoding is the encoding of the text as stored in a
+file. Contrast with +ARGF.internal_encoding+, which is the encoding used
+to represent this text within Ruby.
+
+To set the external encoding use +ARGF.set_encoding+.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">external_encoding</span>  <span class="ruby-comment">#=&gt;  #&lt;Encoding:UTF-8&gt;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-external_encoding_source')" id="l_method-i-external_encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-external_encoding_source" class="dyn-source">
+                <pre>static VALUE
+argf_external_encoding(VALUE argf)
+{
+    if (!RTEST(ARGF.current_file)) {
+        return rb_enc_from_encoding(rb_default_external_encoding());
+    }
+    return rb_io_external_encoding(rb_io_check_io(ARGF.current_file));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-file">
+            
+              <b>ARGF.file  &rarr; IO or File object
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-file" name="method-i-file" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current file as an <code>IO</code> or <code>File</code> object.
+#&lt;IO:&lt;STDIN&gt;&gt; is returned when the current file is STDIN.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">foo</span>
+$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;bar&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bar</span>
+
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">foo</span> <span class="ruby-identifier">bar</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">file</span>      <span class="ruby-comment">#=&gt; #&lt;File:foo&gt;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)   <span class="ruby-comment">#=&gt; &quot;foo\nb&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">file</span>      <span class="ruby-comment">#=&gt; #&lt;File:bar&gt;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-file_source')" id="l_method-i-file_source">show</a>
+                
+              </p>
+              <div id="method-i-file_source" class="dyn-source">
+                <pre>static VALUE
+argf_file(VALUE argf)
+{
+    next_argv();
+    return ARGF.current_file;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-filename">
+            
+              <b>ARGF.filename  &rarr; String
+ARGF.path      &rarr; String
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-filename" name="method-i-filename" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current filename. “-” is returned when the current file is
+STDIN.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">foo</span>
+$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;bar&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bar</span>
+$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;glark&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">glark</span>
+
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">foo</span> <span class="ruby-identifier">bar</span> <span class="ruby-identifier">glark</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;foo&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)   <span class="ruby-comment">#=&gt; &quot;foo\nb&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;bar&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">skip</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;glark&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-filename_source')" id="l_method-i-filename_source">show</a>
+                
+              </p>
+              <div id="method-i-filename_source" class="dyn-source">
+                <pre>static VALUE
+argf_filename(VALUE argf)
+{
+    next_argv();
+    return ARGF.filename;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fileno">
+            
+              <b>ARGF.fileno    &rarr; fixnum
+ARGF.to_i      &rarr; fixnum
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-fileno" name="method-i-fileno" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an integer representing the numeric file descriptor for the current
+file. Raises an <code>ArgumentError</code> if there isn’t a current file.</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">fileno</span>    <span class="ruby-comment">#=&gt; 3</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fileno_source')" id="l_method-i-fileno_source">show</a>
+                
+              </p>
+              <div id="method-i-fileno_source" class="dyn-source">
+                <pre>static VALUE
+argf_fileno(VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream&quot;);
+    }
+    ARGF_FORWARD(0, 0);
+    return rb_io_fileno(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-getbyte">
+            
+              <b>ARGF.getbyte  &rarr; Fixnum or nil
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-getbyte" name="method-i-getbyte" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Gets the next 8-bit byte (0..255) from <code>ARGF</code>. Returns
+<code>nil</code> if called at the end of the stream.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">file</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getbyte</span> <span class="ruby-comment">#=&gt; 102</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getbyte</span> <span class="ruby-comment">#=&gt; 111</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getbyte</span> <span class="ruby-comment">#=&gt; 111</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getbyte</span> <span class="ruby-comment">#=&gt; 10</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getbyte</span> <span class="ruby-comment">#=&gt; nil</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-getbyte_source')" id="l_method-i-getbyte_source">show</a>
+                
+              </p>
+              <div id="method-i-getbyte_source" class="dyn-source">
+                <pre>static VALUE
+argf_getbyte(VALUE argf)
+{
+    VALUE ch;
+
+  retry:
+    if (!next_argv()) return Qnil;
+    if (TYPE(ARGF.current_file) != T_FILE) {
+        ch = rb_funcall3(ARGF.current_file, rb_intern(&quot;getbyte&quot;), 0, 0);
+    }
+    else {
+        ch = rb_io_getbyte(ARGF.current_file);
+    }
+    if (NIL_P(ch) &amp;&amp; ARGF.next_p != -1) {
+        argf_close(ARGF.current_file);
+        ARGF.next_p = 1;
+        goto retry;
+    }
+
+    return ch;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-getc">
+            
+              <b>ARGF.getc  &rarr; String or nil
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-getc" name="method-i-getc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the next character from <code>ARGF</code> and returns it as a
+<code>String</code>. Returns <code>nil</code> at the end of the stream.</p>
+
+<p><code>ARGF</code> treats the files named on the command line as a single
+file created by concatenating their contents. After returning the last
+character of the first file, it returns the first character of the second
+file, and so on.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">file</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; &quot;f&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; &quot;o&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; &quot;o&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; &quot;\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; nil</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">getc</span>  <span class="ruby-comment">#=&gt; nil</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-getc_source')" id="l_method-i-getc_source">show</a>
+                
+              </p>
+              <div id="method-i-getc_source" class="dyn-source">
+                <pre>static VALUE
+argf_getc(VALUE argf)
+{
+    VALUE ch;
+
+  retry:
+    if (!next_argv()) return Qnil;
+    if (ARGF_GENERIC_INPUT_P()) {
+        ch = rb_funcall3(ARGF.current_file, rb_intern(&quot;getc&quot;), 0, 0);
+    }
+    else {
+        ch = rb_io_getc(ARGF.current_file);
+    }
+    if (NIL_P(ch) &amp;&amp; ARGF.next_p != -1) {
+        argf_close(ARGF.current_file);
+        ARGF.next_p = 1;
+        goto retry;
+    }
+
+    return ch;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-gets">
+            
+              <b>ARGF.gets(sep=$/)     &rarr; string
+ARGF.gets(limit)      &rarr; string
+ARGF.gets(sep, limit) &rarr; string
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-gets" name="method-i-gets" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the next line from the current file in <code>ARGF</code>.</p>
+
+<p>By default lines are assumed to be separated by +$/+; to use a different
+character as a separator, supply it as a <code>String</code> for the
+<em>sep</em> argument.</p>
+
+<p>The optional  <em>limit</em> argument specifies how many characters of each
+line to return. By default all characters are returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-gets_source')" id="l_method-i-gets_source">show</a>
+                
+              </p>
+              <div id="method-i-gets_source" class="dyn-source">
+                <pre>static VALUE
+argf_gets(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE line;
+
+    line = argf_getline(argc, argv, argf);
+    rb_lastline_set(line);
+
+    return line;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inplace_mode">
+            
+              <b>ARGF.inplace_mode  &rarr; String
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-inplace_mode" name="method-i-inplace_mode" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the file extension appended to the names of modified files under
+inplace-edit mode. This value can be set using
+<code>ARGF.inplace_mode=</code> or passing the <code>-i</code> switch to
+the Ruby binary.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inplace_mode_source')" id="l_method-i-inplace_mode_source">show</a>
+                
+              </p>
+              <div id="method-i-inplace_mode_source" class="dyn-source">
+                <pre>static VALUE
+argf_inplace_mode_get(VALUE argf)
+{
+    if (!ARGF.inplace) return Qnil;
+    return rb_str_new2(ARGF.inplace);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inplace_mode-3D">
+            
+              <b>ARGF.inplace_mode = ext  &rarr; ARGF
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-inplace_mode-3D" name="method-i-inplace_mode-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre class="ruby"><span class="ruby-constant">Sets</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">filename</span> <span class="ruby-identifier">extension</span> <span class="ruby-keyword">for</span> <span class="ruby-identifier">inplace</span> <span class="ruby-identifier">editing</span> <span class="ruby-identifier">mode</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">given</span> <span class="ruby-constant">String</span>.
+<span class="ruby-constant">Each</span> <span class="ruby-identifier">file</span> <span class="ruby-identifier">being</span> <span class="ruby-identifier">edited</span> <span class="ruby-identifier">has</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">appended</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">its</span> <span class="ruby-identifier">filename</span>. <span class="ruby-constant">The</span>
+<span class="ruby-identifier">modified</span> <span class="ruby-identifier">file</span> <span class="ruby-identifier">is</span> <span class="ruby-identifier">saved</span> <span class="ruby-identifier">under</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">new</span> <span class="ruby-identifier">name</span>.
+
+<span class="ruby-constant">For</span> <span class="ruby-identifier">example</span><span class="ruby-operator">:</span>
+
+    $ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">txt</span>
+
+    <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">inplace_mode</span> = <span class="ruby-string">'.bak'</span>
+    <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lines</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">print</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">&quot;foo&quot;</span>,<span class="ruby-string">&quot;bar&quot;</span>)
+    <span class="ruby-keyword">end</span>
+</pre>
+
+<p>Each line of <em>file.txt</em> has the first occurrence of “foo”
+replaced with “bar”, then the new line is written out to
+<em>file.txt.bak</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inplace_mode-3D_source')" id="l_method-i-inplace_mode-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-inplace_mode-3D_source" class="dyn-source">
+                <pre>static VALUE
+argf_inplace_mode_set(VALUE argf, VALUE val)
+{
+    if (rb_safe_level() &gt;= 1 &amp;&amp; OBJ_TAINTED(val))
+        rb_insecure_operation();
+
+    if (!RTEST(val)) {
+        if (ARGF.inplace) free(ARGF.inplace);
+        ARGF.inplace = 0;
+    }
+    else {
+        StringValue(val);
+        if (ARGF.inplace) free(ARGF.inplace);
+        ARGF.inplace = 0;
+        ARGF.inplace = strdup(RSTRING_PTR(val));
+    }
+    return argf;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-internal_encoding">
+            
+              <b>ARGF.internal_encoding   &rarr; encoding
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-internal_encoding" name="method-i-internal_encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the internal encoding for strings read from <code>ARGF</code> as an
+<code>Encoding</code> object.</p>
+
+<p>If <code>ARGF.set_encoding</code> has been called with two encoding names,
+the second is returned. Otherwise, if
+<code>Encoding.default_external</code> has been set, that value is
+returned. Failing that, if a default external encoding was specified on the
+command-line, that value is used. If the encoding is unknown, nil is
+returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-internal_encoding_source')" id="l_method-i-internal_encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-internal_encoding_source" class="dyn-source">
+                <pre>static VALUE
+argf_internal_encoding(VALUE argf)
+{
+    if (!RTEST(ARGF.current_file)) {
+        return rb_enc_from_encoding(rb_default_external_encoding());
+    }
+    return rb_io_internal_encoding(rb_io_check_io(ARGF.current_file));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lineno">
+            
+              <b>ARGF.lineno &rarr; integer
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-lineno" name="method-i-lineno" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current line number of <a href="ARGF.html">ARGF</a> as a whole.
+This value can be set manually with <code>ARGF.lineno=</code>.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>   <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readline</span> <span class="ruby-comment">#=&gt; &quot;This is line 1\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>   <span class="ruby-comment">#=&gt; 1</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lineno_source')" id="l_method-i-lineno_source">show</a>
+                
+              </p>
+              <div id="method-i-lineno_source" class="dyn-source">
+                <pre>static VALUE
+argf_lineno(VALUE argf)
+{
+    return INT2FIX(ARGF.lineno);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lineno-3D">
+            
+              <b>ARGF.lineno = number  &rarr; nil
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-lineno-3D" name="method-i-lineno-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the line number of <code>ARGF</code> as a whole to the given
+<code>Integer</code>.</p>
+
+<p><code>ARGF</code> sets the line number automatically as you read data, so
+normally you will not need to set it explicitly. To access the current line
+number use <code>ARGF.lineno</code>.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>      <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readline</span>    <span class="ruby-comment">#=&gt; &quot;This is line 1\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>      <span class="ruby-comment">#=&gt; 1</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span> = <span class="ruby-value">0</span>  <span class="ruby-comment">#=&gt; nil</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>      <span class="ruby-comment">#=&gt; 0</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lineno-3D_source')" id="l_method-i-lineno-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-lineno-3D_source" class="dyn-source">
+                <pre>static VALUE
+argf_set_lineno(VALUE argf, VALUE val)
+{
+    ARGF.lineno = NUM2INT(val);
+    ARGF.last_lineno = ARGF.lineno;
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lines">
+            
+              <b>ARGF.each(sep=$/)            {|line| block }  &rarr; ARGF
+ARGF.each(sep=$/,limit)      {|line| block }  &rarr; ARGF
+ARGF.each(...)                                &rarr; an_enumerator
+ARGF.each_line(sep=$/)       {|line| block }  &rarr; ARGF
+ARGF.each_line(sep=$/,limit) {|line| block }  &rarr; ARGF
+ARGF.each_line(...)                           &rarr; an_enumerator
+ARGF.lines(sep=$/)           {|line| block }   &rarr; ARGF
+ARGF.lines(sep=$/,limit)     {|line| block }   &rarr; ARGF
+ARGF.lines(...)                                &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-lines" name="method-i-lines" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an enumerator which iterates over each line (separated by
+<em>sep</em>, which defaults to your platform’s newline character) of
+each file in <code>ARGV</code>. If a block is supplied, each line in turn
+will be yielded to the block, otherwise an enumerator is returned. The
+optional <em>limit</em> argument is a <code>Fixnum</code> specifying the
+maximum length of each line; longer lines will be split according to this
+limit.</p>
+
+<p>This method allows you to treat the files supplied on the command line as a
+single file consisting of the concatenation of each named file. After the
+last line of the first file has been returned, the first line of the second
+file is returned. The <code>ARGF.filename</code> and
+<code>ARGF.lineno</code> methods can be used to determine the filename and
+line number, respectively, of the current line.</p>
+
+<p>For example, the following code prints out each line of each named file
+prefixed with its line number, displaying the filename once per file:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lines</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ARGF.lineno}: #{line}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lines_source')" id="l_method-i-lines_source">show</a>
+                
+              </p>
+              <div id="method-i-lines_source" class="dyn-source">
+                <pre>static VALUE
+argf_each_line(int argc, VALUE *argv, VALUE argf)
+{
+    RETURN_ENUMERATOR(argf, argc, argv);
+    for (;;) {
+        if (!next_argv()) return argf;
+        rb_block_call(ARGF.current_file, rb_intern(&quot;each_line&quot;), argc, argv, 0, 0);
+        ARGF.next_p = 1;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-path">
+            
+              <b>ARGF.filename  &rarr; String
+ARGF.path      &rarr; String
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-path" name="method-i-path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current filename. “-” is returned when the current file is
+STDIN.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">foo</span>
+$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;bar&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bar</span>
+$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;glark&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">glark</span>
+
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">foo</span> <span class="ruby-identifier">bar</span> <span class="ruby-identifier">glark</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;foo&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)   <span class="ruby-comment">#=&gt; &quot;foo\nb&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;bar&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">skip</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;glark&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-path_source')" id="l_method-i-path_source">show</a>
+                
+              </p>
+              <div id="method-i-path_source" class="dyn-source">
+                <pre>static VALUE
+argf_filename(VALUE argf)
+{
+    next_argv();
+    return ARGF.filename;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pos">
+            
+              <b>ARGF.tell  &rarr; Integer
+ARGF.pos   &rarr; Integer
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-pos" name="method-i-pos" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current offset (in bytes) of the current file in
+<code>ARGF</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">pos</span>    <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">gets</span>   <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">pos</span>    <span class="ruby-comment">#=&gt; 17</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pos_source')" id="l_method-i-pos_source">show</a>
+                
+              </p>
+              <div id="method-i-pos_source" class="dyn-source">
+                <pre>static VALUE
+argf_tell(VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to tell&quot;);
+    }
+    ARGF_FORWARD(0, 0);
+    return rb_io_tell(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pos-3D">
+            
+              <b>ARGF.pos = position  &rarr; Integer
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-pos-3D" name="method-i-pos-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Seeks to the position given by <em>position</em> (in bytes) in
+<code>ARGF</code>.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-value">17</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">gets</span>   <span class="ruby-comment">#=&gt; &quot;This is line two\n&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pos-3D_source')" id="l_method-i-pos-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-pos-3D_source" class="dyn-source">
+                <pre>static VALUE
+argf_set_pos(VALUE argf, VALUE offset)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to set position&quot;);
+    }
+    ARGF_FORWARD(1, &amp;offset);
+    return rb_io_set_pos(ARGF.current_file, offset);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read">
+            
+              <b>ARGF.read([length [, buffer]])    &rarr; string, buffer, or nil
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-read" name="method-i-read" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Reads _length_ bytes from ARGF. The files named on the command line
+are concatenated and treated as a single file by this method, so when
+called without arguments the contents of this pseudo file are returned in
+their entirety.
+
+_length_ must be a non-negative integer or nil. If it is a positive
+integer, +read+ tries to read at most _length_ bytes. It returns nil
+if an EOF was encountered before anything could be read. Fewer than
+_length_ bytes may be returned if an EOF is encountered during the read.
+
+If _length_ is omitted or is _nil_, it reads until EOF. A String is
+returned even if EOF is encountered before any data is read.
+
+If _length_ is zero, it returns _&quot;&quot;_.
+
+If the optional _buffer_ argument is present, it must reference a String,
+which will receive the data.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby">   $ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;small&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">small</span>.<span class="ruby-identifier">txt</span>
+   $ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;large&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">large</span>.<span class="ruby-identifier">txt</span>
+   $ .<span class="ruby-operator">/</span><span class="ruby-identifier">glark</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">small</span>.<span class="ruby-identifier">txt</span> <span class="ruby-identifier">large</span>.<span class="ruby-identifier">txt</span>
+
+   <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>      <span class="ruby-comment">#=&gt; &quot;small\nlarge&quot;</span>
+   <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">200</span>) <span class="ruby-comment">#=&gt; &quot;small\nlarge&quot;</span>
+   <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">2</span>)   <span class="ruby-comment">#=&gt; &quot;sm&quot;</span>
+   <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">0</span>)   <span class="ruby-comment">#=&gt; &quot;&quot;</span>
+
+<span class="ruby-constant">Note</span> <span class="ruby-identifier">that</span> <span class="ruby-identifier">this</span> <span class="ruby-identifier">method</span> <span class="ruby-identifier">behaves</span> <span class="ruby-identifier">like</span> <span class="ruby-identifier">fread</span>() <span class="ruby-identifier">function</span> <span class="ruby-keyword">in</span> <span class="ruby-constant">C</span>.  <span class="ruby-constant">If</span> <span class="ruby-identifier">you</span> <span class="ruby-identifier">need</span> <span class="ruby-identifier">the</span>
+<span class="ruby-identifier">behavior</span> <span class="ruby-identifier">like</span> <span class="ruby-identifier">read</span>(<span class="ruby-value">2</span>) <span class="ruby-identifier">system</span> <span class="ruby-identifier">call</span>, <span class="ruby-identifier">consider</span> <span class="ruby-operator">+</span><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readpartial</span><span class="ruby-operator">+</span>.
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_source')" id="l_method-i-read_source">show</a>
+                
+              </p>
+              <div id="method-i-read_source" class="dyn-source">
+                <pre>static VALUE
+argf_read(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE tmp, str, length;
+    long len = 0;
+
+    rb_scan_args(argc, argv, &quot;02&quot;, &amp;length, &amp;str);
+    if (!NIL_P(length)) {
+        len = NUM2LONG(argv[0]);
+    }
+    if (!NIL_P(str)) {
+        StringValue(str);
+        rb_str_resize(str,0);
+        argv[1] = Qnil;
+    }
+
+  retry:
+    if (!next_argv()) {
+        return str;
+    }
+    if (ARGF_GENERIC_INPUT_P()) {
+        tmp = argf_forward(argc, argv, argf);
+    }
+    else {
+        tmp = io_read(argc, argv, ARGF.current_file);
+    }
+    if (NIL_P(str)) str = tmp;
+    else if (!NIL_P(tmp)) rb_str_append(str, tmp);
+    if (NIL_P(tmp) || NIL_P(length)) {
+        if (ARGF.next_p != -1) {
+            argf_close(ARGF.current_file);
+            ARGF.next_p = 1;
+            goto retry;
+        }
+    }
+    else if (argc &gt;= 1) {
+        if (RSTRING_LEN(str) &lt; len) {
+            len -= RSTRING_LEN(str);
+            argv[0] = INT2NUM(len);
+            goto retry;
+        }
+    }
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readbyte">
+            
+              <b>ARGF.readbyte  &rarr; Fixnum
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-readbyte" name="method-i-readbyte" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the next 8-bit byte from <a href="ARGF.html">ARGF</a> and returns it
+as a <code>Fixnum</code>. Raises an <code>EOFError</code> after the last
+byte of the last file has been read.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">file</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readbyte</span>  <span class="ruby-comment">#=&gt; 102</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readbyte</span>  <span class="ruby-comment">#=&gt; 111</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readbyte</span>  <span class="ruby-comment">#=&gt; 111</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readbyte</span>  <span class="ruby-comment">#=&gt; 10</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readbyte</span>  <span class="ruby-comment">#=&gt; end of file reached (EOFError)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readbyte_source')" id="l_method-i-readbyte_source">show</a>
+                
+              </p>
+              <div id="method-i-readbyte_source" class="dyn-source">
+                <pre>static VALUE
+argf_readbyte(VALUE argf)
+{
+    VALUE c;
+
+    NEXT_ARGF_FORWARD(0, 0);
+    c = argf_getbyte(argf);
+    if (NIL_P(c)) {
+        rb_eof_error();
+    }
+    return c;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readchar">
+            
+              <b>ARGF.readchar  &rarr; String or nil
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-readchar" name="method-i-readchar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the next character from <code>ARGF</code> and returns it as a
+<code>String</code>. Raises an <code>EOFError</code> after the last
+character of the last file has been read.</p>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">echo</span> <span class="ruby-string">&quot;foo&quot;</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>
+$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">file</span>
+
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>  <span class="ruby-comment">#=&gt; &quot;f&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>  <span class="ruby-comment">#=&gt; &quot;o&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>  <span class="ruby-comment">#=&gt; &quot;o&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>  <span class="ruby-comment">#=&gt; &quot;\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readchar</span>  <span class="ruby-comment">#=&gt; end of file reached (EOFError)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readchar_source')" id="l_method-i-readchar_source">show</a>
+                
+              </p>
+              <div id="method-i-readchar_source" class="dyn-source">
+                <pre>static VALUE
+argf_readchar(VALUE argf)
+{
+    VALUE ch;
+
+  retry:
+    if (!next_argv()) rb_eof_error();
+    if (TYPE(ARGF.current_file) != T_FILE) {
+        ch = rb_funcall3(ARGF.current_file, rb_intern(&quot;getc&quot;), 0, 0);
+    }
+    else {
+        ch = rb_io_getc(ARGF.current_file);
+    }
+    if (NIL_P(ch) &amp;&amp; ARGF.next_p != -1) {
+        argf_close(ARGF.current_file);
+        ARGF.next_p = 1;
+        goto retry;
+    }
+
+    return ch;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readline">
+            
+              <b>ARGF.readline(sep=$/)     &rarr; string
+ARGF.readline(limit)      &rarr; string
+ARGF.readline(sep, limit) &rarr; string
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-readline" name="method-i-readline" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the next line from the current file in <code>ARGF</code>.</p>
+
+<p>By default lines are assumed to be separated by +$/+; to use a different
+character as a separator, supply it as a <code>String</code> for the
+<em>sep</em> argument.</p>
+
+<p>The optional  <em>limit</em> argument specifies how many characters of each
+line to return. By default all characters are returned.</p>
+
+<p>An <code>EOFError</code> is raised at the end of the file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readline_source')" id="l_method-i-readline_source">show</a>
+                
+              </p>
+              <div id="method-i-readline_source" class="dyn-source">
+                <pre>static VALUE
+argf_readline(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE line;
+
+    if (!next_argv()) rb_eof_error();
+    ARGF_FORWARD(argc, argv);
+    line = argf_gets(argc, argv, argf);
+    if (NIL_P(line)) {
+        rb_eof_error();
+    }
+
+    return line;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readlines">
+            
+              <b>ARGF.readlines(sep=$/)     &rarr; array
+ARGF.readlines(limit)      &rarr; array
+ARGF.readlines(sep, limit) &rarr; array
+ARGF.to_a(sep=$/)     &rarr; array
+ARGF.to_a(limit)      &rarr; array
+ARGF.to_a(sep, limit) &rarr; array
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-readlines" name="method-i-readlines" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads <code>ARGF</code>‘s current file in its entirety, returning an
+<code>Array</code> of its lines, one line per element. Lines are assumed to
+be separated by <em>sep</em>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">lines</span> = <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readlines</span>
+<span class="ruby-identifier">lines</span>[<span class="ruby-value">0</span>]                <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readlines_source')" id="l_method-i-readlines_source">show</a>
+                
+              </p>
+              <div id="method-i-readlines_source" class="dyn-source">
+                <pre>static VALUE
+argf_readlines(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE line, ary;
+
+    ary = rb_ary_new();
+    while (!NIL_P(line = argf_getline(argc, argv, argf))) {
+        rb_ary_push(ary, line);
+    }
+
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readpartial">
+            
+              <b>ARGF.readpartial(maxlen)              &rarr; string
+ARGF.readpartial(maxlen, outbuf)      &rarr; outbuf
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-readpartial" name="method-i-readpartial" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads at most <em>maxlen</em> bytes from the <a href="ARGF.html">ARGF</a>
+stream. It blocks only if <code>ARGF</code> has no data immediately
+available. If the optional <em>outbuf</em> argument is present, it must
+reference a <a href="String.html">String</a>, which will receive the data.
+It raises <code>EOFError</code> on end of file.</p>
+
+<p><code>readpartial</code> is designed for streams such as pipes, sockets,
+and ttys. It blocks only when no data is immediately available. This means
+that it blocks only when following all conditions hold:</p>
+<ul><li>
+<p>The byte buffer in the <code>IO</code> object is empty.</p>
+</li><li>
+<p>The content of the stream is empty.</p>
+</li><li>
+<p>The stream has not reached EOF.</p>
+</li></ul>
+
+<p>When <code>readpartial</code> blocks, it waits for data or EOF. If some
+data is read, <code>readpartial</code> returns with the data. If EOF is
+reached, readpartial raises an <code>EOFError</code>.</p>
+
+<p>When <code>readpartial</code> doesn’t block, it returns or raises
+immediately.  If the byte buffer is not empty, it returns the data in the
+buffer. Otherwise, if the stream has some content, it returns the data in
+the stream. If the stream reaches EOF an <code>EOFError</code> is raised.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readpartial_source')" id="l_method-i-readpartial_source">show</a>
+                
+              </p>
+              <div id="method-i-readpartial_source" class="dyn-source">
+                <pre>static VALUE
+argf_readpartial(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE tmp, str, length;
+
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;length, &amp;str);
+    if (!NIL_P(str)) {
+        StringValue(str);
+        argv[1] = str;
+    }
+
+    if (!next_argv()) {
+        rb_str_resize(str, 0);
+        rb_eof_error();
+    }
+    if (ARGF_GENERIC_INPUT_P()) {
+        struct argf_call_arg arg;
+        arg.argc = argc;
+        arg.argv = argv;
+        arg.argf = argf;
+        tmp = rb_rescue2(argf_forward_call, (VALUE)&amp;arg,
+                         RUBY_METHOD_FUNC(0), Qnil, rb_eEOFError, (VALUE)0);
+    }
+    else {
+        tmp = io_getpartial(argc, argv, ARGF.current_file, 0);
+    }
+    if (NIL_P(tmp)) {
+        if (ARGF.next_p == -1) {
+            rb_eof_error();
+        }
+        argf_close(ARGF.current_file);
+        ARGF.next_p = 1;
+        if (RARRAY_LEN(ARGF.argv) == 0)
+            rb_eof_error();
+        if (NIL_P(str))
+            str = rb_str_new(NULL, 0);
+        return str;
+    }
+    return tmp;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rewind">
+            
+              <b>ARGF.rewind   &rarr; 0
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-rewind" name="method-i-rewind" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Positions the current file to the beginning of input, resetting
+<code>ARGF.lineno</code> to zero.</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readline</span>   <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">rewind</span>     <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">lineno</span>     <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readline</span>   <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rewind_source')" id="l_method-i-rewind_source">show</a>
+                
+              </p>
+              <div id="method-i-rewind_source" class="dyn-source">
+                <pre>static VALUE
+argf_rewind(VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to rewind&quot;);
+    }
+    ARGF_FORWARD(0, 0);
+    return rb_io_rewind(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-seek">
+            
+              <b>ARGF.seek(amount, whence=IO::SEEK_SET)  &rarr;  0
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-seek" name="method-i-seek" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Seeks to offset <em>amount</em> (an <code>Integer</code>) in the
+<code>ARGF</code> stream according to the value of <em>whence</em>. See +<a
+href="IO.html#method-i-seek">IO#seek</a>+ for further details.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-seek_source')" id="l_method-i-seek_source">show</a>
+                
+              </p>
+              <div id="method-i-seek_source" class="dyn-source">
+                <pre>static VALUE
+argf_seek_m(int argc, VALUE *argv, VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to seek&quot;);
+    }
+    ARGF_FORWARD(argc, argv);
+    return rb_io_seek_m(argc, argv, ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-set_encoding">
+            
+              <b>ARGF.set_encoding(ext_enc)                &rarr; ARGF
+ARGF.set_encoding("ext_enc:int_enc")      &rarr; ARGF
+ARGF.set_encoding(ext_enc, int_enc)       &rarr; ARGF
+ARGF.set_encoding("ext_enc:int_enc", opt) &rarr; ARGF
+ARGF.set_encoding(ext_enc, int_enc, opt)  &rarr; ARGF
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-set_encoding" name="method-i-set_encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>If single argument is specified, strings read from <a
+href="ARGF.html">ARGF</a> are tagged with the encoding specified.</p>
+
+<p>If two encoding names separated by a colon are given, e.g.
+“ascii:utf-8”, the read string is converted from the first encoding
+(external encoding) to the second encoding (internal encoding), then tagged
+with the second encoding.</p>
+
+<p>If two arguments are specified, they must be encoding objects or encoding
+names. Again, the first specifies the external encoding; the second
+specifies the internal encoding.</p>
+
+<p>If the external encoding and the internal encoding are specified, the
+optional <code>Hash</code> argument can be used to adjust the conversion
+process. The structure of this hash is explained in the +<a
+href="String.html#method-i-encode">String#encode</a>+ documentation.</p>
+
+<p>For example:</p>
+
+<pre>ARGF.set_encoding('ascii')         # Tag the input as US-ASCII text
+ARGF.set_encoding(Encoding::UTF_8) # Tag the input as UTF-8 text
+ARGF.set_encoding('utf-8','ascii') # Transcode the input from US-ASCII
+                                   # to UTF-8.</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-set_encoding_source')" id="l_method-i-set_encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-set_encoding_source" class="dyn-source">
+                <pre>static VALUE
+argf_set_encoding(int argc, VALUE *argv, VALUE argf)
+{
+    rb_io_t *fptr;
+
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to set encoding&quot;);
+    }
+    rb_io_set_encoding(argc, argv, ARGF.current_file);
+    GetOpenFile(ARGF.current_file, fptr);
+    ARGF.encs = fptr-&gt;encs;
+    return argf;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-skip">
+            
+              <b>ARGF.skip  &rarr; ARGF
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-skip" name="method-i-skip" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Sets the current file to the next file in ARGV. If there aren't any more
+files it has no effect.</pre>
+
+<p>For example:</p>
+
+<pre class="ruby">$ <span class="ruby-identifier">ruby</span> <span class="ruby-identifier">argf</span>.<span class="ruby-identifier">rb</span> <span class="ruby-identifier">foo</span> <span class="ruby-identifier">bar</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;foo&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">skip</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">filename</span>  <span class="ruby-comment">#=&gt; &quot;bar&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-skip_source')" id="l_method-i-skip_source">show</a>
+                
+              </p>
+              <div id="method-i-skip_source" class="dyn-source">
+                <pre>static VALUE
+argf_skip(VALUE argf)
+{
+    if (ARGF.init_p &amp;&amp; ARGF.next_p == 0) {
+        argf_close(ARGF.current_file);
+        ARGF.next_p = 1;
+    }
+    return argf;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tell">
+            
+              <b>ARGF.tell  &rarr; Integer
+ARGF.pos   &rarr; Integer
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-tell" name="method-i-tell" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current offset (in bytes) of the current file in
+<code>ARGF</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">pos</span>    <span class="ruby-comment">#=&gt; 0</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">gets</span>   <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">pos</span>    <span class="ruby-comment">#=&gt; 17</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tell_source')" id="l_method-i-tell_source">show</a>
+                
+              </p>
+              <div id="method-i-tell_source" class="dyn-source">
+                <pre>static VALUE
+argf_tell(VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream to tell&quot;);
+    }
+    ARGF_FORWARD(0, 0);
+    return rb_io_tell(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_a">
+            
+              <b>ARGF.readlines(sep=$/)     &rarr; array
+ARGF.readlines(limit)      &rarr; array
+ARGF.readlines(sep, limit) &rarr; array
+ARGF.to_a(sep=$/)     &rarr; array
+ARGF.to_a(limit)      &rarr; array
+ARGF.to_a(sep, limit) &rarr; array
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-to_a" name="method-i-to_a" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads <code>ARGF</code>‘s current file in its entirety, returning an
+<code>Array</code> of its lines, one line per element. Lines are assumed to
+be separated by <em>sep</em>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">lines</span> = <span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">readlines</span>
+<span class="ruby-identifier">lines</span>[<span class="ruby-value">0</span>]                <span class="ruby-comment">#=&gt; &quot;This is line one\n&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_a_source')" id="l_method-i-to_a_source">show</a>
+                
+              </p>
+              <div id="method-i-to_a_source" class="dyn-source">
+                <pre>static VALUE
+argf_readlines(int argc, VALUE *argv, VALUE argf)
+{
+    VALUE line, ary;
+
+    ary = rb_ary_new();
+    while (!NIL_P(line = argf_getline(argc, argv, argf))) {
+        rb_ary_push(ary, line);
+    }
+
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>ARGF.fileno    &rarr; fixnum
+ARGF.to_i      &rarr; fixnum
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an integer representing the numeric file descriptor for the current
+file. Raises an <code>ArgumentError</code> if there isn’t a current file.</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">fileno</span>    <span class="ruby-comment">#=&gt; 3</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+argf_fileno(VALUE argf)
+{
+    if (!next_argv()) {
+        rb_raise(rb_eArgError, &quot;no stream&quot;);
+    }
+    ARGF_FORWARD(0, 0);
+    return rb_io_fileno(ARGF.current_file);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_io">
+            
+              <b>ARGF.to_io     &rarr; IO
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-to_io" name="method-i-to_io" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an <code>IO</code> object representing the current file. This will
+be a <code>File</code> object unless the current file is a stream such as
+STDIN.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">to_io</span>    <span class="ruby-comment">#=&gt; #&lt;File:glark.txt&gt;</span>
+<span class="ruby-constant">ARGF</span>.<span class="ruby-identifier">to_io</span>    <span class="ruby-comment">#=&gt; #&lt;IO:&lt;STDIN&gt;&gt;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_io_source')" id="l_method-i-to_io_source">show</a>
+                
+              </p>
+              <div id="method-i-to_io_source" class="dyn-source">
+                <pre>static VALUE
+argf_to_io(VALUE argf)
+{
+    next_argv();
+    ARGF_FORWARD(0, 0);
+    return ARGF.current_file;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>ARGF.to_s  &rarr; String
+</b>
+            
+            <a href="../classes/ARGF.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns “ARGF”.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+argf_to_s(VALUE argf)
+{
+    return rb_str_new2(&quot;ARGF&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

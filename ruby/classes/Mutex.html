@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Mutex</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Mutex 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/thread_c.html">thread.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Mutex.html">Mutex</a> implements a simple semaphore that can be
+used to coordinate access to shared data from multiple concurrent threads.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'thread'</span>
+<span class="ruby-identifier">semaphore</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> {
+  <span class="ruby-identifier">semaphore</span>.<span class="ruby-identifier">synchronize</span> {
+    <span class="ruby-comment"># access shared resource</span>
+  }
+}
+
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> {
+  <span class="ruby-identifier">semaphore</span>.<span class="ruby-identifier">synchronize</span> {
+    <span class="ruby-comment"># access shared resource</span>
+  }
+}
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-lock">lock</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-locked-3F">locked?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-sleep">sleep</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-try_lock">try_lock</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-unlock">unlock</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>Mutex.new   &rarr; mutex
+</b>
+            
+            <a href="../classes/Mutex.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new <a href="Mutex.html">Mutex</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+mutex_initialize(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-lock">
+            
+              <b>mutex.lock  &rarr; self
+</b>
+            
+            <a href="../classes/Mutex.html#method-i-lock" name="method-i-lock" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Attempts to grab the lock and waits if it isn’t available. Raises
+<code>ThreadError</code> if <code>mutex</code> was locked by the current
+thread.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lock_source')" id="l_method-i-lock_source">show</a>
+                
+              </p>
+              <div id="method-i-lock_source" class="dyn-source">
+                <pre>VALUE
+rb_mutex_lock(VALUE self)
+{
+
+    if (rb_mutex_trylock(self) == Qfalse) {
+        mutex_t *mutex;
+        rb_thread_t *th = GET_THREAD();
+        GetMutexPtr(self, mutex);
+
+        if (mutex-&gt;th == GET_THREAD()) {
+            rb_raise(rb_eThreadError, &quot;deadlock; recursive locking&quot;);
+        }
+
+        while (mutex-&gt;th != th) {
+            int interrupted;
+            enum rb_thread_status prev_status = th-&gt;status;
+            int last_thread = 0;
+            struct rb_unblock_callback oldubf;
+
+            set_unblock_function(th, lock_interrupt, mutex, &amp;oldubf);
+            th-&gt;status = THREAD_STOPPED_FOREVER;
+            th-&gt;vm-&gt;sleeper++;
+            th-&gt;locking_mutex = self;
+            if (vm_living_thread_num(th-&gt;vm) == th-&gt;vm-&gt;sleeper) {
+                last_thread = 1;
+            }
+
+            th-&gt;transition_for_lock = 1;
+            BLOCKING_REGION_CORE({
+                interrupted = lock_func(th, mutex, last_thread);
+            });
+            th-&gt;transition_for_lock = 0;
+            remove_signal_thread_list(th);
+            reset_unblock_function(th, &amp;oldubf);
+
+            th-&gt;locking_mutex = Qfalse;
+            if (mutex-&gt;th &amp;&amp; interrupted == 2) {
+                rb_check_deadlock(th-&gt;vm);
+            }
+            if (th-&gt;status == THREAD_STOPPED_FOREVER) {
+                th-&gt;status = prev_status;
+            }
+            th-&gt;vm-&gt;sleeper--;
+
+            if (mutex-&gt;th == th) mutex_locked(th, self);
+
+            if (interrupted) {
+                RUBY_VM_CHECK_INTS();
+            }
+        }
+    }
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-locked-3F">
+            
+              <b>mutex.locked?  &rarr; true or false
+</b>
+            
+            <a href="../classes/Mutex.html#method-i-locked-3F" name="method-i-locked-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if this lock is currently held by some thread.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-locked-3F_source')" id="l_method-i-locked-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-locked-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_mutex_locked_p(VALUE self)
+{
+    mutex_t *mutex;
+    GetMutexPtr(self, mutex);
+    return mutex-&gt;th ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sleep">
+            
+              <b>mutex.sleep(timeout = nil)    &rarr; number
+</b>
+            
+            <a href="../classes/Mutex.html#method-i-sleep" name="method-i-sleep" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Releases the lock and sleeps <code>timeout</code> seconds if it is given
+and non-nil or forever.  Raises <code>ThreadError</code> if
+<code>mutex</code> wasn’t locked by the current thread.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sleep_source')" id="l_method-i-sleep_source">show</a>
+                
+              </p>
+              <div id="method-i-sleep_source" class="dyn-source">
+                <pre>static VALUE
+mutex_sleep(int argc, VALUE *argv, VALUE self)
+{
+    VALUE timeout;
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;timeout);
+    return rb_mutex_sleep(self, timeout);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-try_lock">
+            
+              <b>mutex.try_lock  &rarr; true or false
+</b>
+            
+            <a href="../classes/Mutex.html#method-i-try_lock" name="method-i-try_lock" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Attempts to obtain the lock and returns immediately. Returns
+<code>true</code> if the lock was granted.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-try_lock_source')" id="l_method-i-try_lock_source">show</a>
+                
+              </p>
+              <div id="method-i-try_lock_source" class="dyn-source">
+                <pre>VALUE
+rb_mutex_trylock(VALUE self)
+{
+    mutex_t *mutex;
+    VALUE locked = Qfalse;
+    GetMutexPtr(self, mutex);
+
+    native_mutex_lock(&amp;mutex-&gt;lock);
+    if (mutex-&gt;th == 0) {
+        mutex-&gt;th = GET_THREAD();
+        locked = Qtrue;
+
+        mutex_locked(GET_THREAD(), self);
+    }
+    native_mutex_unlock(&amp;mutex-&gt;lock);
+
+    return locked;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-unlock">
+            
+              <b>mutex.unlock    &rarr; self
+</b>
+            
+            <a href="../classes/Mutex.html#method-i-unlock" name="method-i-unlock" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Releases the lock. Raises <code>ThreadError</code> if <code>mutex</code>
+wasn’t locked by the current thread.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-unlock_source')" id="l_method-i-unlock_source">show</a>
+                
+              </p>
+              <div id="method-i-unlock_source" class="dyn-source">
+                <pre>VALUE
+rb_mutex_unlock(VALUE self)
+{
+    const char *err;
+    mutex_t *mutex;
+    GetMutexPtr(self, mutex);
+
+    err = mutex_unlock(mutex, GET_THREAD());
+    if (err) rb_raise(rb_eThreadError, &quot;%s&quot;, err);
+
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

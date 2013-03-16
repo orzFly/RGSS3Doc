@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Process::Status</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Process::Status 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/process_c.html">process.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>Process::Status</code> encapsulates the information on the status of
+a running or terminated system process. The built-in variable
+<code>$?</code> is either <code>nil</code> or a
+<code>Process::Status</code> object.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> <span class="ruby-value">99</span> }   <span class="ruby-comment">#=&gt; 26557</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>       <span class="ruby-comment">#=&gt; 26557</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">class</span>           <span class="ruby-comment">#=&gt; Process::Status</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">to_i</span>            <span class="ruby-comment">#=&gt; 25344</span>
+<span class="ruby-identifier">$?</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">8</span>            <span class="ruby-comment">#=&gt; 99</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">stopped?</span>        <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exited?</span>         <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exitstatus</span>      <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+
+<p>Posix systems record information on processes using a 16-bit integer.  The
+lower bits record the process status (stopped, exited, signaled) and the
+upper bits possibly contain additional information (for example the
+program’s return code in the case of exited processes). Pre Ruby 1.8,
+these bits were exposed directly to the Ruby program. Ruby now encapsulates
+these in a <code>Process::Status</code> object. To maximize compatibility,
+however, these objects retain a bit-oriented interface. In the descriptions
+that follow, when we talk about the integer value of <em>stat</em>, we’re
+referring to this 16 bit value.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-26">&amp;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3E-3E">&gt;&gt;</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-coredump-3F">coredump?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-exited-3F">exited?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exitstatus">exitstatus</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pid">pid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-signaled-3F">signaled?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-stopped-3F">stopped?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-stopsig">stopsig</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-success-3F">success?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-termsig">termsig</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-26">
+            
+              <b>stat & num   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-26" name="method-i-26" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Logical AND of the bits in <em>stat</em> with <em>num</em>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> <span class="ruby-value">0x37</span> }
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>
+<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'%04x'</span>, <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">to_i</span>)       <span class="ruby-comment">#=&gt; &quot;3700&quot;</span>
+<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'%04x'</span>, <span class="ruby-identifier">$?</span> &amp; <span class="ruby-value">0x1e00</span>)   <span class="ruby-comment">#=&gt; &quot;1600&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-26_source')" id="l_method-i-26_source">show</a>
+                
+              </p>
+              <div id="method-i-26_source" class="dyn-source">
+                <pre>static VALUE
+pst_bitand(VALUE st1, VALUE st2)
+{
+    int status = PST2INT(st1) &amp; NUM2INT(st2);
+
+    return INT2NUM(status);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>stat == other   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the integer value of <em>stat</em> equals
+<em>other</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+pst_equal(VALUE st1, VALUE st2)
+{
+    if (st1 == st2) return Qtrue;
+    return rb_equal(pst_to_i(st1), st2);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3E-3E">
+            
+              <b>stat >> num   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-3E-3E" name="method-i-3E-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Shift the bits in <em>stat</em> right <em>num</em> places.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> <span class="ruby-value">99</span> }   <span class="ruby-comment">#=&gt; 26563</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>       <span class="ruby-comment">#=&gt; 26563</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">to_i</span>            <span class="ruby-comment">#=&gt; 25344</span>
+<span class="ruby-identifier">$?</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">8</span>            <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3E-3E_source')" id="l_method-i-3E-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3E-3E_source" class="dyn-source">
+                <pre>static VALUE
+pst_rshift(VALUE st1, VALUE st2)
+{
+    int status = PST2INT(st1) &gt;&gt; NUM2INT(st2);
+
+    return INT2NUM(status);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-coredump-3F">
+            
+              <b>stat.coredump?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-coredump-3F" name="method-i-coredump-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>stat</em> generated a coredump when it
+terminated. Not available on all platforms.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-coredump-3F_source')" id="l_method-i-coredump-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-coredump-3F_source" class="dyn-source">
+                <pre>static VALUE
+pst_wcoredump(VALUE st)
+{
+#ifdef WCOREDUMP
+    int status = PST2INT(st);
+
+    if (WCOREDUMP(status))
+        return Qtrue;
+    else
+        return Qfalse;
+#else
+    return Qfalse;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exited-3F">
+            
+              <b>stat.exited?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-exited-3F" name="method-i-exited-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>stat</em> exited normally (for example
+using an <code>exit()</code> call or finishing the program).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exited-3F_source')" id="l_method-i-exited-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-exited-3F_source" class="dyn-source">
+                <pre>static VALUE
+pst_wifexited(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFEXITED(status))
+        return Qtrue;
+    else
+        return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exitstatus">
+            
+              <b>stat.exitstatus   &rarr; fixnum or nil
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-exitstatus" name="method-i-exitstatus" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the least significant eight bits of the return code of
+<em>stat</em>. Only available if <code>exited?</code> is <code>true</code>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { }           <span class="ruby-comment">#=&gt; 26572</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>       <span class="ruby-comment">#=&gt; 26572</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exited?</span>         <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exitstatus</span>      <span class="ruby-comment">#=&gt; 0</span>
+
+<span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> <span class="ruby-value">99</span> }   <span class="ruby-comment">#=&gt; 26573</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>       <span class="ruby-comment">#=&gt; 26573</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exited?</span>         <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">exitstatus</span>      <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exitstatus_source')" id="l_method-i-exitstatus_source">show</a>
+                
+              </p>
+              <div id="method-i-exitstatus_source" class="dyn-source">
+                <pre>static VALUE
+pst_wexitstatus(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFEXITED(status))
+        return INT2NUM(WEXITSTATUS(status));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>stat.inspect   &rarr; string
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Override the inspection method.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+pst_inspect(VALUE st)
+{
+    rb_pid_t pid;
+    int status;
+    VALUE vpid, str;
+
+    vpid = pst_pid(st);
+    if (NIL_P(vpid)) {
+        return rb_sprintf(&quot;#&lt;%s: uninitialized&gt;&quot;, rb_class2name(CLASS_OF(st)));
+    }
+    pid = NUM2PIDT(vpid);
+    status = PST2INT(st);
+
+    str = rb_sprintf(&quot;#&lt;%s: &quot;, rb_class2name(CLASS_OF(st)));
+    pst_message(str, pid, status);
+    rb_str_cat2(str, &quot;&gt;&quot;);
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pid">
+            
+              <b>stat.pid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-pid" name="method-i-pid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the process ID that this status object represents.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> }   <span class="ruby-comment">#=&gt; 26569</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>    <span class="ruby-comment">#=&gt; 26569</span>
+<span class="ruby-identifier">$?</span>.<span class="ruby-identifier">pid</span>          <span class="ruby-comment">#=&gt; 26569</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pid_source')" id="l_method-i-pid_source">show</a>
+                
+              </p>
+              <div id="method-i-pid_source" class="dyn-source">
+                <pre>static VALUE
+pst_pid(VALUE st)
+{
+    return rb_attr_get(st, rb_intern(&quot;pid&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-signaled-3F">
+            
+              <b>stat.signaled?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-signaled-3F" name="method-i-signaled-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>stat</em> terminated because of an
+uncaught signal.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-signaled-3F_source')" id="l_method-i-signaled-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-signaled-3F_source" class="dyn-source">
+                <pre>static VALUE
+pst_wifsignaled(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFSIGNALED(status))
+        return Qtrue;
+    else
+        return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stopped-3F">
+            
+              <b>stat.stopped?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-stopped-3F" name="method-i-stopped-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if this process is stopped. This is only returned
+if the corresponding <code>wait</code> call had the <code>WUNTRACED</code>
+flag set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stopped-3F_source')" id="l_method-i-stopped-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-stopped-3F_source" class="dyn-source">
+                <pre>static VALUE
+pst_wifstopped(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFSTOPPED(status))
+        return Qtrue;
+    else
+        return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stopsig">
+            
+              <b>stat.stopsig   &rarr; fixnum or nil
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-stopsig" name="method-i-stopsig" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the number of the signal that caused <em>stat</em> to stop (or
+<code>nil</code> if self is not stopped).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stopsig_source')" id="l_method-i-stopsig_source">show</a>
+                
+              </p>
+              <div id="method-i-stopsig_source" class="dyn-source">
+                <pre>static VALUE
+pst_wstopsig(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFSTOPPED(status))
+        return INT2NUM(WSTOPSIG(status));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-success-3F">
+            
+              <b>stat.success?   &rarr; true, false or nil
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-success-3F" name="method-i-success-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>stat</em> is successful,
+<code>false</code> if not. Returns <code>nil</code> if <code>exited?</code>
+is not <code>true</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-success-3F_source')" id="l_method-i-success-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-success-3F_source" class="dyn-source">
+                <pre>static VALUE
+pst_success_p(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (!WIFEXITED(status))
+        return Qnil;
+    return WEXITSTATUS(status) == EXIT_SUCCESS ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-termsig">
+            
+              <b>stat.termsig   &rarr; fixnum or nil
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-termsig" name="method-i-termsig" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the number of the signal that caused <em>stat</em> to terminate (or
+<code>nil</code> if self was not terminated by an uncaught signal).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-termsig_source')" id="l_method-i-termsig_source">show</a>
+                
+              </p>
+              <div id="method-i-termsig_source" class="dyn-source">
+                <pre>static VALUE
+pst_wtermsig(VALUE st)
+{
+    int status = PST2INT(st);
+
+    if (WIFSIGNALED(status))
+        return INT2NUM(WTERMSIG(status));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>stat.to_i     &rarr; fixnum
+stat.to_int   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the bits in <em>stat</em> as a <code>Fixnum</code>. Poking around
+in these bits is platform dependent.</p>
+
+<pre class="ruby"><span class="ruby-identifier">fork</span> { <span class="ruby-identifier">exit</span> <span class="ruby-value">0xab</span> }         <span class="ruby-comment">#=&gt; 26566</span>
+<span class="ruby-constant">Process</span>.<span class="ruby-identifier">wait</span>               <span class="ruby-comment">#=&gt; 26566</span>
+<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'%04x'</span>, <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">to_i</span>)   <span class="ruby-comment">#=&gt; &quot;ab00&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+pst_to_i(VALUE st)
+{
+    return rb_iv_get(st, &quot;status&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>stat.to_s   &rarr; string
+</b>
+            
+            <a href="../../classes/Process/Status.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Show pid and exit status as a string.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+pst_to_s(VALUE st)
+{
+    rb_pid_t pid;
+    int status;
+    VALUE str;
+
+    pid = NUM2PIDT(pst_pid(st));
+    status = PST2INT(st);
+
+    str = rb_str_buf_new(0);
+    pst_message(str, pid, status);
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

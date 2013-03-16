@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RubyVM::InstructionSequence</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            RubyVM::InstructionSequence 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/iseq_c.html">iseq.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>declare ::VM::InstructionSequence</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-compile">compile</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-compile_file">compile_file</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-compile_option">compile_option</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-compile_option-3D">compile_option=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-disasm">disasm</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-disasm">disasm</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-disassemble">disassemble</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-disassemble">disassemble</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-eval">eval</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-load">load</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_a">to_a</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-compile">
+            
+              <b>compile</b>(p1, p2 = v2, p3 = v3, p4 = v4, p5 = v5)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-compile" name="method-c-compile" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-compile_source')" id="l_method-c-compile_source">show</a>
+                
+              </p>
+              <div id="method-c-compile_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_compile(int argc, VALUE *argv, VALUE self)
+{
+    VALUE src, file = Qnil, path = Qnil, line = INT2FIX(1), opt = Qnil;
+
+    rb_secure(1);
+
+    rb_scan_args(argc, argv, &quot;14&quot;, &amp;src, &amp;file, &amp;path, &amp;line, &amp;opt);
+    if (NIL_P(file)) file = rb_str_new2(&quot;&lt;compiled&gt;&quot;);
+    if (NIL_P(line)) line = INT2FIX(1);
+
+    return rb_iseq_compile_with_option(src, file, path, line, opt);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-compile_file">
+            
+              <b>compile_file</b>(p1, p2 = v2)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-compile_file" name="method-c-compile_file" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-compile_file_source')" id="l_method-c-compile_file_source">show</a>
+                
+              </p>
+              <div id="method-c-compile_file_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_compile_file(int argc, VALUE *argv, VALUE self)
+{
+    VALUE file, line = INT2FIX(1), opt = Qnil;
+    VALUE parser;
+    VALUE f;
+    NODE *node;
+    const char *fname;
+    rb_compile_option_t option;
+
+    rb_secure(1);
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;file, &amp;opt);
+    FilePathValue(file);
+    fname = StringValueCStr(file);
+
+    f = rb_file_open_str(file, &quot;r&quot;);
+
+    parser = rb_parser_new();
+    node = rb_parser_compile_file(parser, fname, f, NUM2INT(line));
+    make_compile_option(&amp;option, opt);
+    return rb_iseq_new_with_opt(node, rb_str_new2(&quot;&lt;main&gt;&quot;), file, file, line, Qfalse,
+                                ISEQ_TYPE_TOP, &amp;option);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-compile_option">
+            
+              <b>compile_option</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-compile_option" name="method-c-compile_option" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-compile_option_source')" id="l_method-c-compile_option_source">show</a>
+                
+              </p>
+              <div id="method-c-compile_option_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_compile_option_get(VALUE self)
+{
+    return make_compile_option_value(&amp;COMPILE_OPTION_DEFAULT);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-compile_option-3D">
+            
+              <b>compile_option=</b>(p1)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-compile_option-3D" name="method-c-compile_option-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-compile_option-3D_source')" id="l_method-c-compile_option-3D_source">show</a>
+                
+              </p>
+              <div id="method-c-compile_option-3D_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_compile_option_set(VALUE self, VALUE opt)
+{
+    rb_compile_option_t option;
+    rb_secure(1);
+    make_compile_option(&amp;option, opt);
+    COMPILE_OPTION_DEFAULT = option;
+    return opt;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-disasm">
+            
+              <b>disasm</b>(p1)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-disasm" name="method-c-disasm" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-disasm_source')" id="l_method-c-disasm_source">show</a>
+                
+              </p>
+              <div id="method-c-disasm_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_disasm(VALUE klass, VALUE body)
+{
+    VALUE ret = Qnil;
+    rb_iseq_t *iseq;
+    extern rb_iseq_t *rb_method_get_iseq(VALUE body);
+
+    rb_secure(1);
+
+    if (rb_obj_is_proc(body)) {
+        rb_proc_t *proc;
+        VALUE iseqval;
+        GetProcPtr(body, proc);
+        iseqval = proc-&gt;block.iseq-&gt;self;
+        if (RUBY_VM_NORMAL_ISEQ_P(iseqval)) {
+            ret = rb_iseq_disasm(iseqval);
+        }
+    }
+    else if ((iseq = rb_method_get_iseq(body)) != 0) {
+        ret = rb_iseq_disasm(iseq-&gt;self);
+    }
+
+    return ret;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-disassemble">
+            
+              <b>disassemble</b>(p1)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-disassemble" name="method-c-disassemble" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-disassemble_source')" id="l_method-c-disassemble_source">show</a>
+                
+              </p>
+              <div id="method-c-disassemble_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_disasm(VALUE klass, VALUE body)
+{
+    VALUE ret = Qnil;
+    rb_iseq_t *iseq;
+    extern rb_iseq_t *rb_method_get_iseq(VALUE body);
+
+    rb_secure(1);
+
+    if (rb_obj_is_proc(body)) {
+        rb_proc_t *proc;
+        VALUE iseqval;
+        GetProcPtr(body, proc);
+        iseqval = proc-&gt;block.iseq-&gt;self;
+        if (RUBY_VM_NORMAL_ISEQ_P(iseqval)) {
+            ret = rb_iseq_disasm(iseqval);
+        }
+    }
+    else if ((iseq = rb_method_get_iseq(body)) != 0) {
+        ret = rb_iseq_disasm(iseq-&gt;self);
+    }
+
+    return ret;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-load">
+            
+              <b>load</b>(p1, p2 = v2)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-load" name="method-c-load" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-load_source')" id="l_method-c-load_source">show</a>
+                
+              </p>
+              <div id="method-c-load_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_load(int argc, VALUE *argv, VALUE self)
+{
+    VALUE data, opt=Qnil;
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;data, &amp;opt);
+
+    return iseq_load(self, data, 0, opt);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(p1, p2 = v2, p3 = v3, p4 = v4, p5 = v5)
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+iseq_s_compile(int argc, VALUE *argv, VALUE self)
+{
+    VALUE src, file = Qnil, path = Qnil, line = INT2FIX(1), opt = Qnil;
+
+    rb_secure(1);
+
+    rb_scan_args(argc, argv, &quot;14&quot;, &amp;src, &amp;file, &amp;path, &amp;line, &amp;opt);
+    if (NIL_P(file)) file = rb_str_new2(&quot;&lt;compiled&gt;&quot;);
+    if (NIL_P(line)) line = INT2FIX(1);
+
+    return rb_iseq_compile_with_option(src, file, path, line, opt);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-disasm">
+            
+              <b>disasm</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-i-disasm" name="method-i-disasm" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-disasm_source')" id="l_method-i-disasm_source">show</a>
+                
+              </p>
+              <div id="method-i-disasm_source" class="dyn-source">
+                <pre>VALUE
+rb_iseq_disasm(VALUE self)
+{
+    rb_iseq_t *iseqdat = iseq_check(self);
+    VALUE *iseq;
+    VALUE str = rb_str_new(0, 0);
+    VALUE child = rb_ary_new();
+    unsigned long size;
+    int i;
+    long l;
+    ID *tbl;
+    size_t n;
+    enum {header_minlen = 72};
+
+    rb_secure(1);
+
+    iseq = iseqdat-&gt;iseq;
+    size = iseqdat-&gt;iseq_size;
+
+    rb_str_cat2(str, &quot;== disasm: &quot;);
+
+    rb_str_concat(str, iseq_inspect(iseqdat-&gt;self));
+    if ((l = RSTRING_LEN(str)) &lt; header_minlen) {
+        rb_str_resize(str, header_minlen);
+        memset(RSTRING_PTR(str) + l, '=', header_minlen - l);
+    }
+    rb_str_cat2(str, &quot;\n&quot;);
+
+    /* show catch table information */
+    if (iseqdat-&gt;catch_table_size != 0) {
+        rb_str_cat2(str, &quot;== catch table\n&quot;);
+    }
+    for (i = 0; i &lt; iseqdat-&gt;catch_table_size; i++) {
+        struct iseq_catch_table_entry *entry = &amp;iseqdat-&gt;catch_table[i];
+        rb_str_catf(str,
+                    &quot;| catch type: %-6s st: %04d ed: %04d sp: %04d cont: %04d\n&quot;,
+                    catch_type((int)entry-&gt;type), (int)entry-&gt;start,
+                    (int)entry-&gt;end, (int)entry-&gt;sp, (int)entry-&gt;cont);
+        if (entry-&gt;iseq) {
+            rb_str_concat(str, rb_iseq_disasm(entry-&gt;iseq));
+        }
+    }
+    if (iseqdat-&gt;catch_table_size != 0) {
+        rb_str_cat2(str, &quot;|-------------------------------------&quot;
+                    &quot;-----------------------------------\n&quot;);
+    }
+
+    /* show local table information */
+    tbl = iseqdat-&gt;local_table;
+
+    if (tbl) {
+        rb_str_catf(str,
+                    &quot;local table (size: %d, argc: %d &quot;
+                    &quot;[opts: %d, rest: %d, post: %d, block: %d] s%d)\n&quot;,
+                    iseqdat-&gt;local_size, iseqdat-&gt;argc,
+                    iseqdat-&gt;arg_opts, iseqdat-&gt;arg_rest,
+                    iseqdat-&gt;arg_post_len, iseqdat-&gt;arg_block,
+                    iseqdat-&gt;arg_simple);
+
+        for (i = 0; i &lt; iseqdat-&gt;local_table_size; i++) {
+            const char *name = rb_id2name(tbl[i]);
+            char info[0x100];
+            char argi[0x100] = &quot;&quot;;
+            char opti[0x100] = &quot;&quot;;
+
+            if (iseqdat-&gt;arg_opts) {
+                int argc = iseqdat-&gt;argc;
+                int opts = iseqdat-&gt;arg_opts;
+                if (i &gt;= argc &amp;&amp; i &lt; argc + opts - 1) {
+                    snprintf(opti, sizeof(opti), &quot;Opt=%ld&quot;,
+                             iseqdat-&gt;arg_opt_table[i - argc]);
+                }
+            }
+
+            snprintf(argi, sizeof(argi), &quot;%s%s%s%s%s&quot;, /* arg, opts, rest, post  block */
+                     iseqdat-&gt;argc &gt; i ? &quot;Arg&quot; : &quot;&quot;,
+                     opti,
+                     iseqdat-&gt;arg_rest == i ? &quot;Rest&quot; : &quot;&quot;,
+                     (iseqdat-&gt;arg_post_start &lt;= i &amp;&amp;
+                      i &lt; iseqdat-&gt;arg_post_start + iseqdat-&gt;arg_post_len) ? &quot;Post&quot; : &quot;&quot;,
+                     iseqdat-&gt;arg_block == i ? &quot;Block&quot; : &quot;&quot;);
+
+            snprintf(info, sizeof(info), &quot;%s%s%s%s&quot;, name ? name : &quot;?&quot;,
+                     *argi ? &quot;&lt;&quot; : &quot;&quot;, argi, *argi ? &quot;&gt;&quot; : &quot;&quot;);
+
+            rb_str_catf(str, &quot;[%2d] %-11s&quot;, iseqdat-&gt;local_size - i, info);
+        }
+        rb_str_cat2(str, &quot;\n&quot;);
+    }
+
+    /* show each line */
+    for (n = 0; n &lt; size;) {
+        n += rb_iseq_disasm_insn(str, iseq, n, iseqdat, child);
+    }
+
+    for (i = 0; i &lt; RARRAY_LEN(child); i++) {
+        VALUE isv = rb_ary_entry(child, i);
+        rb_str_concat(str, rb_iseq_disasm(isv));
+    }
+
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-disassemble">
+            
+              <b>disassemble</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-i-disassemble" name="method-i-disassemble" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-disassemble_source')" id="l_method-i-disassemble_source">show</a>
+                
+              </p>
+              <div id="method-i-disassemble_source" class="dyn-source">
+                <pre>VALUE
+rb_iseq_disasm(VALUE self)
+{
+    rb_iseq_t *iseqdat = iseq_check(self);
+    VALUE *iseq;
+    VALUE str = rb_str_new(0, 0);
+    VALUE child = rb_ary_new();
+    unsigned long size;
+    int i;
+    long l;
+    ID *tbl;
+    size_t n;
+    enum {header_minlen = 72};
+
+    rb_secure(1);
+
+    iseq = iseqdat-&gt;iseq;
+    size = iseqdat-&gt;iseq_size;
+
+    rb_str_cat2(str, &quot;== disasm: &quot;);
+
+    rb_str_concat(str, iseq_inspect(iseqdat-&gt;self));
+    if ((l = RSTRING_LEN(str)) &lt; header_minlen) {
+        rb_str_resize(str, header_minlen);
+        memset(RSTRING_PTR(str) + l, '=', header_minlen - l);
+    }
+    rb_str_cat2(str, &quot;\n&quot;);
+
+    /* show catch table information */
+    if (iseqdat-&gt;catch_table_size != 0) {
+        rb_str_cat2(str, &quot;== catch table\n&quot;);
+    }
+    for (i = 0; i &lt; iseqdat-&gt;catch_table_size; i++) {
+        struct iseq_catch_table_entry *entry = &amp;iseqdat-&gt;catch_table[i];
+        rb_str_catf(str,
+                    &quot;| catch type: %-6s st: %04d ed: %04d sp: %04d cont: %04d\n&quot;,
+                    catch_type((int)entry-&gt;type), (int)entry-&gt;start,
+                    (int)entry-&gt;end, (int)entry-&gt;sp, (int)entry-&gt;cont);
+        if (entry-&gt;iseq) {
+            rb_str_concat(str, rb_iseq_disasm(entry-&gt;iseq));
+        }
+    }
+    if (iseqdat-&gt;catch_table_size != 0) {
+        rb_str_cat2(str, &quot;|-------------------------------------&quot;
+                    &quot;-----------------------------------\n&quot;);
+    }
+
+    /* show local table information */
+    tbl = iseqdat-&gt;local_table;
+
+    if (tbl) {
+        rb_str_catf(str,
+                    &quot;local table (size: %d, argc: %d &quot;
+                    &quot;[opts: %d, rest: %d, post: %d, block: %d] s%d)\n&quot;,
+                    iseqdat-&gt;local_size, iseqdat-&gt;argc,
+                    iseqdat-&gt;arg_opts, iseqdat-&gt;arg_rest,
+                    iseqdat-&gt;arg_post_len, iseqdat-&gt;arg_block,
+                    iseqdat-&gt;arg_simple);
+
+        for (i = 0; i &lt; iseqdat-&gt;local_table_size; i++) {
+            const char *name = rb_id2name(tbl[i]);
+            char info[0x100];
+            char argi[0x100] = &quot;&quot;;
+            char opti[0x100] = &quot;&quot;;
+
+            if (iseqdat-&gt;arg_opts) {
+                int argc = iseqdat-&gt;argc;
+                int opts = iseqdat-&gt;arg_opts;
+                if (i &gt;= argc &amp;&amp; i &lt; argc + opts - 1) {
+                    snprintf(opti, sizeof(opti), &quot;Opt=%ld&quot;,
+                             iseqdat-&gt;arg_opt_table[i - argc]);
+                }
+            }
+
+            snprintf(argi, sizeof(argi), &quot;%s%s%s%s%s&quot;, /* arg, opts, rest, post  block */
+                     iseqdat-&gt;argc &gt; i ? &quot;Arg&quot; : &quot;&quot;,
+                     opti,
+                     iseqdat-&gt;arg_rest == i ? &quot;Rest&quot; : &quot;&quot;,
+                     (iseqdat-&gt;arg_post_start &lt;= i &amp;&amp;
+                      i &lt; iseqdat-&gt;arg_post_start + iseqdat-&gt;arg_post_len) ? &quot;Post&quot; : &quot;&quot;,
+                     iseqdat-&gt;arg_block == i ? &quot;Block&quot; : &quot;&quot;);
+
+            snprintf(info, sizeof(info), &quot;%s%s%s%s&quot;, name ? name : &quot;?&quot;,
+                     *argi ? &quot;&lt;&quot; : &quot;&quot;, argi, *argi ? &quot;&gt;&quot; : &quot;&quot;);
+
+            rb_str_catf(str, &quot;[%2d] %-11s&quot;, iseqdat-&gt;local_size - i, info);
+        }
+        rb_str_cat2(str, &quot;\n&quot;);
+    }
+
+    /* show each line */
+    for (n = 0; n &lt; size;) {
+        n += rb_iseq_disasm_insn(str, iseq, n, iseqdat, child);
+    }
+
+    for (i = 0; i &lt; RARRAY_LEN(child); i++) {
+        VALUE isv = rb_ary_entry(child, i);
+        rb_str_concat(str, rb_iseq_disasm(isv));
+    }
+
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eval">
+            
+              <b>eval</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-i-eval" name="method-i-eval" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eval_source')" id="l_method-i-eval_source">show</a>
+                
+              </p>
+              <div id="method-i-eval_source" class="dyn-source">
+                <pre>static VALUE
+iseq_eval(VALUE self)
+{
+    rb_secure(1);
+    return rb_iseq_eval(self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>inspect</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+iseq_inspect(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    if (!iseq-&gt;name) {
+        return rb_sprintf(&quot;#&lt;%s: uninitialized&gt;&quot;, rb_obj_classname(self));
+    }
+
+    return rb_sprintf(&quot;&lt;%s:%s@%s&gt;&quot;,
+                      rb_obj_classname(self),
+                      RSTRING_PTR(iseq-&gt;name), RSTRING_PTR(iseq-&gt;filename));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_a">
+            
+              <b>to_a</b>()
+            
+            <a href="../../classes/RubyVM/InstructionSequence.html#method-i-to_a" name="method-i-to_a" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_a_source')" id="l_method-i-to_a_source">show</a>
+                
+              </p>
+              <div id="method-i-to_a_source" class="dyn-source">
+                <pre>static VALUE
+iseq_to_a(VALUE self)
+{
+    rb_iseq_t *iseq = iseq_check(self);
+    rb_secure(1);
+    return iseq_data_to_ary(iseq);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

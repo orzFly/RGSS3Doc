@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DL::CPtr</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            DL::CPtr 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/cfunc_c.html">cfunc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-2B">+</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2B-40">+@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D">-</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D-40">-@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C-3D-3E">&lt;=&gt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D-3D">[]=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-eql-3F">eql?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-free">free</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-free-3D">free=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-malloc">malloc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-null-3F">null?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ptr">ptr</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ref">ref</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-size-3D">size=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_int">to_int</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-to_ptr">to_ptr</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_str">to_str</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_value">to_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-5B-5D">
+            
+              <b>DL::CPtr.to_ptr(val)  => cptr
+DL::CPtr[val]         => cptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-c-5B-5D" name="method-c-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the underlying pointer for ruby object <code>val</code> and return it
+as a <a href="CPtr.html">DL::CPtr</a> object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-5B-5D_source')" id="l_method-c-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-c-5B-5D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_s_to_ptr(VALUE self, VALUE val)
+{
+    VALUE ptr;
+
+    if (RTEST(rb_obj_is_kind_of(val, rb_cIO))){
+        rb_io_t *fptr;
+        FILE *fp;
+        GetOpenFile(val, fptr);
+        fp = rb_io_stdio_file(fptr);
+        ptr = rb_dlptr_new(fp, 0, NULL);
+    }
+    else if (RTEST(rb_obj_is_kind_of(val, rb_cString))){
+        char *str = StringValuePtr(val);
+        ptr = rb_dlptr_new(str, RSTRING_LEN(val), NULL);
+    }
+    else if (rb_respond_to(val, id_to_ptr)){
+        VALUE vptr = rb_funcall(val, id_to_ptr, 0);
+        if (rb_obj_is_kind_of(vptr, rb_cDLCPtr)){
+            ptr = vptr;
+        }
+        else{
+            rb_raise(rb_eDLError, &quot;to_ptr should return a CPtr object&quot;);
+        }
+    }
+    else{
+        ptr = rb_dlptr_new(NUM2PTR(rb_Integer(val)), 0, NULL);
+    }
+    OBJ_INFECT(ptr, val);
+    rb_iv_set(ptr, &quot;wrapping&quot;, val);
+    return ptr;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-malloc">
+            
+              <b>DL::CPtr.malloc(size, freefunc = nil)  => dl cptr instance
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-c-malloc" name="method-c-malloc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allocate <code>size</code> bytes of memory and associate it with an
+optional <code>freefunc</code> that will be called when the pointer is
+garbage collected. <code>freefunc</code> must be an address pointing to a
+function or an instance of <a href="CFunc.html">DL::CFunc</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-malloc_source')" id="l_method-c-malloc_source">show</a>
+                
+              </p>
+              <div id="method-c-malloc_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_s_malloc(int argc, VALUE argv[], VALUE klass)
+{
+    VALUE size, sym, obj;
+    long s;
+    freefunc_t f;
+
+    switch (rb_scan_args(argc, argv, &quot;11&quot;, &amp;size, &amp;sym)) {
+      case 1:
+        s = NUM2LONG(size);
+        f = NULL;
+        break;
+      case 2:
+        s = NUM2LONG(size);
+        f = get_freefunc(sym);
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_s_malloc&quot;);
+    }
+
+    obj = rb_dlptr_malloc(s,f);
+
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>DL::CPtr.new(address)                   => dl_cptr
+DL::CPtr.new(address, size)             => dl_cptr
+DL::CPtr.new(address, size, freefunc)   => dl_cptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new pointer to <code>address</code> with an optional
+<code>size</code> and <code>freefunc</code>. <code>freefunc</code> will be
+called when the instance is garbage collected.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_initialize(int argc, VALUE argv[], VALUE self)
+{
+    VALUE ptr, sym, size;
+    struct ptr_data *data;
+    void *p = NULL;
+    freefunc_t f = NULL;
+    long s = 0;
+
+    switch (rb_scan_args(argc, argv, &quot;12&quot;, &amp;ptr, &amp;size, &amp;sym)) {
+      case 1:
+        p = (void*)(NUM2PTR(rb_Integer(ptr)));
+        break;
+      case 2:
+        p = (void*)(NUM2PTR(rb_Integer(ptr)));
+        s = NUM2LONG(size);
+        break;
+      case 3:
+        p = (void*)(NUM2PTR(rb_Integer(ptr)));
+        s = NUM2LONG(size);
+        f = get_freefunc(sym);
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_initialize&quot;);
+    }
+
+    if (p) {
+        TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+        if (data-&gt;ptr &amp;&amp; data-&gt;free) {
+            /* Free previous memory. Use of inappropriate initialize may cause SEGV. */
+            (*(data-&gt;free))(data-&gt;ptr);
+        }
+        data-&gt;ptr  = p;
+        data-&gt;size = s;
+        data-&gt;free = f;
+    }
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-to_ptr">
+            
+              <b>DL::CPtr.to_ptr(val)  => cptr
+DL::CPtr[val]         => cptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-c-to_ptr" name="method-c-to_ptr" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the underlying pointer for ruby object <code>val</code> and return it
+as a <a href="CPtr.html">DL::CPtr</a> object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-to_ptr_source')" id="l_method-c-to_ptr_source">show</a>
+                
+              </p>
+              <div id="method-c-to_ptr_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_s_to_ptr(VALUE self, VALUE val)
+{
+    VALUE ptr;
+
+    if (RTEST(rb_obj_is_kind_of(val, rb_cIO))){
+        rb_io_t *fptr;
+        FILE *fp;
+        GetOpenFile(val, fptr);
+        fp = rb_io_stdio_file(fptr);
+        ptr = rb_dlptr_new(fp, 0, NULL);
+    }
+    else if (RTEST(rb_obj_is_kind_of(val, rb_cString))){
+        char *str = StringValuePtr(val);
+        ptr = rb_dlptr_new(str, RSTRING_LEN(val), NULL);
+    }
+    else if (rb_respond_to(val, id_to_ptr)){
+        VALUE vptr = rb_funcall(val, id_to_ptr, 0);
+        if (rb_obj_is_kind_of(vptr, rb_cDLCPtr)){
+            ptr = vptr;
+        }
+        else{
+            rb_raise(rb_eDLError, &quot;to_ptr should return a CPtr object&quot;);
+        }
+    }
+    else{
+        ptr = rb_dlptr_new(NUM2PTR(rb_Integer(val)), 0, NULL);
+    }
+    OBJ_INFECT(ptr, val);
+    rb_iv_set(ptr, &quot;wrapping&quot;, val);
+    return ptr;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-2B">
+            
+              <b>ptr + n   => new cptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-2B" name="method-i-2B" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a new <a href="CPtr.html">DL::CPtr</a> that has been advanced
+<code>n</code> bytes.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B_source')" id="l_method-i-2B_source">show</a>
+                
+              </p>
+              <div id="method-i-2B_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_plus(VALUE self, VALUE other)
+{
+    void *ptr;
+    long num, size;
+
+    ptr = rb_dlptr2cptr(self);
+    size = RPTR_DATA(self)-&gt;size;
+    num = NUM2LONG(other);
+    return rb_dlptr_new((char *)ptr + num, size - num, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2B-40">
+            
+              <b>ptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-2B-40" name="method-i-2B-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <a href="CPtr.html">DL::CPtr</a> that is a dereferenced pointer
+for this <a href="CPtr.html">DL::CPtr</a>. Analogous to the star operator
+in C.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B-40_source')" id="l_method-i-2B-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2B-40_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_ptr(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return rb_dlptr_new(*((void**)(data-&gt;ptr)),0,0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D">
+            
+              <b>ptr - n   => new cptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-2D" name="method-i-2D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a new <a href="CPtr.html">DL::CPtr</a> that has been moved back
+<code>n</code> bytes.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D_source')" id="l_method-i-2D_source">show</a>
+                
+              </p>
+              <div id="method-i-2D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_minus(VALUE self, VALUE other)
+{
+    void *ptr;
+    long num, size;
+
+    ptr = rb_dlptr2cptr(self);
+    size = RPTR_DATA(self)-&gt;size;
+    num = NUM2LONG(other);
+    return rb_dlptr_new((char *)ptr - num, size + num, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D-40">
+            
+              <b>ref
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-2D-40" name="method-i-2D-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <a href="CPtr.html">DL::CPtr</a> that is a reference pointer for
+this <a href="CPtr.html">DL::CPtr</a>. Analogous to the ampersand operator
+in C.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D-40_source')" id="l_method-i-2D-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2D-40_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_ref(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return rb_dlptr_new(&amp;(data-&gt;ptr),0,0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3D-3E">
+            
+              <b>ptr <=> other   => -1, 0, 1, or nil
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-3C-3D-3E" name="method-i-3C-3D-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns -1 if less than, 0 if equal to, 1 if greater than
+<code>other</code>.  Returns nil if <code>ptr</code> cannot be compared to
+<code>other</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3D-3E_source')" id="l_method-i-3C-3D-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3D-3E_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_cmp(VALUE self, VALUE other)
+{
+    void *ptr1, *ptr2;
+    SIGNED_VALUE diff;
+
+    if(!rb_obj_is_kind_of(other, rb_cDLCPtr)) return Qnil;
+
+    ptr1 = rb_dlptr2cptr(self);
+    ptr2 = rb_dlptr2cptr(other);
+    diff = (SIGNED_VALUE)ptr1 - (SIGNED_VALUE)ptr2;
+    if (!diff) return INT2FIX(0);
+    return diff &gt; 0 ? INT2NUM(1) : INT2NUM(-1);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>ptr == other    => true or false
+ptr.eql?(other) => true or false
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if <code>other</code> wraps the same pointer, otherwise
+returns false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_eql(VALUE self, VALUE other)
+{
+    void *ptr1, *ptr2;
+
+    if(!rb_obj_is_kind_of(other, rb_cDLCPtr)) return Qfalse;
+
+    ptr1 = rb_dlptr2cptr(self);
+    ptr2 = rb_dlptr2cptr(other);
+
+    return ptr1 == ptr2 ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>ptr[index]                &rarr; an_integer
+ptr[start, length]        &rarr; a_string
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns integer stored at <em>index</em>.  If <em>start</em> and
+<em>length</em> are given, a string containing the bytes from
+<em>start</em> of length <em>length</em> will be returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_aref(int argc, VALUE argv[], VALUE self)
+{
+    VALUE arg0, arg1;
+    VALUE retval = Qnil;
+    size_t offset, len;
+
+    switch( rb_scan_args(argc, argv, &quot;11&quot;, &amp;arg0, &amp;arg1) ){
+      case 1:
+        offset = NUM2ULONG(arg0);
+        retval = INT2NUM(*((char*)RPTR_DATA(self)-&gt;ptr + offset));
+        break;
+      case 2:
+        offset = NUM2ULONG(arg0);
+        len    = NUM2ULONG(arg1);
+        retval = rb_tainted_str_new((char *)RPTR_DATA(self)-&gt;ptr + offset, len);
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_aref()&quot;);
+    }
+    return retval;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D-3D">
+            
+              <b>ptr[index]         = int                    &rarr;  int
+ptr[start, length] = string or cptr or addr &rarr;  string or dl_cptr or addr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-5B-5D-3D" name="method-i-5B-5D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the value at <code>index</code> to <code>int</code>.  Or, set the
+memory at <code>start</code> until <code>length</code> with the contents of
+<code>string</code>, the memory from <code>dl_cptr</code>, or the memory
+pointed at by the memory address <code>addr</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D-3D_source')" id="l_method-i-5B-5D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D-3D_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_aset(int argc, VALUE argv[], VALUE self)
+{
+    VALUE arg0, arg1, arg2;
+    VALUE retval = Qnil;
+    size_t offset, len;
+    void *mem;
+
+    switch( rb_scan_args(argc, argv, &quot;21&quot;, &amp;arg0, &amp;arg1, &amp;arg2) ){
+      case 2:
+        offset = NUM2ULONG(arg0);
+        ((char*)RPTR_DATA(self)-&gt;ptr)[offset] = NUM2UINT(arg1);
+        retval = arg1;
+        break;
+      case 3:
+        offset = NUM2ULONG(arg0);
+        len    = NUM2ULONG(arg1);
+        if( TYPE(arg2) == T_STRING ){
+            mem = StringValuePtr(arg2);
+        }
+        else if( rb_obj_is_kind_of(arg2, rb_cDLCPtr) ){
+            mem = rb_dlptr2cptr(arg2);
+        }
+        else{
+            mem    = NUM2PTR(arg2);
+        }
+        memcpy((char *)RPTR_DATA(self)-&gt;ptr + offset, mem, len);
+        retval = arg2;
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_aset()&quot;);
+    }
+    return retval;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eql-3F">
+            
+              <b>ptr == other    => true or false
+ptr.eql?(other) => true or false
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-eql-3F" name="method-i-eql-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if <code>other</code> wraps the same pointer, otherwise
+returns false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eql-3F_source')" id="l_method-i-eql-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eql-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_eql(VALUE self, VALUE other)
+{
+    void *ptr1, *ptr2;
+
+    if(!rb_obj_is_kind_of(other, rb_cDLCPtr)) return Qfalse;
+
+    ptr1 = rb_dlptr2cptr(self);
+    ptr2 = rb_dlptr2cptr(other);
+
+    return ptr1 == ptr2 ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-free">
+            
+              <b>free
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-free" name="method-i-free" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the free function for this pointer.  Returns  <a
+href="CFunc.html">DL::CFunc</a> or nil.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-free_source')" id="l_method-i-free_source">show</a>
+                
+              </p>
+              <div id="method-i-free_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_free_get(VALUE self)
+{
+    struct ptr_data *pdata;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, pdata);
+
+    return rb_dlcfunc_new(pdata-&gt;free, DLTYPE_VOID, &quot;free&lt;anonymous&gt;&quot;, CFUNC_CDECL);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-free-3D">
+            
+              <b>free=(function)
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-free-3D" name="method-i-free-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the free function for this pointer to the <a
+href="CFunc.html">DL::CFunc</a> in <code>function</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-free-3D_source')" id="l_method-i-free-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-free-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_free_set(VALUE self, VALUE val)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    data-&gt;free = get_freefunc(val);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>inspect
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string formatted with an easily readable representation of the
+internal state of the <a href="CPtr.html">DL::CPtr</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_inspect(VALUE self)
+{
+    struct ptr_data *data;
+    char str[1024];
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    snprintf(str, 1023, &quot;#&lt;%s:%p ptr=%p size=%ld free=%p&gt;&quot;,
+             rb_class2name(CLASS_OF(self)), data, data-&gt;ptr, data-&gt;size, data-&gt;free);
+    return rb_str_new2(str);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-null-3F">
+            
+              <b>null?
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-null-3F" name="method-i-null-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if this is a null pointer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-null-3F_source')" id="l_method-i-null-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-null-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_null_p(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return data-&gt;ptr ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ptr">
+            
+              <b>ptr
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-ptr" name="method-i-ptr" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <a href="CPtr.html">DL::CPtr</a> that is a dereferenced pointer
+for this <a href="CPtr.html">DL::CPtr</a>. Analogous to the star operator
+in C.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ptr_source')" id="l_method-i-ptr_source">show</a>
+                
+              </p>
+              <div id="method-i-ptr_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_ptr(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return rb_dlptr_new(*((void**)(data-&gt;ptr)),0,0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ref">
+            
+              <b>ref
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-ref" name="method-i-ref" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <a href="CPtr.html">DL::CPtr</a> that is a reference pointer for
+this <a href="CPtr.html">DL::CPtr</a>. Analogous to the ampersand operator
+in C.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ref_source')" id="l_method-i-ref_source">show</a>
+                
+              </p>
+              <div id="method-i-ref_source" class="dyn-source">
+                <pre>VALUE
+rb_dlptr_ref(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return rb_dlptr_new(&amp;(data-&gt;ptr),0,0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>size
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the size of this pointer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_size_get(VALUE self)
+{
+    return LONG2NUM(RPTR_DATA(self)-&gt;size);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size-3D">
+            
+              <b>size=(size)
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-size-3D" name="method-i-size-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the size of this pointer to <code>size</code></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size-3D_source')" id="l_method-i-size-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-size-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_size_set(VALUE self, VALUE size)
+{
+    RPTR_DATA(self)-&gt;size = NUM2LONG(size);
+    return size;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>to_i
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the integer memory location of this <a
+href="CPtr.html">DL::CPtr</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_to_i(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return PTR2NUM(data-&gt;ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_int">
+            
+              <b>to_i
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-to_int" name="method-i-to_int" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the integer memory location of this <a
+href="CPtr.html">DL::CPtr</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_int_source')" id="l_method-i-to_int_source">show</a>
+                
+              </p>
+              <div id="method-i-to_int_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_to_i(VALUE self)
+{
+    struct ptr_data *data;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return PTR2NUM(data-&gt;ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>ptr.to_s        => string
+ptr.to_s(len)   => string
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the pointer contents as a string.  When called with no arguments,
+this method will return the contents until the first NULL byte.  When
+called with <code>len</code>, a string of <code>len</code> bytes will be
+returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_to_s(int argc, VALUE argv[], VALUE self)
+{
+    struct ptr_data *data;
+    VALUE arg1, val;
+    int len;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    switch (rb_scan_args(argc, argv, &quot;01&quot;, &amp;arg1)) {
+      case 0:
+        val = rb_tainted_str_new2((char*)(data-&gt;ptr));
+        break;
+      case 1:
+        len = NUM2INT(arg1);
+        val = rb_tainted_str_new((char*)(data-&gt;ptr), len);
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_to_s&quot;);
+    }
+
+    return val;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_str">
+            
+              <b>ptr.to_str        => string
+ptr.to_str(len)   => string
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-to_str" name="method-i-to_str" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the pointer contents as a string.  When called with no arguments,
+this method will return the contents with the length of this pointer’s
+<code>size</code>. When called with <code>len</code>, a string of
+<code>len</code> bytes will be returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_str_source')" id="l_method-i-to_str_source">show</a>
+                
+              </p>
+              <div id="method-i-to_str_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_to_str(int argc, VALUE argv[], VALUE self)
+{
+    struct ptr_data *data;
+    VALUE arg1, val;
+    int len;
+
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    switch (rb_scan_args(argc, argv, &quot;01&quot;, &amp;arg1)) {
+      case 0:
+        val = rb_tainted_str_new((char*)(data-&gt;ptr),data-&gt;size);
+        break;
+      case 1:
+        len = NUM2INT(arg1);
+        val = rb_tainted_str_new((char*)(data-&gt;ptr), len);
+        break;
+      default:
+        rb_bug(&quot;rb_dlptr_to_str&quot;);
+    }
+
+    return val;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_value">
+            
+              <b>to_value
+</b>
+            
+            <a href="../../classes/DL/CPtr.html#method-i-to_value" name="method-i-to_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Cast this <a href="CPtr.html">CPtr</a> to a ruby object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_value_source')" id="l_method-i-to_value_source">show</a>
+                
+              </p>
+              <div id="method-i-to_value_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlptr_to_value(VALUE self)
+{
+    struct ptr_data *data;
+    TypedData_Get_Struct(self, struct ptr_data, &amp;dlptr_data_type, data);
+    return (VALUE)(data-&gt;ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

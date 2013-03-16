@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Zlib::ZStream</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Zlib::ZStream 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/zlib_c.html">zlib.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="ZStream.html">Zlib::ZStream</a> is the abstract class for the
+stream which handles the compressed data. The operations are defined in the
+subclasses: <a href="Deflate.html">Zlib::Deflate</a> for compression, and
+<a href="Inflate.html">Zlib::Inflate</a> for decompression.</p>
+
+<p>An instance of <a href="ZStream.html">Zlib::ZStream</a> has one stream
+(struct zstream in the source) and two variable-length buffers which
+associated to the input (next_in) of the stream and the output (next_out)
+of the stream. In this document, “input buffer” means the buffer for
+input, and “output buffer” means the buffer for output.</p>
+
+<p>Data input into an instance of <a href="ZStream.html">Zlib::ZStream</a> are
+temporally stored into the end of input buffer, and then data in input
+buffer are processed from the beginning of the buffer until no more output
+from the stream is produced (i.e. until <a
+href="ZStream.html#method-i-avail_out">#avail_out</a> &gt; 0 after
+processing).  During processing, output buffer is allocated and expanded
+automatically to hold all output data.</p>
+
+<p>Some particular instance methods consume the data in output buffer and
+return them as a String.</p>
+
+<p>Here is an ascii art for describing above:</p>
+
+<pre>+================ an instance of Zlib::ZStream ================+
+||                                                            ||
+||     +--------+          +-------+          +--------+      ||
+||  +--| output |&lt;---------|zstream|&lt;---------| input  |&lt;--+  ||
+||  |  | buffer |  next_out+-------+next_in   | buffer |   |  ||
+||  |  +--------+                             +--------+   |  ||
+||  |                                                      |  ||
++===|======================================================|===+
+    |                                                      |
+    v                                                      |
+&quot;output data&quot;                                         &quot;input data&quot;</pre>
+
+<p>If an error occurs during processing input buffer, an exception which is a
+subclass of <a href="Error.html">Zlib::Error</a> is raised.  At that time,
+both input and output buffer keep their conditions at the time when the
+error occurs.</p>
+
+<h2 id="label-Method+Catalogue">Method Catalogue</h2>
+
+<p>Many of the methods in this class are fairly low-level and unlikely to be
+of interest to users.  In fact, users are unlikely to use this class
+directly; rather they will be interested in <a
+href="Inflate.html">Zlib::Inflate</a> and <a
+href="Deflate.html">Zlib::Deflate</a>.</p>
+
+<p>The higher level methods are listed below.</p>
+<ul><li>
+<p><a href="ZStream.html#method-i-total_in">total_in</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-total_out">total_out</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-data_type">data_type</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-adler">adler</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-reset">reset</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-finish">finish</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-finished-3F">finished?</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-close">close</a></p>
+</li><li>
+<p><a href="ZStream.html#method-i-closed-3F">closed?</a></p>
+</li></ul>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-adler">adler</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-avail_in">avail_in</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-avail_out">avail_out</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-avail_out-3D">avail_out=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-close">close</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-closed-3F">closed?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-data_type">data_type</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-end">end</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-ended-3F">ended?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-finish">finish</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-finished-3F">finished?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-flush_next_in">flush_next_in</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-flush_next_out">flush_next_out</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset">reset</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-stream_end-3F">stream_end?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-total_in">total_in</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-total_out">total_out</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-adler">
+            
+              <b>adler</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-adler" name="method-i-adler" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the adler-32 checksum.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-adler_source')" id="l_method-i-adler_source">show</a>
+                
+              </p>
+              <div id="method-i-adler_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_adler(VALUE obj)
+{
+        return rb_uint2inum(get_zstream(obj)-&gt;stream.adler);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-avail_in">
+            
+              <b>avail_in</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-avail_in" name="method-i-avail_in" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns bytes of data in the input buffer. Normally, returns 0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-avail_in_source')" id="l_method-i-avail_in_source">show</a>
+                
+              </p>
+              <div id="method-i-avail_in_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_avail_in(VALUE obj)
+{
+    struct zstream *z;
+    Data_Get_Struct(obj, struct zstream, z);
+    return INT2FIX(NIL_P(z-&gt;input) ? 0 : (int)(RSTRING_LEN(z-&gt;input)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-avail_out">
+            
+              <b>avail_out</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-avail_out" name="method-i-avail_out" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns number of bytes of free spaces in output buffer.  Because the free
+space is allocated automatically, this method returns 0 normally.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-avail_out_source')" id="l_method-i-avail_out_source">show</a>
+                
+              </p>
+              <div id="method-i-avail_out_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_avail_out(VALUE obj)
+{
+    struct zstream *z;
+    Data_Get_Struct(obj, struct zstream, z);
+    return rb_uint2inum(z-&gt;stream.avail_out);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-avail_out-3D">
+            
+              <b>avail_out=</b>(p1)
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-avail_out-3D" name="method-i-avail_out-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allocates <code>size</code> bytes of free space in the output buffer. If
+there are more than <code>size</code> bytes already in the buffer, the
+buffer is truncated. Because free space is allocated automatically, you
+usually don’t need to use this method.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-avail_out-3D_source')" id="l_method-i-avail_out-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-avail_out-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_set_avail_out(VALUE obj, VALUE size)
+{
+    struct zstream *z = get_zstream(obj);
+
+    Check_Type(size, T_FIXNUM);
+    zstream_expand_buffer_into(z, FIX2INT(size));
+    return size;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-close">
+            
+              <b>close</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-close" name="method-i-close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Closes the stream. All operations on the closed stream will raise an
+exception.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_source')" id="l_method-i-close_source">show</a>
+                
+              </p>
+              <div id="method-i-close_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_end(VALUE obj)
+{
+    zstream_end(get_zstream(obj));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-closed-3F">
+            
+              <b>closed?</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-closed-3F" name="method-i-closed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the stream is closed.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-closed-3F_source')" id="l_method-i-closed-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-closed-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_closed_p(VALUE obj)
+{
+    struct zstream *z;
+    Data_Get_Struct(obj, struct zstream, z);
+    return ZSTREAM_IS_READY(z) ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-data_type">
+            
+              <b>data_type</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-data_type" name="method-i-data_type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Guesses the type of the data which have been inputed into the stream. The
+returned value is either <code>Zlib::BINARY</code>,
+<code>Zlib::ASCII</code>, or <code>Zlib::UNKNOWN</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-data_type_source')" id="l_method-i-data_type_source">show</a>
+                
+              </p>
+              <div id="method-i-data_type_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_data_type(VALUE obj)
+{
+    return INT2FIX(get_zstream(obj)-&gt;stream.data_type);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-end">
+            
+              <b>end</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-end" name="method-i-end" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Closes the stream. All operations on the closed stream will raise an
+exception.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-end_source')" id="l_method-i-end_source">show</a>
+                
+              </p>
+              <div id="method-i-end_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_end(VALUE obj)
+{
+    zstream_end(get_zstream(obj));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ended-3F">
+            
+              <b>ended?</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-ended-3F" name="method-i-ended-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the stream is closed.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ended-3F_source')" id="l_method-i-ended-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-ended-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_closed_p(VALUE obj)
+{
+    struct zstream *z;
+    Data_Get_Struct(obj, struct zstream, z);
+    return ZSTREAM_IS_READY(z) ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-finish">
+            
+              <b>finish</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-finish" name="method-i-finish" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Finishes the stream and flushes output buffer. See <a
+href="ZStream.html#method-i-finish">#finish</a> and <a
+href="ZStream.html#method-i-finish">#finish</a> for details of this
+behavior.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-finish_source')" id="l_method-i-finish_source">show</a>
+                
+              </p>
+              <div id="method-i-finish_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_finish(VALUE obj)
+{
+    struct zstream *z = get_zstream(obj);
+    VALUE dst;
+
+    zstream_run(z, (Bytef*)&quot;&quot;, 0, Z_FINISH);
+    dst = zstream_detach_buffer(z);
+
+    OBJ_INFECT(dst, obj);
+    return dst;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-finished-3F">
+            
+              <b>finished?</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-finished-3F" name="method-i-finished-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the stream is finished.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-finished-3F_source')" id="l_method-i-finished-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-finished-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_finished_p(VALUE obj)
+{
+    return ZSTREAM_IS_FINISHED(get_zstream(obj)) ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-flush_next_in">
+            
+              <b>flush_next_in</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-flush_next_in" name="method-i-flush_next_in" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Flushes input buffer and returns all data in that buffer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-flush_next_in_source')" id="l_method-i-flush_next_in_source">show</a>
+                
+              </p>
+              <div id="method-i-flush_next_in_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_flush_next_in(VALUE obj)
+{
+    struct zstream *z;
+    VALUE dst;
+
+    Data_Get_Struct(obj, struct zstream, z);
+    dst = zstream_detach_input(z);
+    OBJ_INFECT(dst, obj);
+    return dst;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-flush_next_out">
+            
+              <b>flush_next_out</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-flush_next_out" name="method-i-flush_next_out" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Flushes output buffer and returns all data in that buffer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-flush_next_out_source')" id="l_method-i-flush_next_out_source">show</a>
+                
+              </p>
+              <div id="method-i-flush_next_out_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_flush_next_out(VALUE obj)
+{
+    struct zstream *z;
+    VALUE dst;
+
+    Data_Get_Struct(obj, struct zstream, z);
+    dst = zstream_detach_buffer(z);
+    OBJ_INFECT(dst, obj);
+    return dst;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset">
+            
+              <b>reset</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-reset" name="method-i-reset" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Resets and initializes the stream. All data in both input and output buffer
+are discarded.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reset_source')" id="l_method-i-reset_source">show</a>
+                
+              </p>
+              <div id="method-i-reset_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_reset(VALUE obj)
+{
+    zstream_reset(get_zstream(obj));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stream_end-3F">
+            
+              <b>stream_end?</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-stream_end-3F" name="method-i-stream_end-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the stream is finished.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stream_end-3F_source')" id="l_method-i-stream_end-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-stream_end-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_finished_p(VALUE obj)
+{
+    return ZSTREAM_IS_FINISHED(get_zstream(obj)) ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-total_in">
+            
+              <b>total_in</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-total_in" name="method-i-total_in" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the total bytes of the input data to the stream.  FIXME</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-total_in_source')" id="l_method-i-total_in_source">show</a>
+                
+              </p>
+              <div id="method-i-total_in_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_total_in(VALUE obj)
+{
+    return rb_uint2inum(get_zstream(obj)-&gt;stream.total_in);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-total_out">
+            
+              <b>total_out</b>()
+            
+            <a href="../../classes/Zlib/ZStream.html#method-i-total_out" name="method-i-total_out" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the total bytes of the output data from the stream.  FIXME</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-total_out_source')" id="l_method-i-total_out_source">show</a>
+                
+              </p>
+              <div id="method-i-total_out_source" class="dyn-source">
+                <pre>static VALUE
+rb_zstream_total_out(VALUE obj)
+{
+    return rb_uint2inum(get_zstream(obj)-&gt;stream.total_out);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

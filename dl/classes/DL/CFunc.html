@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DL::CFunc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            DL::CFunc 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/cfunc_c.html">cfunc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-calltype">calltype</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-calltype-3D">calltype=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-ctype">ctype</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-ctype-3D">ctype=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-last_error">last_error</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-name">name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ptr">ptr</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-ptr-3D">ptr=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-win32_last_error">win32_last_error</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-last_error">
+            
+              <b>last_error</b>()
+            
+            <a href="../../classes/DL/CFunc.html#method-c-last_error" name="method-c-last_error" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-last_error_source')" id="l_method-c-last_error_source">show</a>
+                
+              </p>
+              <div id="method-c-last_error_source" class="dyn-source">
+                <pre>static VALUE
+rb_dl_get_last_error(VALUE self)
+{
+    return rb_thread_local_aref(rb_thread_current(), id_last_error);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>DL::CFunc.new(address, type=DL::TYPE_VOID, name=nil, calltype=:cdecl)
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new function that points to <code>address</code> with an optional
+return type of <code>type</code>, a name of <code>name</code> and a
+calltype of <code>calltype</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_initialize(int argc, VALUE argv[], VALUE self)
+{
+    VALUE addr, name, type, calltype;
+    struct cfunc_data *data;
+    void *saddr;
+    const char *sname;
+
+    rb_scan_args(argc, argv, &quot;13&quot;, &amp;addr, &amp;type, &amp;name, &amp;calltype);
+
+    saddr = (void*)(NUM2PTR(rb_Integer(addr)));
+    sname = NIL_P(name) ? NULL : StringValuePtr(name);
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, data);
+    if( data-&gt;name ) xfree(data-&gt;name);
+    data-&gt;ptr  = saddr;
+    data-&gt;name = sname ? strdup(sname) : 0;
+    data-&gt;type = NIL_P(type) ? DLTYPE_VOID : NUM2INT(type);
+    data-&gt;calltype = NIL_P(calltype) ? CFUNC_CDECL : SYM2ID(calltype);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-win32_last_error">
+            
+              <b>win32_last_error</b>()
+            
+            <a href="../../classes/DL/CFunc.html#method-c-win32_last_error" name="method-c-win32_last_error" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-win32_last_error_source')" id="l_method-c-win32_last_error_source">show</a>
+                
+              </p>
+              <div id="method-c-win32_last_error_source" class="dyn-source">
+                <pre>static VALUE
+rb_dl_get_win32_last_error(VALUE self)
+{
+    return rb_thread_local_aref(rb_thread_current(), id_win32_last_error);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>dlcfunc.call(ary)   => some_value
+dlcfunc[ary]        => some_value
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Calls the function pointer passing in <code>ary</code> as values to the
+underlying C function.  The return value depends on the ctype.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_call(VALUE self, VALUE ary)
+{
+    struct cfunc_data *cfunc;
+    int i;
+    DLSTACK_TYPE stack[DLSTACK_SIZE];
+    VALUE result = Qnil;
+
+    rb_secure_update(self);
+
+    memset(stack, 0, sizeof(DLSTACK_TYPE) * DLSTACK_SIZE);
+    Check_Type(ary, T_ARRAY);
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+
+    if( cfunc-&gt;ptr == 0 ){
+        rb_raise(rb_eDLError, &quot;can't call null-function&quot;);
+        return Qnil;
+    }
+
+    for( i = 0; i &lt; RARRAY_LEN(ary); i++ ){
+        VALUE arg;
+        if( i &gt;= DLSTACK_SIZE ){
+            rb_raise(rb_eDLError, &quot;too many arguments (stack overflow)&quot;);
+        }
+        arg = rb_to_int(RARRAY_PTR(ary)[i]);
+        rb_check_safe_obj(arg);
+        if (FIXNUM_P(arg)) {
+            stack[i] = (DLSTACK_TYPE)FIX2LONG(arg);
+        }
+        else if (RB_TYPE_P(arg, T_BIGNUM)) {
+            stack[i] = (DLSTACK_TYPE)rb_big2ulong_pack(arg);
+        }
+        else {
+            Check_Type(arg, T_FIXNUM);
+        }
+    }
+
+    /* calltype == CFUNC_CDECL */
+    if( cfunc-&gt;calltype == CFUNC_CDECL
+#ifndef FUNC_STDCALL
+        || cfunc-&gt;calltype == CFUNC_STDCALL
+#endif
+        ){
+        switch( cfunc-&gt;type ){
+        case DLTYPE_VOID:
+#define CASE(n) case n: { \
+            DECL_FUNC_CDECL(f,void,DLSTACK_PROTO##n,cfunc-&gt;ptr); \
+            f(DLSTACK_ARGS##n(stack)); \
+            result = Qnil; \
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
+            
+              <b>dlcfunc.call(ary)   => some_value
+dlcfunc[ary]        => some_value
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-call" name="method-i-call" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Calls the function pointer passing in <code>ary</code> as values to the
+underlying C function.  The return value depends on the ctype.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
+                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_call(VALUE self, VALUE ary)
+{
+    struct cfunc_data *cfunc;
+    int i;
+    DLSTACK_TYPE stack[DLSTACK_SIZE];
+    VALUE result = Qnil;
+
+    rb_secure_update(self);
+
+    memset(stack, 0, sizeof(DLSTACK_TYPE) * DLSTACK_SIZE);
+    Check_Type(ary, T_ARRAY);
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+
+    if( cfunc-&gt;ptr == 0 ){
+        rb_raise(rb_eDLError, &quot;can't call null-function&quot;);
+        return Qnil;
+    }
+
+    for( i = 0; i &lt; RARRAY_LEN(ary); i++ ){
+        VALUE arg;
+        if( i &gt;= DLSTACK_SIZE ){
+            rb_raise(rb_eDLError, &quot;too many arguments (stack overflow)&quot;);
+        }
+        arg = rb_to_int(RARRAY_PTR(ary)[i]);
+        rb_check_safe_obj(arg);
+        if (FIXNUM_P(arg)) {
+            stack[i] = (DLSTACK_TYPE)FIX2LONG(arg);
+        }
+        else if (RB_TYPE_P(arg, T_BIGNUM)) {
+            stack[i] = (DLSTACK_TYPE)rb_big2ulong_pack(arg);
+        }
+        else {
+            Check_Type(arg, T_FIXNUM);
+        }
+    }
+
+    /* calltype == CFUNC_CDECL */
+    if( cfunc-&gt;calltype == CFUNC_CDECL
+#ifndef FUNC_STDCALL
+        || cfunc-&gt;calltype == CFUNC_STDCALL
+#endif
+        ){
+        switch( cfunc-&gt;type ){
+        case DLTYPE_VOID:
+#define CASE(n) case n: { \
+            DECL_FUNC_CDECL(f,void,DLSTACK_PROTO##n,cfunc-&gt;ptr); \
+            f(DLSTACK_ARGS##n(stack)); \
+            result = Qnil; \
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-calltype">
+            
+              <b>cfunc.calltype    => symbol
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-calltype" name="method-i-calltype" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the call type of this function.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-calltype_source')" id="l_method-i-calltype_source">show</a>
+                
+              </p>
+              <div id="method-i-calltype_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_calltype(VALUE self)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    return ID2SYM(cfunc-&gt;calltype);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-calltype-3D">
+            
+              <b>cfunc.calltype = symbol
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-calltype-3D" name="method-i-calltype-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the call type for this function.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-calltype-3D_source')" id="l_method-i-calltype-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-calltype-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_set_calltype(VALUE self, VALUE sym)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    cfunc-&gt;calltype = SYM2ID(sym);
+    return sym;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ctype">
+            
+              <b>cfunc.ctype   => num
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-ctype" name="method-i-ctype" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the C function return value type.  See <a href="../DL.html">DL</a> for
+a list of constants corresponding to this method’s return value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ctype_source')" id="l_method-i-ctype_source">show</a>
+                
+              </p>
+              <div id="method-i-ctype_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_ctype(VALUE self)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    return INT2NUM(cfunc-&gt;type);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ctype-3D">
+            
+              <b>cfunc.ctype = type
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-ctype-3D" name="method-i-ctype-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the C function return value type to <code>type</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ctype-3D_source')" id="l_method-i-ctype-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-ctype-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_set_ctype(VALUE self, VALUE ctype)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    cfunc-&gt;type = NUM2INT(ctype);
+    return ctype;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>inspect
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string formatted with an easily readable representation of the
+internal state of the <a href="CFunc.html">DL::CFunc</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_inspect(VALUE self)
+{
+    VALUE val;
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+
+    val = rb_sprintf(&quot;#&lt;DL::CFunc:%p ptr=%p type=%d name='%s'&gt;&quot;,
+             cfunc,
+             cfunc-&gt;ptr,
+             cfunc-&gt;type,
+             cfunc-&gt;name ? cfunc-&gt;name : &quot;&quot;);
+    OBJ_TAINT(val);
+    return val;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-name">
+            
+              <b>name  => str
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-name" name="method-i-name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the name of this function</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-name_source')" id="l_method-i-name_source">show</a>
+                
+              </p>
+              <div id="method-i-name_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_name(VALUE self)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    return cfunc-&gt;name ? rb_tainted_str_new2(cfunc-&gt;name) : Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ptr">
+            
+              <b>cfunc.ptr
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-ptr" name="method-i-ptr" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the underlying function pointer as a <a href="CPtr.html">DL::CPtr</a>
+object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ptr_source')" id="l_method-i-ptr_source">show</a>
+                
+              </p>
+              <div id="method-i-ptr_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_ptr(VALUE self)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    return PTR2NUM(cfunc-&gt;ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ptr-3D">
+            
+              <b>cfunc.ptr = pointer
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-ptr-3D" name="method-i-ptr-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the underlying function pointer to a <a href="CPtr.html">DL::CPtr</a>
+named <code>pointer</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ptr-3D_source')" id="l_method-i-ptr-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-ptr-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_set_ptr(VALUE self, VALUE addr)
+{
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+    cfunc-&gt;ptr = NUM2PTR(addr);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>dlfunc.to_i   => integer
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the memory location of this function pointer as an integer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_to_i(VALUE self)
+{
+  struct cfunc_data *cfunc;
+
+  TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+  return PTR2NUM(cfunc-&gt;ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>inspect
+</b>
+            
+            <a href="../../classes/DL/CFunc.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string formatted with an easily readable representation of the
+internal state of the <a href="CFunc.html">DL::CFunc</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlcfunc_inspect(VALUE self)
+{
+    VALUE val;
+    struct cfunc_data *cfunc;
+
+    TypedData_Get_Struct(self, struct cfunc_data, &amp;dlcfunc_data_type, cfunc);
+
+    val = rb_sprintf(&quot;#&lt;DL::CFunc:%p ptr=%p type=%d name='%s'&gt;&quot;,
+             cfunc,
+             cfunc-&gt;ptr,
+             cfunc-&gt;type,
+             cfunc-&gt;name ? cfunc-&gt;name : &quot;&quot;);
+    OBJ_TAINT(val);
+    return val;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Symbol</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Symbol 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/string_c.html">string.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>Symbol</code> objects represent names and some strings inside the
+Ruby interpreter. They are generated using the <code>:name</code> and
+<code>:&quot;string&quot;</code> literals syntax, and by the various
+<code>to_sym</code> methods. The same <code>Symbol</code> object will be
+created for a given name or string for the duration of a program’s
+execution, regardless of the context or meaning of that name. Thus if
+<code>Fred</code> is a constant in one context, a method in another, and a
+class in a third, the <code>Symbol</code> <code>:Fred</code> will be the
+same object in all three contexts.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">One</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-constant">Fred</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">$f1</span> = :<span class="ruby-constant">Fred</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">module</span> <span class="ruby-constant">Two</span>
+  <span class="ruby-constant">Fred</span> = <span class="ruby-value">1</span>
+  <span class="ruby-identifier">$f2</span> = :<span class="ruby-constant">Fred</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Fred</span>()
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">$f3</span> = :<span class="ruby-constant">Fred</span>
+<span class="ruby-identifier">$f1</span>.<span class="ruby-identifier">object_id</span>   <span class="ruby-comment">#=&gt; 2514190</span>
+<span class="ruby-identifier">$f2</span>.<span class="ruby-identifier">object_id</span>   <span class="ruby-comment">#=&gt; 2514190</span>
+<span class="ruby-identifier">$f3</span>.<span class="ruby-identifier">object_id</span>   <span class="ruby-comment">#=&gt; 2514190</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3C-3D-3E">&lt;=&gt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D-3D">===</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-7E">=~</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-capitalize">capitalize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-casecmp">casecmp</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-downcase">downcase</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-empty-3F">empty?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-encoding">encoding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-id2name">id2name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-intern">intern</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-length">length</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-match">match</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-next">next</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-slice">slice</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-succ">succ</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-swapcase">swapcase</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_proc">to_proc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_sym">to_sym</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-upcase">upcase</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Comparable.html">
+              Comparable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3D-3E">
+            
+              <b>str <=> other       &rarr; -1, 0, +1 or nil
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-3C-3D-3E" name="method-i-3C-3D-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Compares <em>sym</em> with <em>other</em> in string form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3D-3E_source')" id="l_method-i-3C-3D-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3D-3E_source" class="dyn-source">
+                <pre>static VALUE
+sym_cmp(VALUE sym, VALUE other)
+{
+    if (!SYMBOL_P(other)) {
+        return Qnil;
+    }
+    return rb_str_cmp_m(rb_sym_to_s(sym), rb_sym_to_s(other));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>sym == obj   &rarr; true or false
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—If <em>sym</em> and <em>obj</em> are exactly the same symbol,
+returns <code>true</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+sym_equal(VALUE sym1, VALUE sym2)
+{
+    if (sym1 == sym2) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D-3D">
+            
+              <b>sym == obj   &rarr; true or false
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-3D-3D-3D" name="method-i-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—If <em>sym</em> and <em>obj</em> are exactly the same symbol,
+returns <code>true</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D-3D_source')" id="l_method-i-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+sym_equal(VALUE sym1, VALUE sym2)
+{
+    if (sym1 == sym2) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-7E">
+            
+              <b>sym =~ obj   &rarr; fixnum or nil
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-3D-7E" name="method-i-3D-7E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>sym.to_s =~ obj</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-7E_source')" id="l_method-i-3D-7E_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-7E_source" class="dyn-source">
+                <pre>static VALUE
+sym_match(VALUE sym, VALUE other)
+{
+    return rb_str_match(rb_sym_to_s(sym), other);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>sym[idx]      &rarr; char
+sym[b, n]     &rarr; char
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>sym.to_s[]</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>static VALUE
+sym_aref(int argc, VALUE *argv, VALUE sym)
+{
+    return rb_str_aref_m(argc, argv, rb_sym_to_s(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-capitalize">
+            
+              <b>sym.capitalize  &rarr; symbol
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-capitalize" name="method-i-capitalize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.capitalize.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-capitalize_source')" id="l_method-i-capitalize_source">show</a>
+                
+              </p>
+              <div id="method-i-capitalize_source" class="dyn-source">
+                <pre>static VALUE
+sym_capitalize(VALUE sym)
+{
+    return rb_str_intern(rb_str_capitalize(rb_id2str(SYM2ID(sym))));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-casecmp">
+            
+              <b>sym.casecmp(other)  &rarr; -1, 0, +1 or nil
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-casecmp" name="method-i-casecmp" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Case-insensitive version of <code>Symbol#&lt;=&gt;</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-casecmp_source')" id="l_method-i-casecmp_source">show</a>
+                
+              </p>
+              <div id="method-i-casecmp_source" class="dyn-source">
+                <pre>static VALUE
+sym_casecmp(VALUE sym, VALUE other)
+{
+    if (!SYMBOL_P(other)) {
+        return Qnil;
+    }
+    return rb_str_casecmp(rb_sym_to_s(sym), rb_sym_to_s(other));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-downcase">
+            
+              <b>sym.downcase  &rarr; symbol
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-downcase" name="method-i-downcase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.downcase.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-downcase_source')" id="l_method-i-downcase_source">show</a>
+                
+              </p>
+              <div id="method-i-downcase_source" class="dyn-source">
+                <pre>static VALUE
+sym_downcase(VALUE sym)
+{
+    return rb_str_intern(rb_str_downcase(rb_id2str(SYM2ID(sym))));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty-3F">
+            
+              <b>sym.empty?   &rarr; true or false
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-empty-3F" name="method-i-empty-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns that <em>sym</em> is :“” or not.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-empty-3F_source')" id="l_method-i-empty-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-empty-3F_source" class="dyn-source">
+                <pre>static VALUE
+sym_empty(VALUE sym)
+{
+    return rb_str_empty(rb_id2str(SYM2ID(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-encoding">
+            
+              <b>sym.encoding   &rarr; encoding
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-encoding" name="method-i-encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <a href="Encoding.html">Encoding</a> object that represents the
+encoding of <em>sym</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-encoding_source')" id="l_method-i-encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-encoding_source" class="dyn-source">
+                <pre>static VALUE
+sym_encoding(VALUE sym)
+{
+    return rb_obj_encoding(rb_id2str(SYM2ID(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-id2name">
+            
+              <b>sym.id2name   &rarr; string
+sym.to_s      &rarr; string
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-id2name" name="method-i-id2name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the name or string corresponding to <em>sym</em>.</p>
+
+<pre class="ruby">:<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">id2name</span>   <span class="ruby-comment">#=&gt; &quot;fred&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-id2name_source')" id="l_method-i-id2name_source">show</a>
+                
+              </p>
+              <div id="method-i-id2name_source" class="dyn-source">
+                <pre>VALUE
+rb_sym_to_s(VALUE sym)
+{
+    ID id = SYM2ID(sym);
+
+    return str_new3(rb_cString, rb_id2str(id));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>sym.inspect    &rarr; string
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the representation of <em>sym</em> as a symbol literal.</p>
+
+<pre class="ruby">:<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">inspect</span>   <span class="ruby-comment">#=&gt; &quot;:fred&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+sym_inspect(VALUE sym)
+{
+    VALUE str;
+    ID id = SYM2ID(sym);
+    rb_encoding *enc;
+    const char *ptr;
+    long len;
+    char *dest;
+    rb_encoding *resenc = rb_default_internal_encoding();
+
+    if (resenc == NULL) resenc = rb_default_external_encoding();
+    sym = rb_id2str(id);
+    enc = STR_ENC_GET(sym);
+    ptr = RSTRING_PTR(sym);
+    len = RSTRING_LEN(sym);
+    if ((resenc != enc &amp;&amp; !rb_str_is_ascii_only_p(sym)) || len != (long)strlen(ptr) ||
+        !rb_enc_symname_p(ptr, enc) || !sym_printable(ptr, ptr + len, enc)) {
+        str = rb_str_inspect(sym);
+        len = RSTRING_LEN(str);
+        rb_str_resize(str, len + 1);
+        dest = RSTRING_PTR(str);
+        memmove(dest + 1, dest, len);
+        dest[0] = ':';
+    }
+    else {
+        char *dest;
+        str = rb_enc_str_new(0, len + 1, enc);
+        dest = RSTRING_PTR(str);
+        dest[0] = ':';
+        memcpy(dest + 1, ptr, len);
+    }
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-intern">
+            
+              <b>sym.to_sym   &rarr; sym
+sym.intern   &rarr; sym
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-intern" name="method-i-intern" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>In general, <code>to_sym</code> returns the <code>Symbol</code>
+corresponding to an object. As <em>sym</em> is already a symbol,
+<code>self</code> is returned in this case.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-intern_source')" id="l_method-i-intern_source">show</a>
+                
+              </p>
+              <div id="method-i-intern_source" class="dyn-source">
+                <pre>static VALUE
+sym_to_sym(VALUE sym)
+{
+    return sym;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-length">
+            
+              <b>sym.length    &rarr; integer
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-length" name="method-i-length" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.length</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-length_source')" id="l_method-i-length_source">show</a>
+                
+              </p>
+              <div id="method-i-length_source" class="dyn-source">
+                <pre>static VALUE
+sym_length(VALUE sym)
+{
+    return rb_str_length(rb_id2str(SYM2ID(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-match">
+            
+              <b>sym =~ obj   &rarr; fixnum or nil
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-match" name="method-i-match" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>sym.to_s =~ obj</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-match_source')" id="l_method-i-match_source">show</a>
+                
+              </p>
+              <div id="method-i-match_source" class="dyn-source">
+                <pre>static VALUE
+sym_match(VALUE sym, VALUE other)
+{
+    return rb_str_match(rb_sym_to_s(sym), other);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-next">
+            
+              <b>sym.succ
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-next" name="method-i-next" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.succ.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-next_source')" id="l_method-i-next_source">show</a>
+                
+              </p>
+              <div id="method-i-next_source" class="dyn-source">
+                <pre>static VALUE
+sym_succ(VALUE sym)
+{
+    return rb_str_intern(rb_str_succ(rb_sym_to_s(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>sym.length    &rarr; integer
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.length</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre>static VALUE
+sym_length(VALUE sym)
+{
+    return rb_str_length(rb_id2str(SYM2ID(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-slice">
+            
+              <b>sym[idx]      &rarr; char
+sym[b, n]     &rarr; char
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-slice" name="method-i-slice" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>sym.to_s[]</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-slice_source')" id="l_method-i-slice_source">show</a>
+                
+              </p>
+              <div id="method-i-slice_source" class="dyn-source">
+                <pre>static VALUE
+sym_aref(int argc, VALUE *argv, VALUE sym)
+{
+    return rb_str_aref_m(argc, argv, rb_sym_to_s(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-succ">
+            
+              <b>sym.succ
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-succ" name="method-i-succ" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.succ.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-succ_source')" id="l_method-i-succ_source">show</a>
+                
+              </p>
+              <div id="method-i-succ_source" class="dyn-source">
+                <pre>static VALUE
+sym_succ(VALUE sym)
+{
+    return rb_str_intern(rb_str_succ(rb_sym_to_s(sym)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-swapcase">
+            
+              <b>sym.swapcase  &rarr; symbol
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-swapcase" name="method-i-swapcase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.swapcase.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-swapcase_source')" id="l_method-i-swapcase_source">show</a>
+                
+              </p>
+              <div id="method-i-swapcase_source" class="dyn-source">
+                <pre>static VALUE
+sym_swapcase(VALUE sym)
+{
+    return rb_str_intern(rb_str_swapcase(rb_id2str(SYM2ID(sym))));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_proc">
+            
+              <b>sym.to_proc
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-to_proc" name="method-i-to_proc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a <em><a href="Proc.html">Proc</a></em> object which respond to the
+given method by <em>sym</em>.</p>
+
+<pre class="ruby">(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>).<span class="ruby-identifier">collect</span>(&amp;:<span class="ruby-identifier">to_s</span>)  <span class="ruby-comment">#=&gt; [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_proc_source')" id="l_method-i-to_proc_source">show</a>
+                
+              </p>
+              <div id="method-i-to_proc_source" class="dyn-source">
+                <pre>static VALUE
+sym_to_proc(VALUE sym)
+{
+    static VALUE sym_proc_cache = Qfalse;
+    enum {SYM_PROC_CACHE_SIZE = 67};
+    VALUE proc;
+    long id, index;
+    VALUE *aryp;
+
+    if (!sym_proc_cache) {
+        sym_proc_cache = rb_ary_tmp_new(SYM_PROC_CACHE_SIZE * 2);
+        rb_gc_register_mark_object(sym_proc_cache);
+        rb_ary_store(sym_proc_cache, SYM_PROC_CACHE_SIZE*2 - 1, Qnil);
+    }
+
+    id = SYM2ID(sym);
+    index = (id % SYM_PROC_CACHE_SIZE) &lt;&lt; 1;
+
+    aryp = RARRAY_PTR(sym_proc_cache);
+    if (aryp[index] == sym) {
+        return aryp[index + 1];
+    }
+    else {
+        proc = rb_proc_new(sym_call, (VALUE)id);
+        aryp[index] = sym;
+        aryp[index + 1] = proc;
+        return proc;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>sym.id2name   &rarr; string
+sym.to_s      &rarr; string
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the name or string corresponding to <em>sym</em>.</p>
+
+<pre class="ruby">:<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">id2name</span>   <span class="ruby-comment">#=&gt; &quot;fred&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>VALUE
+rb_sym_to_s(VALUE sym)
+{
+    ID id = SYM2ID(sym);
+
+    return str_new3(rb_cString, rb_id2str(id));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_sym">
+            
+              <b>sym.to_sym   &rarr; sym
+sym.intern   &rarr; sym
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-to_sym" name="method-i-to_sym" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>In general, <code>to_sym</code> returns the <code>Symbol</code>
+corresponding to an object. As <em>sym</em> is already a symbol,
+<code>self</code> is returned in this case.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_sym_source')" id="l_method-i-to_sym_source">show</a>
+                
+              </p>
+              <div id="method-i-to_sym_source" class="dyn-source">
+                <pre>static VALUE
+sym_to_sym(VALUE sym)
+{
+    return sym;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-upcase">
+            
+              <b>sym.upcase    &rarr; symbol
+</b>
+            
+            <a href="../classes/Symbol.html#method-i-upcase" name="method-i-upcase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as <code>sym.to_s.upcase.intern</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-upcase_source')" id="l_method-i-upcase_source">show</a>
+                
+              </p>
+              <div id="method-i-upcase_source" class="dyn-source">
+                <pre>static VALUE
+sym_upcase(VALUE sym)
+{
+    return rb_str_intern(rb_str_upcase(rb_id2str(SYM2ID(sym))));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

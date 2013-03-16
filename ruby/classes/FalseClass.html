@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>FalseClass</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            FalseClass 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/object_c.html">object.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The global value <code>false</code> is the only instance of class
+<code>FalseClass</code> and represents a logically false value in boolean
+expressions. The class provides operators allowing <code>false</code> to
+participate correctly in logical expressions.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-26">&amp;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5E">^</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-7C">|</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-26">
+            
+              <b>false & obj   &rarr; false
+nil & obj     &rarr; false
+</b>
+            
+            <a href="../classes/FalseClass.html#method-i-26" name="method-i-26" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>And—Returns <code>false</code>. <em>obj</em> is always evaluated as it is
+the argument to a method call—there is no short-circuit evaluation in
+this case.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-26_source')" id="l_method-i-26_source">show</a>
+                
+              </p>
+              <div id="method-i-26_source" class="dyn-source">
+                <pre>static VALUE
+false_and(VALUE obj, VALUE obj2)
+{
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5E">
+            
+              <b>false ^ obj    &rarr; true or false
+nil   ^ obj    &rarr; true or false
+</b>
+            
+            <a href="../classes/FalseClass.html#method-i-5E" name="method-i-5E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Exclusive Or—If <em>obj</em> is <code>nil</code> or <code>false</code>,
+returns <code>false</code>; otherwise, returns <code>true</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5E_source')" id="l_method-i-5E_source">show</a>
+                
+              </p>
+              <div id="method-i-5E_source" class="dyn-source">
+                <pre>static VALUE
+false_xor(VALUE obj, VALUE obj2)
+{
+    return RTEST(obj2)?Qtrue:Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>false.to_s   &rarr;  "false"
+</b>
+            
+            <a href="../classes/FalseClass.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>‘nuf said…</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+false_to_s(VALUE obj)
+{
+    return rb_usascii_str_new2(&quot;false&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-7C">
+            
+              <b>false | obj   &rarr;   true or false
+nil   | obj   &rarr;   true or false
+</b>
+            
+            <a href="../classes/FalseClass.html#method-i-7C" name="method-i-7C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Or—Returns <code>false</code> if <em>obj</em> is <code>nil</code> or
+<code>false</code>; <code>true</code> otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-7C_source')" id="l_method-i-7C_source">show</a>
+                
+              </p>
+              <div id="method-i-7C_source" class="dyn-source">
+                <pre>static VALUE
+false_or(VALUE obj, VALUE obj2)
+{
+    return RTEST(obj2)?Qtrue:Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

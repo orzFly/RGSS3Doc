@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Exception</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Exception 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/error_c.html">error.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Descendants of class <code>Exception</code> are used to communicate between
+<code>raise</code> methods and <code>rescue</code> statements in
+<code>begin/end</code> blocks. <code>Exception</code> objects carry
+information about the exception—its type (the exception’s class name),
+an optional descriptive string, and optional traceback information.
+Programs may subclass <code>Exception</code>, or more typically
+<code>StandardError</code> to provide custom classes and add additional
+information.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-backtrace">backtrace</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-exception">exception</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exception">exception</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-message">message</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-set_backtrace">set_backtrace</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-exception">
+            
+              <b>exc.exception(string)  &rarr;  an_exception or exc
+</b>
+            
+            <a href="../classes/Exception.html#method-c-exception" name="method-c-exception" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>With no argument, or if the argument is the same as the receiver, return
+the receiver. Otherwise, create a new exception object of the same class as
+the receiver, but with a message equal to <code>string.to_str</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>Exception.new(msg = nil)   &rarr;  exception
+</b>
+            
+            <a href="../classes/Exception.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Construct a new <a href="Exception.html">Exception</a> object, optionally
+passing in a message.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+exc_initialize(int argc, VALUE *argv, VALUE exc)
+{
+    VALUE arg;
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;arg);
+    rb_iv_set(exc, &quot;mesg&quot;, arg);
+    rb_iv_set(exc, &quot;bt&quot;, Qnil);
+
+    return exc;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>exc == obj   &rarr; true or false
+</b>
+            
+            <a href="../classes/Exception.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—If <em>obj</em> is not an <code>Exception</code>, returns
+<code>false</code>. Otherwise, returns <code>true</code> if <em>exc</em>
+and <em>obj</em> share same class, messages, and backtrace.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+exc_equal(VALUE exc, VALUE obj)
+{
+    VALUE mesg, backtrace;
+    ID id_mesg;
+
+    if (exc == obj) return Qtrue;
+    CONST_ID(id_mesg, &quot;mesg&quot;);
+
+    if (rb_obj_class(exc) != rb_obj_class(obj)) {
+        ID id_message, id_backtrace;
+        CONST_ID(id_message, &quot;message&quot;);
+        CONST_ID(id_backtrace, &quot;backtrace&quot;);
+
+        mesg = rb_check_funcall(obj, id_message, 0, 0);
+        if (mesg == Qundef) return Qfalse;
+        backtrace = rb_check_funcall(obj, id_backtrace, 0, 0);
+        if (backtrace == Qundef) return Qfalse;
+    }
+    else {
+        mesg = rb_attr_get(obj, id_mesg);
+        backtrace = exc_backtrace(obj);
+    }
+
+    if (!rb_equal(rb_attr_get(exc, id_mesg), mesg))
+        return Qfalse;
+    if (!rb_equal(exc_backtrace(exc), backtrace))
+        return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-backtrace">
+            
+              <b>exception.backtrace    &rarr; array
+</b>
+            
+            <a href="../classes/Exception.html#method-i-backtrace" name="method-i-backtrace" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns any backtrace associated with the exception. The backtrace is an
+array of strings, each containing either “filename:lineNo: in
+`method”‘ or “filename:lineNo.”</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">a</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;boom&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">b</span>
+  <span class="ruby-identifier">a</span>()
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">b</span>()
+<span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">detail</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-identifier">detail</span>.<span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>prog.rb:2:in `a'
+prog.rb:6:in `b'
+prog.rb:10</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-backtrace_source')" id="l_method-i-backtrace_source">show</a>
+                
+              </p>
+              <div id="method-i-backtrace_source" class="dyn-source">
+                <pre>static VALUE
+exc_backtrace(VALUE exc)
+{
+    ID bt;
+
+    CONST_ID(bt, &quot;bt&quot;);
+    return rb_attr_get(exc, bt);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exception">
+            
+              <b>exc.exception(string)  &rarr;  an_exception or exc
+</b>
+            
+            <a href="../classes/Exception.html#method-i-exception" name="method-i-exception" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>With no argument, or if the argument is the same as the receiver, return
+the receiver. Otherwise, create a new exception object of the same class as
+the receiver, but with a message equal to <code>string.to_str</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exception_source')" id="l_method-i-exception_source">show</a>
+                
+              </p>
+              <div id="method-i-exception_source" class="dyn-source">
+                <pre>static VALUE
+exc_exception(int argc, VALUE *argv, VALUE self)
+{
+    VALUE exc;
+
+    if (argc == 0) return self;
+    if (argc == 1 &amp;&amp; self == argv[0]) return self;
+    exc = rb_obj_clone(self);
+    exc_initialize(argc, argv, exc);
+
+    return exc;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>exception.inspect   &rarr; string
+</b>
+            
+            <a href="../classes/Exception.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return this exception’s class name an message</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+exc_inspect(VALUE exc)
+{
+    VALUE str, klass;
+
+    klass = CLASS_OF(exc);
+    exc = rb_obj_as_string(exc);
+    if (RSTRING_LEN(exc) == 0) {
+        return rb_str_dup(rb_class_name(klass));
+    }
+
+    str = rb_str_buf_new2(&quot;#&lt;&quot;);
+    klass = rb_class_name(klass);
+    rb_str_buf_append(str, klass);
+    rb_str_buf_cat(str, &quot;: &quot;, 2);
+    rb_str_buf_append(str, exc);
+    rb_str_buf_cat(str, &quot;&gt;&quot;, 1);
+
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-message">
+            
+              <b>exception.message   &rarr;  string
+</b>
+            
+            <a href="../classes/Exception.html#method-i-message" name="method-i-message" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the result of invoking <code>exception.to_s</code>. Normally this
+returns the exception’s message or name. By supplying a to_str method,
+exceptions are agreeing to be used where Strings are expected.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-message_source')" id="l_method-i-message_source">show</a>
+                
+              </p>
+              <div id="method-i-message_source" class="dyn-source">
+                <pre>static VALUE
+exc_message(VALUE exc)
+{
+    return rb_funcall(exc, rb_intern(&quot;to_s&quot;), 0, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-set_backtrace">
+            
+              <b>exc.set_backtrace(array)   &rarr;  array
+</b>
+            
+            <a href="../classes/Exception.html#method-i-set_backtrace" name="method-i-set_backtrace" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the backtrace information associated with <em>exc</em>. The argument
+must be an array of <code>String</code> objects in the format described in
+<code>Exception#backtrace</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-set_backtrace_source')" id="l_method-i-set_backtrace_source">show</a>
+                
+              </p>
+              <div id="method-i-set_backtrace_source" class="dyn-source">
+                <pre>static VALUE
+exc_set_backtrace(VALUE exc, VALUE bt)
+{
+    return rb_iv_set(exc, &quot;bt&quot;, rb_check_backtrace(bt));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>exception.to_s   &rarr;  string
+</b>
+            
+            <a href="../classes/Exception.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns exception’s message (or the name of the exception if no message
+is set).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+exc_to_s(VALUE exc)
+{
+    VALUE mesg = rb_attr_get(exc, rb_intern(&quot;mesg&quot;));
+
+    if (NIL_P(mesg)) return rb_class_name(CLASS_OF(exc));
+    if (OBJ_TAINTED(exc)) OBJ_TAINT(mesg);
+    return mesg;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

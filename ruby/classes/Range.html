@@ -1,0 +1,1438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Range</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Range 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/range_c.html">range.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A <code>Range</code> represents an interval—a set of values with a start
+and an end. Ranges may be constructed using the
+<em>s</em><code>..</code><em>e</em> and
+<em>s</em><code>...</code><em>e</em> literals, or with
+<code>Range::new</code>. Ranges constructed using <code>..</code> run from
+the start to the end inclusively. Those created using <code>...</code>
+exclude the end value. When used as an iterator, ranges return each value
+in the sequence.</p>
+
+<pre class="ruby">(<span class="ruby-value">-1</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>).<span class="ruby-identifier">to_a</span>      <span class="ruby-comment">#=&gt; []</span>
+(<span class="ruby-value">-5</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>).<span class="ruby-identifier">to_a</span>      <span class="ruby-comment">#=&gt; [-5, -4, -3, -2, -1]</span>
+(<span class="ruby-string">'a'</span><span class="ruby-operator">..</span><span class="ruby-string">'e'</span>).<span class="ruby-identifier">to_a</span>    <span class="ruby-comment">#=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span>
+(<span class="ruby-string">'a'</span><span class="ruby-operator">...</span><span class="ruby-string">'e'</span>).<span class="ruby-identifier">to_a</span>   <span class="ruby-comment">#=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span>
+</pre>
+
+<p>Ranges can be constructed using objects of any type, as long as the objects
+can be compared using their <code>&lt;=&gt;</code> operator and they
+support the <code>succ</code> method to return the next object in sequence.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Xs</span>                <span class="ruby-comment"># represent a string of 'x's</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Comparable</span>
+  <span class="ruby-identifier">attr</span> :<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">n</span>)
+    <span class="ruby-ivar">@length</span> = <span class="ruby-identifier">n</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">succ</span>
+    <span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">other</span>)
+    <span class="ruby-ivar">@length</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">sprintf</span> <span class="ruby-node">&quot;%2d #{inspect}&quot;</span>, <span class="ruby-ivar">@length</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-string">'x'</span> * <span class="ruby-ivar">@length</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">r</span> = <span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">3</span>)<span class="ruby-operator">..</span><span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">6</span>)   <span class="ruby-comment">#=&gt; xxx..xxxxxx</span>
+<span class="ruby-identifier">r</span>.<span class="ruby-identifier">to_a</span>                     <span class="ruby-comment">#=&gt; [xxx, xxxx, xxxxx, xxxxxx]</span>
+<span class="ruby-identifier">r</span>.<span class="ruby-identifier">member?</span>(<span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">5</span>))       <span class="ruby-comment">#=&gt; true</span>
+</pre>
+
+<p>In the previous code example, class <code>Xs</code> includes the
+<code>Comparable</code> module. This is because
+<code>Enumerable#member?</code> checks for equality using <code>==</code>.
+Including <code>Comparable</code> ensures that the <code>==</code> method
+is defined in terms of the <code>&lt;=&gt;</code> method implemented in
+<code>Xs</code>.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D-3D">===</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-begin">begin</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cover-3F">cover?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-end">end</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-eql-3F">eql?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exclude_end-3F">exclude_end?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-first">first</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-hash">hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-include-3F">include?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-last">last</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-max">max</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-member-3F">member?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-min">min</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-step">step</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Enumerable.html">
+              Enumerable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>Range.new(start, end, exclusive=false)    &rarr; range
+</b>
+            
+            <a href="../classes/Range.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Constructs a range using the given <em>start</em> and <em>end</em>. If the
+third parameter is omitted or is <code>false</code>, the <em>range</em>
+will include the end object; otherwise, it will be excluded.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+range_initialize(int argc, VALUE *argv, VALUE range)
+{
+    VALUE beg, end, flags;
+
+    rb_scan_args(argc, argv, &quot;21&quot;, &amp;beg, &amp;end, &amp;flags);
+    /* Ranges are immutable, so that they should be initialized only once. */
+    if (RANGE_EXCL(range) != Qnil) {
+        rb_name_error(rb_intern(&quot;initialize&quot;), &quot;`initialize' called twice&quot;);
+    }
+    range_init(range, beg, end, RTEST(flags));
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>rng == obj    &rarr; true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> only if <em>obj</em> is a <a
+href="Range.html">Range</a>, has equivalent beginning and end items (by
+comparing them with <code>==</code>), and has the same
+<code>exclude_end?</code> setting as <em>rng</em>.</p>
+
+<pre class="ruby">(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>) <span class="ruby-operator">==</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>)            <span class="ruby-comment">#=&gt; true</span>
+(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">Range</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>,<span class="ruby-value">2</span>)    <span class="ruby-comment">#=&gt; true</span>
+(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>) <span class="ruby-operator">==</span> (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">2</span>)           <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+range_eq(VALUE range, VALUE obj)
+{
+    if (range == obj)
+        return Qtrue;
+    if (!rb_obj_is_kind_of(obj, rb_cRange))
+        return Qfalse;
+
+    return rb_exec_recursive_paired(recursive_equal, range, obj, obj);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D-3D">
+            
+              <b>rng === obj       &rarr;  true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-3D-3D-3D" name="method-i-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> is an element of <em>rng</em>,
+<code>false</code> otherwise. Conveniently, <code>===</code> is the
+comparison operator used by <code>case</code> statements.</p>
+
+<pre>case 79
+when 1..50   then   print &quot;low\n&quot;
+when 51..75  then   print &quot;medium\n&quot;
+when 76..100 then   print &quot;high\n&quot;
+end</pre>
+
+<p><em>produces:</em></p>
+
+<pre>high</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D-3D_source')" id="l_method-i-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+range_eqq(VALUE range, VALUE val)
+{
+    return rb_funcall(range, rb_intern(&quot;include?&quot;), 1, val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-begin">
+            
+              <b>rng.begin    &rarr; obj
+</b>
+            
+            <a href="../classes/Range.html#method-i-begin" name="method-i-begin" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the first object in <em>rng</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-begin_source')" id="l_method-i-begin_source">show</a>
+                
+              </p>
+              <div id="method-i-begin_source" class="dyn-source">
+                <pre>static VALUE
+range_begin(VALUE range)
+{
+    return RANGE_BEG(range);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cover-3F">
+            
+              <b>rng.cover?(val)  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-cover-3F" name="method-i-cover-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> is between beg and end, i.e
+<code>beg &lt;= obj &lt;= end</code> (or <em>end</em> exclusive when
+<code>exclude_end?</code> is true).</p>
+
+<pre class="ruby">(<span class="ruby-string">&quot;a&quot;</span><span class="ruby-operator">..</span><span class="ruby-string">&quot;z&quot;</span>).<span class="ruby-identifier">cover?</span>(<span class="ruby-string">&quot;c&quot;</span>)    <span class="ruby-comment">#=&gt; true</span>
+(<span class="ruby-string">&quot;a&quot;</span><span class="ruby-operator">..</span><span class="ruby-string">&quot;z&quot;</span>).<span class="ruby-identifier">cover?</span>(<span class="ruby-string">&quot;5&quot;</span>)    <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cover-3F_source')" id="l_method-i-cover-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-cover-3F_source" class="dyn-source">
+                <pre>static VALUE
+range_cover(VALUE range, VALUE val)
+{
+    VALUE beg, end;
+
+    beg = RANGE_BEG(range);
+    end = RANGE_END(range);
+    if (r_le(beg, val)) {
+        if (EXCL(range)) {
+            if (r_lt(val, end))
+                return Qtrue;
+        }
+        else {
+            if (r_le(val, end))
+                return Qtrue;
+        }
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>rng.each {| i | block } &rarr; rng
+rng.each                &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/Range.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates over the elements <em>rng</em>, passing each in turn to the block.
+You can only iterate if the start object of the range supports the
+<code>succ</code> method (which means that you can’t iterate over ranges
+of <code>Float</code> objects).</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby">(<span class="ruby-value">10</span><span class="ruby-operator">..</span><span class="ruby-value">15</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
+   <span class="ruby-identifier">print</span> <span class="ruby-identifier">n</span>, <span class="ruby-string">' '</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>10 11 12 13 14 15</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_source')" id="l_method-i-each_source">show</a>
+                
+              </p>
+              <div id="method-i-each_source" class="dyn-source">
+                <pre>static VALUE
+range_each(VALUE range)
+{
+    VALUE beg, end;
+
+    RETURN_ENUMERATOR(range, 0, 0);
+
+    beg = RANGE_BEG(range);
+    end = RANGE_END(range);
+
+    if (FIXNUM_P(beg) &amp;&amp; FIXNUM_P(end)) { /* fixnums are special */
+        long lim = FIX2LONG(end);
+        long i;
+
+        if (!EXCL(range))
+            lim += 1;
+        for (i = FIX2LONG(beg); i &lt; lim; i++) {
+            rb_yield(LONG2FIX(i));
+        }
+    }
+    else if (SYMBOL_P(beg) &amp;&amp; SYMBOL_P(end)) { /* symbols are special */
+        VALUE args[2];
+
+        args[0] = rb_sym_to_s(end);
+        args[1] = EXCL(range) ? Qtrue : Qfalse;
+        rb_block_call(rb_sym_to_s(beg), rb_intern(&quot;upto&quot;), 2, args, sym_each_i, 0);
+    }
+    else {
+        VALUE tmp = rb_check_string_type(beg);
+
+        if (!NIL_P(tmp)) {
+            VALUE args[2];
+
+            args[0] = end;
+            args[1] = EXCL(range) ? Qtrue : Qfalse;
+            rb_block_call(tmp, rb_intern(&quot;upto&quot;), 2, args, rb_yield, 0);
+        }
+        else {
+            if (!discrete_object_p(beg)) {
+                rb_raise(rb_eTypeError, &quot;can't iterate from %s&quot;,
+                         rb_obj_classname(beg));
+            }
+            range_each_func(range, each_i, NULL);
+        }
+    }
+    return range;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-end">
+            
+              <b>rng.end    &rarr; obj
+</b>
+            
+            <a href="../classes/Range.html#method-i-end" name="method-i-end" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the object that defines the end of <em>rng</em>.</p>
+
+<pre class="ruby">(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>).<span class="ruby-identifier">end</span>    <span class="ruby-comment">#=&gt; 10</span>
+(<span class="ruby-value">1</span><span class="ruby-operator">...</span><span class="ruby-value">10</span>).<span class="ruby-identifier">end</span>   <span class="ruby-comment">#=&gt; 10</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-end_source')" id="l_method-i-end_source">show</a>
+                
+              </p>
+              <div id="method-i-end_source" class="dyn-source">
+                <pre>static VALUE
+range_end(VALUE range)
+{
+    return RANGE_END(range);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eql-3F">
+            
+              <b>rng.eql?(obj)    &rarr; true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-eql-3F" name="method-i-eql-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> only if <em>obj</em> is a <a
+href="Range.html">Range</a>, has equivalent beginning and end items (by
+comparing them with <a href="Range.html#method-i-eql-3F">eql?</a>), and has
+the same <a href="Range.html#method-i-exclude_end-3F">exclude_end?</a>
+setting as <em>rng</em>.</p>
+
+<pre class="ruby">(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>)            <span class="ruby-comment">#=&gt; true</span>
+(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-constant">Range</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>,<span class="ruby-value">2</span>))  <span class="ruby-comment">#=&gt; true</span>
+(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-value">2</span>)           <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eql-3F_source')" id="l_method-i-eql-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eql-3F_source" class="dyn-source">
+                <pre>static VALUE
+range_eql(VALUE range, VALUE obj)
+{
+    if (range == obj)
+        return Qtrue;
+    if (!rb_obj_is_kind_of(obj, rb_cRange))
+        return Qfalse;
+    return rb_exec_recursive_paired(recursive_eql, range, obj, obj);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exclude_end-3F">
+            
+              <b>rng.exclude_end?    &rarr; true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-exclude_end-3F" name="method-i-exclude_end-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>rng</em> excludes its end value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exclude_end-3F_source')" id="l_method-i-exclude_end-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-exclude_end-3F_source" class="dyn-source">
+                <pre>static VALUE
+range_exclude_end_p(VALUE range)
+{
+    return EXCL(range) ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-first">
+            
+              <b>rng.first    &rarr; obj
+rng.first(n) &rarr; an_array
+</b>
+            
+            <a href="../classes/Range.html#method-i-first" name="method-i-first" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the first object in <em>rng</em>, or the first <code>n</code>
+elements.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-first_source')" id="l_method-i-first_source">show</a>
+                
+              </p>
+              <div id="method-i-first_source" class="dyn-source">
+                <pre>static VALUE
+range_first(int argc, VALUE *argv, VALUE range)
+{
+    VALUE n, ary[2];
+
+    if (argc == 0) return RANGE_BEG(range);
+
+    rb_scan_args(argc, argv, &quot;1&quot;, &amp;n);
+    ary[0] = n;
+    ary[1] = rb_ary_new2(NUM2LONG(n));
+    rb_block_call(range, rb_intern(&quot;each&quot;), 0, 0, first_i, (VALUE)ary);
+
+    return ary[1];
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-hash">
+            
+              <b>rng.hash    &rarr; fixnum
+</b>
+            
+            <a href="../classes/Range.html#method-i-hash" name="method-i-hash" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Generate a hash value such that two ranges with the same start and end
+points, and the same value for the “exclude end” flag, generate the
+same hash value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-hash_source')" id="l_method-i-hash_source">show</a>
+                
+              </p>
+              <div id="method-i-hash_source" class="dyn-source">
+                <pre>static VALUE
+range_hash(VALUE range)
+{
+    return rb_exec_recursive_outer(recursive_hash, range, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-include-3F">
+            
+              <b>rng.member?(val)  &rarr;  true or false
+rng.include?(val) &rarr;  true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-include-3F" name="method-i-include-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> is an element of <em>rng</em>,
+<code>false</code> otherwise.  If beg and end are numeric, comparison is
+done according magnitude of values.</p>
+
+<pre>(&quot;a&quot;..&quot;z&quot;).include?(&quot;g&quot;)  # -&gt; true
+(&quot;a&quot;..&quot;z&quot;).include?(&quot;A&quot;)  # -&gt; false</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-include-3F_source')" id="l_method-i-include-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-include-3F_source" class="dyn-source">
+                <pre>static VALUE
+range_include(VALUE range, VALUE val)
+{
+    VALUE beg = RANGE_BEG(range);
+    VALUE end = RANGE_END(range);
+    int nv = FIXNUM_P(beg) || FIXNUM_P(end) ||
+             rb_obj_is_kind_of(beg, rb_cNumeric) ||
+             rb_obj_is_kind_of(end, rb_cNumeric);
+
+    if (nv ||
+        !NIL_P(rb_check_to_integer(beg, &quot;to_int&quot;)) ||
+        !NIL_P(rb_check_to_integer(end, &quot;to_int&quot;))) {
+        if (r_le(beg, val)) {
+            if (EXCL(range)) {
+                if (r_lt(val, end))
+                    return Qtrue;
+            }
+            else {
+                if (r_le(val, end))
+                    return Qtrue;
+            }
+        }
+        return Qfalse;
+    }
+    else if (TYPE(beg) == T_STRING &amp;&amp; TYPE(end) == T_STRING &amp;&amp;
+             RSTRING_LEN(beg) == 1 &amp;&amp; RSTRING_LEN(end) == 1) {
+        if (NIL_P(val)) return Qfalse;
+        if (TYPE(val) == T_STRING) {
+            if (RSTRING_LEN(val) == 0 || RSTRING_LEN(val) &gt; 1)
+                return Qfalse;
+            else {
+                char b = RSTRING_PTR(beg)[0];
+                char e = RSTRING_PTR(end)[0];
+                char v = RSTRING_PTR(val)[0];
+
+                if (ISASCII(b) &amp;&amp; ISASCII(e) &amp;&amp; ISASCII(v)) {
+                    if (b &lt;= v &amp;&amp; v &lt; e) return Qtrue;
+                    if (!EXCL(range) &amp;&amp; v == e) return Qtrue;
+                    return Qfalse;
+                }
+            }
+        }
+    }
+    /* TODO: ruby_frame-&gt;this_func = rb_intern(&quot;include?&quot;); */
+    return rb_call_super(1, &amp;val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>rng.inspect  &rarr; string
+</b>
+            
+            <a href="../classes/Range.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Convert this range object to a printable form (using <code>inspect</code>
+to convert the start and end objects).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+range_inspect(VALUE range)
+{
+    return rb_exec_recursive(inspect_range, range, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-last">
+            
+              <b>rng.last    &rarr; obj
+rng.last(n) &rarr; an_array
+</b>
+            
+            <a href="../classes/Range.html#method-i-last" name="method-i-last" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the last object in <em>rng</em>, or the last <code>n</code>
+elements.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-last_source')" id="l_method-i-last_source">show</a>
+                
+              </p>
+              <div id="method-i-last_source" class="dyn-source">
+                <pre>static VALUE
+range_last(int argc, VALUE *argv, VALUE range)
+{
+    VALUE rb_ary_last(int, VALUE *, VALUE);
+
+    if (argc == 0) return RANGE_END(range);
+    return rb_ary_last(argc, argv, rb_Array(range));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-max">
+            
+              <b>rng.max                    &rarr; obj
+rng.max {| a,b | block }   &rarr; obj
+</b>
+            
+            <a href="../classes/Range.html#method-i-max" name="method-i-max" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the maximum value in <em>rng</em>. The second uses the block to
+compare values.  Returns nil if the first value in range is larger than the
+last value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-max_source')" id="l_method-i-max_source">show</a>
+                
+              </p>
+              <div id="method-i-max_source" class="dyn-source">
+                <pre>static VALUE
+range_max(VALUE range)
+{
+    VALUE e = RANGE_END(range);
+    int nm = FIXNUM_P(e) || rb_obj_is_kind_of(e, rb_cNumeric);
+
+    if (rb_block_given_p() || (EXCL(range) &amp;&amp; !nm)) {
+        return rb_call_super(0, 0);
+    }
+    else {
+        VALUE b = RANGE_BEG(range);
+        int c = rb_cmpint(rb_funcall(b, id_cmp, 1, e), b, e);
+
+        if (c &gt; 0)
+            return Qnil;
+        if (EXCL(range)) {
+            if (!FIXNUM_P(e) &amp;&amp; !rb_obj_is_kind_of(e, rb_cInteger)) {
+                rb_raise(rb_eTypeError, &quot;cannot exclude non Integer end value&quot;);
+            }
+            if (c == 0) return Qnil;
+            if (FIXNUM_P(e)) {
+                return LONG2NUM(FIX2LONG(e) - 1);
+            }
+            return rb_funcall(e, '-', 1, INT2FIX(1));
+        }
+        return e;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-member-3F">
+            
+              <b>rng.member?(val)  &rarr;  true or false
+rng.include?(val) &rarr;  true or false
+</b>
+            
+            <a href="../classes/Range.html#method-i-member-3F" name="method-i-member-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> is an element of <em>rng</em>,
+<code>false</code> otherwise.  If beg and end are numeric, comparison is
+done according magnitude of values.</p>
+
+<pre>(&quot;a&quot;..&quot;z&quot;).include?(&quot;g&quot;)  # -&gt; true
+(&quot;a&quot;..&quot;z&quot;).include?(&quot;A&quot;)  # -&gt; false</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-member-3F_source')" id="l_method-i-member-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-member-3F_source" class="dyn-source">
+                <pre>static VALUE
+range_include(VALUE range, VALUE val)
+{
+    VALUE beg = RANGE_BEG(range);
+    VALUE end = RANGE_END(range);
+    int nv = FIXNUM_P(beg) || FIXNUM_P(end) ||
+             rb_obj_is_kind_of(beg, rb_cNumeric) ||
+             rb_obj_is_kind_of(end, rb_cNumeric);
+
+    if (nv ||
+        !NIL_P(rb_check_to_integer(beg, &quot;to_int&quot;)) ||
+        !NIL_P(rb_check_to_integer(end, &quot;to_int&quot;))) {
+        if (r_le(beg, val)) {
+            if (EXCL(range)) {
+                if (r_lt(val, end))
+                    return Qtrue;
+            }
+            else {
+                if (r_le(val, end))
+                    return Qtrue;
+            }
+        }
+        return Qfalse;
+    }
+    else if (TYPE(beg) == T_STRING &amp;&amp; TYPE(end) == T_STRING &amp;&amp;
+             RSTRING_LEN(beg) == 1 &amp;&amp; RSTRING_LEN(end) == 1) {
+        if (NIL_P(val)) return Qfalse;
+        if (TYPE(val) == T_STRING) {
+            if (RSTRING_LEN(val) == 0 || RSTRING_LEN(val) &gt; 1)
+                return Qfalse;
+            else {
+                char b = RSTRING_PTR(beg)[0];
+                char e = RSTRING_PTR(end)[0];
+                char v = RSTRING_PTR(val)[0];
+
+                if (ISASCII(b) &amp;&amp; ISASCII(e) &amp;&amp; ISASCII(v)) {
+                    if (b &lt;= v &amp;&amp; v &lt; e) return Qtrue;
+                    if (!EXCL(range) &amp;&amp; v == e) return Qtrue;
+                    return Qfalse;
+                }
+            }
+        }
+    }
+    /* TODO: ruby_frame-&gt;this_func = rb_intern(&quot;include?&quot;); */
+    return rb_call_super(1, &amp;val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-min">
+            
+              <b>rng.min                    &rarr; obj
+rng.min {| a,b | block }   &rarr; obj
+</b>
+            
+            <a href="../classes/Range.html#method-i-min" name="method-i-min" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the minimum value in <em>rng</em>. The second uses the block to
+compare values.  Returns nil if the first value in range is larger than the
+last value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-min_source')" id="l_method-i-min_source">show</a>
+                
+              </p>
+              <div id="method-i-min_source" class="dyn-source">
+                <pre>static VALUE
+range_min(VALUE range)
+{
+    if (rb_block_given_p()) {
+        return rb_call_super(0, 0);
+    }
+    else {
+        VALUE b = RANGE_BEG(range);
+        VALUE e = RANGE_END(range);
+        int c = rb_cmpint(rb_funcall(b, id_cmp, 1, e), b, e);
+
+        if (c &gt; 0 || (c == 0 &amp;&amp; EXCL(range)))
+            return Qnil;
+        return b;
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-step">
+            
+              <b>rng.step(n=1) {| obj | block }    &rarr; rng
+rng.step(n=1)                     &rarr; an_enumerator
+</b>
+            
+            <a href="../classes/Range.html#method-i-step" name="method-i-step" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates over <em>rng</em>, passing each <em>n</em>th element to the block.
+If the range contains numbers, <em>n</em> is added for each iteration. 
+Otherwise <code>step</code> invokes <code>succ</code> to iterate through
+range elements. The following code uses class <code>Xs</code>, which is
+defined in the class-level documentation.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby"><span class="ruby-identifier">range</span> = <span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>)<span class="ruby-operator">..</span><span class="ruby-constant">Xs</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">10</span>)
+<span class="ruby-identifier">range</span>.<span class="ruby-identifier">step</span>(<span class="ruby-value">2</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">x</span>}
+<span class="ruby-identifier">range</span>.<span class="ruby-identifier">step</span>(<span class="ruby-value">3</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-identifier">x</span>}
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre> 1 x
+ 3 xxx
+ 5 xxxxx
+ 7 xxxxxxx
+ 9 xxxxxxxxx
+ 1 x
+ 4 xxxx
+ 7 xxxxxxx
+10 xxxxxxxxxx</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-step_source')" id="l_method-i-step_source">show</a>
+                
+              </p>
+              <div id="method-i-step_source" class="dyn-source">
+                <pre>static VALUE
+range_step(int argc, VALUE *argv, VALUE range)
+{
+    VALUE b, e, step, tmp;
+
+    RETURN_ENUMERATOR(range, argc, argv);
+
+    b = RANGE_BEG(range);
+    e = RANGE_END(range);
+    if (argc == 0) {
+        step = INT2FIX(1);
+    }
+    else {
+        rb_scan_args(argc, argv, &quot;01&quot;, &amp;step);
+        if (!rb_obj_is_kind_of(step, rb_cNumeric)) {
+            step = rb_to_int(step);
+        }
+        if (rb_funcall(step, '&lt;', 1, INT2FIX(0))) {
+            rb_raise(rb_eArgError, &quot;step can't be negative&quot;);
+        }
+        else if (!rb_funcall(step, '&gt;', 1, INT2FIX(0))) {
+            rb_raise(rb_eArgError, &quot;step can't be 0&quot;);
+        }
+    }
+
+    if (FIXNUM_P(b) &amp;&amp; FIXNUM_P(e) &amp;&amp; FIXNUM_P(step)) { /* fixnums are special */
+        long end = FIX2LONG(e);
+        long i, unit = FIX2LONG(step);
+
+        if (!EXCL(range))
+            end += 1;
+        i = FIX2LONG(b);
+        while (i &lt; end) {
+            rb_yield(LONG2NUM(i));
+            if (i + unit &lt; i) break;
+            i += unit;
+        }
+
+    }
+    else if (SYMBOL_P(b) &amp;&amp; SYMBOL_P(e)) { /* symbols are special */
+        VALUE args[2], iter[2];
+
+        args[0] = rb_sym_to_s(e);
+        args[1] = EXCL(range) ? Qtrue : Qfalse;
+        iter[0] = INT2FIX(1);
+        iter[1] = step;
+        rb_block_call(rb_sym_to_s(b), rb_intern(&quot;upto&quot;), 2, args, sym_step_i, (VALUE)iter);
+    }
+    else if (ruby_float_step(b, e, step, EXCL(range))) {
+        /* done */
+    }
+    else if (rb_obj_is_kind_of(b, rb_cNumeric) ||
+             !NIL_P(rb_check_to_integer(b, &quot;to_int&quot;)) ||
+             !NIL_P(rb_check_to_integer(e, &quot;to_int&quot;))) {
+        ID op = EXCL(range) ? '&lt;' : rb_intern(&quot;&lt;=&quot;);
+        VALUE v = b;
+        int i = 0;
+
+        while (RTEST(rb_funcall(v, op, 1, e))) {
+            rb_yield(v);
+            i++;
+            v = rb_funcall(b, '+', 1, rb_funcall(INT2NUM(i), '*', 1, step));
+        }
+    }
+    else {
+        tmp = rb_check_string_type(b);
+
+        if (!NIL_P(tmp)) {
+            VALUE args[2], iter[2];
+
+            b = tmp;
+            args[0] = e;
+            args[1] = EXCL(range) ? Qtrue : Qfalse;
+            iter[0] = INT2FIX(1);
+            iter[1] = step;
+            rb_block_call(b, rb_intern(&quot;upto&quot;), 2, args, step_i, (VALUE)iter);
+        }
+        else {
+            VALUE args[2];
+
+            if (!discrete_object_p(b)) {
+                rb_raise(rb_eTypeError, &quot;can't iterate from %s&quot;,
+                         rb_obj_classname(b));
+            }
+            args[0] = INT2FIX(1);
+            args[1] = step;
+            range_each_func(range, step_i, args);
+        }
+    }
+    return range;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>rng.to_s   &rarr; string
+</b>
+            
+            <a href="../classes/Range.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Convert this range object to a printable form.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+range_to_s(VALUE range)
+{
+    VALUE str, str2;
+
+    str = rb_obj_as_string(RANGE_BEG(range));
+    str2 = rb_obj_as_string(RANGE_END(range));
+    str = rb_str_dup(str);
+    rb_str_cat(str, &quot;...&quot;, EXCL(range) ? 3 : 2);
+    rb_str_append(str, str2);
+    OBJ_INFECT(str, str2);
+
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

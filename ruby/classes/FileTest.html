@@ -1,0 +1,1530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>FileTest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            FileTest 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/file_c.html">file.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>FileTest</code> implements file test operations similar to those used
+in <code>File::Stat</code>. It exists as a standalone module, and its
+methods are also insinuated into the <code>File</code> class. (Note that
+this is not done by inclusion: the interpreter cheats).</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-blockdev-3F">blockdev?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-chardev-3F">chardev?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-directory-3F">directory?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-executable-3F">executable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-executable_real-3F">executable_real?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exist-3F">exist?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exists-3F">exists?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-file-3F">file?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-grpowned-3F">grpowned?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-identical-3F">identical?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-owned-3F">owned?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pipe-3F">pipe?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-readable-3F">readable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-readable_real-3F">readable_real?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-setgid-3F">setgid?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-setuid-3F">setuid?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-size-3F">size?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-socket-3F">socket?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-sticky-3F">sticky?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-symlink-3F">symlink?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-world_readable-3F">world_readable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-world_writable-3F">world_writable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-writable-3F">writable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-writable_real-3F">writable_real?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Z</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-zero-3F">zero?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-blockdev-3F">
+            
+              <b>File.blockdev?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-blockdev-3F" name="method-i-blockdev-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a block device.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-blockdev-3F_source')" id="l_method-i-blockdev-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-blockdev-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_blockdev_p(VALUE obj, VALUE fname)
+{
+#ifndef S_ISBLK
+#   ifdef S_IFBLK
+#       define S_ISBLK(m) ((m &amp; S_IFMT) == S_IFBLK)
+#   else
+#       define S_ISBLK(m) (0)  /* anytime false */
+#   endif
+#endif
+
+#ifdef S_ISBLK
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISBLK(st.st_mode)) return Qtrue;
+
+#endif
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-chardev-3F">
+            
+              <b>File.chardev?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-chardev-3F" name="method-i-chardev-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a character device.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-chardev-3F_source')" id="l_method-i-chardev-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-chardev-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_chardev_p(VALUE obj, VALUE fname)
+{
+#ifndef S_ISCHR
+#   define S_ISCHR(m) ((m &amp; S_IFMT) == S_IFCHR)
+#endif
+
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISCHR(st.st_mode)) return Qtrue;
+
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-directory-3F">
+            
+              <b>File.directory?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-directory-3F" name="method-i-directory-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a directory, or a symlink
+that points at a directory, and <code>false</code> otherwise.</p>
+
+<pre>File.directory?(&quot;.&quot;)</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-directory-3F_source')" id="l_method-i-directory-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-directory-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_file_directory_p(VALUE obj, VALUE fname)
+{
+#ifndef S_ISDIR
+#   define S_ISDIR(m) ((m &amp; S_IFMT) == S_IFDIR)
+#endif
+
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISDIR(st.st_mode)) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-executable-3F">
+            
+              <b>File.executable?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-executable-3F" name="method-i-executable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is executable by the effective
+user id of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-executable-3F_source')" id="l_method-i-executable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-executable-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_executable_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (eaccess(StringValueCStr(fname), X_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-executable_real-3F">
+            
+              <b>File.executable_real?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-executable_real-3F" name="method-i-executable_real-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is executable by the real user
+id of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-executable_real-3F_source')" id="l_method-i-executable_real-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-executable_real-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_executable_real_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (access_internal(StringValueCStr(fname), X_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exist-3F">
+            
+              <b>Dir.exist?(file_name)   &rarr;  true or false
+Dir.exists?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-exist-3F" name="method-i-exist-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a directory,
+<code>false</code> otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exist-3F_source')" id="l_method-i-exist-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-exist-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_exist_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exists-3F">
+            
+              <b>File.exist?(file_name)    &rarr;  true or false
+File.exists?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-exists-3F" name="method-i-exists-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if the named file exists.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exists-3F_source')" id="l_method-i-exists-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-exists-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_exist_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-file-3F">
+            
+              <b>File.file?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-file-3F" name="method-i-file-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file exists and is a regular file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-file-3F_source')" id="l_method-i-file-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-file-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_file_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISREG(st.st_mode)) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-grpowned-3F">
+            
+              <b>File.grpowned?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-grpowned-3F" name="method-i-grpowned-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file exists and the effective group
+id of the calling process is the owner of the file. Returns
+<code>false</code> on Windows.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-grpowned-3F_source')" id="l_method-i-grpowned-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-grpowned-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_grpowned_p(VALUE obj, VALUE fname)
+{
+#ifndef _WIN32
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (rb_group_member(st.st_gid)) return Qtrue;
+#endif
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-identical-3F">
+            
+              <b>File.identical?(file_1, file_2)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-identical-3F" name="method-i-identical-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named files are identical.</p>
+
+<pre class="ruby"><span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>) {}
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">identical?</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;a&quot;</span>)      <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">identical?</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;./a&quot;</span>)    <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">link</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;b&quot;</span>)
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">identical?</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;b&quot;</span>)      <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">symlink</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;c&quot;</span>)
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">identical?</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;c&quot;</span>)      <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;d&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>) {}
+<span class="ruby-identifier">p</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">identical?</span>(<span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;d&quot;</span>)      <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-identical-3F_source')" id="l_method-i-identical-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-identical-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_identical_p(VALUE obj, VALUE fname1, VALUE fname2)
+{
+#ifndef DOSISH
+    struct stat st1, st2;
+
+    if (rb_stat(fname1, &amp;st1) &lt; 0) return Qfalse;
+    if (rb_stat(fname2, &amp;st2) &lt; 0) return Qfalse;
+    if (st1.st_dev != st2.st_dev) return Qfalse;
+    if (st1.st_ino != st2.st_ino) return Qfalse;
+#else
+# ifdef _WIN32
+    BY_HANDLE_FILE_INFORMATION st1, st2;
+    HANDLE f1 = 0, f2 = 0;
+# endif
+
+    rb_secure(2);
+# ifdef _WIN32
+    f1 = w32_io_info(&amp;fname1, &amp;st1);
+    if (f1 == INVALID_HANDLE_VALUE) return Qfalse;
+    f2 = w32_io_info(&amp;fname2, &amp;st2);
+    if (f1) CloseHandle(f1);
+    if (f2 == INVALID_HANDLE_VALUE) return Qfalse;
+    if (f2) CloseHandle(f2);
+
+    if (st1.dwVolumeSerialNumber == st2.dwVolumeSerialNumber &amp;&amp;
+        st1.nFileIndexHigh == st2.nFileIndexHigh &amp;&amp;
+        st1.nFileIndexLow == st2.nFileIndexLow)
+        return Qtrue;
+    if (!f1 || !f2) return Qfalse;
+    if (rb_w32_iswin95()) return Qfalse;
+# else
+    FilePathValue(fname1);
+    fname1 = rb_str_new4(fname1);
+    fname1 = rb_str_encode_ospath(fname1);
+    FilePathValue(fname2);
+    fname2 = rb_str_encode_ospath(fname2);
+    if (access(RSTRING_PTR(fname1), 0)) return Qfalse;
+    if (access(RSTRING_PTR(fname2), 0)) return Qfalse;
+# endif
+    fname1 = rb_file_expand_path(fname1, Qnil);
+    fname2 = rb_file_expand_path(fname2, Qnil);
+    if (RSTRING_LEN(fname1) != RSTRING_LEN(fname2)) return Qfalse;
+    if (rb_memcicmp(RSTRING_PTR(fname1), RSTRING_PTR(fname2), RSTRING_LEN(fname1)))
+        return Qfalse;
+#endif
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-owned-3F">
+            
+              <b>File.owned?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-owned-3F" name="method-i-owned-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file exists and the effective used
+id of the calling process is the owner of the file.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-owned-3F_source')" id="l_method-i-owned-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-owned-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_owned_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (st.st_uid == geteuid()) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pipe-3F">
+            
+              <b>File.pipe?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-pipe-3F" name="method-i-pipe-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a pipe.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pipe-3F_source')" id="l_method-i-pipe-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-pipe-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_pipe_p(VALUE obj, VALUE fname)
+{
+#ifdef S_IFIFO
+#  ifndef S_ISFIFO
+#    define S_ISFIFO(m) ((m &amp; S_IFMT) == S_IFIFO)
+#  endif
+
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISFIFO(st.st_mode)) return Qtrue;
+
+#endif
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readable-3F">
+            
+              <b>File.readable?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-readable-3F" name="method-i-readable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is readable by the effective
+user id of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readable-3F_source')" id="l_method-i-readable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-readable-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_readable_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (eaccess(StringValueCStr(fname), R_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-readable_real-3F">
+            
+              <b>File.readable_real?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-readable_real-3F" name="method-i-readable_real-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is readable by the real user id
+of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-readable_real-3F_source')" id="l_method-i-readable_real-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-readable_real-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_readable_real_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (access_internal(StringValueCStr(fname), R_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-setgid-3F">
+            
+              <b>File.setgid?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-setgid-3F" name="method-i-setgid-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file has the setgid bit set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-setgid-3F_source')" id="l_method-i-setgid-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-setgid-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_sgid_p(VALUE obj, VALUE fname)
+{
+#ifdef S_ISGID
+    return check3rdbyte(fname, S_ISGID);
+#else
+    return Qfalse;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-setuid-3F">
+            
+              <b>File.setuid?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-setuid-3F" name="method-i-setuid-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file has the setuid bit set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-setuid-3F_source')" id="l_method-i-setuid-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-setuid-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_suid_p(VALUE obj, VALUE fname)
+{
+#ifdef S_ISUID
+    return check3rdbyte(fname, S_ISUID);
+#else
+    return Qfalse;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>File.size(file_name)   &rarr; integer
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the size of <code>file_name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_s_size(VALUE klass, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) {
+        FilePathValue(fname);
+        rb_sys_fail(RSTRING_PTR(fname));
+    }
+    return OFFT2NUM(st.st_size);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size-3F">
+            
+              <b>File.size?(file_name)   &rarr; Integer or nil
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-size-3F" name="method-i-size-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>nil</code> if <code>file_name</code> doesn’t exist or has
+zero size, the size of the file otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size-3F_source')" id="l_method-i-size-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-size-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_size_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qnil;
+    if (st.st_size == 0) return Qnil;
+    return OFFT2NUM(st.st_size);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-socket-3F">
+            
+              <b>File.socket?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-socket-3F" name="method-i-socket-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a socket.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-socket-3F_source')" id="l_method-i-socket-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-socket-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_socket_p(VALUE obj, VALUE fname)
+{
+#ifndef S_ISSOCK
+#  ifdef _S_ISSOCK
+#    define S_ISSOCK(m) _S_ISSOCK(m)
+#  else
+#    ifdef _S_IFSOCK
+#      define S_ISSOCK(m) ((m &amp; S_IFMT) == _S_IFSOCK)
+#    else
+#      ifdef S_IFSOCK
+#        define S_ISSOCK(m) ((m &amp; S_IFMT) == S_IFSOCK)
+#      endif
+#    endif
+#  endif
+#endif
+
+#ifdef S_ISSOCK
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (S_ISSOCK(st.st_mode)) return Qtrue;
+
+#endif
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sticky-3F">
+            
+              <b>File.sticky?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-sticky-3F" name="method-i-sticky-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file has the sticky bit set.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sticky-3F_source')" id="l_method-i-sticky-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-sticky-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_sticky_p(VALUE obj, VALUE fname)
+{
+#ifdef S_ISVTX
+    return check3rdbyte(fname, S_ISVTX);
+#else
+    return Qnil;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-symlink-3F">
+            
+              <b>File.symlink?(file_name)   &rarr;  true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-symlink-3F" name="method-i-symlink-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is a symbolic link.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-symlink-3F_source')" id="l_method-i-symlink-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-symlink-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_symlink_p(VALUE obj, VALUE fname)
+{
+#ifndef S_ISLNK
+#  ifdef _S_ISLNK
+#    define S_ISLNK(m) _S_ISLNK(m)
+#  else
+#    ifdef _S_IFLNK
+#      define S_ISLNK(m) ((m &amp; S_IFMT) == _S_IFLNK)
+#    else
+#      ifdef S_IFLNK
+#        define S_ISLNK(m) ((m &amp; S_IFMT) == S_IFLNK)
+#      endif
+#    endif
+#  endif
+#endif
+
+#ifdef S_ISLNK
+    struct stat st;
+
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (lstat(StringValueCStr(fname), &amp;st) &lt; 0) return Qfalse;
+    if (S_ISLNK(st.st_mode)) return Qtrue;
+#endif
+
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-world_readable-3F">
+            
+              <b>File.world_readable?(file_name)   &rarr; fixnum or nil
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-world_readable-3F" name="method-i-world_readable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>If <em>file_name</em> is readable by others, returns an integer
+representing the file permission bits of <em>file_name</em>. Returns
+<code>nil</code> otherwise. The meaning of the bits is platform dependent;
+on Unix systems, see <code>stat(2)</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">File</span>.<span class="ruby-identifier">world_readable?</span>(<span class="ruby-string">&quot;/etc/passwd&quot;</span>)           <span class="ruby-comment">#=&gt; 420</span>
+<span class="ruby-identifier">m</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">world_readable?</span>(<span class="ruby-string">&quot;/etc/passwd&quot;</span>)
+<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%o&quot;</span>, <span class="ruby-identifier">m</span>)                              <span class="ruby-comment">#=&gt; &quot;644&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-world_readable-3F_source')" id="l_method-i-world_readable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-world_readable-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_world_readable_p(VALUE obj, VALUE fname)
+{
+#ifdef S_IROTH
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qnil;
+    if ((st.st_mode &amp; (S_IROTH)) == S_IROTH) {
+        return UINT2NUM(st.st_mode &amp; (S_IRUGO|S_IWUGO|S_IXUGO));
+    }
+#endif
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-world_writable-3F">
+            
+              <b>File.world_writable?(file_name)   &rarr; fixnum or nil
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-world_writable-3F" name="method-i-world_writable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>If <em>file_name</em> is writable by others, returns an integer
+representing the file permission bits of <em>file_name</em>. Returns
+<code>nil</code> otherwise. The meaning of the bits is platform dependent;
+on Unix systems, see <code>stat(2)</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">File</span>.<span class="ruby-identifier">world_writable?</span>(<span class="ruby-string">&quot;/tmp&quot;</span>)                  <span class="ruby-comment">#=&gt; 511</span>
+<span class="ruby-identifier">m</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">world_writable?</span>(<span class="ruby-string">&quot;/tmp&quot;</span>)
+<span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%o&quot;</span>, <span class="ruby-identifier">m</span>)                              <span class="ruby-comment">#=&gt; &quot;777&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-world_writable-3F_source')" id="l_method-i-world_writable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-world_writable-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_world_writable_p(VALUE obj, VALUE fname)
+{
+#ifdef S_IWOTH
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qnil;
+    if ((st.st_mode &amp; (S_IWOTH)) == S_IWOTH) {
+        return UINT2NUM(st.st_mode &amp; (S_IRUGO|S_IWUGO|S_IXUGO));
+    }
+#endif
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-writable-3F">
+            
+              <b>File.writable?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-writable-3F" name="method-i-writable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is writable by the effective
+user id of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-writable-3F_source')" id="l_method-i-writable-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-writable-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_writable_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (eaccess(StringValueCStr(fname), W_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-writable_real-3F">
+            
+              <b>File.writable_real?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-writable_real-3F" name="method-i-writable_real-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file is writable by the real user id
+of this process.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-writable_real-3F_source')" id="l_method-i-writable_real-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-writable_real-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_writable_real_p(VALUE obj, VALUE fname)
+{
+    rb_secure(2);
+    FilePathValue(fname);
+    fname = rb_str_encode_ospath(fname);
+    if (access_internal(StringValueCStr(fname), W_OK) &lt; 0) return Qfalse;
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-zero-3F">
+            
+              <b>File.zero?(file_name)   &rarr; true or false
+</b>
+            
+            <a href="../classes/FileTest.html#method-i-zero-3F" name="method-i-zero-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the named file exists and has a zero size.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-zero-3F_source')" id="l_method-i-zero-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-zero-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_file_zero_p(VALUE obj, VALUE fname)
+{
+    struct stat st;
+
+    if (rb_stat(fname, &amp;st) &lt; 0) return Qfalse;
+    if (st.st_size == 0) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

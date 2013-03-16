@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Encoding::UndefinedConversionError</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Encoding::UndefinedConversionError 
+            
+                <span class="parent">&lt; 
+                    
+                    rb_eEncodingError
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/encoding_c.html">encoding.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Raised by <a href="../Encoding.html">Encoding</a> and <a
+href="../String.html">String</a> methods when a transcoding operation
+fails.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-destination_encoding">destination_encoding</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-destination_encoding_name">destination_encoding_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-error_char">error_char</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-source_encoding">source_encoding</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-source_encoding_name">source_encoding_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-destination_encoding">
+            
+              <b>ecerr.destination_encoding         &rarr; string
+</b>
+            
+            <a href="../../classes/Encoding/UndefinedConversionError.html#method-i-destination_encoding" name="method-i-destination_encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the destination encoding as an encoding object.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-destination_encoding_source')" id="l_method-i-destination_encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-destination_encoding_source" class="dyn-source">
+                <pre>static VALUE
+ecerr_destination_encoding(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;destination_encoding&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-destination_encoding_name">
+            
+              <b>ecerr.destination_encoding_name         &rarr; string
+</b>
+            
+            <a href="../../classes/Encoding/UndefinedConversionError.html#method-i-destination_encoding_name" name="method-i-destination_encoding_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the destination encoding name as a string.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-destination_encoding_name_source')" id="l_method-i-destination_encoding_name_source">show</a>
+                
+              </p>
+              <div id="method-i-destination_encoding_name_source" class="dyn-source">
+                <pre>static VALUE
+ecerr_destination_encoding_name(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;destination_encoding_name&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-error_char">
+            
+              <b>ecerr.error_char         &rarr; string
+</b>
+            
+            <a href="../../classes/Encoding/UndefinedConversionError.html#method-i-error_char" name="method-i-error_char" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the one-character string which cause <a
+href="UndefinedConversionError.html">Encoding::UndefinedConversionError</a>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">ec</span> = <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">Converter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;ISO-8859-1&quot;</span>, <span class="ruby-string">&quot;EUC-JP&quot;</span>)
+<span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">ec</span>.<span class="ruby-identifier">convert</span>(<span class="ruby-string">&quot;\xa0&quot;</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UndefinedConversionError</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">error_char</span>.<span class="ruby-identifier">dump</span>   <span class="ruby-comment">#=&gt; &quot;\xC2\xA0&quot;</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">error_char</span>.<span class="ruby-identifier">encoding</span>  <span class="ruby-comment">#=&gt; #&lt;Encoding:UTF-8&gt;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-error_char_source')" id="l_method-i-error_char_source">show</a>
+                
+              </p>
+              <div id="method-i-error_char_source" class="dyn-source">
+                <pre>static VALUE
+ecerr_error_char(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;error_char&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-source_encoding">
+            
+              <b>ecerr.source_encoding              &rarr; encoding
+</b>
+            
+            <a href="../../classes/Encoding/UndefinedConversionError.html#method-i-source_encoding" name="method-i-source_encoding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the source encoding as an encoding object.</p>
+
+<p>Note that the result may not be equal to the source encoding of the
+encoding converter if the conversion has multiple steps.</p>
+
+<pre class="ruby"><span class="ruby-identifier">ec</span> = <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">Converter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;ISO-8859-1&quot;</span>, <span class="ruby-string">&quot;EUC-JP&quot;</span>) <span class="ruby-comment"># ISO-8859-1 -&gt; UTF-8 -&gt; EUC-JP</span>
+<span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">ec</span>.<span class="ruby-identifier">convert</span>(<span class="ruby-string">&quot;\xa0&quot;</span>) <span class="ruby-comment"># NO-BREAK SPACE, which is available in UTF-8 but not in EUC-JP.</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UndefinedConversionError</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">source_encoding</span>              <span class="ruby-comment">#=&gt; #&lt;Encoding:UTF-8&gt;</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">destination_encoding</span>         <span class="ruby-comment">#=&gt; #&lt;Encoding:EUC-JP&gt;</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">source_encoding_name</span>         <span class="ruby-comment">#=&gt; &quot;UTF-8&quot;</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">destination_encoding_name</span>    <span class="ruby-comment">#=&gt; &quot;EUC-JP&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-source_encoding_source')" id="l_method-i-source_encoding_source">show</a>
+                
+              </p>
+              <div id="method-i-source_encoding_source" class="dyn-source">
+                <pre>static VALUE
+ecerr_source_encoding(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;source_encoding&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-source_encoding_name">
+            
+              <b>ecerr.source_encoding_name         &rarr; string
+</b>
+            
+            <a href="../../classes/Encoding/UndefinedConversionError.html#method-i-source_encoding_name" name="method-i-source_encoding_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the source encoding name as a string.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-source_encoding_name_source')" id="l_method-i-source_encoding_name_source">show</a>
+                
+              </p>
+              <div id="method-i-source_encoding_name_source" class="dyn-source">
+                <pre>static VALUE
+ecerr_source_encoding_name(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;source_encoding_name&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

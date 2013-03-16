@@ -25,11 +25,11 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/import_rb.html">import.rb</a></li>
+            <li><a href="../files/cfunc_c.html">cfunc.c</a></li>
             
-            <li><a href="../files/struct_rb.html">struct.rb</a></li>
+            <li><a href="../files/cptr_c.html">cptr.c</a></li>
             
-            <li><a href="../files/types_rb.html">types.rb</a></li>
+            <li><a href="../files/dl_c.html">dl.c</a></li>
             
         </ul>
     </div>
@@ -51,13 +51,28 @@
     <ul>
       
         <li>
-          <span class="type">MODULE</span>
-          <a href="DL/Importable.html">DL::Importable</a>
+          <span class="type">CLASS</span>
+          <a href="DL/CFunc.html">DL::CFunc</a>
         </li>
       
         <li>
           <span class="type">CLASS</span>
-          <a href="DL/Types.html">DL::Types</a>
+          <a href="DL/CPtr.html">DL::CPtr</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="DL/DLError.html">DL::DLError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="DL/DLTypeError.html">DL::DLTypeError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="DL/Handle.html">DL::Handle</a>
         </li>
       
     </ul>
@@ -65,6 +80,70 @@
 
 
   
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-dlopen">dlopen</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-dlunwrap">dlunwrap</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-dlwrap">dlwrap</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-free">free</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-malloc">malloc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-realloc">realloc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
 
   
 
@@ -76,6 +155,420 @@
 
     
 
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">NULL</td>
+            <td>=</td>
+            <td class="attr-value">rb_dlptr_new(0, 0, 0)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">MAX_CALLBACK</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(MAX_CALLBACK)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DLSTACK_SIZE</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLSTACK_SIZE)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RTLD_GLOBAL</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(RTLD_GLOBAL)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RTLD_LAZY</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(RTLD_LAZY)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RTLD_NOW</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(RTLD_NOW)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_VOID</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_VOID)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_VOIDP</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_VOIDP)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_CHAR</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_CHAR)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_SHORT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_SHORT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_INT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_INT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_LONG)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_LONG_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_LONG_LONG)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_FLOAT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_FLOAT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TYPE_DOUBLE</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(DLTYPE_DOUBLE)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_VOIDP</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_VOIDP)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_CHAR</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_CHAR)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_SHORT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_SHORT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_INT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_INT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_LONG)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_LONG_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_LONG_LONG)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_FLOAT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_FLOAT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIGN_DOUBLE</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(ALIGN_DOUBLE)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_VOIDP</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(void*))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_CHAR</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(char))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_SHORT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(short))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_INT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(int))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(long))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_LONG_LONG</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(LONG_LONG))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_FLOAT</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(float))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">SIZEOF_DOUBLE</td>
+            <td>=</td>
+            <td class="attr-value">INT2NUM(sizeof(double))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_FREE</td>
+            <td>=</td>
+            <td class="attr-value">PTR2NUM(ruby_xfree)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">BUILD_RUBY_PLATFORM</td>
+            <td>=</td>
+            <td class="attr-value">rb_str_new2(RUBY_PLATFORM)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">BUILD_RUBY_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">rb_str_new2(RUBY_VERSION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
     
 
 
@@ -83,7 +576,245 @@
 
 
     <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-dlopen">
+            
+              <b>dlopen</b>(*args)
+            
+            <a href="../classes/DL.html#method-c-dlopen" name="method-c-dlopen" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-dlopen_source')" id="l_method-c-dlopen_source">show</a>
+                
+              </p>
+              <div id="method-c-dlopen_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_dlopen(int argc, VALUE argv[], VALUE self)
+{
+    return rb_class_new_instance(argc, argv, rb_cDLHandle);
+}</pre>
               </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-dlunwrap">
+            
+              <b>dlunwrap</b>(p1)
+            
+            <a href="../classes/DL.html#method-c-dlunwrap" name="method-c-dlunwrap" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-dlunwrap_source')" id="l_method-c-dlunwrap_source">show</a>
+                
+              </p>
+              <div id="method-c-dlunwrap_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_ptr2value(VALUE self, VALUE addr)
+{
+    rb_secure(4);
+    return (VALUE)NUM2PTR(addr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-dlwrap">
+            
+              <b>dlwrap</b>(p1)
+            
+            <a href="../classes/DL.html#method-c-dlwrap" name="method-c-dlwrap" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-dlwrap_source')" id="l_method-c-dlwrap_source">show</a>
+                
+              </p>
+              <div id="method-c-dlwrap_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_value2ptr(VALUE self, VALUE val)
+{
+    return PTR2NUM((void*)val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-free">
+            
+              <b>DL.free(addr)
+</b>
+            
+            <a href="../classes/DL.html#method-c-free" name="method-c-free" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Free the memory at address <code>addr</code></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-free_source')" id="l_method-c-free_source">show</a>
+                
+              </p>
+              <div id="method-c-free_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_free(VALUE self, VALUE addr)
+{
+    void *ptr = NUM2PTR(addr);
+
+    rb_secure(4);
+    ruby_xfree(ptr);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-malloc">
+            
+              <b>DL.malloc
+</b>
+            
+            <a href="../classes/DL.html#method-c-malloc" name="method-c-malloc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allocate <code>size</code> bytes of memory and return the integer memory
+address for the allocated memory.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-malloc_source')" id="l_method-c-malloc_source">show</a>
+                
+              </p>
+              <div id="method-c-malloc_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_malloc(VALUE self, VALUE size)
+{
+    void *ptr;
+
+    rb_secure(4);
+    ptr = (void*)ruby_xmalloc(NUM2INT(size));
+    return PTR2NUM(ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-realloc">
+            
+              <b>DL.realloc(addr, size)
+</b>
+            
+            <a href="../classes/DL.html#method-c-realloc" name="method-c-realloc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Change the size of the memory allocated at the memory location
+<code>addr</code> to <code>size</code> bytes.  Returns the memory address
+of the reallocated memory, which may be different than the address passed
+in.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-realloc_source')" id="l_method-c-realloc_source">show</a>
+                
+              </p>
+              <div id="method-c-realloc_source" class="dyn-source">
+                <pre>VALUE
+rb_dl_realloc(VALUE self, VALUE addr, VALUE size)
+{
+    void *ptr = NUM2PTR(addr);
+
+    rb_secure(4);
+    ptr = (void*)ruby_xrealloc(ptr, NUM2INT(size));
+    return PTR2NUM(ptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
 
     </div>
   </body>

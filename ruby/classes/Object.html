@@ -1,0 +1,2941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Object</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Object 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="BasicObject.html">BasicObject</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/class_c.html">class.c</a></li>
+            
+            <li><a href="../files/enumerator_c.html">enumerator.c</a></li>
+            
+            <li><a href="../files/eval_c.html">eval.c</a></li>
+            
+            <li><a href="../files/gc_c.html">gc.c</a></li>
+            
+            <li><a href="../files/hash_c.html">hash.c</a></li>
+            
+            <li><a href="../files/io_c.html">io.c</a></li>
+            
+            <li><a href="../files/object_c.html">object.c</a></li>
+            
+            <li><a href="../files/parse_c.html">parse.c</a></li>
+            
+            <li><a href="../files/proc_c.html">proc.c</a></li>
+            
+            <li><a href="../files/ruby_c.html">ruby.c</a></li>
+            
+            <li><a href="../files/version_c.html">version.c</a></li>
+            
+            <li><a href="../files/vm_c.html">vm.c</a></li>
+            
+            <li><a href="../files/vm_eval_c.html">vm_eval.c</a></li>
+            
+            <li><a href="../files/vm_method_c.html">vm_method.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Object.html">Object</a> is the root of Ruby’s class hierarchy. 
+Its methods are available to all classes unless explicitly overridden.</p>
+
+<p><a href="Object.html">Object</a> mixes in the <a
+href="Kernel.html">Kernel</a> module, making the built-in kernel functions
+globally accessible. Although the instance methods of <a
+href="Object.html">Object</a> are defined by the <a
+href="Kernel.html">Kernel</a> module, we have chosen to document them here
+for clarity.</p>
+
+<p>In the descriptions of Object’s methods, the parameter <em>symbol</em>
+refers to a symbol, which is either a quoted string or a <a
+href="Symbol.html">Symbol</a> (such as <code>:name</code>).</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-21-7E">!~</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D-3D">===</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-7E">=~</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-__id__">__id__</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-class">class</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-clone">clone</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-define_singleton_method">define_singleton_method</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-display">display</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-dup">dup</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-enum_for">enum_for</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-eql-3F">eql?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extend">extend</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-freeze">freeze</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-frozen-3F">frozen?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-hash">hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_of-3F">instance_of?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_variable_defined-3F">instance_variable_defined?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_variable_get">instance_variable_get</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_variable_set">instance_variable_set</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-instance_variables">instance_variables</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-is_a-3F">is_a?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>K</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-kind_of-3F">kind_of?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-method">method</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-nil-3F">nil?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-object_id">object_id</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-public_method">public_method</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-public_send">public_send</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-respond_to-3F">respond_to?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-respond_to_missing-3F">respond_to_missing?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-send">send</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-singleton_class">singleton_class</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-singleton_methods">singleton_methods</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-taint">taint</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-tainted-3F">tainted?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-tap">tap</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_enum">to_enum</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-trust">trust</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-untaint">untaint</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-untrust">untrust</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-untrusted-3F">untrusted?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Kernel.html">
+              Kernel
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">ENV</td>
+            <td>=</td>
+            <td class="attr-value">envtbl</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">STDIN</td>
+            <td>=</td>
+            <td class="attr-value">rb_stdin</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>constants to hold original stdin/stdout/stderr</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">STDOUT</td>
+            <td>=</td>
+            <td class="attr-value">rb_stdout</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">STDERR</td>
+            <td>=</td>
+            <td class="attr-value">rb_stderr</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ARGF</td>
+            <td>=</td>
+            <td class="attr-value">argf</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">NIL</td>
+            <td>=</td>
+            <td class="attr-value">Qnil</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TRUE</td>
+            <td>=</td>
+            <td class="attr-value">Qtrue</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FALSE</td>
+            <td>=</td>
+            <td class="attr-value">Qfalse</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DATA</td>
+            <td>=</td>
+            <td class="attr-value">f</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ARGV</td>
+            <td>=</td>
+            <td class="attr-value">rb_argv</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">MKSTR(version)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_RELEASE_DATE</td>
+            <td>=</td>
+            <td class="attr-value">MKSTR(release_date)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_PLATFORM</td>
+            <td>=</td>
+            <td class="attr-value">MKSTR(platform)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_PATCHLEVEL</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(RUBY_PATCHLEVEL)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_REVISION</td>
+            <td>=</td>
+            <td class="attr-value">INT2FIX(RUBY_REVISION)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_DESCRIPTION</td>
+            <td>=</td>
+            <td class="attr-value">MKSTR(description)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_COPYRIGHT</td>
+            <td>=</td>
+            <td class="attr-value">MKSTR(copyright)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">RUBY_ENGINE</td>
+            <td>=</td>
+            <td class="attr-value">ruby_engine_name = MKSTR(engine)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">TOPLEVEL_BINDING</td>
+            <td>=</td>
+            <td class="attr-value">rb_binding_new()</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-21-7E">
+            
+              <b>obj !~ other  &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-21-7E" name="method-i-21-7E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if two objects do not match (using the <em>=~</em> method),
+otherwise false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-21-7E_source')" id="l_method-i-21-7E_source">show</a>
+                
+              </p>
+              <div id="method-i-21-7E_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_not_match(VALUE obj1, VALUE obj2)
+{
+    VALUE result = rb_funcall(obj1, id_match, 1, obj2);
+    return RTEST(result) ? Qfalse : Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D-3D">
+            
+              <b>obj === other   &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-3D-3D-3D" name="method-i-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Case Equality—For class <code>Object</code>, effectively the same as
+calling  <code>#==</code>, but typically overridden by descendants to
+provide meaningful semantics in <code>case</code> statements.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D-3D_source')" id="l_method-i-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D-3D_source" class="dyn-source">
+                <pre>VALUE
+rb_equal(VALUE obj1, VALUE obj2)
+{
+    VALUE result;
+
+    if (obj1 == obj2) return Qtrue;
+    result = rb_funcall(obj1, id_eq, 1, obj2);
+    if (RTEST(result)) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-7E">
+            
+              <b>obj =~ other  &rarr; nil
+</b>
+            
+            <a href="../classes/Object.html#method-i-3D-7E" name="method-i-3D-7E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Pattern Match—Overridden by descendants (notably <code>Regexp</code> and
+<code>String</code>) to provide meaningful pattern-match semantics.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-7E_source')" id="l_method-i-3D-7E_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-7E_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_match(VALUE obj1, VALUE obj2)
+{
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-__id__">
+            
+              <b>obj.__id__       &rarr; fixnum
+obj.object_id    &rarr; fixnum
+</b>
+            
+            <a href="../classes/Object.html#method-i-__id__" name="method-i-__id__" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an integer identifier for <em>obj</em>. The same number will be
+returned on all calls to <code>id</code> for a given object, and no two
+active objects will share an id. <code>Object#object_id</code> is a
+different concept from the <code>:name</code> notation, which returns the
+symbol id of <code>name</code>. Replaces the deprecated
+<code>Object#id</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-__id___source')" id="l_method-i-__id___source">show</a>
+                
+              </p>
+              <div id="method-i-__id___source" class="dyn-source">
+                <pre>VALUE
+rb_obj_id(VALUE obj)
+{
+    /*
+     *                32-bit VALUE space
+     *          MSB ------------------------ LSB
+     *  false   00000000000000000000000000000000
+     *  true    00000000000000000000000000000010
+     *  nil     00000000000000000000000000000100
+     *  undef   00000000000000000000000000000110
+     *  symbol  ssssssssssssssssssssssss00001110
+     *  object  oooooooooooooooooooooooooooooo00        = 0 (mod sizeof(RVALUE))
+     *  fixnum  fffffffffffffffffffffffffffffff1
+     *
+     *                    object_id space
+     *                                       LSB
+     *  false   00000000000000000000000000000000
+     *  true    00000000000000000000000000000010
+     *  nil     00000000000000000000000000000100
+     *  undef   00000000000000000000000000000110
+     *  symbol   000SSSSSSSSSSSSSSSSSSSSSSSSSSS0        S...S % A = 4 (S...S = s...s * A + 4)
+     *  object   oooooooooooooooooooooooooooooo0        o...o % A = 0
+     *  fixnum  fffffffffffffffffffffffffffffff1        bignum if required
+     *
+     *  where A = sizeof(RVALUE)/4
+     *
+     *  sizeof(RVALUE) is
+     *  20 if 32-bit, double is 4-byte aligned
+     *  24 if 32-bit, double is 8-byte aligned
+     *  40 if 64-bit
+     */
+    if (TYPE(obj) == T_SYMBOL) {
+        return (SYM2ID(obj) * sizeof(RVALUE) + (4 &lt;&lt; 2)) | FIXNUM_FLAG;
+    }
+    if (SPECIAL_CONST_P(obj)) {
+        return LONG2NUM((SIGNED_VALUE)obj);
+    }
+    return (VALUE)((SIGNED_VALUE)obj|FIXNUM_FLAG);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-class">
+            
+              <b>obj.class    &rarr; class
+</b>
+            
+            <a href="../classes/Object.html#method-i-class" name="method-i-class" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the class of <em>obj</em>. This method must always be called with
+an explicit receiver, as <code>class</code> is also a reserved word in
+Ruby.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">class</span>      <span class="ruby-comment">#=&gt; Fixnum</span>
+<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>   <span class="ruby-comment">#=&gt; Object</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-class_source')" id="l_method-i-class_source">show</a>
+                
+              </p>
+              <div id="method-i-class_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_class(VALUE obj)
+{
+    return rb_class_real(CLASS_OF(obj));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clone">
+            
+              <b>obj.clone &rarr; an_object
+</b>
+            
+            <a href="../classes/Object.html#method-i-clone" name="method-i-clone" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Produces a shallow copy of <em>obj</em>—the instance variables of
+<em>obj</em> are copied, but not the objects they reference. Copies the
+frozen and tainted state of <em>obj</em>. See also the discussion under
+<code>Object#dup</code>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Klass</span>
+   <span class="ruby-identifier">attr_accessor</span> :<span class="ruby-identifier">str</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">s1</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">new</span>      <span class="ruby-comment">#=&gt; #&lt;Klass:0x401b3a38&gt;</span>
+<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;Hello&quot;</span>    <span class="ruby-comment">#=&gt; &quot;Hello&quot;</span>
+<span class="ruby-identifier">s2</span> = <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">clone</span>       <span class="ruby-comment">#=&gt; #&lt;Klass:0x401b3998 @str=&quot;Hello&quot;&gt;</span>
+<span class="ruby-identifier">s2</span>.<span class="ruby-identifier">str</span>[<span class="ruby-value">1</span>,<span class="ruby-value">4</span>] = <span class="ruby-string">&quot;i&quot;</span>   <span class="ruby-comment">#=&gt; &quot;i&quot;</span>
+<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">inspect</span>          <span class="ruby-comment">#=&gt; &quot;#&lt;Klass:0x401b3a38 @str=\&quot;Hi\&quot;&gt;&quot;</span>
+<span class="ruby-identifier">s2</span>.<span class="ruby-identifier">inspect</span>          <span class="ruby-comment">#=&gt; &quot;#&lt;Klass:0x401b3998 @str=\&quot;Hi\&quot;&gt;&quot;</span>
+</pre>
+
+<p>This method may have class-specific behavior.  If so, that behavior will be
+documented under the #<code>initialize_copy</code> method of the class.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clone_source')" id="l_method-i-clone_source">show</a>
+                
+              </p>
+              <div id="method-i-clone_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_clone(VALUE obj)
+{
+    VALUE clone;
+
+    if (rb_special_const_p(obj)) {
+        rb_raise(rb_eTypeError, &quot;can't clone %s&quot;, rb_obj_classname(obj));
+    }
+    clone = rb_obj_alloc(rb_obj_class(obj));
+    RBASIC(clone)-&gt;klass = rb_singleton_class_clone(obj);
+    RBASIC(clone)-&gt;flags = (RBASIC(obj)-&gt;flags | FL_TEST(clone, FL_TAINT) | FL_TEST(clone, FL_UNTRUSTED)) &amp; ~(FL_FREEZE|FL_FINALIZE);
+    init_copy(clone, obj);
+    rb_funcall(clone, id_init_clone, 1, obj);
+    RBASIC(clone)-&gt;flags |= RBASIC(obj)-&gt;flags &amp; FL_FREEZE;
+
+    return clone;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-define_singleton_method">
+            
+              <b>define_singleton_method(symbol, method) &rarr; new_method
+define_singleton_method(symbol) { block } &rarr; proc
+</b>
+            
+            <a href="../classes/Object.html#method-i-define_singleton_method" name="method-i-define_singleton_method" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Defines a singleton method in the receiver. The <em>method</em> parameter
+can be a <code>Proc</code>, a <code>Method</code> or an
+<code>UnboundMethod</code> object. If a block is specified, it is used as
+the method body.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">A</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">class_name</span>
+      <span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">A</span>.<span class="ruby-identifier">define_singleton_method</span>(:<span class="ruby-identifier">who_am_i</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-node">&quot;I am: #{class_name}&quot;</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">A</span>.<span class="ruby-identifier">who_am_i</span>   <span class="ruby-comment"># ==&gt; &quot;I am: A&quot;</span>
+
+<span class="ruby-identifier">guy</span> = <span class="ruby-string">&quot;Bob&quot;</span>
+<span class="ruby-identifier">guy</span>.<span class="ruby-identifier">define_singleton_method</span>(:<span class="ruby-identifier">hello</span>) { <span class="ruby-node">&quot;#{self}: Hello there!&quot;</span> }
+<span class="ruby-identifier">guy</span>.<span class="ruby-identifier">hello</span>    <span class="ruby-comment">#=&gt;  &quot;Bob: Hello there!&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-define_singleton_method_source')" id="l_method-i-define_singleton_method_source">show</a>
+                
+              </p>
+              <div id="method-i-define_singleton_method_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_define_method(int argc, VALUE *argv, VALUE obj)
+{
+    VALUE klass = rb_singleton_class(obj);
+
+    return rb_mod_define_method(argc, argv, klass);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-display">
+            
+              <b>obj.display(port=$>)    &rarr; nil
+</b>
+            
+            <a href="../classes/Object.html#method-i-display" name="method-i-display" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Prints <em>obj</em> on the given port (default <code>$&gt;</code>).
+Equivalent to:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">display</span>(<span class="ruby-identifier">port</span>=<span class="ruby-identifier">$&gt;</span>)
+  <span class="ruby-identifier">port</span>.<span class="ruby-identifier">write</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>For example:</p>
+
+<pre>1.display
+&quot;cat&quot;.display
+[ 4, 5, 6 ].display
+puts</pre>
+
+<p><em>produces:</em></p>
+
+<pre>1cat456</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-display_source')" id="l_method-i-display_source">show</a>
+                
+              </p>
+              <div id="method-i-display_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_display(int argc, VALUE *argv, VALUE self)
+{
+    VALUE out;
+
+    if (argc == 0) {
+        out = rb_stdout;
+    }
+    else {
+        rb_scan_args(argc, argv, &quot;01&quot;, &amp;out);
+    }
+    rb_io_write(out, self);
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dup">
+            
+              <b>obj.dup &rarr; an_object
+</b>
+            
+            <a href="../classes/Object.html#method-i-dup" name="method-i-dup" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Produces a shallow copy of <em>obj</em>—the instance variables of
+<em>obj</em> are copied, but not the objects they reference.
+<code>dup</code> copies the tainted state of <em>obj</em>. See also the
+discussion under <code>Object#clone</code>. In general, <code>clone</code>
+and <code>dup</code> may have different semantics in descendant classes.
+While <code>clone</code> is used to duplicate an object, including its
+internal state, <code>dup</code> typically uses the class of the descendant
+object to create the new instance.</p>
+
+<p>This method may have class-specific behavior.  If so, that behavior will be
+documented under the #<code>initialize_copy</code> method of the class.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dup_source')" id="l_method-i-dup_source">show</a>
+                
+              </p>
+              <div id="method-i-dup_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_dup(VALUE obj)
+{
+    VALUE dup;
+
+    if (rb_special_const_p(obj)) {
+        rb_raise(rb_eTypeError, &quot;can't dup %s&quot;, rb_obj_classname(obj));
+    }
+    dup = rb_obj_alloc(rb_obj_class(obj));
+    init_copy(dup, obj);
+    rb_funcall(dup, id_init_dup, 1, obj);
+
+    return dup;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-enum_for">
+            
+              <b>obj.to_enum(method = :each, *args)
+obj.enum_for(method = :each, *args)
+</b>
+            
+            <a href="../classes/Object.html#method-i-enum_for" name="method-i-enum_for" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <a href="Enumerator.html#method-c-new">Enumerator.new</a>(self,
+method, *args).</p>
+
+<p>e.g.:</p>
+
+<pre class="ruby"><span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;xyz&quot;</span>
+
+<span class="ruby-identifier">enum</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">enum_for</span>(:<span class="ruby-identifier">each_byte</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">enum</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-string">'%02x'</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">b</span> } <span class="ruby-comment">#=&gt; [&quot;78&quot;, &quot;79&quot;, &quot;7a&quot;]</span>
+
+<span class="ruby-comment"># protects an array from being modified</span>
+<span class="ruby-identifier">a</span> = [<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>]
+<span class="ruby-identifier">some_method</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_enum</span>)
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-enum_for_source')" id="l_method-i-enum_for_source">show</a>
+                
+              </p>
+              <div id="method-i-enum_for_source" class="dyn-source">
+                <pre>static VALUE
+obj_to_enum(int argc, VALUE *argv, VALUE obj)
+{
+    VALUE meth = sym_each;
+
+    if (argc &gt; 0) {
+        --argc;
+        meth = *argv++;
+    }
+    return rb_enumeratorize(obj, meth, argc, argv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eql-3F">
+            
+              <b>obj == other        &rarr; true or false
+obj.equal?(other)   &rarr; true or false
+obj.eql?(other)     &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-eql-3F" name="method-i-eql-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Equality—At the <code>Object</code> level, <code>==</code> returns
+<code>true</code> only if <em>obj</em> and <em>other</em> are the same
+object. Typically, this method is overridden in descendant classes to
+provide class-specific meaning.</p>
+
+<p>Unlike <code>==</code>, the <code>equal?</code> method should never be
+overridden by subclasses: it is used to determine object identity (that is,
+<code>a.equal?(b)</code> iff <code>a</code> is the same object as
+<code>b</code>).</p>
+
+<p>The <code>eql?</code> method returns <code>true</code> if <em>obj</em> and
+<em>an<a href="Object.html">Object</a></em> have the same value. Used by
+<code>Hash</code> to test members for equality.  For objects of class
+<code>Object</code>, <code>eql?</code> is synonymous with <code>==</code>.
+Subclasses normally continue this tradition, but there are exceptions.
+<code>Numeric</code> types, for example, perform type conversion across
+<code>==</code>, but not across <code>eql?</code>, so:</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>     <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">eql?</span> <span class="ruby-value">1.0</span>   <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eql-3F_source')" id="l_method-i-eql-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eql-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_equal(VALUE obj1, VALUE obj2)
+{
+    if (obj1 == obj2) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extend">
+            
+              <b>obj.extend(module, ...)    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-extend" name="method-i-extend" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Adds to <em>obj</em> the instance methods from each module given as a
+parameter.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">Mod</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>
+    <span class="ruby-string">&quot;Hello from Mod.\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Klass</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>
+    <span class="ruby-string">&quot;Hello from Klass.\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">hello</span>         <span class="ruby-comment">#=&gt; &quot;Hello from Klass.\n&quot;</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Mod</span>)   <span class="ruby-comment">#=&gt; #&lt;Klass:0x401b3bc8&gt;</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">hello</span>         <span class="ruby-comment">#=&gt; &quot;Hello from Mod.\n&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extend_source')" id="l_method-i-extend_source">show</a>
+                
+              </p>
+              <div id="method-i-extend_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_extend(int argc, VALUE *argv, VALUE obj)
+{
+    int i;
+
+    if (argc == 0) {
+        rb_raise(rb_eArgError, &quot;wrong number of arguments (at least 1)&quot;);
+    }
+    for (i = 0; i &lt; argc; i++)
+        Check_Type(argv[i], T_MODULE);
+    while (argc--) {
+        rb_funcall(argv[argc], rb_intern(&quot;extend_object&quot;), 1, obj);
+        rb_funcall(argv[argc], rb_intern(&quot;extended&quot;), 1, obj);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-freeze">
+            
+              <b>obj.freeze    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-freeze" name="method-i-freeze" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Prevents further modifications to <em>obj</em>. A <code>RuntimeError</code>
+will be raised if modification is attempted. There is no way to unfreeze a
+frozen object. See also <code>Object#frozen?</code>.</p>
+
+<p>This method returns self.</p>
+
+<pre>a = [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]
+a.freeze
+a &lt;&lt; &quot;z&quot;</pre>
+
+<p><em>produces:</em></p>
+
+<pre>prog.rb:3:in `&lt;&lt;': can't modify frozen array (RuntimeError)
+ from prog.rb:3</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-freeze_source')" id="l_method-i-freeze_source">show</a>
+                
+              </p>
+              <div id="method-i-freeze_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_freeze(VALUE obj)
+{
+    if (!OBJ_FROZEN(obj)) {
+        if (rb_safe_level() &gt;= 4 &amp;&amp; !OBJ_UNTRUSTED(obj)) {
+            rb_raise(rb_eSecurityError, &quot;Insecure: can't freeze object&quot;);
+        }
+        OBJ_FREEZE(obj);
+        if (SPECIAL_CONST_P(obj)) {
+            if (!immediate_frozen_tbl) {
+                immediate_frozen_tbl = st_init_numtable();
+            }
+            st_insert(immediate_frozen_tbl, obj, (st_data_t)Qtrue);
+        }
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-frozen-3F">
+            
+              <b>obj.frozen?    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-frozen-3F" name="method-i-frozen-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the freeze status of <em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = [ <span class="ruby-string">&quot;a&quot;</span>, <span class="ruby-string">&quot;b&quot;</span>, <span class="ruby-string">&quot;c&quot;</span> ]
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">freeze</span>    <span class="ruby-comment">#=&gt; [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">frozen?</span>   <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-frozen-3F_source')" id="l_method-i-frozen-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-frozen-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_frozen_p(VALUE obj)
+{
+    if (OBJ_FROZEN(obj)) return Qtrue;
+    if (SPECIAL_CONST_P(obj)) {
+        if (!immediate_frozen_tbl) return Qfalse;
+        if (st_lookup(immediate_frozen_tbl, obj, 0)) return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-hash">
+            
+              <b>hash</b>()
+            
+            <a href="../classes/Object.html#method-i-hash" name="method-i-hash" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-hash_source')" id="l_method-i-hash_source">show</a>
+                
+              </p>
+              <div id="method-i-hash_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_hash(VALUE obj)
+{
+    VALUE oid = rb_obj_id(obj);
+    st_index_t h = rb_hash_end(rb_hash_start(NUM2LONG(oid)));
+    return LONG2FIX(h);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>obj.inspect   &rarr; string
+</b>
+            
+            <a href="../classes/Object.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string containing a human-readable representation of
+<em>obj</em>. If not overridden and no instance variables, uses the
+<code>to_s</code> method to generate the string. <em>obj</em>.  If not
+overridden, uses the <code>to_s</code> method to generate the string.</p>
+
+<pre class="ruby">[ <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>, <span class="ruby-string">'five'</span> ].<span class="ruby-identifier">inspect</span>   <span class="ruby-comment">#=&gt; &quot;[1, 2, 3..4, \&quot;five\&quot;]&quot;</span>
+<span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">inspect</span>                 <span class="ruby-comment">#=&gt; &quot;2008-03-08 19:43:39 +0900&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_inspect(VALUE obj)
+{
+    extern int rb_obj_basic_to_s_p(VALUE);
+
+    if (TYPE(obj) == T_OBJECT &amp;&amp; rb_obj_basic_to_s_p(obj)) {
+        int has_ivar = 0;
+        VALUE *ptr = ROBJECT_IVPTR(obj);
+        long len = ROBJECT_NUMIV(obj);
+        long i;
+
+        for (i = 0; i &lt; len; i++) {
+            if (ptr[i] != Qundef) {
+                has_ivar = 1;
+                break;
+            }
+        }
+
+        if (has_ivar) {
+            VALUE str;
+            const char *c = rb_obj_classname(obj);
+
+            str = rb_sprintf(&quot;-&lt;%s:%p&quot;, c, (void*)obj);
+            return rb_exec_recursive(inspect_obj, obj, str);
+        }
+        return rb_any_to_s(obj);
+    }
+    return rb_funcall(obj, rb_intern(&quot;to_s&quot;), 0, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_of-3F">
+            
+              <b>obj.instance_of?(class)    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-instance_of-3F" name="method-i-instance_of-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> is an instance of the given
+class. See also <code>Object#kind_of?</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_of-3F_source')" id="l_method-i-instance_of-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_of-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_is_instance_of(VALUE obj, VALUE c)
+{
+    switch (TYPE(c)) {
+      case T_MODULE:
+      case T_CLASS:
+      case T_ICLASS:
+        break;
+      default:
+        rb_raise(rb_eTypeError, &quot;class or module required&quot;);
+    }
+
+    if (rb_obj_class(obj) == c) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_variable_defined-3F">
+            
+              <b>obj.instance_variable_defined?(symbol)    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-instance_variable_defined-3F" name="method-i-instance_variable_defined-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the given instance variable is defined in
+<em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Fred</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>)
+    <span class="ruby-ivar">@a</span>, <span class="ruby-ivar">@b</span> = <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">fred</span> = <span class="ruby-constant">Fred</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'cat'</span>, <span class="ruby-value">99</span>)
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_defined?</span>(:<span class="ruby-ivar">@a</span>)    <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-string">&quot;@b&quot;</span>)   <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_defined?</span>(<span class="ruby-string">&quot;@c&quot;</span>)   <span class="ruby-comment">#=&gt; false</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_variable_defined-3F_source')" id="l_method-i-instance_variable_defined-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_variable_defined-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_ivar_defined(VALUE obj, VALUE iv)
+{
+    ID id = rb_to_id(iv);
+
+    if (!rb_is_instance_id(id)) {
+        rb_name_error(id, &quot;`%s' is not allowed as an instance variable name&quot;, rb_id2name(id));
+    }
+    return rb_ivar_defined(obj, id);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_variable_get">
+            
+              <b>obj.instance_variable_get(symbol)    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-instance_variable_get" name="method-i-instance_variable_get" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value of the given instance variable, or nil if the instance
+variable is not set. The <code>@</code> part of the variable name should be
+included for regular instance variables. Throws a <code>NameError</code>
+exception if the supplied symbol is not valid as an instance variable name.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Fred</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>)
+    <span class="ruby-ivar">@a</span>, <span class="ruby-ivar">@b</span> = <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">fred</span> = <span class="ruby-constant">Fred</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'cat'</span>, <span class="ruby-value">99</span>)
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_get</span>(:<span class="ruby-ivar">@a</span>)    <span class="ruby-comment">#=&gt; &quot;cat&quot;</span>
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-string">&quot;@b&quot;</span>)   <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_variable_get_source')" id="l_method-i-instance_variable_get_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_variable_get_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_ivar_get(VALUE obj, VALUE iv)
+{
+    ID id = rb_to_id(iv);
+
+    if (!rb_is_instance_id(id)) {
+        rb_name_error(id, &quot;`%s' is not allowed as an instance variable name&quot;, rb_id2name(id));
+    }
+    return rb_ivar_get(obj, id);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_variable_set">
+            
+              <b>obj.instance_variable_set(symbol, obj)    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-instance_variable_set" name="method-i-instance_variable_set" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the instance variable names by <em>symbol</em> to <em>object</em>,
+thereby frustrating the efforts of the class’s author to attempt to
+provide proper encapsulation. The variable did not have to exist prior to
+this call.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Fred</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>)
+    <span class="ruby-ivar">@a</span>, <span class="ruby-ivar">@b</span> = <span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">fred</span> = <span class="ruby-constant">Fred</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'cat'</span>, <span class="ruby-value">99</span>)
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_set</span>(:<span class="ruby-ivar">@a</span>, <span class="ruby-string">'dog'</span>)   <span class="ruby-comment">#=&gt; &quot;dog&quot;</span>
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">instance_variable_set</span>(:<span class="ruby-ivar">@c</span>, <span class="ruby-string">'cat'</span>)   <span class="ruby-comment">#=&gt; &quot;cat&quot;</span>
+<span class="ruby-identifier">fred</span>.<span class="ruby-identifier">inspect</span>                             <span class="ruby-comment">#=&gt; &quot;#&lt;Fred:0x401b3da8 @a=\&quot;dog\&quot;, @b=99, @c=\&quot;cat\&quot;&gt;&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_variable_set_source')" id="l_method-i-instance_variable_set_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_variable_set_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_ivar_set(VALUE obj, VALUE iv, VALUE val)
+{
+    ID id = rb_to_id(iv);
+
+    if (!rb_is_instance_id(id)) {
+        rb_name_error(id, &quot;`%s' is not allowed as an instance variable name&quot;, rb_id2name(id));
+    }
+    return rb_ivar_set(obj, id, val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instance_variables">
+            
+              <b>obj.instance_variables    &rarr; array
+</b>
+            
+            <a href="../classes/Object.html#method-i-instance_variables" name="method-i-instance_variables" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array of instance variable names for the receiver. Note that
+simply defining an accessor does not create the corresponding instance
+variable.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Fred</span>
+  <span class="ruby-identifier">attr_accessor</span> :<span class="ruby-identifier">a1</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-ivar">@iv</span> = <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">Fred</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">instance_variables</span>   <span class="ruby-comment">#=&gt; [:@iv]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instance_variables_source')" id="l_method-i-instance_variables_source">show</a>
+                
+              </p>
+              <div id="method-i-instance_variables_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_instance_variables(VALUE obj)
+{
+    VALUE ary;
+
+    ary = rb_ary_new();
+    rb_ivar_foreach(obj, ivar_i, ary);
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-is_a-3F">
+            
+              <b>obj.is_a?(class)       &rarr; true or false
+obj.kind_of?(class)    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-is_a-3F" name="method-i-is_a-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>class</em> is the class of <em>obj</em>,
+or if <em>class</em> is one of the superclasses of <em>obj</em> or modules
+included in <em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">M</span>;    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">A</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">M</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">B</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">A</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">C</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">B</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">B</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">A</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">B</span>   <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">C</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">M</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">A</span>       <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">B</span>       <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">C</span>       <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">M</span>       <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-is_a-3F_source')" id="l_method-i-is_a-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-is_a-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_is_kind_of(VALUE obj, VALUE c)
+{
+    VALUE cl = CLASS_OF(obj);
+
+    switch (TYPE(c)) {
+      case T_MODULE:
+      case T_CLASS:
+      case T_ICLASS:
+        break;
+
+      default:
+        rb_raise(rb_eTypeError, &quot;class or module required&quot;);
+    }
+
+    while (cl) {
+        if (cl == c || RCLASS_M_TBL(cl) == RCLASS_M_TBL(c))
+            return Qtrue;
+        cl = RCLASS_SUPER(cl);
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-kind_of-3F">
+            
+              <b>obj.is_a?(class)       &rarr; true or false
+obj.kind_of?(class)    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-kind_of-3F" name="method-i-kind_of-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>class</em> is the class of <em>obj</em>,
+or if <em>class</em> is one of the superclasses of <em>obj</em> or modules
+included in <em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">M</span>;    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">A</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">M</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">B</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">A</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">C</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">B</span>; <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">B</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">A</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">B</span>   <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">C</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">M</span>   <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">A</span>       <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">B</span>       <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">C</span>       <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">M</span>       <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-kind_of-3F_source')" id="l_method-i-kind_of-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-kind_of-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_is_kind_of(VALUE obj, VALUE c)
+{
+    VALUE cl = CLASS_OF(obj);
+
+    switch (TYPE(c)) {
+      case T_MODULE:
+      case T_CLASS:
+      case T_ICLASS:
+        break;
+
+      default:
+        rb_raise(rb_eTypeError, &quot;class or module required&quot;);
+    }
+
+    while (cl) {
+        if (cl == c || RCLASS_M_TBL(cl) == RCLASS_M_TBL(c))
+            return Qtrue;
+        cl = RCLASS_SUPER(cl);
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-method">
+            
+              <b>obj.method(sym)    &rarr; method
+</b>
+            
+            <a href="../classes/Object.html#method-i-method" name="method-i-method" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Looks up the named method as a receiver in <em>obj</em>, returning a
+<code>Method</code> object (or raising <code>NameError</code>). The
+<code>Method</code> object acts as a closure in <em>obj</em>’s object
+instance, so instance variables and the value of <code>self</code> remain
+available.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Demo</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">n</span>)
+    <span class="ruby-ivar">@iv</span> = <span class="ruby-identifier">n</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>()
+    <span class="ruby-node">&quot;Hello, @iv = #{@iv}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">Demo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">99</span>)
+<span class="ruby-identifier">m</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">hello</span>)
+<span class="ruby-identifier">m</span>.<span class="ruby-identifier">call</span>   <span class="ruby-comment">#=&gt; &quot;Hello, @iv = 99&quot;</span>
+
+<span class="ruby-identifier">l</span> = <span class="ruby-constant">Demo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'Fred'</span>)
+<span class="ruby-identifier">m</span> = <span class="ruby-identifier">l</span>.<span class="ruby-identifier">method</span>(<span class="ruby-string">&quot;hello&quot;</span>)
+<span class="ruby-identifier">m</span>.<span class="ruby-identifier">call</span>   <span class="ruby-comment">#=&gt; &quot;Hello, @iv = Fred&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-method_source')" id="l_method-i-method_source">show</a>
+                
+              </p>
+              <div id="method-i-method_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_method(VALUE obj, VALUE vid)
+{
+    return mnew(CLASS_OF(obj), obj, rb_to_id(vid), rb_cMethod, FALSE);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-nil-3F">
+            
+              <b>nil?</b>()
+            
+            <a href="../classes/Object.html#method-i-nil-3F" name="method-i-nil-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>call_seq:</p>
+
+<pre>nil.nil?               -&gt; true
+&lt;anything_else&gt;.nil?   -&gt; false</pre>
+
+<p>Only the object <em>nil</em> responds <code>true</code> to
+<code>nil?</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-nil-3F_source')" id="l_method-i-nil-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-nil-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_false(VALUE obj)
+{
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-object_id">
+            
+              <b>obj.__id__       &rarr; fixnum
+obj.object_id    &rarr; fixnum
+</b>
+            
+            <a href="../classes/Object.html#method-i-object_id" name="method-i-object_id" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an integer identifier for <em>obj</em>. The same number will be
+returned on all calls to <code>id</code> for a given object, and no two
+active objects will share an id. <code>Object#object_id</code> is a
+different concept from the <code>:name</code> notation, which returns the
+symbol id of <code>name</code>. Replaces the deprecated
+<code>Object#id</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-object_id_source')" id="l_method-i-object_id_source">show</a>
+                
+              </p>
+              <div id="method-i-object_id_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_id(VALUE obj)
+{
+    /*
+     *                32-bit VALUE space
+     *          MSB ------------------------ LSB
+     *  false   00000000000000000000000000000000
+     *  true    00000000000000000000000000000010
+     *  nil     00000000000000000000000000000100
+     *  undef   00000000000000000000000000000110
+     *  symbol  ssssssssssssssssssssssss00001110
+     *  object  oooooooooooooooooooooooooooooo00        = 0 (mod sizeof(RVALUE))
+     *  fixnum  fffffffffffffffffffffffffffffff1
+     *
+     *                    object_id space
+     *                                       LSB
+     *  false   00000000000000000000000000000000
+     *  true    00000000000000000000000000000010
+     *  nil     00000000000000000000000000000100
+     *  undef   00000000000000000000000000000110
+     *  symbol   000SSSSSSSSSSSSSSSSSSSSSSSSSSS0        S...S % A = 4 (S...S = s...s * A + 4)
+     *  object   oooooooooooooooooooooooooooooo0        o...o % A = 0
+     *  fixnum  fffffffffffffffffffffffffffffff1        bignum if required
+     *
+     *  where A = sizeof(RVALUE)/4
+     *
+     *  sizeof(RVALUE) is
+     *  20 if 32-bit, double is 4-byte aligned
+     *  24 if 32-bit, double is 8-byte aligned
+     *  40 if 64-bit
+     */
+    if (TYPE(obj) == T_SYMBOL) {
+        return (SYM2ID(obj) * sizeof(RVALUE) + (4 &lt;&lt; 2)) | FIXNUM_FLAG;
+    }
+    if (SPECIAL_CONST_P(obj)) {
+        return LONG2NUM((SIGNED_VALUE)obj);
+    }
+    return (VALUE)((SIGNED_VALUE)obj|FIXNUM_FLAG);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-public_method">
+            
+              <b>obj.public_method(sym)    &rarr; method
+</b>
+            
+            <a href="../classes/Object.html#method-i-public_method" name="method-i-public_method" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Similar to <em>method</em>, searches public method only.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-public_method_source')" id="l_method-i-public_method_source">show</a>
+                
+              </p>
+              <div id="method-i-public_method_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_public_method(VALUE obj, VALUE vid)
+{
+    return mnew(CLASS_OF(obj), obj, rb_to_id(vid), rb_cMethod, TRUE);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-public_send">
+            
+              <b>obj.public_send(symbol [, args...])  &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-public_send" name="method-i-public_send" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the method identified by <em>symbol</em>, passing it any arguments
+specified. Unlike send, <a
+href="Object.html#method-i-public_send">#public_send</a> calls public
+methods only.</p>
+
+<pre>1.public_send(:puts, &quot;hello&quot;)  # causes NoMethodError</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-public_send_source')" id="l_method-i-public_send_source">show</a>
+                
+              </p>
+              <div id="method-i-public_send_source" class="dyn-source">
+                <pre>VALUE
+rb_f_public_send(int argc, VALUE *argv, VALUE recv)
+{
+    return send_internal(argc, argv, recv, CALL_PUBLIC);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-respond_to-3F">
+            
+              <b>obj.respond_to?(symbol, include_private=false) &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-respond_to-3F" name="method-i-respond_to-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>obj</em> responds to the given method.
+Private methods are included in the search only if the optional second
+parameter evaluates to <code>true</code>.</p>
+
+<p>If the method is not implemented, as <a
+href="Process.html#method-c-fork">Process.fork</a> on Windows, <a
+href="File.html#method-c-lchmod">File.lchmod</a> on GNU/Linux, etc., false
+is returned.</p>
+
+<p>If the method is not defined, <code>respond_to_missing?</code> method is
+called and the result is returned.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-respond_to-3F_source')" id="l_method-i-respond_to-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-respond_to-3F_source" class="dyn-source">
+                <pre>static VALUE
+obj_respond_to(int argc, VALUE *argv, VALUE obj)
+{
+    VALUE mid, priv;
+    ID id;
+
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;mid, &amp;priv);
+    id = rb_to_id(mid);
+    if (basic_obj_respond_to(obj, id, !RTEST(priv)))
+        return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-respond_to_missing-3F">
+            
+              <b>obj.respond_to_missing?(symbol, include_private) &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-respond_to_missing-3F" name="method-i-respond_to_missing-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Hook method to return whether the <em>obj</em> can respond to <em>id</em>
+method or not.</p>
+
+<p>See <a href="Object.html#method-i-respond_to-3F">respond_to?</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-respond_to_missing-3F_source')" id="l_method-i-respond_to_missing-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-respond_to_missing-3F_source" class="dyn-source">
+                <pre>static VALUE
+obj_respond_to_missing(VALUE obj, VALUE priv)
+{
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-send">
+            
+              <b>obj.send(symbol [, args...])        &rarr; obj
+obj.__send__(symbol [, args...])      &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-send" name="method-i-send" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the method identified by <em>symbol</em>, passing it any arguments
+specified. You can use <code>__send__</code> if the name <code>send</code>
+clashes with an existing method in <em>obj</em>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Klass</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>(*<span class="ruby-identifier">args</span>)
+    <span class="ruby-string">&quot;Hello &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">k</span> = <span class="ruby-constant">Klass</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">k</span>.<span class="ruby-identifier">send</span> :<span class="ruby-identifier">hello</span>, <span class="ruby-string">&quot;gentle&quot;</span>, <span class="ruby-string">&quot;readers&quot;</span>   <span class="ruby-comment">#=&gt; &quot;Hello gentle readers&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-send_source')" id="l_method-i-send_source">show</a>
+                
+              </p>
+              <div id="method-i-send_source" class="dyn-source">
+                <pre>VALUE
+rb_f_send(int argc, VALUE *argv, VALUE recv)
+{
+    return send_internal(argc, argv, recv, CALL_FCALL);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-singleton_class">
+            
+              <b>obj.singleton_class    &rarr; class
+</b>
+            
+            <a href="../classes/Object.html#method-i-singleton_class" name="method-i-singleton_class" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the singleton class of <em>obj</em>.  This method creates a new
+singleton class if <em>obj</em> does not have it.</p>
+
+<p>If <em>obj</em> is <code>nil</code>, <code>true</code>, or
+<code>false</code>, it returns <a href="NilClass.html">NilClass</a>, <a
+href="TrueClass.html">TrueClass</a>, or <a
+href="FalseClass.html">FalseClass</a>, respectively. If <em>obj</em> is a
+<a href="Fixnum.html">Fixnum</a> or a <a href="Symbol.html">Symbol</a>, it
+raises a <a href="TypeError.html">TypeError</a>.</p>
+
+<pre class="ruby"><span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">singleton_class</span>  <span class="ruby-comment">#=&gt; #&lt;Class:#&lt;Object:0xb7ce1e24&gt;&gt;</span>
+<span class="ruby-constant">String</span>.<span class="ruby-identifier">singleton_class</span>      <span class="ruby-comment">#=&gt; #&lt;Class:String&gt;</span>
+<span class="ruby-keyword">nil</span>.<span class="ruby-identifier">singleton_class</span>         <span class="ruby-comment">#=&gt; NilClass</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-singleton_class_source')" id="l_method-i-singleton_class_source">show</a>
+                
+              </p>
+              <div id="method-i-singleton_class_source" class="dyn-source">
+                <pre>static VALUE
+rb_obj_singleton_class(VALUE obj)
+{
+    return rb_singleton_class(obj);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-singleton_methods">
+            
+              <b>obj.singleton_methods(all=true)    &rarr; array
+</b>
+            
+            <a href="../classes/Object.html#method-i-singleton_methods" name="method-i-singleton_methods" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array of the names of singleton methods for <em>obj</em>. If the
+optional <em>all</em> parameter is true, the list will include methods in
+modules included in <em>obj</em>. Only public and protected singleton
+methods are returned.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">Other</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">three</span>() <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Single</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-constant">Single</span>.<span class="ruby-identifier">four</span>() <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">Single</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">one</span>()
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">a</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Other</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">two</span>()
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">Single</span>.<span class="ruby-identifier">singleton_methods</span>    <span class="ruby-comment">#=&gt; [:four]</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">singleton_methods</span>(<span class="ruby-keyword">false</span>)  <span class="ruby-comment">#=&gt; [:two, :one]</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">singleton_methods</span>         <span class="ruby-comment">#=&gt; [:two, :one, :three]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-singleton_methods_source')" id="l_method-i-singleton_methods_source">show</a>
+                
+              </p>
+              <div id="method-i-singleton_methods_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_singleton_methods(int argc, VALUE *argv, VALUE obj)
+{
+    VALUE recur, ary, klass;
+    st_table *list;
+
+    if (argc == 0) {
+	recur = Qtrue;
+    }
+    else {
+	rb_scan_args(argc, argv, &quot;01&quot;, &amp;recur);
+    }
+    klass = CLASS_OF(obj);
+    list = st_init_numtable();
+    if (klass &amp;&amp; FL_TEST(klass, FL_SINGLETON)) {
+	st_foreach(RCLASS_M_TBL(klass), method_entry, (st_data_t)list);
+	klass = RCLASS_SUPER(klass);
+    }
+    if (RTEST(recur)) {
+	while (klass &amp;&amp; (FL_TEST(klass, FL_SINGLETON) || TYPE(klass) == T_ICLASS)) {
+	    st_foreach(RCLASS_M_TBL(klass), method_entry, (st_data_t)list);
+	    klass = RCLASS_SUPER(klass);
+	}
+    }
+    ary = rb_ary_new();
+    st_foreach(list, ins_methods_i, ary);
+    st_free_table(list);
+
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-taint">
+            
+              <b>obj.taint &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-taint" name="method-i-taint" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Marks <em>obj</em> as tainted—if the <code>$SAFE</code> level is set
+appropriately, many method calls which might alter the running programs
+environment will refuse to accept tainted strings.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-taint_source')" id="l_method-i-taint_source">show</a>
+                
+              </p>
+              <div id="method-i-taint_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_taint(VALUE obj)
+{
+    rb_secure(4);
+    if (!OBJ_TAINTED(obj)) {
+        if (OBJ_FROZEN(obj)) {
+            rb_error_frozen(&quot;object&quot;);
+        }
+        OBJ_TAINT(obj);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tainted-3F">
+            
+              <b>obj.tainted?    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-tainted-3F" name="method-i-tainted-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the object is tainted.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tainted-3F_source')" id="l_method-i-tainted-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-tainted-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_tainted(VALUE obj)
+{
+    if (OBJ_TAINTED(obj))
+        return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tap">
+            
+              <b>obj.tap{|x|...}    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-tap" name="method-i-tap" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Yields <code>x</code> to the block, and then returns <code>x</code>. The
+primary purpose of this method is to “tap into” a method chain, in
+order to perform operations on intermediate results within the chain.</p>
+
+<pre class="ruby">(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>)                .<span class="ruby-identifier">tap</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;original: #{x.inspect}&quot;</span>}
+  .<span class="ruby-identifier">to_a</span>                .<span class="ruby-identifier">tap</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;array: #{x.inspect}&quot;</span>}
+  .<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span><span class="ruby-operator">%</span><span class="ruby-value">2</span><span class="ruby-operator">==</span><span class="ruby-value">0</span>} .<span class="ruby-identifier">tap</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;evens: #{x.inspect}&quot;</span>}
+  .<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>*<span class="ruby-identifier">x</span> }     .<span class="ruby-identifier">tap</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;squares: #{x.inspect}&quot;</span>}
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tap_source')" id="l_method-i-tap_source">show</a>
+                
+              </p>
+              <div id="method-i-tap_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_tap(VALUE obj)
+{
+    rb_yield(obj);
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_enum">
+            
+              <b>obj.to_enum(method = :each, *args)
+obj.enum_for(method = :each, *args)
+</b>
+            
+            <a href="../classes/Object.html#method-i-to_enum" name="method-i-to_enum" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <a href="Enumerator.html#method-c-new">Enumerator.new</a>(self,
+method, *args).</p>
+
+<p>e.g.:</p>
+
+<pre class="ruby"><span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;xyz&quot;</span>
+
+<span class="ruby-identifier">enum</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">enum_for</span>(:<span class="ruby-identifier">each_byte</span>)
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">enum</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-string">'%02x'</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">b</span> } <span class="ruby-comment">#=&gt; [&quot;78&quot;, &quot;79&quot;, &quot;7a&quot;]</span>
+
+<span class="ruby-comment"># protects an array from being modified</span>
+<span class="ruby-identifier">a</span> = [<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>]
+<span class="ruby-identifier">some_method</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_enum</span>)
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_enum_source')" id="l_method-i-to_enum_source">show</a>
+                
+              </p>
+              <div id="method-i-to_enum_source" class="dyn-source">
+                <pre>static VALUE
+obj_to_enum(int argc, VALUE *argv, VALUE obj)
+{
+    VALUE meth = sym_each;
+
+    if (argc &gt; 0) {
+        --argc;
+        meth = *argv++;
+    }
+    return rb_enumeratorize(obj, meth, argc, argv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>obj.to_s    &rarr; string
+</b>
+            
+            <a href="../classes/Object.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string representing <em>obj</em>. The default <code>to_s</code>
+prints the object’s class and an encoding of the object id. As a special
+case, the top-level object that is the initial execution context of Ruby
+programs returns “main.”</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>VALUE
+rb_any_to_s(VALUE obj)
+{
+    const char *cname = rb_obj_classname(obj);
+    VALUE str;
+
+    str = rb_sprintf(&quot;#&lt;%s:%p&gt;&quot;, cname, (void*)obj);
+    OBJ_INFECT(str, obj);
+
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-trust">
+            
+              <b>obj.trust    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-trust" name="method-i-trust" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Removes the untrusted mark from <em>obj</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-trust_source')" id="l_method-i-trust_source">show</a>
+                
+              </p>
+              <div id="method-i-trust_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_trust(VALUE obj)
+{
+    rb_secure(3);
+    if (OBJ_UNTRUSTED(obj)) {
+        if (OBJ_FROZEN(obj)) {
+            rb_error_frozen(&quot;object&quot;);
+        }
+        FL_UNSET(obj, FL_UNTRUSTED);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-untaint">
+            
+              <b>obj.untaint    &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-untaint" name="method-i-untaint" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Removes the taint from <em>obj</em>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-untaint_source')" id="l_method-i-untaint_source">show</a>
+                
+              </p>
+              <div id="method-i-untaint_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_untaint(VALUE obj)
+{
+    rb_secure(3);
+    if (OBJ_TAINTED(obj)) {
+        if (OBJ_FROZEN(obj)) {
+            rb_error_frozen(&quot;object&quot;);
+        }
+        FL_UNSET(obj, FL_TAINT);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-untrust">
+            
+              <b>obj.untrust &rarr; obj
+</b>
+            
+            <a href="../classes/Object.html#method-i-untrust" name="method-i-untrust" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Marks <em>obj</em> as untrusted.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-untrust_source')" id="l_method-i-untrust_source">show</a>
+                
+              </p>
+              <div id="method-i-untrust_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_untrust(VALUE obj)
+{
+    rb_secure(4);
+    if (!OBJ_UNTRUSTED(obj)) {
+        if (OBJ_FROZEN(obj)) {
+            rb_error_frozen(&quot;object&quot;);
+        }
+        OBJ_UNTRUST(obj);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-untrusted-3F">
+            
+              <b>obj.untrusted?    &rarr; true or false
+</b>
+            
+            <a href="../classes/Object.html#method-i-untrusted-3F" name="method-i-untrusted-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the object is untrusted.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-untrusted-3F_source')" id="l_method-i-untrusted-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-untrusted-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_obj_untrusted(VALUE obj)
+{
+    if (OBJ_UNTRUSTED(obj))
+        return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

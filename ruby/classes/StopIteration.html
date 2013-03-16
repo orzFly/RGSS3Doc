@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>StopIteration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            StopIteration 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="IndexError.html">IndexError</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/enumerator_c.html">enumerator.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Raised to stop the iteration, in particular by <a
+href="Enumerator.html#method-i-next">Enumerator#next</a>. It is rescued by
+<a href="Kernel.html#method-i-loop">Kernel#loop</a>.</p>
+
+<pre>loop do
+  puts &quot;Hello&quot;
+  raise StopIteration
+  puts &quot;World&quot;
+end
+puts &quot;Done!&quot;</pre>
+
+<p><em>produces:</em></p>
+
+<pre>Hello
+Done!</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-result">result</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-result">
+            
+              <b>stopiteration.result       &rarr; value
+</b>
+            
+            <a href="../classes/StopIteration.html#method-i-result" name="method-i-result" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the return value of the iterator.</p>
+
+<pre class="ruby"><span class="ruby-identifier">o</span> = <span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">each</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-value">2</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-value">3</span>
+  <span class="ruby-value">100</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">e</span> = <span class="ruby-identifier">o</span>.<span class="ruby-identifier">to_enum</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">next</span>                   <span class="ruby-comment">#=&gt; 1</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">next</span>                   <span class="ruby-comment">#=&gt; 2</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">next</span>                   <span class="ruby-comment">#=&gt; 3</span>
+<span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">e</span>.<span class="ruby-identifier">next</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">StopIteration</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">result</span>              <span class="ruby-comment">#=&gt; 100</span>
+<span class="ruby-keyword">end</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-result_source')" id="l_method-i-result_source">show</a>
+                
+              </p>
+              <div id="method-i-result_source" class="dyn-source">
+                <pre>static VALUE
+stop_result(VALUE self)
+{
+    return rb_attr_get(self, rb_intern(&quot;result&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

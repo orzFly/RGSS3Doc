@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DL::Handle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            DL::Handle 
+            
+                <span class="parent">&lt; 
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/cfunc_c.html">cfunc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-5B-5D">[]</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-close">close</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-close_enabled-3F">close_enabled?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-disable_close">disable_close</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-enable_close">enable_close</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-sym">sym</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-sym">sym</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">NEXT</td>
+            <td>=</td>
+            <td class="attr-value">predefined_dlhandle(RTLD_NEXT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEFAULT</td>
+            <td>=</td>
+            <td class="attr-value">predefined_dlhandle(RTLD_DEFAULT)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-5B-5D">
+            
+              <b>sym(name)
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-c-5B-5D" name="method-c-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the address as an Integer for the function named <code>name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-5B-5D_source')" id="l_method-c-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-c-5B-5D_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_s_sym(VALUE self, VALUE sym)
+{
+    return dlhandle_sym(RTLD_NEXT, StringValueCStr(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>initialize(lib = nil, flags = DL::RTLD_LAZY | DL::RTLD_GLOBAL)
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new handler that opens library named <code>lib</code> with
+<code>flags</code>.  If no library is specified, RTLD_DEFAULT is used.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_initialize(int argc, VALUE argv[], VALUE self)
+{
+    void *ptr;
+    struct dl_handle *dlhandle;
+    VALUE lib, flag;
+    char  *clib;
+    int   cflag;
+    const char *err;
+
+    switch( rb_scan_args(argc, argv, &quot;02&quot;, &amp;lib, &amp;flag) ){
+      case 0:
+        clib = NULL;
+        cflag = RTLD_LAZY | RTLD_GLOBAL;
+        break;
+      case 1:
+        clib = NIL_P(lib) ? NULL : StringValuePtr(lib);
+        cflag = RTLD_LAZY | RTLD_GLOBAL;
+        break;
+      case 2:
+        clib = NIL_P(lib) ? NULL : StringValuePtr(lib);
+        cflag = NUM2INT(flag);
+        break;
+      default:
+        rb_bug(&quot;rb_dlhandle_new&quot;);
+    }
+
+    rb_secure(2);
+
+#if defined(_WIN32)
+    if( !clib ){
+        HANDLE rb_libruby_handle(void);
+        ptr = rb_libruby_handle();
+    }
+    else if( STRCASECMP(clib, &quot;libc&quot;) == 0
+# ifdef RUBY_COREDLL
+             || STRCASECMP(clib, RUBY_COREDLL) == 0
+             || STRCASECMP(clib, RUBY_COREDLL&quot;.dll&quot;) == 0
+# endif
+        ){
+# ifdef _WIN32_WCE
+        ptr = dlopen(&quot;coredll.dll&quot;, cflag);
+# else
+        ptr = w32_coredll();
+# endif
+    }
+    else
+#endif
+        ptr = dlopen(clib, cflag);
+#if defined(HAVE_DLERROR)
+    if( !ptr &amp;&amp; (err = dlerror()) ){
+        rb_raise(rb_eDLError, &quot;%s&quot;, err);
+    }
+#else
+    if( !ptr ){
+        err = dlerror();
+        rb_raise(rb_eDLError, &quot;%s&quot;, err);
+    }
+#endif
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    if( dlhandle-&gt;ptr &amp;&amp; dlhandle-&gt;open &amp;&amp; dlhandle-&gt;enable_close ){
+        dlclose(dlhandle-&gt;ptr);
+    }
+    dlhandle-&gt;ptr = ptr;
+    dlhandle-&gt;open = 1;
+    dlhandle-&gt;enable_close = 0;
+
+    if( rb_block_given_p() ){
+        rb_ensure(rb_yield, self, rb_dlhandle_close, self);
+    }
+
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-sym">
+            
+              <b>sym(name)
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-c-sym" name="method-c-sym" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Document-method: []</pre>
+
+<p>Get the address as an Integer for the function named <code>name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-sym_source')" id="l_method-c-sym_source">show</a>
+                
+              </p>
+              <div id="method-c-sym_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_s_sym(VALUE self, VALUE sym)
+{
+    return dlhandle_sym(RTLD_NEXT, StringValueCStr(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>sym(name)
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the address as an Integer for the function named <code>name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_sym(VALUE self, VALUE sym)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    if( ! dlhandle-&gt;open ){
+        rb_raise(rb_eDLError, &quot;closed handle&quot;);
+    }
+
+    return dlhandle_sym(dlhandle-&gt;ptr, StringValueCStr(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-close">
+            
+              <b>close
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-close" name="method-i-close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Close this <a href="Handle.html">DL::Handle</a>.  Calling close more than
+once will raise a <a href="DLError.html">DL::DLError</a> exception.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_source')" id="l_method-i-close_source">show</a>
+                
+              </p>
+              <div id="method-i-close_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_close(VALUE self)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    if(dlhandle-&gt;open) {
+        int ret = dlclose(dlhandle-&gt;ptr);
+        dlhandle-&gt;open = 0;
+
+        /* Check dlclose for successful return value */
+        if(ret) {
+#if defined(HAVE_DLERROR)
+            rb_raise(rb_eDLError, &quot;%s&quot;, dlerror());
+#else
+            rb_raise(rb_eDLError, &quot;could not close handle&quot;);
+#endif
+        }
+        return INT2NUM(ret);
+    }
+    rb_raise(rb_eDLError, &quot;dlclose() called too many times&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-close_enabled-3F">
+            
+              <b>close_enabled?
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-close_enabled-3F" name="method-i-close_enabled-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if dlclose() will be called when this <a
+href="Handle.html">DL::Handle</a> is garbage collected.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-close_enabled-3F_source')" id="l_method-i-close_enabled-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-close_enabled-3F_source" class="dyn-source">
+                <pre>static VALUE
+rb_dlhandle_close_enabled_p(VALUE self)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+
+    if(dlhandle-&gt;enable_close) return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-disable_close">
+            
+              <b>disable_close
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-disable_close" name="method-i-disable_close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Disable a call to dlclose() when this <a href="Handle.html">DL::Handle</a>
+is garbage collected.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-disable_close_source')" id="l_method-i-disable_close_source">show</a>
+                
+              </p>
+              <div id="method-i-disable_close_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_disable_close(VALUE self)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    dlhandle-&gt;enable_close = 0;
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-enable_close">
+            
+              <b>enable_close
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-enable_close" name="method-i-enable_close" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Enable a call to dlclose() when this <a href="Handle.html">DL::Handle</a>
+is garbage collected.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-enable_close_source')" id="l_method-i-enable_close_source">show</a>
+                
+              </p>
+              <div id="method-i-enable_close_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_enable_close(VALUE self)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    dlhandle-&gt;enable_close = 1;
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sym">
+            
+              <b>sym(name)
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-sym" name="method-i-sym" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>Document-method: []</pre>
+
+<p>Get the address as an Integer for the function named <code>name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sym_source')" id="l_method-i-sym_source">show</a>
+                
+              </p>
+              <div id="method-i-sym_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_sym(VALUE self, VALUE sym)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    if( ! dlhandle-&gt;open ){
+        rb_raise(rb_eDLError, &quot;closed handle&quot;);
+    }
+
+    return dlhandle_sym(dlhandle-&gt;ptr, StringValueCStr(sym));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>to_i
+</b>
+            
+            <a href="../../classes/DL/Handle.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the memory address for this handle.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>VALUE
+rb_dlhandle_to_i(VALUE self)
+{
+    struct dl_handle *dlhandle;
+
+    TypedData_Get_Struct(self, struct dl_handle, &amp;dlhandle_data_type, dlhandle);
+    return PTR2NUM(dlhandle);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

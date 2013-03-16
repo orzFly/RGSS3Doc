@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Proc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Proc 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/proc_c.html">proc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>Proc</code> objects are blocks of code that have been bound to a set
+of local variables. Once bound, the code may be called in different
+contexts and still access those variables.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">gen_times</span>(<span class="ruby-identifier">factor</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>*<span class="ruby-identifier">factor</span> }
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">times3</span> = <span class="ruby-identifier">gen_times</span>(<span class="ruby-value">3</span>)
+<span class="ruby-identifier">times5</span> = <span class="ruby-identifier">gen_times</span>(<span class="ruby-value">5</span>)
+
+<span class="ruby-identifier">times3</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value">12</span>)               <span class="ruby-comment">#=&gt; 36</span>
+<span class="ruby-identifier">times5</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value">5</span>)                <span class="ruby-comment">#=&gt; 25</span>
+<span class="ruby-identifier">times3</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">times5</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value">4</span>))   <span class="ruby-comment">#=&gt; 60</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D-3D">===</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-arity">arity</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-binding">binding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-curry">curry</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-eql-3F">eql?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-hash">hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-lambda-3F">lambda?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parameters">parameters</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-source_location">source_location</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_proc">to_proc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Y</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-yield">yield</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>Proc.new {|...| block } &rarr; a_proc
+Proc.new                &rarr; a_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new <code>Proc</code> object, bound to the current context.
+<code>Proc::new</code> may be called without a block only within a method
+with an attached block, in which case that block is converted to the
+<code>Proc</code> object.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">proc_from</span>
+  <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">proc</span> = <span class="ruby-identifier">proc_from</span> { <span class="ruby-string">&quot;hello&quot;</span> }
+<span class="ruby-identifier">proc</span>.<span class="ruby-identifier">call</span>   <span class="ruby-comment">#=&gt; &quot;hello&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+rb_proc_s_new(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE block = proc_new(klass, FALSE);
+
+    rb_obj_call_init(block, argc, argv);
+    return block;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>prc == other_proc   &rarr;  true or false
+</b>
+            
+            <a href="../classes/Proc.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if <em>prc</em> is the same object as
+<em>other_proc</em>, or if they are both procs with the same body.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+proc_eq(VALUE self, VALUE other)
+{
+    if (self == other) {
+        return Qtrue;
+    }
+    else {
+        if (rb_obj_is_proc(other)) {
+            rb_proc_t *p1, *p2;
+            GetProcPtr(self, p1);
+            GetProcPtr(other, p2);
+            if (p1-&gt;envval == p2-&gt;envval &amp;&amp;
+                p1-&gt;block.iseq-&gt;iseq_size == p2-&gt;block.iseq-&gt;iseq_size &amp;&amp;
+                p1-&gt;block.iseq-&gt;local_size == p2-&gt;block.iseq-&gt;local_size &amp;&amp;
+                MEMCMP(p1-&gt;block.iseq-&gt;iseq, p2-&gt;block.iseq-&gt;iseq, VALUE,
+                       p1-&gt;block.iseq-&gt;iseq_size) == 0) {
+                return Qtrue;
+            }
+        }
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D-3D">
+            
+              <b>prc === obj   &rarr; result_of_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-3D-3D-3D" name="method-i-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the block, with <em>obj</em> as the block’s parameter.  It is to
+allow a proc object to be a target of <code>when</code> clause in the case
+statement.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D-3D_source')" id="l_method-i-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+proc_call(int argc, VALUE *argv, VALUE procval)
+{
+    rb_proc_t *proc;
+    rb_block_t *blockptr = 0;
+    rb_iseq_t *iseq;
+    VALUE passed_procval;
+    GetProcPtr(procval, proc);
+
+    iseq = proc-&gt;block.iseq;
+    if (BUILTIN_TYPE(iseq) == T_NODE || iseq-&gt;arg_block != -1) {
+        if (rb_block_given_p()) {
+            rb_proc_t *passed_proc;
+            RB_GC_GUARD(passed_procval) = rb_block_proc();
+            GetProcPtr(passed_procval, passed_proc);
+            blockptr = &amp;passed_proc-&gt;block;
+        }
+    }
+
+    return rb_vm_invoke_proc(GET_THREAD(), proc, proc-&gt;block.self,
+                             argc, argv, blockptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>prc === obj   &rarr; result_of_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the block, with <em>obj</em> as the block’s parameter.  It is to
+allow a proc object to be a target of <code>when</code> clause in the case
+statement.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>static VALUE
+proc_call(int argc, VALUE *argv, VALUE procval)
+{
+    rb_proc_t *proc;
+    rb_block_t *blockptr = 0;
+    rb_iseq_t *iseq;
+    VALUE passed_procval;
+    GetProcPtr(procval, proc);
+
+    iseq = proc-&gt;block.iseq;
+    if (BUILTIN_TYPE(iseq) == T_NODE || iseq-&gt;arg_block != -1) {
+        if (rb_block_given_p()) {
+            rb_proc_t *passed_proc;
+            RB_GC_GUARD(passed_procval) = rb_block_proc();
+            GetProcPtr(passed_procval, passed_proc);
+            blockptr = &amp;passed_proc-&gt;block;
+        }
+    }
+
+    return rb_vm_invoke_proc(GET_THREAD(), proc, proc-&gt;block.self,
+                             argc, argv, blockptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-arity">
+            
+              <b>prc.arity &rarr; fixnum
+</b>
+            
+            <a href="../classes/Proc.html#method-i-arity" name="method-i-arity" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the number of arguments that would not be ignored. If the block is
+declared to take no arguments, returns 0. If the block is known to take
+exactly n arguments, returns n. If the block has optional arguments, return
+-n-1, where n is the number of mandatory arguments. A <code>proc</code>
+with no argument declarations is the same a block declaring <code>||</code>
+as its arguments.</p>
+
+<pre class="ruby"><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {}.<span class="ruby-identifier">arity</span>          <span class="ruby-comment">#=&gt;  0</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">||</span>}.<span class="ruby-identifier">arity</span>        <span class="ruby-comment">#=&gt;  0</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>       <span class="ruby-comment">#=&gt;  1</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>     <span class="ruby-comment">#=&gt;  2</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>,<span class="ruby-identifier">c</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>   <span class="ruby-comment">#=&gt;  3</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span>*<span class="ruby-identifier">a</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>      <span class="ruby-comment">#=&gt; -1</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,*<span class="ruby-identifier">b</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>    <span class="ruby-comment">#=&gt; -2</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,*<span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">|</span>}.<span class="ruby-identifier">arity</span>    <span class="ruby-comment">#=&gt; -3</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-arity_source')" id="l_method-i-arity_source">show</a>
+                
+              </p>
+              <div id="method-i-arity_source" class="dyn-source">
+                <pre>static VALUE
+proc_arity(VALUE self)
+{
+    int arity = rb_proc_arity(self);
+    return INT2FIX(arity);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-binding">
+            
+              <b>prc.binding    &rarr; binding
+</b>
+            
+            <a href="../classes/Proc.html#method-i-binding" name="method-i-binding" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the binding associated with <em>prc</em>. Note that
+<code>Kernel#eval</code> accepts either a <code>Proc</code> or a
+<code>Binding</code> object as its second parameter.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">fred</span>(<span class="ruby-identifier">param</span>)
+  <span class="ruby-identifier">proc</span> {}
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">fred</span>(<span class="ruby-value">99</span>)
+<span class="ruby-identifier">eval</span>(<span class="ruby-string">&quot;param&quot;</span>, <span class="ruby-identifier">b</span>.<span class="ruby-identifier">binding</span>)   <span class="ruby-comment">#=&gt; 99</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-binding_source')" id="l_method-i-binding_source">show</a>
+                
+              </p>
+              <div id="method-i-binding_source" class="dyn-source">
+                <pre>static VALUE
+proc_binding(VALUE self)
+{
+    rb_proc_t *proc;
+    VALUE bindval;
+    rb_binding_t *bind;
+
+    GetProcPtr(self, proc);
+    if (TYPE(proc-&gt;block.iseq) == T_NODE) {
+        if (!IS_METHOD_PROC_NODE((NODE *)proc-&gt;block.iseq)) {
+            rb_raise(rb_eArgError, &quot;Can't create Binding from C level Proc&quot;);
+        }
+    }
+
+    bindval = binding_alloc(rb_cBinding);
+    GetBindingPtr(bindval, bind);
+    bind-&gt;env = proc-&gt;envval;
+    if (RUBY_VM_NORMAL_ISEQ_P(proc-&gt;block.iseq)) {
+        bind-&gt;filename = proc-&gt;block.iseq-&gt;filename;
+        bind-&gt;line_no = rb_iseq_first_lineno(proc-&gt;block.iseq);
+    }
+    else {
+        bind-&gt;filename = Qnil;
+        bind-&gt;line_no = 0;
+    }
+    return bindval;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
+            
+              <b>prc === obj   &rarr; result_of_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-call" name="method-i-call" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the block, with <em>obj</em> as the block’s parameter.  It is to
+allow a proc object to be a target of <code>when</code> clause in the case
+statement.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
+                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre>static VALUE
+proc_call(int argc, VALUE *argv, VALUE procval)
+{
+    rb_proc_t *proc;
+    rb_block_t *blockptr = 0;
+    rb_iseq_t *iseq;
+    VALUE passed_procval;
+    GetProcPtr(procval, proc);
+
+    iseq = proc-&gt;block.iseq;
+    if (BUILTIN_TYPE(iseq) == T_NODE || iseq-&gt;arg_block != -1) {
+        if (rb_block_given_p()) {
+            rb_proc_t *passed_proc;
+            RB_GC_GUARD(passed_procval) = rb_block_proc();
+            GetProcPtr(passed_procval, passed_proc);
+            blockptr = &amp;passed_proc-&gt;block;
+        }
+    }
+
+    return rb_vm_invoke_proc(GET_THREAD(), proc, proc-&gt;block.self,
+                             argc, argv, blockptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-curry">
+            
+              <b>prc.curry         &rarr; a_proc
+prc.curry(arity)  &rarr; a_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-curry" name="method-i-curry" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a curried proc. If the optional <em>arity</em> argument is given,
+it determines the number of arguments. A curried proc receives some
+arguments. If a sufficient number of arguments are supplied, it passes the
+supplied arguments to the original proc and returns the result. Otherwise,
+returns another curried proc that takes the rest of arguments.</p>
+
+<pre class="ruby"><span class="ruby-identifier">b</span> = <span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">x</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">y</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">z</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) }
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>]           <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]        <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>][<span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">1</span>)[<span class="ruby-value">1</span>]              <span class="ruby-comment">#=&gt; 1</span>
+
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z</span>, *<span class="ruby-identifier">w</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">x</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">y</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">z</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">w</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>, &amp;:<span class="ruby-operator">+</span>) }
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>]           <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]        <span class="ruby-comment">#=&gt; 10</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>][<span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 15</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 15</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">1</span>)[<span class="ruby-value">1</span>]              <span class="ruby-comment">#=&gt; 1</span>
+
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">x</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">y</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">z</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) }
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>]           <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]        <span class="ruby-comment">#=&gt; wrong number of arguments (4 for 3)</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)                 <span class="ruby-comment">#=&gt; wrong number of arguments (5 for 3)</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">1</span>)                 <span class="ruby-comment">#=&gt; wrong number of arguments (1 for 3)</span>
+
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z</span>, *<span class="ruby-identifier">w</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">x</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">y</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">z</span><span class="ruby-operator">||</span><span class="ruby-value">0</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">w</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>, &amp;:<span class="ruby-operator">+</span>) }
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>]           <span class="ruby-comment">#=&gt; 6</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>]        <span class="ruby-comment">#=&gt; 10</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>][<span class="ruby-value">2</span>][<span class="ruby-value">3</span>][<span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 15</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">5</span>)[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>][<span class="ruby-value">3</span>, <span class="ruby-value">4</span>][<span class="ruby-value">5</span>]  <span class="ruby-comment">#=&gt; 15</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>(<span class="ruby-value">1</span>)                 <span class="ruby-comment">#=&gt; wrong number of arguments (1 for 3)</span>
+
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">proc</span> { :<span class="ruby-identifier">foo</span> }
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">curry</span>[]                  <span class="ruby-comment">#=&gt; :foo</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-curry_source')" id="l_method-i-curry_source">show</a>
+                
+              </p>
+              <div id="method-i-curry_source" class="dyn-source">
+                <pre>static VALUE
+proc_curry(int argc, VALUE *argv, VALUE self)
+{
+    int sarity, marity = rb_proc_arity(self);
+    VALUE arity, opt = Qfalse;
+
+    if (marity &lt; 0) {
+        marity = -marity - 1;
+        opt = Qtrue;
+    }
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;arity);
+    if (NIL_P(arity)) {
+        arity = INT2FIX(marity);
+    }
+    else {
+        sarity = FIX2INT(arity);
+        if (rb_proc_lambda_p(self) &amp;&amp; (sarity &lt; marity || (sarity &gt; marity &amp;&amp; !opt))) {
+            rb_raise(rb_eArgError, &quot;wrong number of arguments (%d for %d)&quot;, sarity, marity);
+        }
+    }
+
+    return make_curry_proc(self, rb_ary_new(), arity);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eql-3F">
+            
+              <b>prc == other_proc   &rarr;  true or false
+</b>
+            
+            <a href="../classes/Proc.html#method-i-eql-3F" name="method-i-eql-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if <em>prc</em> is the same object as
+<em>other_proc</em>, or if they are both procs with the same body.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eql-3F_source')" id="l_method-i-eql-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eql-3F_source" class="dyn-source">
+                <pre>static VALUE
+proc_eq(VALUE self, VALUE other)
+{
+    if (self == other) {
+        return Qtrue;
+    }
+    else {
+        if (rb_obj_is_proc(other)) {
+            rb_proc_t *p1, *p2;
+            GetProcPtr(self, p1);
+            GetProcPtr(other, p2);
+            if (p1-&gt;envval == p2-&gt;envval &amp;&amp;
+                p1-&gt;block.iseq-&gt;iseq_size == p2-&gt;block.iseq-&gt;iseq_size &amp;&amp;
+                p1-&gt;block.iseq-&gt;local_size == p2-&gt;block.iseq-&gt;local_size &amp;&amp;
+                MEMCMP(p1-&gt;block.iseq-&gt;iseq, p2-&gt;block.iseq-&gt;iseq, VALUE,
+                       p1-&gt;block.iseq-&gt;iseq_size) == 0) {
+                return Qtrue;
+            }
+        }
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-hash">
+            
+              <b>prc.hash   &rarr;  integer
+</b>
+            
+            <a href="../classes/Proc.html#method-i-hash" name="method-i-hash" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return hash value corresponding to proc body.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-hash_source')" id="l_method-i-hash_source">show</a>
+                
+              </p>
+              <div id="method-i-hash_source" class="dyn-source">
+                <pre>static VALUE
+proc_hash(VALUE self)
+{
+    st_index_t hash;
+    rb_proc_t *proc;
+    GetProcPtr(self, proc);
+    hash = rb_hash_start((st_index_t)proc-&gt;block.iseq);
+    hash = rb_hash_uint(hash, (st_index_t)proc-&gt;envval);
+    hash = rb_hash_uint(hash, (st_index_t)proc-&gt;block.lfp &gt;&gt; 16);
+    hash = rb_hash_end(hash);
+    return LONG2FIX(hash);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lambda-3F">
+            
+              <b>prc.lambda? &rarr; true or false
+</b>
+            
+            <a href="../classes/Proc.html#method-i-lambda-3F" name="method-i-lambda-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true for a <a href="Proc.html">Proc</a> object which argument
+handling is rigid. Such procs are typically generated by lambda.</p>
+
+<p>A <a href="Proc.html">Proc</a> object generated by proc ignore extra
+arguments.</p>
+
+<pre class="ruby"><span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>)    <span class="ruby-comment">#=&gt; [1,2]</span>
+</pre>
+
+<p>It provides nil for lacked arguments.</p>
+
+<pre class="ruby"><span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>(<span class="ruby-value">1</span>)        <span class="ruby-comment">#=&gt; [1,nil]</span>
+</pre>
+
+<p>It expand single-array argument.</p>
+
+<pre class="ruby"><span class="ruby-identifier">proc</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>([<span class="ruby-value">1</span>,<span class="ruby-value">2</span>])    <span class="ruby-comment">#=&gt; [1,2]</span>
+</pre>
+
+<p>A <a href="Proc.html">Proc</a> object generated by lambda doesn’t have
+such tricks.</p>
+
+<pre class="ruby"><span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>)  <span class="ruby-comment">#=&gt; ArgumentError</span>
+<span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>(<span class="ruby-value">1</span>)      <span class="ruby-comment">#=&gt; ArgumentError</span>
+<span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>] }.<span class="ruby-identifier">call</span>([<span class="ruby-value">1</span>,<span class="ruby-value">2</span>])  <span class="ruby-comment">#=&gt; ArgumentError</span>
+</pre>
+
+<p><a href="Proc.html#method-i-lambda-3F">#lambda?</a> is a predicate for the
+tricks. It returns true if no tricks.</p>
+
+<pre class="ruby"><span class="ruby-identifier">lambda</span> {}.<span class="ruby-identifier">lambda?</span>            <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">proc</span> {}.<span class="ruby-identifier">lambda?</span>              <span class="ruby-comment">#=&gt; false</span>
+</pre>
+
+<p><a href="Proc.html#method-c-new">::new</a> is same as proc.</p>
+
+<pre class="ruby"><span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {}.<span class="ruby-identifier">lambda?</span>          <span class="ruby-comment">#=&gt; false</span>
+</pre>
+
+<p>lambda, proc and <a href="Proc.html#method-c-new">::new</a> preserves the
+tricks of a <a href="Proc.html">Proc</a> object given by &amp; argument.</p>
+
+<pre class="ruby"><span class="ruby-identifier">lambda</span>(&amp;<span class="ruby-identifier">lambda</span> {}).<span class="ruby-identifier">lambda?</span>   <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">proc</span>(&amp;<span class="ruby-identifier">lambda</span> {}).<span class="ruby-identifier">lambda?</span>     <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>(&amp;<span class="ruby-identifier">lambda</span> {}).<span class="ruby-identifier">lambda?</span> <span class="ruby-comment">#=&gt; true</span>
+
+<span class="ruby-identifier">lambda</span>(&amp;<span class="ruby-identifier">proc</span> {}).<span class="ruby-identifier">lambda?</span>     <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">proc</span>(&amp;<span class="ruby-identifier">proc</span> {}).<span class="ruby-identifier">lambda?</span>       <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>(&amp;<span class="ruby-identifier">proc</span> {}).<span class="ruby-identifier">lambda?</span>   <span class="ruby-comment">#=&gt; false</span>
+</pre>
+
+<p>A <a href="Proc.html">Proc</a> object generated by &amp; argument has the
+tricks</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">n</span>(&amp;<span class="ruby-identifier">b</span>) <span class="ruby-identifier">b</span>.<span class="ruby-identifier">lambda?</span> <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">n</span> {}                         <span class="ruby-comment">#=&gt; false</span>
+</pre>
+
+<p>The &amp; argument preserves the tricks if a <a href="Proc.html">Proc</a>
+object is given by &amp; argument.</p>
+
+<pre class="ruby"><span class="ruby-identifier">n</span>(&amp;<span class="ruby-identifier">lambda</span> {})                <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">n</span>(&amp;<span class="ruby-identifier">proc</span> {})                  <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-identifier">n</span>(&amp;<span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {})              <span class="ruby-comment">#=&gt; false</span>
+</pre>
+
+<p>A <a href="Proc.html">Proc</a> object converted from a method has no
+tricks.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">m</span>() <span class="ruby-keyword">end</span>
+<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">m</span>).<span class="ruby-identifier">to_proc</span>.<span class="ruby-identifier">lambda?</span>   <span class="ruby-comment">#=&gt; true</span>
+
+<span class="ruby-identifier">n</span>(&amp;<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">m</span>))               <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-identifier">n</span>(&amp;<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">m</span>).<span class="ruby-identifier">to_proc</span>)       <span class="ruby-comment">#=&gt; true</span>
+</pre>
+
+<p>define_method is treated same as method definition. The defined method has
+no tricks.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">define_method</span>(:<span class="ruby-identifier">d</span>) {}
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">e</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>)       <span class="ruby-comment">#=&gt; ArgumentError</span>
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">d</span>).<span class="ruby-identifier">to_proc</span>.<span class="ruby-identifier">lambda?</span>   <span class="ruby-comment">#=&gt; true</span>
+</pre>
+
+<p>define_method always defines a method without the tricks, even if a
+non-lambda <a href="Proc.html">Proc</a> object is given. This is the only
+exception which the tricks are not preserved.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">define_method</span>(:<span class="ruby-identifier">e</span>, &amp;<span class="ruby-identifier">proc</span> {})
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">e</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>)       <span class="ruby-comment">#=&gt; ArgumentError</span>
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">e</span>).<span class="ruby-identifier">to_proc</span>.<span class="ruby-identifier">lambda?</span>   <span class="ruby-comment">#=&gt; true</span>
+</pre>
+
+<p>This exception is for a wrapper of define_method. It eases defining a
+method defining method which defines a usual method which has no tricks.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">def2</span>(<span class="ruby-identifier">name</span>, &amp;<span class="ruby-identifier">body</span>)
+    <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>, &amp;<span class="ruby-identifier">body</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">def2</span>(:<span class="ruby-identifier">f</span>) {}
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">f</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>)       <span class="ruby-comment">#=&gt; ArgumentError</span>
+</pre>
+
+<p>The wrapper, def2, defines a method which has no tricks.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lambda-3F_source')" id="l_method-i-lambda-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-lambda-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_proc_lambda_p(VALUE procval)
+{
+    rb_proc_t *proc;
+    GetProcPtr(procval, proc);
+
+    return proc-&gt;is_lambda ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parameters">
+            
+              <b>proc.parameters  &rarr; array
+</b>
+            
+            <a href="../classes/Proc.html#method-i-parameters" name="method-i-parameters" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>returns the parameter information of this proc.</p>
+
+<pre class="ruby"><span class="ruby-identifier">prc</span> = <span class="ruby-identifier">lambda</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>=<span class="ruby-value">42</span>, *<span class="ruby-identifier">rest</span><span class="ruby-operator">|</span>}
+<span class="ruby-identifier">prc</span>.<span class="ruby-identifier">parameters</span>  <span class="ruby-comment">#=&gt; [[:req, :x], [:opt, :y], [:rest, :rest]]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parameters_source')" id="l_method-i-parameters_source">show</a>
+                
+              </p>
+              <div id="method-i-parameters_source" class="dyn-source">
+                <pre>static VALUE
+rb_proc_parameters(VALUE self)
+{
+    int is_proc;
+    rb_iseq_t *iseq = get_proc_iseq(self, &amp;is_proc);
+    if (!iseq) {
+        return unnamed_parameters(rb_proc_arity(self));
+    }
+    return rb_iseq_parameters(iseq, is_proc);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-source_location">
+            
+              <b>prc.source_location  &rarr; [String, Fixnum]
+</b>
+            
+            <a href="../classes/Proc.html#method-i-source_location" name="method-i-source_location" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>returns the ruby source filename and line number containing this proc or
+nil if this proc was not defined in ruby (i.e. native)</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-source_location_source')" id="l_method-i-source_location_source">show</a>
+                
+              </p>
+              <div id="method-i-source_location_source" class="dyn-source">
+                <pre>VALUE
+rb_proc_location(VALUE self)
+{
+    return iseq_location(get_proc_iseq(self, 0));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_proc">
+            
+              <b>prc.to_proc &rarr; prc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-to_proc" name="method-i-to_proc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Part of the protocol for converting objects to <code>Proc</code> objects.
+Instances of class <code>Proc</code> simply return themselves.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_proc_source')" id="l_method-i-to_proc_source">show</a>
+                
+              </p>
+              <div id="method-i-to_proc_source" class="dyn-source">
+                <pre>static VALUE
+proc_to_proc(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>prc.to_s   &rarr; string
+</b>
+            
+            <a href="../classes/Proc.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Shows the unique identifier for this proc, along with an indication of
+where the proc was defined.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+proc_to_s(VALUE self)
+{
+    VALUE str = 0;
+    rb_proc_t *proc;
+    const char *cname = rb_obj_classname(self);
+    rb_iseq_t *iseq;
+    const char *is_lambda;
+
+    GetProcPtr(self, proc);
+    iseq = proc-&gt;block.iseq;
+    is_lambda = proc-&gt;is_lambda ? &quot; (lambda)&quot; : &quot;&quot;;
+
+    if (RUBY_VM_NORMAL_ISEQ_P(iseq)) {
+        int line_no = 0;
+
+        if (iseq-&gt;insn_info_table) {
+            line_no = rb_iseq_first_lineno(iseq);
+        }
+        str = rb_sprintf(&quot;#&lt;%s:%p@%s:%d%s&gt;&quot;, cname, (void *)self,
+                         RSTRING_PTR(iseq-&gt;filename),
+                         line_no, is_lambda);
+    }
+    else {
+        str = rb_sprintf(&quot;#&lt;%s:%p%s&gt;&quot;, cname, (void *)proc-&gt;block.iseq,
+                         is_lambda);
+    }
+
+    if (OBJ_TAINTED(self)) {
+        OBJ_TAINT(str);
+    }
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-yield">
+            
+              <b>prc === obj   &rarr; result_of_proc
+</b>
+            
+            <a href="../classes/Proc.html#method-i-yield" name="method-i-yield" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the block, with <em>obj</em> as the block’s parameter.  It is to
+allow a proc object to be a target of <code>when</code> clause in the case
+statement.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-yield_source')" id="l_method-i-yield_source">show</a>
+                
+              </p>
+              <div id="method-i-yield_source" class="dyn-source">
+                <pre>static VALUE
+proc_call(int argc, VALUE *argv, VALUE procval)
+{
+    rb_proc_t *proc;
+    rb_block_t *blockptr = 0;
+    rb_iseq_t *iseq;
+    VALUE passed_procval;
+    GetProcPtr(procval, proc);
+
+    iseq = proc-&gt;block.iseq;
+    if (BUILTIN_TYPE(iseq) == T_NODE || iseq-&gt;arg_block != -1) {
+        if (rb_block_given_p()) {
+            rb_proc_t *passed_proc;
+            RB_GC_GUARD(passed_procval) = rb_block_proc();
+            GetProcPtr(passed_procval, passed_proc);
+            blockptr = &amp;passed_proc-&gt;block;
+        }
+    }
+
+    return rb_vm_invoke_proc(GET_THREAD(), proc, proc-&gt;block.self,
+                             argc, argv, blockptr);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

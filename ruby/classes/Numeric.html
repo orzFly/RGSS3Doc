@@ -1,0 +1,2197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Numeric</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Numeric 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/complex_c.html">complex.c</a></li>
+            
+            <li><a href="../files/numeric_c.html">numeric.c</a></li>
+            
+            <li><a href="../files/rational_c.html">rational.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Document-class: <a href="FloatDomainError.html">FloatDomainError</a></p>
+
+<p>Raised when attempting to convert special float values (in particular
+infinite or NaN) to numerical classes which don’t support them.</p>
+
+<pre>Float::INFINITY.to_r</pre>
+
+<p><em>raises the exception:</em></p>
+
+<pre>FloatDomainError: Infinity</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-25">%</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2B-40">+@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D-40">-@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C-3D-3E">&lt;=&gt;</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-abs">abs</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-abs2">abs2</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-angle">angle</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-arg">arg</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ceil">ceil</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-coerce">coerce</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-conj">conj</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-conjugate">conjugate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-denominator">denominator</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-div">div</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-divmod">divmod</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-eql-3F">eql?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fdiv">fdiv</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-floor">floor</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-i">i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-imag">imag</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-imaginary">imaginary</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-integer-3F">integer?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-magnitude">magnitude</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-modulo">modulo</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-nonzero-3F">nonzero?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-numerator">numerator</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-phase">phase</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-polar">polar</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Q</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-quo">quo</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-real">real</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-real-3F">real?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-rect">rect</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-rectangular">rectangular</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-remainder">remainder</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-round">round</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-singleton_method_added">singleton_method_added</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-step">step</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_c">to_c</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_int">to_int</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-truncate">truncate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Z</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-zero-3F">zero?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Comparable.html">
+              Comparable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-25">
+            
+              <b>num.modulo(numeric)  &rarr;  real
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-25" name="method-i-25" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>x.modulo(y) means x-y*(x/y).floor</pre>
+
+<p>Equivalent to <em><a href="http://1">num.divmod(aNumeric)</a></em>.</p>
+
+<p>See <code>Numeric#divmod</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-25_source')" id="l_method-i-25_source">show</a>
+                
+              </p>
+              <div id="method-i-25_source" class="dyn-source">
+                <pre>static VALUE
+num_modulo(VALUE x, VALUE y)
+{
+    return rb_funcall(x, '-', 1,
+                      rb_funcall(y, '*', 1,
+                                 rb_funcall(x, rb_intern(&quot;div&quot;), 1, y)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2B-40">
+            
+              <b>+num  &rarr;  num
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-2B-40" name="method-i-2B-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Unary Plus—Returns the receiver’s value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B-40_source')" id="l_method-i-2B-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2B-40_source" class="dyn-source">
+                <pre>static VALUE
+num_uplus(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D-40">
+            
+              <b>-num  &rarr;  numeric
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-2D-40" name="method-i-2D-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Unary Minus—Returns the receiver’s value, negated.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D-40_source')" id="l_method-i-2D-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2D-40_source" class="dyn-source">
+                <pre>static VALUE
+num_uminus(VALUE num)
+{
+    VALUE zero;
+
+    zero = INT2FIX(0);
+    do_coerce(&amp;zero, &amp;num, TRUE);
+
+    return rb_funcall(zero, '-', 1, num);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3D-3E">
+            
+              <b>num <=> other  &rarr;  0 or nil
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-3C-3D-3E" name="method-i-3C-3D-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns zero if <em>num</em> equals <em>other</em>, <code>nil</code>
+otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3D-3E_source')" id="l_method-i-3C-3D-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3D-3E_source" class="dyn-source">
+                <pre>static VALUE
+num_cmp(VALUE x, VALUE y)
+{
+    if (x == y) return INT2FIX(0);
+    return Qnil;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-abs">
+            
+              <b>num.abs        &rarr;  numeric
+num.magnitude  &rarr;  numeric
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-abs" name="method-i-abs" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute value of <em>num</em>.</p>
+
+<pre class="ruby"><span class="ruby-value">12</span>.<span class="ruby-identifier">abs</span>         <span class="ruby-comment">#=&gt; 12</span>
+(<span class="ruby-value">-34.56</span>).<span class="ruby-identifier">abs</span>   <span class="ruby-comment">#=&gt; 34.56</span>
+<span class="ruby-value">-34.56</span>.<span class="ruby-identifier">abs</span>     <span class="ruby-comment">#=&gt; 34.56</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-abs_source')" id="l_method-i-abs_source">show</a>
+                
+              </p>
+              <div id="method-i-abs_source" class="dyn-source">
+                <pre>static VALUE
+num_abs(VALUE num)
+{
+    if (RTEST(rb_funcall(num, '&lt;', 1, INT2FIX(0)))) {
+        return rb_funcall(num, rb_intern(&quot;-@&quot;), 0);
+    }
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-abs2">
+            
+              <b>num.abs2  &rarr;  real
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-abs2" name="method-i-abs2" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns square of self.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-abs2_source')" id="l_method-i-abs2_source">show</a>
+                
+              </p>
+              <div id="method-i-abs2_source" class="dyn-source">
+                <pre>static VALUE
+numeric_abs2(VALUE self)
+{
+    return f_mul(self, self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-angle">
+            
+              <b>num.arg    &rarr;  0 or float
+num.angle  &rarr;  0 or float
+num.phase  &rarr;  0 or float
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-angle" name="method-i-angle" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns 0 if the value is positive, pi otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-angle_source')" id="l_method-i-angle_source">show</a>
+                
+              </p>
+              <div id="method-i-angle_source" class="dyn-source">
+                <pre>static VALUE
+numeric_arg(VALUE self)
+{
+    if (f_positive_p(self))
+        return INT2FIX(0);
+    return rb_const_get(rb_mMath, id_PI);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-arg">
+            
+              <b>num.arg    &rarr;  0 or float
+num.angle  &rarr;  0 or float
+num.phase  &rarr;  0 or float
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-arg" name="method-i-arg" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns 0 if the value is positive, pi otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-arg_source')" id="l_method-i-arg_source">show</a>
+                
+              </p>
+              <div id="method-i-arg_source" class="dyn-source">
+                <pre>static VALUE
+numeric_arg(VALUE self)
+{
+    if (f_positive_p(self))
+        return INT2FIX(0);
+    return rb_const_get(rb_mMath, id_PI);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ceil">
+            
+              <b>num.ceil  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-ceil" name="method-i-ceil" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the smallest <code>Integer</code> greater than or equal to
+<em>num</em>. <a href="Class.html">Class</a> <code>Numeric</code> achieves
+this by converting itself to a <code>Float</code> then invoking
+<code>Float#ceil</code>.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">ceil</span>        <span class="ruby-comment">#=&gt; 1</span>
+<span class="ruby-value">1.2</span>.<span class="ruby-identifier">ceil</span>      <span class="ruby-comment">#=&gt; 2</span>
+(<span class="ruby-value">-1.2</span>).<span class="ruby-identifier">ceil</span>   <span class="ruby-comment">#=&gt; -1</span>
+(<span class="ruby-value">-1.0</span>).<span class="ruby-identifier">ceil</span>   <span class="ruby-comment">#=&gt; -1</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ceil_source')" id="l_method-i-ceil_source">show</a>
+                
+              </p>
+              <div id="method-i-ceil_source" class="dyn-source">
+                <pre>static VALUE
+num_ceil(VALUE num)
+{
+    return flo_ceil(rb_Float(num));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-coerce">
+            
+              <b>num.coerce(numeric)  &rarr;  array
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-coerce" name="method-i-coerce" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>If <em>a<a href="Numeric.html">Numeric</a></em> is the same type as
+<em>num</em>, returns an array containing <em>a<a
+href="Numeric.html">Numeric</a></em> and <em>num</em>. Otherwise, returns
+an array with both <em>a<a href="Numeric.html">Numeric</a></em> and
+<em>num</em> represented as <code>Float</code> objects. This coercion
+mechanism is used by Ruby to handle mixed-type numeric operations: it is
+intended to find a compatible common type between the two operands of the
+operator.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">coerce</span>(<span class="ruby-value">2.5</span>)   <span class="ruby-comment">#=&gt; [2.5, 1.0]</span>
+<span class="ruby-value">1.2</span>.<span class="ruby-identifier">coerce</span>(<span class="ruby-value">3</span>)   <span class="ruby-comment">#=&gt; [3.0, 1.2]</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">coerce</span>(<span class="ruby-value">2</span>)     <span class="ruby-comment">#=&gt; [2, 1]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-coerce_source')" id="l_method-i-coerce_source">show</a>
+                
+              </p>
+              <div id="method-i-coerce_source" class="dyn-source">
+                <pre>static VALUE
+num_coerce(VALUE x, VALUE y)
+{
+    if (CLASS_OF(x) == CLASS_OF(y))
+        return rb_assoc_new(y, x);
+    x = rb_Float(x);
+    y = rb_Float(y);
+    return rb_assoc_new(y, x);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-conj">
+            
+              <b>num.conj       &rarr;  self
+num.conjugate  &rarr;  self
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-conj" name="method-i-conj" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns self.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-conj_source')" id="l_method-i-conj_source">show</a>
+                
+              </p>
+              <div id="method-i-conj_source" class="dyn-source">
+                <pre>static VALUE
+numeric_conj(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-conjugate">
+            
+              <b>num.conj       &rarr;  self
+num.conjugate  &rarr;  self
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-conjugate" name="method-i-conjugate" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns self.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-conjugate_source')" id="l_method-i-conjugate_source">show</a>
+                
+              </p>
+              <div id="method-i-conjugate_source" class="dyn-source">
+                <pre>static VALUE
+numeric_conj(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-denominator">
+            
+              <b>num.denominator  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-denominator" name="method-i-denominator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the denominator (always positive).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-denominator_source')" id="l_method-i-denominator_source">show</a>
+                
+              </p>
+              <div id="method-i-denominator_source" class="dyn-source">
+                <pre>static VALUE
+numeric_denominator(VALUE self)
+{
+    return f_denominator(f_to_r(self));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-div">
+            
+              <b>num.div(numeric)  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-div" name="method-i-div" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Uses <code>/</code> to perform division, then converts the result to an
+integer. <code>numeric</code> does not define the <code>/</code> operator;
+this is left to subclasses.</p>
+
+<p>Equivalent to <em><a href="http://0">num.divmod(aNumeric)</a></em>.</p>
+
+<p>See <code>Numeric#divmod</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-div_source')" id="l_method-i-div_source">show</a>
+                
+              </p>
+              <div id="method-i-div_source" class="dyn-source">
+                <pre>static VALUE
+num_div(VALUE x, VALUE y)
+{
+    if (rb_equal(INT2FIX(0), y)) rb_num_zerodiv();
+    return rb_funcall(rb_funcall(x, '/', 1, y), rb_intern(&quot;floor&quot;), 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-divmod">
+            
+              <b>num.divmod(numeric)  &rarr;  array
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-divmod" name="method-i-divmod" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array containing the quotient and modulus obtained by dividing
+<em>num</em> by <em>numeric</em>. If <code>q, r = x.divmod(y)</code>, then</p>
+
+<pre>q = floor(x/y)
+x = q*y+r</pre>
+
+<p>The quotient is rounded toward -infinity, as shown in the following table:</p>
+
+<pre> a    |  b  |  a.divmod(b)  |   a/b   | a.modulo(b) | a.remainder(b)
+------+-----+---------------+---------+-------------+---------------
+ 13   |  4  |   3,    1     |   3     |    1        |     1
+------+-----+---------------+---------+-------------+---------------
+ 13   | -4  |  -4,   -3     |  -4     |   -3        |     1
+------+-----+---------------+---------+-------------+---------------
+-13   |  4  |  -4,    3     |  -4     |    3        |    -1
+------+-----+---------------+---------+-------------+---------------
+-13   | -4  |   3,   -1     |   3     |   -1        |    -1
+------+-----+---------------+---------+-------------+---------------
+ 11.5 |  4  |   2,    3.5   |   2.875 |    3.5      |     3.5
+------+-----+---------------+---------+-------------+---------------
+ 11.5 | -4  |  -3,   -0.5   |  -2.875 |   -0.5      |     3.5
+------+-----+---------------+---------+-------------+---------------
+-11.5 |  4  |  -3,    0.5   |  -2.875 |    0.5      |    -3.5
+------+-----+---------------+---------+-------------+---------------
+-11.5 | -4  |   2,   -3.5   |   2.875 |   -3.5      |    -3.5</pre>
+
+<p>Examples</p>
+
+<pre class="ruby"><span class="ruby-value">11</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-value">3</span>)         <span class="ruby-comment">#=&gt; [3, 2]</span>
+<span class="ruby-value">11</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-value">-3</span>)        <span class="ruby-comment">#=&gt; [-4, -1]</span>
+<span class="ruby-value">11</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-value">3.5</span>)       <span class="ruby-comment">#=&gt; [3, 0.5]</span>
+(<span class="ruby-value">-11</span>).<span class="ruby-identifier">divmod</span>(<span class="ruby-value">3.5</span>)    <span class="ruby-comment">#=&gt; [-4, 3.0]</span>
+(<span class="ruby-value">11.5</span>).<span class="ruby-identifier">divmod</span>(<span class="ruby-value">3.5</span>)   <span class="ruby-comment">#=&gt; [3, 1.0]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-divmod_source')" id="l_method-i-divmod_source">show</a>
+                
+              </p>
+              <div id="method-i-divmod_source" class="dyn-source">
+                <pre>static VALUE
+num_divmod(VALUE x, VALUE y)
+{
+    return rb_assoc_new(num_div(x, y), num_modulo(x, y));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-eql-3F">
+            
+              <b>num.eql?(numeric)  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-eql-3F" name="method-i-eql-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>num</em> and <em>numeric</em> are the same
+type and have equal values.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>          <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-value">1.0</span>)       <span class="ruby-comment">#=&gt; false</span>
+(<span class="ruby-value">1.0</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-value">1.0</span>)   <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-eql-3F_source')" id="l_method-i-eql-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-eql-3F_source" class="dyn-source">
+                <pre>static VALUE
+num_eql(VALUE x, VALUE y)
+{
+    if (TYPE(x) != TYPE(y)) return Qfalse;
+
+    return rb_equal(x, y);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fdiv">
+            
+              <b>num.fdiv(numeric)  &rarr;  float
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-fdiv" name="method-i-fdiv" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns float division.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fdiv_source')" id="l_method-i-fdiv_source">show</a>
+                
+              </p>
+              <div id="method-i-fdiv_source" class="dyn-source">
+                <pre>static VALUE
+num_fdiv(VALUE x, VALUE y)
+{
+    return rb_funcall(rb_Float(x), '/', 1, y);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-floor">
+            
+              <b>num.floor  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-floor" name="method-i-floor" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the largest integer less than or equal to <em>num</em>.
+<code>Numeric</code> implements this by converting <em>an<a
+href="Integer.html">Integer</a></em> to a <code>Float</code> and invoking
+<code>Float#floor</code>.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">floor</span>      <span class="ruby-comment">#=&gt; 1</span>
+(<span class="ruby-value">-1</span>).<span class="ruby-identifier">floor</span>   <span class="ruby-comment">#=&gt; -1</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-floor_source')" id="l_method-i-floor_source">show</a>
+                
+              </p>
+              <div id="method-i-floor_source" class="dyn-source">
+                <pre>static VALUE
+num_floor(VALUE num)
+{
+    return flo_floor(rb_Float(num));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-i">
+            
+              <b>num.i  &rarr;  Complex(0,num)
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-i" name="method-i-i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the corresponding imaginary number. Not available for complex
+numbers.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-i_source')" id="l_method-i-i_source">show</a>
+                
+              </p>
+              <div id="method-i-i_source" class="dyn-source">
+                <pre>static VALUE
+num_imaginary(VALUE num)
+{
+    return rb_complex_new(INT2FIX(0), num);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-imag">
+            
+              <b>num.imag       &rarr;  0
+num.imaginary  &rarr;  0
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-imag" name="method-i-imag" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns zero.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-imag_source')" id="l_method-i-imag_source">show</a>
+                
+              </p>
+              <div id="method-i-imag_source" class="dyn-source">
+                <pre>static VALUE
+numeric_imag(VALUE self)
+{
+    return INT2FIX(0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-imaginary">
+            
+              <b>num.imag       &rarr;  0
+num.imaginary  &rarr;  0
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-imaginary" name="method-i-imaginary" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns zero.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-imaginary_source')" id="l_method-i-imaginary_source">show</a>
+                
+              </p>
+              <div id="method-i-imaginary_source" class="dyn-source">
+                <pre>static VALUE
+numeric_imag(VALUE self)
+{
+    return INT2FIX(0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-integer-3F">
+            
+              <b>num.integer?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-integer-3F" name="method-i-integer-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>num</em> is an <code>Integer</code>
+(including <code>Fixnum</code> and <code>Bignum</code>).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-integer-3F_source')" id="l_method-i-integer-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-integer-3F_source" class="dyn-source">
+                <pre>static VALUE
+num_int_p(VALUE num)
+{
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-magnitude">
+            
+              <b>num.abs        &rarr;  numeric
+num.magnitude  &rarr;  numeric
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-magnitude" name="method-i-magnitude" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute value of <em>num</em>.</p>
+
+<pre class="ruby"><span class="ruby-value">12</span>.<span class="ruby-identifier">abs</span>         <span class="ruby-comment">#=&gt; 12</span>
+(<span class="ruby-value">-34.56</span>).<span class="ruby-identifier">abs</span>   <span class="ruby-comment">#=&gt; 34.56</span>
+<span class="ruby-value">-34.56</span>.<span class="ruby-identifier">abs</span>     <span class="ruby-comment">#=&gt; 34.56</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-magnitude_source')" id="l_method-i-magnitude_source">show</a>
+                
+              </p>
+              <div id="method-i-magnitude_source" class="dyn-source">
+                <pre>static VALUE
+num_abs(VALUE num)
+{
+    if (RTEST(rb_funcall(num, '&lt;', 1, INT2FIX(0)))) {
+        return rb_funcall(num, rb_intern(&quot;-@&quot;), 0);
+    }
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-modulo">
+            
+              <b>num.modulo(numeric)  &rarr;  real
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-modulo" name="method-i-modulo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>x.modulo(y) means x-y*(x/y).floor</pre>
+
+<p>Equivalent to <em><a href="http://1">num.divmod(aNumeric)</a></em>.</p>
+
+<p>See <code>Numeric#divmod</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-modulo_source')" id="l_method-i-modulo_source">show</a>
+                
+              </p>
+              <div id="method-i-modulo_source" class="dyn-source">
+                <pre>static VALUE
+num_modulo(VALUE x, VALUE y)
+{
+    return rb_funcall(x, '-', 1,
+                      rb_funcall(y, '*', 1,
+                                 rb_funcall(x, rb_intern(&quot;div&quot;), 1, y)));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-nonzero-3F">
+            
+              <b>num.nonzero?  &rarr;  self or nil
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-nonzero-3F" name="method-i-nonzero-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>self</code> if <em>num</em> is not zero, <code>nil</code>
+otherwise. This behavior is useful when chaining comparisons:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-node">%w( z Bb bB bb BB a aA Aa AA A )</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">a</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">downcase</span>).<span class="ruby-identifier">nonzero?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span> }
+<span class="ruby-identifier">b</span>   <span class="ruby-comment">#=&gt; [&quot;A&quot;, &quot;a&quot;, &quot;AA&quot;, &quot;Aa&quot;, &quot;aA&quot;, &quot;BB&quot;, &quot;Bb&quot;, &quot;bB&quot;, &quot;bb&quot;, &quot;z&quot;]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-nonzero-3F_source')" id="l_method-i-nonzero-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-nonzero-3F_source" class="dyn-source">
+                <pre>static VALUE
+num_nonzero_p(VALUE num)
+{
+    if (RTEST(rb_funcall(num, rb_intern(&quot;zero?&quot;), 0, 0))) {
+        return Qnil;
+    }
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-numerator">
+            
+              <b>num.numerator  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-numerator" name="method-i-numerator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the numerator.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-numerator_source')" id="l_method-i-numerator_source">show</a>
+                
+              </p>
+              <div id="method-i-numerator_source" class="dyn-source">
+                <pre>static VALUE
+numeric_numerator(VALUE self)
+{
+    return f_numerator(f_to_r(self));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-phase">
+            
+              <b>num.arg    &rarr;  0 or float
+num.angle  &rarr;  0 or float
+num.phase  &rarr;  0 or float
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-phase" name="method-i-phase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns 0 if the value is positive, pi otherwise.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-phase_source')" id="l_method-i-phase_source">show</a>
+                
+              </p>
+              <div id="method-i-phase_source" class="dyn-source">
+                <pre>static VALUE
+numeric_arg(VALUE self)
+{
+    if (f_positive_p(self))
+        return INT2FIX(0);
+    return rb_const_get(rb_mMath, id_PI);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-polar">
+            
+              <b>num.polar  &rarr;  array
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-polar" name="method-i-polar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [num.abs, num.arg].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-polar_source')" id="l_method-i-polar_source">show</a>
+                
+              </p>
+              <div id="method-i-polar_source" class="dyn-source">
+                <pre>static VALUE
+numeric_polar(VALUE self)
+{
+    return rb_assoc_new(f_abs(self), f_arg(self));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-quo">
+            
+              <b>num.quo(numeric)  &rarr;  real
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-quo" name="method-i-quo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns most exact division (rational for integers, float for floats).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-quo_source')" id="l_method-i-quo_source">show</a>
+                
+              </p>
+              <div id="method-i-quo_source" class="dyn-source">
+                <pre>static VALUE
+num_quo(VALUE x, VALUE y)
+{
+    return rb_funcall(rb_rational_raw1(x), '/', 1, y);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-real">
+            
+              <b>num.real  &rarr;  self
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-real" name="method-i-real" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns self.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-real_source')" id="l_method-i-real_source">show</a>
+                
+              </p>
+              <div id="method-i-real_source" class="dyn-source">
+                <pre>static VALUE
+numeric_real(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-real-3F">
+            
+              <b>num.real?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-real-3F" name="method-i-real-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>num</em> is a <code>Real</code> (i.e. non
+<code>Complex</code>).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-real-3F_source')" id="l_method-i-real-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-real-3F_source" class="dyn-source">
+                <pre>static VALUE
+num_real_p(VALUE num)
+{
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rect">
+            
+              <b>num.rect  &rarr;  array
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-rect" name="method-i-rect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [num, 0].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rect_source')" id="l_method-i-rect_source">show</a>
+                
+              </p>
+              <div id="method-i-rect_source" class="dyn-source">
+                <pre>static VALUE
+numeric_rect(VALUE self)
+{
+    return rb_assoc_new(self, INT2FIX(0));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rectangular">
+            
+              <b>num.rect  &rarr;  array
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-rectangular" name="method-i-rectangular" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [num, 0].</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rectangular_source')" id="l_method-i-rectangular_source">show</a>
+                
+              </p>
+              <div id="method-i-rectangular_source" class="dyn-source">
+                <pre>static VALUE
+numeric_rect(VALUE self)
+{
+    return rb_assoc_new(self, INT2FIX(0));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-remainder">
+            
+              <b>num.remainder(numeric)  &rarr;  real
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-remainder" name="method-i-remainder" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <pre>x.remainder(y) means x-y*(x/y).truncate</pre>
+
+<p>See <code>Numeric#divmod</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-remainder_source')" id="l_method-i-remainder_source">show</a>
+                
+              </p>
+              <div id="method-i-remainder_source" class="dyn-source">
+                <pre>static VALUE
+num_remainder(VALUE x, VALUE y)
+{
+    VALUE z = rb_funcall(x, '%', 1, y);
+
+    if ((!rb_equal(z, INT2FIX(0))) &amp;&amp;
+        ((RTEST(rb_funcall(x, '&lt;', 1, INT2FIX(0))) &amp;&amp;
+          RTEST(rb_funcall(y, '&gt;', 1, INT2FIX(0)))) ||
+         (RTEST(rb_funcall(x, '&gt;', 1, INT2FIX(0))) &amp;&amp;
+          RTEST(rb_funcall(y, '&lt;', 1, INT2FIX(0)))))) {
+        return rb_funcall(z, '-', 1, y);
+    }
+    return z;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-round">
+            
+              <b>num.round([ndigits])  &rarr;  integer or float
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-round" name="method-i-round" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Rounds <em>num</em> to a given precision in decimal digits (default 0
+digits). Precision may be negative.  Returns a floating point number when
+ndigits is more than zero.  <code>Numeric</code> implements this by
+converting itself to a <code>Float</code> and invoking
+<code>Float#round</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-round_source')" id="l_method-i-round_source">show</a>
+                
+              </p>
+              <div id="method-i-round_source" class="dyn-source">
+                <pre>static VALUE
+num_round(int argc, VALUE* argv, VALUE num)
+{
+    return flo_round(argc, argv, rb_Float(num));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-singleton_method_added">
+            
+              <b>singleton_method_added</b>(p1)
+            
+            <a href="../classes/Numeric.html#method-i-singleton_method_added" name="method-i-singleton_method_added" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Trap attempts to add methods to <code>Numeric</code> objects. Always raises
+a <code>TypeError</code></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-singleton_method_added_source')" id="l_method-i-singleton_method_added_source">show</a>
+                
+              </p>
+              <div id="method-i-singleton_method_added_source" class="dyn-source">
+                <pre>static VALUE
+num_sadded(VALUE x, VALUE name)
+{
+    ID mid = rb_to_id(name);
+    /* ruby_frame = ruby_frame-&gt;prev; */ /* pop frame for &quot;singleton_method_added&quot; */
+    /* Numerics should be values; singleton_methods should not be added to them */
+    rb_remove_method_id(rb_singleton_class(x), mid);
+    rb_raise(rb_eTypeError,
+             &quot;can't define singleton method \&quot;%s\&quot; for %s&quot;,
+             rb_id2name(mid),
+             rb_obj_classname(x));
+    return Qnil;                /* not reached */
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-step">
+            
+              <b>num.step(limit[, step]) {|i| block }  &rarr;  self
+num.step(limit[, step])               &rarr;  an_enumerator
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-step" name="method-i-step" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes <em>block</em> with the sequence of numbers starting at
+<em>num</em>, incremented by <em>step</em> (default 1) on each call. The
+loop finishes when the value to be passed to the block is greater than
+<em>limit</em> (if <em>step</em> is positive) or less than <em>limit</em>
+(if <em>step</em> is negative). If all the arguments are integers, the loop
+operates using an integer counter. If any of the arguments are floating
+point numbers, all are converted to floats, and the loop is executed
+<em>floor(n + n*epsilon)+ 1</em> times, where <em>n = (limit -
+num)/step</em>. Otherwise, the loop starts at <em>num</em>, uses either the
+<code>&lt;</code> or <code>&gt;</code> operator to compare the counter
+against <em>limit</em>, and increments itself using the <code>+</code>
+operator.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">step</span>(<span class="ruby-value">10</span>, <span class="ruby-value">2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">print</span> <span class="ruby-identifier">i</span>, <span class="ruby-string">&quot; &quot;</span> }
+<span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">E</span>.<span class="ruby-identifier">step</span>(<span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span>, <span class="ruby-value">0.2</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">print</span> <span class="ruby-identifier">f</span>, <span class="ruby-string">&quot; &quot;</span> }
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>1 3 5 7 9
+2.71828182845905 2.91828182845905 3.11828182845905</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-step_source')" id="l_method-i-step_source">show</a>
+                
+              </p>
+              <div id="method-i-step_source" class="dyn-source">
+                <pre>static VALUE
+num_step(int argc, VALUE *argv, VALUE from)
+{
+    VALUE to, step;
+
+    RETURN_ENUMERATOR(from, argc, argv);
+    if (argc == 1) {
+        to = argv[0];
+        step = INT2FIX(1);
+    }
+    else {
+        if (argc == 2) {
+            to = argv[0];
+            step = argv[1];
+        }
+        else {
+            rb_raise(rb_eArgError, &quot;wrong number of arguments (%d for 1..2)&quot;, argc);
+        }
+        if (rb_equal(step, INT2FIX(0))) {
+            rb_raise(rb_eArgError, &quot;step can't be 0&quot;);
+        }
+    }
+
+    if (FIXNUM_P(from) &amp;&amp; FIXNUM_P(to) &amp;&amp; FIXNUM_P(step)) {
+        long i, end, diff;
+
+        i = FIX2LONG(from);
+        end = FIX2LONG(to);
+        diff = FIX2LONG(step);
+
+        if (diff &gt; 0) {
+            while (i &lt;= end) {
+                rb_yield(LONG2FIX(i));
+                i += diff;
+            }
+        }
+        else {
+            while (i &gt;= end) {
+                rb_yield(LONG2FIX(i));
+                i += diff;
+            }
+        }
+    }
+    else if (!ruby_float_step(from, to, step, FALSE)) {
+        VALUE i = from;
+        ID cmp;
+
+        if (RTEST(rb_funcall(step, '&gt;', 1, INT2FIX(0)))) {
+            cmp = '&gt;';
+        }
+        else {
+            cmp = '&lt;';
+        }
+        for (;;) {
+            if (RTEST(rb_funcall(i, cmp, 1, to))) break;
+            rb_yield(i);
+            i = rb_funcall(i, '+', 1, step);
+        }
+    }
+    return from;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_c">
+            
+              <b>num.to_c  &rarr;  complex
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-to_c" name="method-i-to_c" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a complex.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_c_source')" id="l_method-i-to_c_source">show</a>
+                
+              </p>
+              <div id="method-i-to_c_source" class="dyn-source">
+                <pre>static VALUE
+numeric_to_c(VALUE self)
+{
+    return rb_complex_new1(self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_int">
+            
+              <b>num.to_int  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-to_int" name="method-i-to_int" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Invokes the child class’s <code>to_i</code> method to convert
+<em>num</em> to an integer.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_int_source')" id="l_method-i-to_int_source">show</a>
+                
+              </p>
+              <div id="method-i-to_int_source" class="dyn-source">
+                <pre>static VALUE
+num_to_int(VALUE num)
+{
+    return rb_funcall(num, id_to_i, 0, 0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-truncate">
+            
+              <b>num.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-truncate" name="method-i-truncate" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <em>num</em> truncated to an integer. <code>Numeric</code>
+implements this by converting its value to a float and invoking
+<code>Float#truncate</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-truncate_source')" id="l_method-i-truncate_source">show</a>
+                
+              </p>
+              <div id="method-i-truncate_source" class="dyn-source">
+                <pre>static VALUE
+num_truncate(VALUE num)
+{
+    return flo_truncate(rb_Float(num));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-zero-3F">
+            
+              <b>num.zero?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Numeric.html#method-i-zero-3F" name="method-i-zero-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>num</em> has a zero value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-zero-3F_source')" id="l_method-i-zero-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-zero-3F_source" class="dyn-source">
+                <pre>static VALUE
+num_zero_p(VALUE num)
+{
+    if (rb_equal(num, INT2FIX(0))) {
+        return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Zlib::GzipWriter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Zlib::GzipWriter 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="GzipFile.html">Zlib::GzipFile</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/zlib_c.html">zlib.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="GzipWriter.html">Zlib::GzipWriter</a> is a class for writing
+gzipped files.  <a href="GzipWriter.html">GzipWriter</a> should be used
+with an instance of IO, or IO-like, object.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">'hoge.gz'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gz</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">gz</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">'jugemu jugemu gokou no surikire...'</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">'hoge.gz'</span>, <span class="ruby-string">'w'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">gz</span> = <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">GzipWriter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">f</span>)
+  <span class="ruby-identifier">gz</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">'jugemu jugemu gokou no surikire...'</span>
+  <span class="ruby-identifier">gz</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># TODO: test these.  Are they equivalent?  Can GzipWriter.new take a</span>
+<span class="ruby-comment"># block?</span>
+</pre>
+
+<p>NOTE: Due to the limitation of Ruby’s finalizer, you must explicitly
+close <a href="GzipWriter.html">GzipWriter</a> objects by <a
+href="GzipFile.html#method-i-close">Zlib::GzipFile#close</a> etc. 
+Otherwise, <a href="GzipWriter.html">GzipWriter</a> will be not able to
+write the gzip footer and will generate a broken gzip file.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-3C-3C">&lt;&lt;</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-comment-3D">comment=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-flush">flush</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mtime-3D">mtime=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-open">open</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-orig_name-3D">orig_name=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pos">pos</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-print">print</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-printf">printf</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-putc">putc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puts">puts</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tell">tell</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-write">write</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>Zlib::GzipWriter.new(io, level, strategy)
+</b>
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a <a href="GzipWriter.html">GzipWriter</a> object associated with
+<code>io</code>. <code>level</code> and <code>strategy</code> should be the
+same as the arguments of <a
+href="Deflate.html#method-c-new">Zlib::Deflate.new</a>.  The <a
+href="GzipWriter.html">GzipWriter</a> object writes gzipped data to
+<code>io</code>.  At least, <code>io</code> must respond to the
+<code>write</code> method that behaves same as write method in IO class.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzwriter_initialize(int argc, VALUE *argv, VALUE obj)
+{
+    struct gzfile *gz;
+    VALUE io, level, strategy, opt = Qnil;
+    int err;
+
+    if (argc &gt; 1) {
+        opt = rb_check_convert_type(argv[argc-1], T_HASH, &quot;Hash&quot;, &quot;to_hash&quot;);
+        if (!NIL_P(opt)) argc--;
+    }
+
+    rb_scan_args(argc, argv, &quot;12&quot;, &amp;io, &amp;level, &amp;strategy);
+    Data_Get_Struct(obj, struct gzfile, gz);
+
+    /* this is undocumented feature of zlib */
+    gz-&gt;level = ARG_LEVEL(level);
+    err = deflateInit2(&amp;gz-&gt;z.stream, gz-&gt;level, Z_DEFLATED,
+                       -MAX_WBITS, DEF_MEM_LEVEL, ARG_STRATEGY(strategy));
+    if (err != Z_OK) {
+        raise_zlib_error(err, gz-&gt;z.stream.msg);
+    }
+    gz-&gt;io = io;
+    ZSTREAM_READY(&amp;gz-&gt;z);
+    rb_gzfile_ecopts(gz, opt);
+
+    if (rb_respond_to(io, id_path)) {
+        gz-&gt;path = rb_funcall(gz-&gt;io, id_path, 0);
+        rb_define_singleton_method(obj, &quot;path&quot;, rb_gzfile_path, 0);
+    }
+
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-open">
+            
+              <b>Zlib::GzipWriter.open(filename, level=nil, strategy=nil) { |gz| ... }
+</b>
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-c-open" name="method-c-open" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Opens a file specified by <code>filename</code> for writing gzip compressed
+data, and returns a <a href="GzipWriter.html">GzipWriter</a> object
+associated with that file.  Further details of this method are found in <a
+href="GzipWriter.html#method-c-new">::new</a> and <a
+href="GzipFile.html#method-c-wrap">Zlib::GzipFile.wrap</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-open_source')" id="l_method-c-open_source">show</a>
+                
+              </p>
+              <div id="method-c-open_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzwriter_s_open(int argc, VALUE *argv, VALUE klass)
+{
+    return gzfile_s_open(argc, argv, klass, &quot;wb&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3C">
+            
+              <b>&lt;&lt;</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-3C-3C" name="method-i-3C-3C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Document-method: &lt;&lt; Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3C_source')" id="l_method-i-3C-3C_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3C_source" class="dyn-source">
+                <pre>#define rb_gzwriter_addstr  rb_io_addstr</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-comment-3D">
+            
+              <b>comment=</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-comment-3D" name="method-i-comment-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>???</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-comment-3D_source')" id="l_method-i-comment-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-comment-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_set_comment(VALUE obj, VALUE str)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE s;
+    char *p;
+
+    if (gz-&gt;z.flags &amp; GZFILE_FLAG_HEADER_FINISHED) {
+        rb_raise(cGzError, &quot;header is already written&quot;);
+    }
+    s = rb_str_dup(rb_str_to_str(str));
+    p = memchr(RSTRING_PTR(s), '\0', RSTRING_LEN(s));
+    if (p) {
+        rb_str_resize(s, p - RSTRING_PTR(s));
+    }
+    gz-&gt;comment = s;
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-flush">
+            
+              <b>flush(flush=nil)
+</b>
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-flush" name="method-i-flush" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Flushes all the internal buffers of the <a
+href="GzipWriter.html">GzipWriter</a> object.  The meaning of
+<code>flush</code> is same as in <a
+href="Deflate.html#method-i-deflate">Zlib::Deflate#deflate</a>. 
+<code>Zlib::SYNC_FLUSH</code> is used if <code>flush</code> is omitted.  It
+is no use giving flush <code>Zlib::NO_FLUSH</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-flush_source')" id="l_method-i-flush_source">show</a>
+                
+              </p>
+              <div id="method-i-flush_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzwriter_flush(int argc, VALUE *argv, VALUE obj)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE v_flush;
+    int flush;
+
+    rb_scan_args(argc, argv, &quot;01&quot;, &amp;v_flush);
+
+    flush = FIXNUMARG(v_flush, Z_SYNC_FLUSH);
+    if (flush != Z_NO_FLUSH) {  /* prevent Z_BUF_ERROR */
+        zstream_run(&amp;gz-&gt;z, (Bytef*)&quot;&quot;, 0, flush);
+    }
+
+    gzfile_write_raw(gz);
+    if (rb_respond_to(gz-&gt;io, id_flush)) {
+        rb_funcall(gz-&gt;io, id_flush, 0);
+    }
+    return obj;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mtime-3D">
+            
+              <b>mtime=</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-mtime-3D" name="method-i-mtime-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>???</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mtime-3D_source')" id="l_method-i-mtime-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-mtime-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_set_mtime(VALUE obj, VALUE mtime)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE val;
+
+    if (gz-&gt;z.flags &amp; GZFILE_FLAG_HEADER_FINISHED) {
+        rb_raise(cGzError, &quot;header is already written&quot;);
+    }
+
+    if (FIXNUM_P(mtime)) {
+        gz-&gt;mtime = FIX2INT(mtime);
+    }
+    else {
+        val = rb_Integer(mtime);
+        gz-&gt;mtime = FIXNUM_P(val) ? FIX2UINT(val) : rb_big2ulong(val);
+    }
+    return mtime;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-orig_name-3D">
+            
+              <b>orig_name=</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-orig_name-3D" name="method-i-orig_name-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>???</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-orig_name-3D_source')" id="l_method-i-orig_name-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-orig_name-3D_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_set_orig_name(VALUE obj, VALUE str)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    VALUE s;
+    char *p;
+
+    if (gz-&gt;z.flags &amp; GZFILE_FLAG_HEADER_FINISHED) {
+        rb_raise(cGzError, &quot;header is already written&quot;);
+    }
+    s = rb_str_dup(rb_str_to_str(str));
+    p = memchr(RSTRING_PTR(s), '\0', RSTRING_LEN(s));
+    if (p) {
+        rb_str_resize(s, p - RSTRING_PTR(s));
+    }
+    gz-&gt;orig_name = s;
+    return str;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pos">
+            
+              <b>pos</b>()
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-pos" name="method-i-pos" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>???</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pos_source')" id="l_method-i-pos_source">show</a>
+                
+              </p>
+              <div id="method-i-pos_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_total_in(VALUE obj)
+{
+    return rb_uint2inum(get_gzfile(obj)-&gt;z.stream.total_in);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-print">
+            
+              <b>print</b>(*args)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-print" name="method-i-print" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-print_source')" id="l_method-i-print_source">show</a>
+                
+              </p>
+              <div id="method-i-print_source" class="dyn-source">
+                <pre>#define rb_gzwriter_print  rb_io_print</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-printf">
+            
+              <b>printf</b>(*args)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-printf" name="method-i-printf" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-printf_source')" id="l_method-i-printf_source">show</a>
+                
+              </p>
+              <div id="method-i-printf_source" class="dyn-source">
+                <pre>#define rb_gzwriter_printf  rb_io_printf</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-putc">
+            
+              <b>putc</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-putc" name="method-i-putc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-putc_source')" id="l_method-i-putc_source">show</a>
+                
+              </p>
+              <div id="method-i-putc_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzwriter_putc(VALUE obj, VALUE ch)
+{
+    struct gzfile *gz = get_gzfile(obj);
+    char c = NUM2CHR(ch);
+
+    gzfile_write(gz, (Bytef*)&amp;c, 1);
+    return ch;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puts">
+            
+              <b>puts</b>(*args)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-puts" name="method-i-puts" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puts_source')" id="l_method-i-puts_source">show</a>
+                
+              </p>
+              <div id="method-i-puts_source" class="dyn-source">
+                <pre>#define rb_gzwriter_puts  rb_io_puts</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tell">
+            
+              <b>tell</b>()
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-tell" name="method-i-tell" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>???</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tell_source')" id="l_method-i-tell_source">show</a>
+                
+              </p>
+              <div id="method-i-tell_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzfile_total_in(VALUE obj)
+{
+    return rb_uint2inum(get_gzfile(obj)-&gt;z.stream.total_in);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-write">
+            
+              <b>write</b>(p1)
+            
+            <a href="../../classes/Zlib/GzipWriter.html#method-i-write" name="method-i-write" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Same as IO.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-write_source')" id="l_method-i-write_source">show</a>
+                
+              </p>
+              <div id="method-i-write_source" class="dyn-source">
+                <pre>static VALUE
+rb_gzwriter_write(VALUE obj, VALUE str)
+{
+    struct gzfile *gz = get_gzfile(obj);
+
+    if (TYPE(str) != T_STRING)
+        str = rb_obj_as_string(str);
+    if (gz-&gt;enc2 &amp;&amp; gz-&gt;enc2 != rb_ascii8bit_encoding()) {
+        str = rb_str_conv_enc(str, rb_enc_get(str), gz-&gt;enc2);
+    }
+    gzfile_write(gz, (Bytef*)RSTRING_PTR(str), RSTRING_LEN(str));
+    return INT2FIX(RSTRING_LEN(str));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

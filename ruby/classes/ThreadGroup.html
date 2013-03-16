@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ThreadGroup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            ThreadGroup 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/thread_c.html">thread.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>ThreadGroup</code> provides a means of keeping track of a number of
+threads as a group. A <code>Thread</code> can belong to only one
+<code>ThreadGroup</code> at a time; adding a thread to a new group will
+remove it from any previous group.</p>
+
+<p>Newly created threads belong to the same group as the thread from which
+they were created.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add">add</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-enclose">enclose</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-enclosed-3F">enclosed?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-list">list</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">Default</td>
+            <td>=</td>
+            <td class="attr-value">th-&gt;thgroup</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add">
+            
+              <b>thgrp.add(thread)   &rarr; thgrp
+</b>
+            
+            <a href="../classes/ThreadGroup.html#method-i-add" name="method-i-add" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Adds the given <em>thread</em> to this group, removing it from any other
+group to which it may have previously belonged.</p>
+
+<pre>puts &quot;Initial group is #{ThreadGroup::Default.list}&quot;
+tg = ThreadGroup.new
+t1 = Thread.new { sleep }
+t2 = Thread.new { sleep }
+puts &quot;t1 is #{t1}&quot;
+puts &quot;t2 is #{t2}&quot;
+tg.add(t1)
+puts &quot;Initial group now #{ThreadGroup::Default.list}&quot;
+puts &quot;tg group now #{tg.list}&quot;</pre>
+
+<p><em>produces:</em></p>
+
+<pre>Initial group is #&lt;Thread:0x401bdf4c&gt;
+t1 is #&lt;Thread:0x401b3c90&gt;
+t2 is #&lt;Thread:0x401b3c18&gt;
+Initial group now #&lt;Thread:0x401b3c18&gt;#&lt;Thread:0x401bdf4c&gt;
+tg group now #&lt;Thread:0x401b3c90&gt;</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_source')" id="l_method-i-add_source">show</a>
+                
+              </p>
+              <div id="method-i-add_source" class="dyn-source">
+                <pre>static VALUE
+thgroup_add(VALUE group, VALUE thread)
+{
+    rb_thread_t *th;
+    struct thgroup *data;
+
+    rb_secure(4);
+    GetThreadPtr(thread, th);
+
+    if (OBJ_FROZEN(group)) {
+        rb_raise(rb_eThreadError, &quot;can't move to the frozen thread group&quot;);
+    }
+    TypedData_Get_Struct(group, struct thgroup, &amp;thgroup_data_type, data);
+    if (data-&gt;enclosed) {
+        rb_raise(rb_eThreadError, &quot;can't move to the enclosed thread group&quot;);
+    }
+
+    if (!th-&gt;thgroup) {
+        return Qnil;
+    }
+
+    if (OBJ_FROZEN(th-&gt;thgroup)) {
+        rb_raise(rb_eThreadError, &quot;can't move from the frozen thread group&quot;);
+    }
+    TypedData_Get_Struct(th-&gt;thgroup, struct thgroup, &amp;thgroup_data_type, data);
+    if (data-&gt;enclosed) {
+        rb_raise(rb_eThreadError,
+                 &quot;can't move from the enclosed thread group&quot;);
+    }
+
+    th-&gt;thgroup = group;
+    return group;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-enclose">
+            
+              <b>thgrp.enclose   &rarr; thgrp
+</b>
+            
+            <a href="../classes/ThreadGroup.html#method-i-enclose" name="method-i-enclose" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Prevents threads from being added to or removed from the receiving
+<code>ThreadGroup</code>. New threads can still be started in an enclosed
+<code>ThreadGroup</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">ThreadGroup</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>.<span class="ruby-identifier">enclose</span>        <span class="ruby-comment">#=&gt; #&lt;ThreadGroup:0x4029d914&gt;</span>
+<span class="ruby-identifier">thr</span> = <span class="ruby-constant">Thread</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span> { <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> }   <span class="ruby-comment">#=&gt; #&lt;Thread:0x402a7210 sleep&gt;</span>
+<span class="ruby-identifier">tg</span> = <span class="ruby-constant">ThreadGroup</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>               <span class="ruby-comment">#=&gt; #&lt;ThreadGroup:0x402752d4&gt;</span>
+<span class="ruby-identifier">tg</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">thr</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>ThreadError: can't move from the enclosed thread group</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-enclose_source')" id="l_method-i-enclose_source">show</a>
+                
+              </p>
+              <div id="method-i-enclose_source" class="dyn-source">
+                <pre>static VALUE
+thgroup_enclose(VALUE group)
+{
+    struct thgroup *data;
+
+    TypedData_Get_Struct(group, struct thgroup, &amp;thgroup_data_type, data);
+    data-&gt;enclosed = 1;
+
+    return group;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-enclosed-3F">
+            
+              <b>thgrp.enclosed?   &rarr; true or false
+</b>
+            
+            <a href="../classes/ThreadGroup.html#method-i-enclosed-3F" name="method-i-enclosed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>thgrp</em> is enclosed. See also <a
+href="ThreadGroup.html#method-i-enclose">#enclose</a>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-enclosed-3F_source')" id="l_method-i-enclosed-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-enclosed-3F_source" class="dyn-source">
+                <pre>static VALUE
+thgroup_enclosed_p(VALUE group)
+{
+    struct thgroup *data;
+
+    TypedData_Get_Struct(group, struct thgroup, &amp;thgroup_data_type, data);
+    if (data-&gt;enclosed)
+        return Qtrue;
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-list">
+            
+              <b>thgrp.list   &rarr; array
+</b>
+            
+            <a href="../classes/ThreadGroup.html#method-i-list" name="method-i-list" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array of all existing <code>Thread</code> objects that belong to
+this group.</p>
+
+<pre class="ruby"><span class="ruby-constant">ThreadGroup</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>.<span class="ruby-identifier">list</span>   <span class="ruby-comment">#=&gt; [#&lt;Thread:0x401bdf4c run&gt;]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-list_source')" id="l_method-i-list_source">show</a>
+                
+              </p>
+              <div id="method-i-list_source" class="dyn-source">
+                <pre>static VALUE
+thgroup_list(VALUE group)
+{
+    VALUE ary = rb_ary_new();
+    struct thgroup_list_params param;
+
+    param.ary = ary;
+    param.group = group;
+    st_foreach(GET_THREAD()-&gt;vm-&gt;living_threads, thgroup_list_i, (st_data_t) &amp; param);
+    return ary;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

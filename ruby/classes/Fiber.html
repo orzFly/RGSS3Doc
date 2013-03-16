@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Fiber</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Fiber 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/cont_c.html">cont.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Fibers are primitives for implementing light weight cooperative concurrency
+in Ruby. Basically they are a means of creating code blocks that can be
+paused and resumed, much like threads. The main difference is that they are
+never preempted and that the scheduling must be done by the programmer and
+not the VM.</p>
+
+<p>As opposed to other stackless light weight concurrency models, each fiber
+comes with a small 4KB stack. This enables the fiber to be paused from
+deeply nested function calls within the fiber block.</p>
+
+<p>When a fiber is created it will not run automatically. Rather it must be be
+explicitly asked to run using the <code>Fiber#resume</code> method. The
+code running inside the fiber can give up control by calling
+<code>Fiber.yield</code> in which case it yields control back to caller
+(the caller of the <code>Fiber#resume</code>).</p>
+
+<p>Upon yielding or termination the <a href="Fiber.html">Fiber</a> returns the
+value of the last executed expression</p>
+
+<p>For instance:</p>
+
+<pre>fiber = Fiber.new do
+  Fiber.yield 1
+  2
+end
+
+puts fiber.resume
+puts fiber.resume
+puts fiber.resume</pre>
+
+<p><em>produces</em></p>
+
+<pre>1
+2
+FiberError: dead fiber called</pre>
+
+<p>The <code>Fiber#resume</code> method accepts an arbitrary number of
+parameters, if it is the first call to <code>resume</code> then they will
+be passed as block arguments. Otherwise they will be the return value of
+the call to <code>Fiber.yield</code></p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">fiber</span> = <span class="ruby-constant">Fiber</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">first</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">second</span> = <span class="ruby-constant">Fiber</span>.<span class="ruby-identifier">yield</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">fiber</span>.<span class="ruby-identifier">resume</span> <span class="ruby-value">10</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">fiber</span>.<span class="ruby-identifier">resume</span> <span class="ruby-value">14</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">fiber</span>.<span class="ruby-identifier">resume</span> <span class="ruby-value">18</span>
+</pre>
+
+<p><em>produces</em></p>
+
+<pre>12
+14
+FiberError: dead fiber called</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-alive-3F">alive?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-current">current</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-resume">resume</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-transfer">transfer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Y</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-yield">yield</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-current">
+            
+              <b>Fiber.current() &rarr; fiber
+</b>
+            
+            <a href="../classes/Fiber.html#method-c-current" name="method-c-current" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the current fiber. You need to <code>require 'fiber'</code> before
+using this method. If you are not running in the context of a fiber this
+method will return the root fiber.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-current_source')" id="l_method-c-current_source">show</a>
+                
+              </p>
+              <div id="method-c-current_source" class="dyn-source">
+                <pre>static VALUE
+rb_fiber_s_current(VALUE klass)
+{
+    return rb_fiber_current();
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-yield">
+            
+              <b>Fiber.yield(args, ...) &rarr; obj
+</b>
+            
+            <a href="../classes/Fiber.html#method-c-yield" name="method-c-yield" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Yields control back to the context that resumed the fiber, passing along
+any arguments that were passed to it. The fiber will resume processing at
+this point when <code>resume</code> is called next. Any arguments passed to
+the next <code>resume</code> will be the value that this
+<code>Fiber.yield</code> expression evaluates to.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-yield_source')" id="l_method-c-yield_source">show</a>
+                
+              </p>
+              <div id="method-c-yield_source" class="dyn-source">
+                <pre>static VALUE
+rb_fiber_s_yield(int argc, VALUE *argv, VALUE klass)
+{
+    return rb_fiber_yield(argc, argv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-alive-3F">
+            
+              <b>fiber.alive? &rarr; true or false
+</b>
+            
+            <a href="../classes/Fiber.html#method-i-alive-3F" name="method-i-alive-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns true if the fiber can still be resumed (or transferred to). After
+finishing execution of the fiber block this method will always return
+false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-alive-3F_source')" id="l_method-i-alive-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-alive-3F_source" class="dyn-source">
+                <pre>VALUE
+rb_fiber_alive_p(VALUE fibval)
+{
+    rb_fiber_t *fib;
+    GetFiberPtr(fibval, fib);
+    return fib-&gt;status != TERMINATED ? Qtrue : Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-resume">
+            
+              <b>fiber.resume(args, ...) &rarr; obj
+</b>
+            
+            <a href="../classes/Fiber.html#method-i-resume" name="method-i-resume" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Resumes the fiber from the point at which the last <code>Fiber.yield</code>
+was called, or starts running it if it is the first call to
+<code>resume</code>. Arguments passed to resume will be the value of the
+<code>Fiber.yield</code> expression or will be passed as block parameters
+to the fiber’s block if this is the first <code>resume</code>.</p>
+
+<p>Alternatively, when resume is called it evaluates to the arguments passed
+to the next <code>Fiber.yield</code> statement inside the fiber’s block
+or to the block value if it runs to completion without any
+<code>Fiber.yield</code></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-resume_source')" id="l_method-i-resume_source">show</a>
+                
+              </p>
+              <div id="method-i-resume_source" class="dyn-source">
+                <pre>static VALUE
+rb_fiber_m_resume(int argc, VALUE *argv, VALUE fib)
+{
+    return rb_fiber_resume(fib, argc, argv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-transfer">
+            
+              <b>fiber.transfer(args, ...) &rarr; obj
+</b>
+            
+            <a href="../classes/Fiber.html#method-i-transfer" name="method-i-transfer" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Transfer control to another fiber, resuming it from where it last stopped
+or starting it if it was not resumed before. The calling fiber will be
+suspended much like in a call to <code>Fiber.yield</code>.</p>
+
+<p>The fiber which receives the transfer call is treats it much like a resume
+call. Arguments passed to transfer are treated like those passed to resume.</p>
+
+<p>You cannot resume a fiber that transferred control to another one. This
+will cause a double resume error. You need to transfer control back to this
+fiber before it can yield and resume.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-transfer_source')" id="l_method-i-transfer_source">show</a>
+                
+              </p>
+              <div id="method-i-transfer_source" class="dyn-source">
+                <pre>static VALUE
+rb_fiber_m_transfer(int argc, VALUE *argv, VALUE fib)
+{
+    return rb_fiber_transfer(fib, argc, argv);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

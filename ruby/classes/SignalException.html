@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>SignalException</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            SignalException 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Exception.html">Exception</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/error_c.html">error.c</a></li>
+            
+            <li><a href="../files/signal_c.html">signal.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Raised when a signal is received.</p>
+
+<pre class="ruby"><span class="ruby-keyword">begin</span>
+  <span class="ruby-constant">Process</span>.<span class="ruby-identifier">kill</span>(<span class="ruby-string">'HUP'</span>,<span class="ruby-constant">Process</span>.<span class="ruby-identifier">pid</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">SignalException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;received Exception #{e}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>received Exception SIGHUP</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-signo">signo</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>SignalException.new(sig_name)              &rarr;  signal_exception
+SignalException.new(sig_number [, name])   &rarr;  signal_exception
+</b>
+            
+            <a href="../classes/SignalException.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Construct a new <a href="SignalException.html">SignalException</a> object. 
+<code>sig_name</code> should be a known signal name.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre>static VALUE
+esignal_init(int argc, VALUE *argv, VALUE self)
+{
+    int argnum = 1;
+    VALUE sig = Qnil;
+    int signo;
+    const char *signm;
+
+    if (argc &gt; 0) {
+        sig = rb_check_to_integer(argv[0], &quot;to_int&quot;);
+        if (!NIL_P(sig)) argnum = 2;
+        else sig = argv[0];
+    }
+    if (argc &lt; 1 || argnum &lt; argc) {
+        rb_raise(rb_eArgError, &quot;wrong number of arguments (%d for %d)&quot;,
+                 argc, argnum);
+    }
+    if (argnum == 2) {
+        signo = NUM2INT(sig);
+        if (signo &lt; 0 || signo &gt; NSIG) {
+            rb_raise(rb_eArgError, &quot;invalid signal number (%d)&quot;, signo);
+        }
+        if (argc &gt; 1) {
+            sig = argv[1];
+        }
+        else {
+            signm = signo2signm(signo);
+            if (signm) {
+                sig = rb_sprintf(&quot;SIG%s&quot;, signm);
+            }
+            else {
+                sig = rb_sprintf(&quot;SIG%u&quot;, signo);
+            }
+        }
+    }
+    else {
+        signm = SYMBOL_P(sig) ? rb_id2name(SYM2ID(sig)) : StringValuePtr(sig);
+        if (strncmp(signm, &quot;SIG&quot;, 3) == 0) signm += 3;
+        signo = signm2signo(signm);
+        if (!signo) {
+            rb_raise(rb_eArgError, &quot;unsupported name `SIG%s'&quot;, signm);
+        }
+        sig = rb_sprintf(&quot;SIG%s&quot;, signm);
+    }
+    rb_call_super(1, &amp;sig);
+    rb_iv_set(self, &quot;signo&quot;, INT2NUM(signo));
+
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-signo">
+            
+              <b>signal_exception.signo   &rarr;  num
+</b>
+            
+            <a href="../classes/SignalException.html#method-i-signo" name="method-i-signo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a signal number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-signo_source')" id="l_method-i-signo_source">show</a>
+                
+              </p>
+              <div id="method-i-signo_source" class="dyn-source">
+                <pre>static VALUE
+esignal_signo(VALUE self)
+{
+    return rb_iv_get(self, &quot;signo&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

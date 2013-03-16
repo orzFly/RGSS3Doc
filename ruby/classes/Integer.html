@@ -1,0 +1,1469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Integer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Integer 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Numeric.html">Numeric</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/numeric_c.html">numeric.c</a></li>
+            
+            <li><a href="../files/rational_c.html">rational.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><code>Integer</code> is the basis for the two concrete classes that hold
+whole numbers, <code>Bignum</code> and <code>Fixnum</code>.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ceil">ceil</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-chr">chr</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-denominator">denominator</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-downto">downto</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-even-3F">even?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-floor">floor</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-gcd">gcd</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-gcdlcm">gcdlcm</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-integer-3F">integer?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-lcm">lcm</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-next">next</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-numerator">numerator</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-odd-3F">odd?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-ord">ord</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pred">pred</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-rationalize">rationalize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-round">round</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-succ">succ</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-times">times</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_i">to_i</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_int">to_int</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_r">to_r</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-truncate">truncate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-upto">upto</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-ceil">
+            
+              <b>int.to_i      &rarr;  integer
+int.to_int    &rarr;  integer
+int.floor     &rarr;  integer
+int.ceil      &rarr;  integer
+int.round     &rarr;  integer
+int.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-ceil" name="method-i-ceil" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>As <em>int</em> is already an <code>Integer</code>, all these methods
+simply return the receiver.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ceil_source')" id="l_method-i-ceil_source">show</a>
+                
+              </p>
+              <div id="method-i-ceil_source" class="dyn-source">
+                <pre>static VALUE
+int_to_i(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-chr">
+            
+              <b>int.chr([encoding])  &rarr;  string
+</b>
+            
+            <a href="../classes/Integer.html#method-i-chr" name="method-i-chr" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string containing the character represented by the receiver’s
+value according to <code>encoding</code>.</p>
+
+<pre class="ruby"><span class="ruby-value">65</span>.<span class="ruby-identifier">chr</span>    <span class="ruby-comment">#=&gt; &quot;A&quot;</span>
+<span class="ruby-value">230</span>.<span class="ruby-identifier">chr</span>   <span class="ruby-comment">#=&gt; &quot;\346&quot;</span>
+<span class="ruby-value">255</span>.<span class="ruby-identifier">chr</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>)   <span class="ruby-comment">#=&gt; &quot;\303\277&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-chr_source')" id="l_method-i-chr_source">show</a>
+                
+              </p>
+              <div id="method-i-chr_source" class="dyn-source">
+                <pre>static VALUE
+int_chr(int argc, VALUE *argv, VALUE num)
+{
+    char c;
+    unsigned int i = NUM2UINT(num);
+    rb_encoding *enc;
+
+    switch (argc) {
+      case 0:
+        if (i &lt; 0) {
+          out_of_range:
+            rb_raise(rb_eRangeError, &quot;%d out of char range&quot;, i);
+        }
+        if (0xff &lt; i) {
+            enc = rb_default_internal_encoding();
+            if (!enc) goto out_of_range;
+            goto decode;
+        }
+        c = (char)i;
+        if (i &lt; 0x80) {
+            return rb_usascii_str_new(&amp;c, 1);
+        }
+        else {
+            return rb_str_new(&amp;c, 1);
+        }
+      case 1:
+        break;
+      default:
+        rb_raise(rb_eArgError, &quot;wrong number of arguments (%d for 0..1)&quot;, argc);
+        break;
+    }
+    enc = rb_to_encoding(argv[0]);
+    if (!enc) enc = rb_ascii8bit_encoding();
+  decode:
+    return rb_enc_uint_chr(i, enc);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-denominator">
+            
+              <b>int.denominator  &rarr;  1
+</b>
+            
+            <a href="../classes/Integer.html#method-i-denominator" name="method-i-denominator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns 1.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-denominator_source')" id="l_method-i-denominator_source">show</a>
+                
+              </p>
+              <div id="method-i-denominator_source" class="dyn-source">
+                <pre>static VALUE
+integer_denominator(VALUE self)
+{
+    return INT2FIX(1);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-downto">
+            
+              <b>int.downto(limit) {|i| block }  &rarr;  self
+int.downto(limit)               &rarr;  an_enumerator
+</b>
+            
+            <a href="../classes/Integer.html#method-i-downto" name="method-i-downto" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates <em>block</em>, passing decreasing values from <em>int</em> down
+to and including <em>limit</em>.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby"><span class="ruby-value">5</span>.<span class="ruby-identifier">downto</span>(<span class="ruby-value">1</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">print</span> <span class="ruby-identifier">n</span>, <span class="ruby-string">&quot;.. &quot;</span> }
+<span class="ruby-identifier">print</span> <span class="ruby-string">&quot;  Liftoff!\n&quot;</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>5.. 4.. 3.. 2.. 1..   Liftoff!</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-downto_source')" id="l_method-i-downto_source">show</a>
+                
+              </p>
+              <div id="method-i-downto_source" class="dyn-source">
+                <pre>static VALUE
+int_downto(VALUE from, VALUE to)
+{
+    RETURN_ENUMERATOR(from, 1, &amp;to);
+    if (FIXNUM_P(from) &amp;&amp; FIXNUM_P(to)) {
+        long i, end;
+
+        end = FIX2LONG(to);
+        for (i=FIX2LONG(from); i &gt;= end; i--) {
+            rb_yield(LONG2FIX(i));
+        }
+    }
+    else {
+        VALUE i = from, c;
+
+        while (!(c = rb_funcall(i, '&lt;', 1, to))) {
+            rb_yield(i);
+            i = rb_funcall(i, '-', 1, INT2FIX(1));
+        }
+        if (NIL_P(c)) rb_cmperr(i, to);
+    }
+    return from;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-even-3F">
+            
+              <b>int.even?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Integer.html#method-i-even-3F" name="method-i-even-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>int</em> is an even number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-even-3F_source')" id="l_method-i-even-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-even-3F_source" class="dyn-source">
+                <pre>static VALUE
+int_even_p(VALUE num)
+{
+    if (rb_funcall(num, '%', 1, INT2FIX(2)) == INT2FIX(0)) {
+        return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-floor">
+            
+              <b>int.to_i      &rarr;  integer
+int.to_int    &rarr;  integer
+int.floor     &rarr;  integer
+int.ceil      &rarr;  integer
+int.round     &rarr;  integer
+int.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-floor" name="method-i-floor" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>As <em>int</em> is already an <code>Integer</code>, all these methods
+simply return the receiver.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-floor_source')" id="l_method-i-floor_source">show</a>
+                
+              </p>
+              <div id="method-i-floor_source" class="dyn-source">
+                <pre>static VALUE
+int_to_i(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-gcd">
+            
+              <b>int.gcd(int2)  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-gcd" name="method-i-gcd" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the greatest common divisor (always positive).  0.gcd(x) and
+x.gcd(0) return abs(x).</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-value">2</span>.<span class="ruby-identifier">gcd</span>(<span class="ruby-value">2</span>)                    <span class="ruby-comment">#=&gt; 2</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">gcd</span>(<span class="ruby-value">-7</span>)                   <span class="ruby-comment">#=&gt; 1</span>
+((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">31</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">gcd</span>((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">61</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>)  <span class="ruby-comment">#=&gt; 1</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-gcd_source')" id="l_method-i-gcd_source">show</a>
+                
+              </p>
+              <div id="method-i-gcd_source" class="dyn-source">
+                <pre>VALUE
+rb_gcd(VALUE self, VALUE other)
+{
+    other = nurat_int_value(other);
+    return f_gcd(self, other);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-gcdlcm">
+            
+              <b>int.gcdlcm(int2)  &rarr;  array
+</b>
+            
+            <a href="../classes/Integer.html#method-i-gcdlcm" name="method-i-gcdlcm" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns an array; [int.gcd(int2), int.lcm(int2)].</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-value">2</span>.<span class="ruby-identifier">gcdlcm</span>(<span class="ruby-value">2</span>)                    <span class="ruby-comment">#=&gt; [2, 2]</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">gcdlcm</span>(<span class="ruby-value">-7</span>)                   <span class="ruby-comment">#=&gt; [1, 21]</span>
+((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">31</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">gcdlcm</span>((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">61</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>)  <span class="ruby-comment">#=&gt; [1, 4951760154835678088235319297]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-gcdlcm_source')" id="l_method-i-gcdlcm_source">show</a>
+                
+              </p>
+              <div id="method-i-gcdlcm_source" class="dyn-source">
+                <pre>VALUE
+rb_gcdlcm(VALUE self, VALUE other)
+{
+    other = nurat_int_value(other);
+    return rb_assoc_new(f_gcd(self, other), f_lcm(self, other));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-integer-3F">
+            
+              <b>int.integer?  &rarr;  true
+</b>
+            
+            <a href="../classes/Integer.html#method-i-integer-3F" name="method-i-integer-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Always returns <code>true</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-integer-3F_source')" id="l_method-i-integer-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-integer-3F_source" class="dyn-source">
+                <pre>static VALUE
+int_int_p(VALUE num)
+{
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-lcm">
+            
+              <b>int.lcm(int2)  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-lcm" name="method-i-lcm" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the least common multiple (always positive).  0.lcm(x) and x.lcm(0)
+return zero.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-value">2</span>.<span class="ruby-identifier">lcm</span>(<span class="ruby-value">2</span>)                    <span class="ruby-comment">#=&gt; 2</span>
+<span class="ruby-value">3</span>.<span class="ruby-identifier">lcm</span>(<span class="ruby-value">-7</span>)                   <span class="ruby-comment">#=&gt; 21</span>
+((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">31</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">lcm</span>((<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">61</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>)  <span class="ruby-comment">#=&gt; 4951760154835678088235319297</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-lcm_source')" id="l_method-i-lcm_source">show</a>
+                
+              </p>
+              <div id="method-i-lcm_source" class="dyn-source">
+                <pre>VALUE
+rb_lcm(VALUE self, VALUE other)
+{
+    other = nurat_int_value(other);
+    return f_lcm(self, other);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-next">
+            
+              <b>int.next  &rarr;  integer
+int.succ  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-next" name="method-i-next" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <code>Integer</code> equal to <em>int</em> + 1.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">next</span>      <span class="ruby-comment">#=&gt; 2</span>
+(<span class="ruby-value">-1</span>).<span class="ruby-identifier">next</span>   <span class="ruby-comment">#=&gt; 0</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-next_source')" id="l_method-i-next_source">show</a>
+                
+              </p>
+              <div id="method-i-next_source" class="dyn-source">
+                <pre>static VALUE
+int_succ(VALUE num)
+{
+    if (FIXNUM_P(num)) {
+        long i = FIX2LONG(num) + 1;
+        return LONG2NUM(i);
+    }
+    return rb_funcall(num, '+', 1, INT2FIX(1));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-numerator">
+            
+              <b>int.numerator  &rarr;  self
+</b>
+            
+            <a href="../classes/Integer.html#method-i-numerator" name="method-i-numerator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns self.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-numerator_source')" id="l_method-i-numerator_source">show</a>
+                
+              </p>
+              <div id="method-i-numerator_source" class="dyn-source">
+                <pre>static VALUE
+integer_numerator(VALUE self)
+{
+    return self;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-odd-3F">
+            
+              <b>int.odd?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Integer.html#method-i-odd-3F" name="method-i-odd-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>int</em> is an odd number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-odd-3F_source')" id="l_method-i-odd-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-odd-3F_source" class="dyn-source">
+                <pre>static VALUE
+int_odd_p(VALUE num)
+{
+    if (rb_funcall(num, '%', 1, INT2FIX(2)) != INT2FIX(0)) {
+        return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ord">
+            
+              <b>int.ord  &rarr;  self
+</b>
+            
+            <a href="../classes/Integer.html#method-i-ord" name="method-i-ord" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the int itself.</p>
+
+<pre class="ruby"><span class="ruby-string">a</span>.<span class="ruby-identifier">ord</span>    <span class="ruby-comment">#=&gt; 97</span>
+</pre>
+
+<p>This method is intended for compatibility to character constant in Ruby
+1.9. For example, ?a.ord returns 97 both in 1.8 and 1.9.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ord_source')" id="l_method-i-ord_source">show</a>
+                
+              </p>
+              <div id="method-i-ord_source" class="dyn-source">
+                <pre>static VALUE
+int_ord(num)
+    VALUE num;
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pred">
+            
+              <b>int.pred  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-pred" name="method-i-pred" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <code>Integer</code> equal to <em>int</em> - 1.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">pred</span>      <span class="ruby-comment">#=&gt; 0</span>
+(<span class="ruby-value">-1</span>).<span class="ruby-identifier">pred</span>   <span class="ruby-comment">#=&gt; -2</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pred_source')" id="l_method-i-pred_source">show</a>
+                
+              </p>
+              <div id="method-i-pred_source" class="dyn-source">
+                <pre>static VALUE
+int_pred(VALUE num)
+{
+    if (FIXNUM_P(num)) {
+        long i = FIX2LONG(num) - 1;
+        return LONG2NUM(i);
+    }
+    return rb_funcall(num, '-', 1, INT2FIX(1));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rationalize">
+            
+              <b>int.rationalize([eps])  &rarr;  rational
+</b>
+            
+            <a href="../classes/Integer.html#method-i-rationalize" name="method-i-rationalize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a rational.  An optional argument eps is always
+ignored.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rationalize_source')" id="l_method-i-rationalize_source">show</a>
+                
+              </p>
+              <div id="method-i-rationalize_source" class="dyn-source">
+                <pre>static VALUE
+integer_rationalize(int argc, VALUE *argv, VALUE self)
+{
+    rb_scan_args(argc, argv, &quot;01&quot;, NULL);
+    return integer_to_r(self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-round">
+            
+              <b>num.round([ndigits])  &rarr;  integer or float
+</b>
+            
+            <a href="../classes/Integer.html#method-i-round" name="method-i-round" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Rounds <em>flt</em> to a given precision in decimal digits (default 0
+digits). Precision may be negative.  Returns a floating point number when
+<code>ndigits</code> is positive, <code>self</code> for zero, and round
+down for negative.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">round</span>        <span class="ruby-comment">#=&gt; 1</span>
+<span class="ruby-value">1</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)     <span class="ruby-comment">#=&gt; 1.0</span>
+<span class="ruby-value">15</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">-1</span>)   <span class="ruby-comment">#=&gt; 20</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-round_source')" id="l_method-i-round_source">show</a>
+                
+              </p>
+              <div id="method-i-round_source" class="dyn-source">
+                <pre>static VALUE
+int_round(int argc, VALUE* argv, VALUE num)
+{
+    VALUE n, f, h, r;
+    int ndigits;
+
+    if (argc == 0) return num;
+    rb_scan_args(argc, argv, &quot;1&quot;, &amp;n);
+    ndigits = NUM2INT(n);
+    if (ndigits &gt; 0) {
+        return rb_Float(num);
+    }
+    if (ndigits == 0) {
+        return num;
+    }
+    ndigits = -ndigits;
+    if (ndigits &lt; 0) {
+        rb_raise(rb_eArgError, &quot;ndigits out of range&quot;);
+    }
+    f = int_pow(10, ndigits);
+    if (FIXNUM_P(num) &amp;&amp; FIXNUM_P(f)) {
+        SIGNED_VALUE x = FIX2LONG(num), y = FIX2LONG(f);
+        int neg = x &lt; 0;
+        if (neg) x = -x;
+        x = (x + y / 2) / y * y;
+        if (neg) x = -x;
+        return LONG2NUM(x);
+    }
+    h = rb_funcall(f, '/', 1, INT2FIX(2));
+    r = rb_funcall(num, '%', 1, f);
+    n = rb_funcall(num, '-', 1, r);
+    if (!RTEST(rb_funcall(r, '&lt;', 1, h))) {
+        n = rb_funcall(n, '+', 1, f);
+    }
+    return n;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-succ">
+            
+              <b>int.next  &rarr;  integer
+int.succ  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-succ" name="method-i-succ" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <code>Integer</code> equal to <em>int</em> + 1.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">next</span>      <span class="ruby-comment">#=&gt; 2</span>
+(<span class="ruby-value">-1</span>).<span class="ruby-identifier">next</span>   <span class="ruby-comment">#=&gt; 0</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-succ_source')" id="l_method-i-succ_source">show</a>
+                
+              </p>
+              <div id="method-i-succ_source" class="dyn-source">
+                <pre>static VALUE
+int_succ(VALUE num)
+{
+    if (FIXNUM_P(num)) {
+        long i = FIX2LONG(num) + 1;
+        return LONG2NUM(i);
+    }
+    return rb_funcall(num, '+', 1, INT2FIX(1));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-times">
+            
+              <b>int.times {|i| block }  &rarr;  self
+int.times               &rarr;  an_enumerator
+</b>
+            
+            <a href="../classes/Integer.html#method-i-times" name="method-i-times" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates block <em>int</em> times, passing in values from zero to
+<em>int</em> - 1.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby"><span class="ruby-value">5</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-identifier">i</span>, <span class="ruby-string">&quot; &quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>0 1 2 3 4</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-times_source')" id="l_method-i-times_source">show</a>
+                
+              </p>
+              <div id="method-i-times_source" class="dyn-source">
+                <pre>static VALUE
+int_dotimes(VALUE num)
+{
+    RETURN_ENUMERATOR(num, 0, 0);
+
+    if (FIXNUM_P(num)) {
+        long i, end;
+
+        end = FIX2LONG(num);
+        for (i=0; i&lt;end; i++) {
+            rb_yield(LONG2FIX(i));
+        }
+    }
+    else {
+        VALUE i = INT2FIX(0);
+
+        for (;;) {
+            if (!RTEST(rb_funcall(i, '&lt;', 1, num))) break;
+            rb_yield(i);
+            i = rb_funcall(i, '+', 1, INT2FIX(1));
+        }
+    }
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_i">
+            
+              <b>int.to_i      &rarr;  integer
+int.to_int    &rarr;  integer
+int.floor     &rarr;  integer
+int.ceil      &rarr;  integer
+int.round     &rarr;  integer
+int.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-to_i" name="method-i-to_i" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>As <em>int</em> is already an <code>Integer</code>, all these methods
+simply return the receiver.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_i_source')" id="l_method-i-to_i_source">show</a>
+                
+              </p>
+              <div id="method-i-to_i_source" class="dyn-source">
+                <pre>static VALUE
+int_to_i(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_int">
+            
+              <b>int.to_i      &rarr;  integer
+int.to_int    &rarr;  integer
+int.floor     &rarr;  integer
+int.ceil      &rarr;  integer
+int.round     &rarr;  integer
+int.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-to_int" name="method-i-to_int" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>As <em>int</em> is already an <code>Integer</code>, all these methods
+simply return the receiver.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_int_source')" id="l_method-i-to_int_source">show</a>
+                
+              </p>
+              <div id="method-i-to_int_source" class="dyn-source">
+                <pre>static VALUE
+int_to_i(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_r">
+            
+              <b>int.to_r  &rarr;  rational
+</b>
+            
+            <a href="../classes/Integer.html#method-i-to_r" name="method-i-to_r" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the value as a rational.</p>
+
+<p>For example:</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">to_r</span>        <span class="ruby-comment">#=&gt; (1/1)</span>
+(<span class="ruby-value">1</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-value">64</span>).<span class="ruby-identifier">to_r</span>  <span class="ruby-comment">#=&gt; (18446744073709551616/1)</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_r_source')" id="l_method-i-to_r_source">show</a>
+                
+              </p>
+              <div id="method-i-to_r_source" class="dyn-source">
+                <pre>static VALUE
+integer_to_r(VALUE self)
+{
+    return rb_rational_new1(self);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-truncate">
+            
+              <b>int.to_i      &rarr;  integer
+int.to_int    &rarr;  integer
+int.floor     &rarr;  integer
+int.ceil      &rarr;  integer
+int.round     &rarr;  integer
+int.truncate  &rarr;  integer
+</b>
+            
+            <a href="../classes/Integer.html#method-i-truncate" name="method-i-truncate" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>As <em>int</em> is already an <code>Integer</code>, all these methods
+simply return the receiver.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-truncate_source')" id="l_method-i-truncate_source">show</a>
+                
+              </p>
+              <div id="method-i-truncate_source" class="dyn-source">
+                <pre>static VALUE
+int_to_i(VALUE num)
+{
+    return num;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-upto">
+            
+              <b>int.upto(limit) {|i| block }  &rarr;  self
+int.upto(limit)               &rarr;  an_enumerator
+</b>
+            
+            <a href="../classes/Integer.html#method-i-upto" name="method-i-upto" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Iterates <em>block</em>, passing in integer values from <em>int</em> up to
+and including <em>limit</em>.</p>
+
+<p>If no block is given, an enumerator is returned instead.</p>
+
+<pre class="ruby"><span class="ruby-value">5</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">10</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">print</span> <span class="ruby-identifier">i</span>, <span class="ruby-string">&quot; &quot;</span> }
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>5 6 7 8 9 10</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-upto_source')" id="l_method-i-upto_source">show</a>
+                
+              </p>
+              <div id="method-i-upto_source" class="dyn-source">
+                <pre>static VALUE
+int_upto(VALUE from, VALUE to)
+{
+    RETURN_ENUMERATOR(from, 1, &amp;to);
+    if (FIXNUM_P(from) &amp;&amp; FIXNUM_P(to)) {
+        long i, end;
+
+        end = FIX2LONG(to);
+        for (i = FIX2LONG(from); i &lt;= end; i++) {
+            rb_yield(LONG2FIX(i));
+        }
+    }
+    else {
+        VALUE i = from, c;
+
+        while (!(c = rb_funcall(i, '&gt;', 1, to))) {
+            rb_yield(i);
+            i = rb_funcall(i, '+', 1, INT2FIX(1));
+        }
+        if (NIL_P(c)) rb_cmperr(i, to);
+    }
+    return from;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

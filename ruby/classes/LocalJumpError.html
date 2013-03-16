@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>LocalJumpError</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            LocalJumpError 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="StandardError.html">StandardError</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/proc_c.html">proc.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Raised when Ruby can’t yield as requested.</p>
+
+<p>A typical scenario is attempting to yield when no block is given:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">call_block</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-value">42</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">call_block</span>
+</pre>
+
+<p><em>raises the exception:</em></p>
+
+<pre>LocalJumpError: no block given (yield)</pre>
+
+<p>A more subtle example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">get_me_a_return</span>
+  <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-keyword">return</span> <span class="ruby-value">42</span> }
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">get_me_a_return</span>.<span class="ruby-identifier">call</span>
+</pre>
+
+<p><em>raises the exception:</em></p>
+
+<pre>LocalJumpError: unexpected return</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-exit_value">exit_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reason">reason</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-exit_value">
+            
+              <b>exit_value</b>()
+            
+            <a href="../classes/LocalJumpError.html#method-i-exit_value" name="method-i-exit_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>call_seq:</p>
+
+<pre>local_jump_error.exit_value  -&gt; obj</pre>
+
+<p>Returns the exit value associated with this <code>LocalJumpError</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exit_value_source')" id="l_method-i-exit_value_source">show</a>
+                
+              </p>
+              <div id="method-i-exit_value_source" class="dyn-source">
+                <pre>static VALUE
+localjump_xvalue(VALUE exc)
+{
+    return rb_iv_get(exc, &quot;@exit_value&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reason">
+            
+              <b>local_jump_error.reason   &rarr; symbol
+</b>
+            
+            <a href="../classes/LocalJumpError.html#method-i-reason" name="method-i-reason" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The reason this block was terminated: :break, :redo, :retry, :next,
+:return, or :noreason.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reason_source')" id="l_method-i-reason_source">show</a>
+                
+              </p>
+              <div id="method-i-reason_source" class="dyn-source">
+                <pre>static VALUE
+localjump_reason(VALUE exc)
+{
+    return rb_iv_get(exc, &quot;@reason&quot;);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

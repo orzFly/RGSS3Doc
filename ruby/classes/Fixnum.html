@@ -1,0 +1,2047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Fixnum</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Fixnum 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Integer.html">Integer</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/numeric_c.html">numeric.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A <code>Fixnum</code> holds <code>Integer</code> values that can be
+represented in a native machine word (minus 1 bit). If any operation on a
+<code>Fixnum</code> exceeds this range, the value is automatically
+converted to a <code>Bignum</code>.</p>
+
+<p><code>Fixnum</code> objects have immediate value. This means that when they
+are assigned or passed as parameters, the actual object is passed, rather
+than a reference to that object. Assignment does not alias
+<code>Fixnum</code> objects. There is effectively only one
+<code>Fixnum</code> object instance for any given integer value, so, for
+example, you cannot add a singleton method to a <code>Fixnum</code>.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-25">%</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-26">&amp;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2A">*</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2A-2A">**</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2B">+</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D">-</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2D-40">-@</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-2F">/</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C">&lt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C-3C">&lt;&lt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C-3D">&lt;=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3C-3D-3E">&lt;=&gt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D">==</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3D-3D-3D">===</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3E">&gt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3E-3D">&gt;=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-3E-3E">&gt;&gt;</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5E">^</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-abs">abs</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-div">div</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-divmod">divmod</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-even-3F">even?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fdiv">fdiv</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-magnitude">magnitude</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-modulo">modulo</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-odd-3F">odd?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-succ">succ</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_f">to_f</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Z</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-zero-3F">zero?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-7C">|</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-7E">~</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-25">
+            
+              <b>fix % other        &rarr;  real
+fix.modulo(other)  &rarr;  real
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-25" name="method-i-25" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>fix</code> modulo <code>other</code>. See
+<code>numeric.divmod</code> for more information.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-25_source')" id="l_method-i-25_source">show</a>
+                
+              </p>
+              <div id="method-i-25_source" class="dyn-source">
+                <pre>static VALUE
+fix_mod(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        long mod;
+
+        fixdivmod(FIX2LONG(x), FIX2LONG(y), 0, &amp;mod);
+        return LONG2NUM(mod);
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        x = rb_int2big(FIX2LONG(x));
+        return rb_big_modulo(x, y);
+      case T_FLOAT:
+        {
+            double mod;
+
+            flodivmod((double)FIX2LONG(x), RFLOAT_VALUE(y), 0, &amp;mod);
+            return DBL2NUM(mod);
+        }
+      default:
+        return rb_num_coerce_bin(x, y, '%');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-26">
+            
+              <b>fix & integer  &rarr;  integer_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-26" name="method-i-26" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Bitwise AND.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-26_source')" id="l_method-i-26_source">show</a>
+                
+              </p>
+              <div id="method-i-26_source" class="dyn-source">
+                <pre>static VALUE
+fix_and(VALUE x, VALUE y)
+{
+    long val;
+
+    if (!FIXNUM_P(y = bit_coerce(y))) {
+        return rb_big_and(y, x);
+    }
+    val = FIX2LONG(x) &amp; FIX2LONG(y);
+    return LONG2NUM(val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2A">
+            
+              <b>fix * numeric  &rarr;  numeric_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2A" name="method-i-2A" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs multiplication: the class of the resulting object depends on the
+class of <code>numeric</code> and on the magnitude of the result.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2A_source')" id="l_method-i-2A_source">show</a>
+                
+              </p>
+              <div id="method-i-2A_source" class="dyn-source">
+                <pre>static VALUE
+fix_mul(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+#ifdef __HP_cc
+/* avoids an optimization bug of HP aC++/ANSI C B3910B A.06.05 [Jul 25 2005] */
+        volatile
+#endif
+        long a, b;
+#if SIZEOF_LONG * 2 &lt;= SIZEOF_LONG_LONG
+        LONG_LONG d;
+#else
+        volatile long c;
+        VALUE r;
+#endif
+
+        a = FIX2LONG(x);
+        b = FIX2LONG(y);
+
+#if SIZEOF_LONG * 2 &lt;= SIZEOF_LONG_LONG
+        d = (LONG_LONG)a * b;
+        if (FIXABLE(d)) return LONG2FIX(d);
+        return rb_ll2inum(d);
+#else
+        if (FIT_SQRT_LONG(a) &amp;&amp; FIT_SQRT_LONG(b))
+            return LONG2FIX(a*b);
+        c = a * b;
+        r = LONG2FIX(c);
+
+        if (a == 0) return x;
+        if (FIX2LONG(r) != c || c/a != b) {
+            r = rb_big_mul(rb_int2big(a), rb_int2big(b));
+        }
+        return r;
+#endif
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_mul(y, x);
+      case T_FLOAT:
+        return DBL2NUM((double)FIX2LONG(x) * RFLOAT_VALUE(y));
+      default:
+        return rb_num_coerce_bin(x, y, '*');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2A-2A">
+            
+              <b>fix ** numeric  &rarr;  numeric_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2A-2A" name="method-i-2A-2A" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Raises <code>fix</code> to the <code>numeric</code> power, which may be
+negative or fractional.</p>
+
+<pre class="ruby"><span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">3</span>      <span class="ruby-comment">#=&gt; 8</span>
+<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">-1</span>     <span class="ruby-comment">#=&gt; 0.5</span>
+<span class="ruby-value">2</span> <span class="ruby-operator">**</span> <span class="ruby-value">0.5</span>    <span class="ruby-comment">#=&gt; 1.4142135623731</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2A-2A_source')" id="l_method-i-2A-2A_source">show</a>
+                
+              </p>
+              <div id="method-i-2A-2A_source" class="dyn-source">
+                <pre>static VALUE
+fix_pow(VALUE x, VALUE y)
+{
+    long a = FIX2LONG(x);
+
+    if (FIXNUM_P(y)) {
+        long b = FIX2LONG(y);
+
+        if (b &lt; 0)
+            return rb_funcall(rb_rational_raw1(x), rb_intern(&quot;**&quot;), 1, y);
+
+        if (b == 0) return INT2FIX(1);
+        if (b == 1) return x;
+        if (a == 0) {
+            if (b &gt; 0) return INT2FIX(0);
+            return DBL2NUM(INFINITY);
+        }
+        if (a == 1) return INT2FIX(1);
+        if (a == -1) {
+            if (b % 2 == 0)
+                return INT2FIX(1);
+            else
+                return INT2FIX(-1);
+        }
+        return int_pow(a, b);
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+
+        if (rb_funcall(y, '&lt;', 1, INT2FIX(0)))
+            return rb_funcall(rb_rational_raw1(x), rb_intern(&quot;**&quot;), 1, y);
+
+        if (a == 0) return INT2FIX(0);
+        if (a == 1) return INT2FIX(1);
+        if (a == -1) {
+            if (int_even_p(y)) return INT2FIX(1);
+            else return INT2FIX(-1);
+        }
+        x = rb_int2big(FIX2LONG(x));
+        return rb_big_pow(x, y);
+      case T_FLOAT:
+        if (RFLOAT_VALUE(y) == 0.0) return DBL2NUM(1.0);
+        if (a == 0) {
+            return DBL2NUM(RFLOAT_VALUE(y) &lt; 0 ? INFINITY : 0.0);
+        }
+        if (a == 1) return DBL2NUM(1.0);
+        {
+            double dy = RFLOAT_VALUE(y);
+            if (a &lt; 0 &amp;&amp; dy != round(dy))
+                return rb_funcall(rb_complex_raw1(x), rb_intern(&quot;**&quot;), 1, y);
+            return DBL2NUM(pow((double)a, dy));
+        }
+      default:
+        return rb_num_coerce_bin(x, y, rb_intern(&quot;**&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2B">
+            
+              <b>fix + numeric  &rarr;  numeric_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2B" name="method-i-2B" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs addition: the class of the resulting object depends on the class
+of <code>numeric</code> and on the magnitude of the result.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2B_source')" id="l_method-i-2B_source">show</a>
+                
+              </p>
+              <div id="method-i-2B_source" class="dyn-source">
+                <pre>static VALUE
+fix_plus(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        long a, b, c;
+        VALUE r;
+
+        a = FIX2LONG(x);
+        b = FIX2LONG(y);
+        c = a + b;
+        r = LONG2NUM(c);
+
+        return r;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_plus(y, x);
+      case T_FLOAT:
+        return DBL2NUM((double)FIX2LONG(x) + RFLOAT_VALUE(y));
+      default:
+        return rb_num_coerce_bin(x, y, '+');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D">
+            
+              <b>fix - numeric  &rarr;  numeric_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2D" name="method-i-2D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs subtraction: the class of the resulting object depends on the
+class of <code>numeric</code> and on the magnitude of the result.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D_source')" id="l_method-i-2D_source">show</a>
+                
+              </p>
+              <div id="method-i-2D_source" class="dyn-source">
+                <pre>static VALUE
+fix_minus(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        long a, b, c;
+        VALUE r;
+
+        a = FIX2LONG(x);
+        b = FIX2LONG(y);
+        c = a - b;
+        r = LONG2NUM(c);
+
+        return r;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        x = rb_int2big(FIX2LONG(x));
+        return rb_big_minus(x, y);
+      case T_FLOAT:
+        return DBL2NUM((double)FIX2LONG(x) - RFLOAT_VALUE(y));
+      default:
+        return rb_num_coerce_bin(x, y, '-');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2D-40">
+            
+              <b>-fix  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2D-40" name="method-i-2D-40" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Negates <code>fix</code> (which might return a <a
+href="Bignum.html">Bignum</a>).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2D-40_source')" id="l_method-i-2D-40_source">show</a>
+                
+              </p>
+              <div id="method-i-2D-40_source" class="dyn-source">
+                <pre>static VALUE
+fix_uminus(VALUE num)
+{
+    return LONG2NUM(-FIX2LONG(num));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-2F">
+            
+              <b>fix / numeric  &rarr;  numeric_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-2F" name="method-i-2F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs division: the class of the resulting object depends on the class
+of <code>numeric</code> and on the magnitude of the result.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-2F_source')" id="l_method-i-2F_source">show</a>
+                
+              </p>
+              <div id="method-i-2F_source" class="dyn-source">
+                <pre>static VALUE
+fix_div(VALUE x, VALUE y)
+{
+    return fix_divide(x, y, '/');
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C">
+            
+              <b>fix < real  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3C" name="method-i-3C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the value of <code>fix</code> is less than
+that of <code>real</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C_source')" id="l_method-i-3C_source">show</a>
+                
+              </p>
+              <div id="method-i-3C_source" class="dyn-source">
+                <pre>static VALUE
+fix_lt(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        if (FIX2LONG(x) &lt; FIX2LONG(y)) return Qtrue;
+        return Qfalse;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return FIX2INT(rb_big_cmp(rb_int2big(FIX2LONG(x)), y)) &lt; 0 ? Qtrue : Qfalse;
+      case T_FLOAT:
+        return (double)FIX2LONG(x) &lt; RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return rb_num_coerce_relop(x, y, '&lt;');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3C">
+            
+              <b>fix << count  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3C-3C" name="method-i-3C-3C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Shifts <em>fix</em> left <em>count</em> positions (right if <em>count</em>
+is negative).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3C_source')" id="l_method-i-3C-3C_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3C_source" class="dyn-source">
+                <pre>static VALUE
+rb_fix_lshift(VALUE x, VALUE y)
+{
+    long val, width;
+
+    val = NUM2LONG(x);
+    if (!FIXNUM_P(y))
+        return rb_big_lshift(rb_int2big(val), y);
+    width = FIX2LONG(y);
+    if (width &lt; 0)
+        return fix_rshift(val, (unsigned long)-width);
+    return fix_lshift(val, width);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3D">
+            
+              <b>fix <= real  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3C-3D" name="method-i-3C-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the value of <code>fix</code> is less than or
+equal to that of <code>real</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3D_source')" id="l_method-i-3C-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3D_source" class="dyn-source">
+                <pre>static VALUE
+fix_le(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        if (FIX2LONG(x) &lt;= FIX2LONG(y)) return Qtrue;
+        return Qfalse;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return FIX2INT(rb_big_cmp(rb_int2big(FIX2LONG(x)), y)) &lt;= 0 ? Qtrue : Qfalse;
+      case T_FLOAT:
+        return (double)FIX2LONG(x) &lt;= RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return rb_num_coerce_relop(x, y, rb_intern(&quot;&lt;=&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3C-3D-3E">
+            
+              <b>fix <=> numeric  &rarr;  -1, 0, +1 or nil
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3C-3D-3E" name="method-i-3C-3D-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Comparison—Returns -1, 0, +1 or nil depending on whether <em>fix</em> is
+less than, equal to, or greater than <em>numeric</em>. This is the basis
+for the tests in <code>Comparable</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3C-3D-3E_source')" id="l_method-i-3C-3D-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3C-3D-3E_source" class="dyn-source">
+                <pre>static VALUE
+fix_cmp(VALUE x, VALUE y)
+{
+    if (x == y) return INT2FIX(0);
+    if (FIXNUM_P(y)) {
+        if (FIX2LONG(x) &gt; FIX2LONG(y)) return INT2FIX(1);
+        return INT2FIX(-1);
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_cmp(rb_int2big(FIX2LONG(x)), y);
+      case T_FLOAT:
+        return rb_dbl_cmp((double)FIX2LONG(x), RFLOAT_VALUE(y));
+      default:
+        return rb_num_coerce_cmp(x, y, rb_intern(&quot;&lt;=&gt;&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D">
+            
+              <b>fix == other  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3D-3D" name="method-i-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if <code>fix</code> equals <code>other</code>
+numerically.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>      <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>    <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D_source')" id="l_method-i-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+fix_equal(VALUE x, VALUE y)
+{
+    if (x == y) return Qtrue;
+    if (FIXNUM_P(y)) return Qfalse;
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_eq(y, x);
+      case T_FLOAT:
+        return (double)FIX2LONG(x) == RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return num_equal(x, y);
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3D-3D-3D">
+            
+              <b>fix == other  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3D-3D-3D" name="method-i-3D-3D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return <code>true</code> if <code>fix</code> equals <code>other</code>
+numerically.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>      <span class="ruby-comment">#=&gt; false</span>
+<span class="ruby-value">1</span> <span class="ruby-operator">==</span> <span class="ruby-value">1.0</span>    <span class="ruby-comment">#=&gt; true</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3D-3D-3D_source')" id="l_method-i-3D-3D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3D-3D-3D_source" class="dyn-source">
+                <pre>static VALUE
+fix_equal(VALUE x, VALUE y)
+{
+    if (x == y) return Qtrue;
+    if (FIXNUM_P(y)) return Qfalse;
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_eq(y, x);
+      case T_FLOAT:
+        return (double)FIX2LONG(x) == RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return num_equal(x, y);
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3E">
+            
+              <b>fix > real  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3E" name="method-i-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the value of <code>fix</code> is greater than
+that of <code>real</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3E_source')" id="l_method-i-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3E_source" class="dyn-source">
+                <pre>static VALUE
+fix_gt(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        if (FIX2LONG(x) &gt; FIX2LONG(y)) return Qtrue;
+        return Qfalse;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return FIX2INT(rb_big_cmp(rb_int2big(FIX2LONG(x)), y)) &gt; 0 ? Qtrue : Qfalse;
+      case T_FLOAT:
+        return (double)FIX2LONG(x) &gt; RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return rb_num_coerce_relop(x, y, '&gt;');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3E-3D">
+            
+              <b>fix >= real  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3E-3D" name="method-i-3E-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the value of <code>fix</code> is greater than
+or equal to that of <code>real</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3E-3D_source')" id="l_method-i-3E-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-3E-3D_source" class="dyn-source">
+                <pre>static VALUE
+fix_ge(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        if (FIX2LONG(x) &gt;= FIX2LONG(y)) return Qtrue;
+        return Qfalse;
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return FIX2INT(rb_big_cmp(rb_int2big(FIX2LONG(x)), y)) &gt;= 0 ? Qtrue : Qfalse;
+      case T_FLOAT:
+        return (double)FIX2LONG(x) &gt;= RFLOAT_VALUE(y) ? Qtrue : Qfalse;
+      default:
+        return rb_num_coerce_relop(x, y, rb_intern(&quot;&gt;=&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-3E-3E">
+            
+              <b>fix >> count  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-3E-3E" name="method-i-3E-3E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Shifts <em>fix</em> right <em>count</em> positions (left if <em>count</em>
+is negative).</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-3E-3E_source')" id="l_method-i-3E-3E_source">show</a>
+                
+              </p>
+              <div id="method-i-3E-3E_source" class="dyn-source">
+                <pre>static VALUE
+rb_fix_rshift(VALUE x, VALUE y)
+{
+    long i, val;
+
+    val = FIX2LONG(x);
+    if (!FIXNUM_P(y))
+        return rb_big_rshift(rb_int2big(val), y);
+    i = FIX2LONG(y);
+    if (i == 0) return x;
+    if (i &lt; 0)
+        return fix_lshift(val, (unsigned long)-i);
+    return fix_rshift(val, i);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>fix[n]  &rarr;  0, 1
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Bit Reference—Returns the <em>n</em>th bit in the binary representation
+of <em>fix</em>, where <em><a href="http://0">fix</a></em> is the least
+significant bit.</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">0b11001100101010</span>
+<span class="ruby-value">30</span>.<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">print</span> <span class="ruby-identifier">a</span>[<span class="ruby-identifier">n</span>] <span class="ruby-keyword">end</span>
+</pre>
+
+<p><em>produces:</em></p>
+
+<pre>0000000000000000011001100101010</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre>static VALUE
+fix_aref(VALUE fix, VALUE idx)
+{
+    long val = FIX2LONG(fix);
+    long i;
+
+    idx = rb_to_int(idx);
+    if (!FIXNUM_P(idx)) {
+        idx = rb_big_norm(idx);
+        if (!FIXNUM_P(idx)) {
+            if (!RBIGNUM_SIGN(idx) || val &gt;= 0)
+                return INT2FIX(0);
+            return INT2FIX(1);
+        }
+    }
+    i = FIX2LONG(idx);
+
+    if (i &lt; 0) return INT2FIX(0);
+    if (SIZEOF_LONG*CHAR_BIT-1 &lt; i) {
+        if (val &lt; 0) return INT2FIX(1);
+        return INT2FIX(0);
+    }
+    if (val &amp; (1L&lt;&lt;i))
+        return INT2FIX(1);
+    return INT2FIX(0);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5E">
+            
+              <b>fix ^ integer  &rarr;  integer_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-5E" name="method-i-5E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Bitwise EXCLUSIVE OR.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5E_source')" id="l_method-i-5E_source">show</a>
+                
+              </p>
+              <div id="method-i-5E_source" class="dyn-source">
+                <pre>static VALUE
+fix_xor(VALUE x, VALUE y)
+{
+    long val;
+
+    if (!FIXNUM_P(y = bit_coerce(y))) {
+        return rb_big_xor(y, x);
+    }
+    val = FIX2LONG(x) ^ FIX2LONG(y);
+    return LONG2NUM(val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-abs">
+            
+              <b>fix.abs        &rarr;  integer
+fix.magnitude  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-abs" name="method-i-abs" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute value of <em>fix</em>.</p>
+
+<pre class="ruby"><span class="ruby-value">-12345</span>.<span class="ruby-identifier">abs</span>   <span class="ruby-comment">#=&gt; 12345</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">abs</span>    <span class="ruby-comment">#=&gt; 12345</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-abs_source')" id="l_method-i-abs_source">show</a>
+                
+              </p>
+              <div id="method-i-abs_source" class="dyn-source">
+                <pre>static VALUE
+fix_abs(VALUE fix)
+{
+    long i = FIX2LONG(fix);
+
+    if (i &lt; 0) i = -i;
+
+    return LONG2NUM(i);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-div">
+            
+              <b>fix.div(numeric)  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-div" name="method-i-div" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs integer division: returns integer value.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-div_source')" id="l_method-i-div_source">show</a>
+                
+              </p>
+              <div id="method-i-div_source" class="dyn-source">
+                <pre>static VALUE
+fix_idiv(VALUE x, VALUE y)
+{
+    return fix_divide(x, y, rb_intern(&quot;div&quot;));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-divmod">
+            
+              <b>fix.divmod(numeric)  &rarr;  array
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-divmod" name="method-i-divmod" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>See <code>Numeric#divmod</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-divmod_source')" id="l_method-i-divmod_source">show</a>
+                
+              </p>
+              <div id="method-i-divmod_source" class="dyn-source">
+                <pre>static VALUE
+fix_divmod(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        long div, mod;
+
+        fixdivmod(FIX2LONG(x), FIX2LONG(y), &amp;div, &amp;mod);
+
+        return rb_assoc_new(LONG2NUM(div), LONG2NUM(mod));
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        x = rb_int2big(FIX2LONG(x));
+        return rb_big_divmod(x, y);
+      case T_FLOAT:
+        {
+            double div, mod;
+            volatile VALUE a, b;
+
+            flodivmod((double)FIX2LONG(x), RFLOAT_VALUE(y), &amp;div, &amp;mod);
+            a = dbl2ival(div);
+            b = DBL2NUM(mod);
+            return rb_assoc_new(a, b);
+        }
+      default:
+        return rb_num_coerce_bin(x, y, rb_intern(&quot;divmod&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-even-3F">
+            
+              <b>fix.even?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-even-3F" name="method-i-even-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>fix</em> is an even number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-even-3F_source')" id="l_method-i-even-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-even-3F_source" class="dyn-source">
+                <pre>static VALUE
+fix_even_p(VALUE num)
+{
+    if (num &amp; 2) {
+        return Qfalse;
+    }
+    return Qtrue;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fdiv">
+            
+              <b>fix.fdiv(numeric)  &rarr;  float
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-fdiv" name="method-i-fdiv" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the floating point result of dividing <em>fix</em> by
+<em>numeric</em>.</p>
+
+<pre class="ruby"><span class="ruby-value">654321</span>.<span class="ruby-identifier">fdiv</span>(<span class="ruby-value">13731</span>)      <span class="ruby-comment">#=&gt; 47.6528293642124</span>
+<span class="ruby-value">654321</span>.<span class="ruby-identifier">fdiv</span>(<span class="ruby-value">13731.24</span>)   <span class="ruby-comment">#=&gt; 47.6519964693647</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fdiv_source')" id="l_method-i-fdiv_source">show</a>
+                
+              </p>
+              <div id="method-i-fdiv_source" class="dyn-source">
+                <pre>static VALUE
+fix_fdiv(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        return DBL2NUM((double)FIX2LONG(x) / (double)FIX2LONG(y));
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        return rb_big_fdiv(rb_int2big(FIX2LONG(x)), y);
+      case T_FLOAT:
+        return DBL2NUM((double)FIX2LONG(x) / RFLOAT_VALUE(y));
+      default:
+        return rb_num_coerce_bin(x, y, rb_intern(&quot;fdiv&quot;));
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-magnitude">
+            
+              <b>fix.abs        &rarr;  integer
+fix.magnitude  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-magnitude" name="method-i-magnitude" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the absolute value of <em>fix</em>.</p>
+
+<pre class="ruby"><span class="ruby-value">-12345</span>.<span class="ruby-identifier">abs</span>   <span class="ruby-comment">#=&gt; 12345</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">abs</span>    <span class="ruby-comment">#=&gt; 12345</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-magnitude_source')" id="l_method-i-magnitude_source">show</a>
+                
+              </p>
+              <div id="method-i-magnitude_source" class="dyn-source">
+                <pre>static VALUE
+fix_abs(VALUE fix)
+{
+    long i = FIX2LONG(fix);
+
+    if (i &lt; 0) i = -i;
+
+    return LONG2NUM(i);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-modulo">
+            
+              <b>fix % other        &rarr;  real
+fix.modulo(other)  &rarr;  real
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-modulo" name="method-i-modulo" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>fix</code> modulo <code>other</code>. See
+<code>numeric.divmod</code> for more information.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-modulo_source')" id="l_method-i-modulo_source">show</a>
+                
+              </p>
+              <div id="method-i-modulo_source" class="dyn-source">
+                <pre>static VALUE
+fix_mod(VALUE x, VALUE y)
+{
+    if (FIXNUM_P(y)) {
+        long mod;
+
+        fixdivmod(FIX2LONG(x), FIX2LONG(y), 0, &amp;mod);
+        return LONG2NUM(mod);
+    }
+    switch (TYPE(y)) {
+      case T_BIGNUM:
+        x = rb_int2big(FIX2LONG(x));
+        return rb_big_modulo(x, y);
+      case T_FLOAT:
+        {
+            double mod;
+
+            flodivmod((double)FIX2LONG(x), RFLOAT_VALUE(y), 0, &amp;mod);
+            return DBL2NUM(mod);
+        }
+      default:
+        return rb_num_coerce_bin(x, y, '%');
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-odd-3F">
+            
+              <b>fix.odd?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-odd-3F" name="method-i-odd-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>fix</em> is an odd number.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-odd-3F_source')" id="l_method-i-odd-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-odd-3F_source" class="dyn-source">
+                <pre>static VALUE
+fix_odd_p(VALUE num)
+{
+    if (num &amp; 2) {
+        return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>fix.size  &rarr;  fixnum
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the number of <em>bytes</em> in the machine representation of a
+<code>Fixnum</code>.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">size</span>            <span class="ruby-comment">#=&gt; 4</span>
+<span class="ruby-value">-1</span>.<span class="ruby-identifier">size</span>           <span class="ruby-comment">#=&gt; 4</span>
+<span class="ruby-value">2147483647</span>.<span class="ruby-identifier">size</span>   <span class="ruby-comment">#=&gt; 4</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre>static VALUE
+fix_size(VALUE fix)
+{
+    return INT2FIX(sizeof(long));
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-succ">
+            
+              <b>fixnum.next  &rarr;  integer
+fixnum.succ  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-succ" name="method-i-succ" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the <code>Integer</code> equal to <em>int</em> + 1.</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">next</span>      <span class="ruby-comment">#=&gt; 2</span>
+(<span class="ruby-value">-1</span>).<span class="ruby-identifier">next</span>   <span class="ruby-comment">#=&gt; 0</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-succ_source')" id="l_method-i-succ_source">show</a>
+                
+              </p>
+              <div id="method-i-succ_source" class="dyn-source">
+                <pre>static VALUE
+fix_succ(VALUE num)
+{
+    long i = FIX2LONG(num) + 1;
+    return LONG2NUM(i);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_f">
+            
+              <b>fix.to_f  &rarr;  float
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-to_f" name="method-i-to_f" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Converts <em>fix</em> to a <code>Float</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_f_source')" id="l_method-i-to_f_source">show</a>
+                
+              </p>
+              <div id="method-i-to_f_source" class="dyn-source">
+                <pre>static VALUE
+fix_to_f(VALUE num)
+{
+    double val;
+
+    val = (double)FIX2LONG(num);
+
+    return DBL2NUM(val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>fix.to_s(base=10)  &rarr;  string
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a string containing the representation of <em>fix</em> radix
+<em>base</em> (between 2 and 36).</p>
+
+<pre class="ruby"><span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>       <span class="ruby-comment">#=&gt; &quot;12345&quot;</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)    <span class="ruby-comment">#=&gt; &quot;11000000111001&quot;</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">8</span>)    <span class="ruby-comment">#=&gt; &quot;30071&quot;</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">10</span>)   <span class="ruby-comment">#=&gt; &quot;12345&quot;</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>)   <span class="ruby-comment">#=&gt; &quot;3039&quot;</span>
+<span class="ruby-value">12345</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">36</span>)   <span class="ruby-comment">#=&gt; &quot;9ix&quot;</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre>static VALUE
+fix_to_s(int argc, VALUE *argv, VALUE x)
+{
+    int base;
+
+    if (argc == 0) base = 10;
+    else {
+        VALUE b;
+
+        rb_scan_args(argc, argv, &quot;01&quot;, &amp;b);
+        base = NUM2INT(b);
+    }
+
+    return rb_fix2str(x, base);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-zero-3F">
+            
+              <b>fix.zero?  &rarr;  true or false
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-zero-3F" name="method-i-zero-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if <em>fix</em> is zero.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-zero-3F_source')" id="l_method-i-zero-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-zero-3F_source" class="dyn-source">
+                <pre>static VALUE
+fix_zero_p(VALUE num)
+{
+    if (FIX2LONG(num) == 0) {
+        return Qtrue;
+    }
+    return Qfalse;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-7C">
+            
+              <b>fix | integer  &rarr;  integer_result
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-7C" name="method-i-7C" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Bitwise OR.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-7C_source')" id="l_method-i-7C_source">show</a>
+                
+              </p>
+              <div id="method-i-7C_source" class="dyn-source">
+                <pre>static VALUE
+fix_or(VALUE x, VALUE y)
+{
+    long val;
+
+    if (!FIXNUM_P(y = bit_coerce(y))) {
+        return rb_big_or(y, x);
+    }
+    val = FIX2LONG(x) | FIX2LONG(y);
+    return LONG2NUM(val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-7E">
+            
+              <b>~fix  &rarr;  integer
+</b>
+            
+            <a href="../classes/Fixnum.html#method-i-7E" name="method-i-7E" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>One’s complement: returns a number where each bit is flipped.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-7E_source')" id="l_method-i-7E_source">show</a>
+                
+              </p>
+              <div id="method-i-7E_source" class="dyn-source">
+                <pre>static VALUE
+fix_rev(VALUE num)
+{
+    long val = FIX2LONG(num);
+
+    val = ~val;
+    return LONG2NUM(val);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

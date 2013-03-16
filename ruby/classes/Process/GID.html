@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Process::GID</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Process::GID 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/process_c.html">process.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The <code>Process::GID</code> module contains a collection of module
+functions which can be used to portably get, set, and switch the current
+process’s real, effective, and saved group IDs.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-change_privilege">change_privilege</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-eid">eid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-grant_privilege">grant_privilege</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-re_exchange">re_exchange</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-re_exchangeable-3F">re_exchangeable?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-rid">rid</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-sid_available-3F">sid_available?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-switch">switch</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-change_privilege">
+            
+              <b>Process::GID.change_privilege(integer)   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-change_privilege" name="method-c-change_privilege" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Change the current process’s real and effective group ID to that
+specified by <em>integer</em>. Returns the new group ID. Not available on
+all platforms.</p>
+
+<pre class="ruby">[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]          <span class="ruby-comment">#=&gt; [0, 0]</span>
+<span class="ruby-constant">Process</span><span class="ruby-operator">::</span><span class="ruby-constant">GID</span>.<span class="ruby-identifier">change_privilege</span>(<span class="ruby-value">33</span>)    <span class="ruby-comment">#=&gt; 33</span>
+[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]          <span class="ruby-comment">#=&gt; [33, 33]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-change_privilege_source')" id="l_method-c-change_privilege_source">show</a>
+                
+              </p>
+              <div id="method-c-change_privilege_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_change_privilege(VALUE obj, VALUE id)
+{
+    rb_gid_t gid;
+
+    check_gid_switch();
+
+    gid = NUM2GIDT(id);
+
+    if (geteuid() == 0) { /* root-user */
+#if defined(HAVE_SETRESGID)
+        if (setresgid(gid, gid, gid) &lt; 0) rb_sys_fail(0);
+        SAVED_GROUP_ID = gid;
+#elif defined HAVE_SETGID
+        if (setgid(gid) &lt; 0) rb_sys_fail(0);
+        SAVED_GROUP_ID = gid;
+#elif defined(HAVE_SETREGID) &amp;&amp; !defined(OBSOLETE_SETREGID)
+        if (getgid() == gid) {
+            if (SAVED_GROUP_ID == gid) {
+                if (setregid(-1, gid) &lt; 0) rb_sys_fail(0);
+            } else {
+                if (gid == 0) { /* (r,e,s) == (root, y, x) */
+                    if (setregid(-1, SAVED_GROUP_ID) &lt; 0) rb_sys_fail(0);
+                    if (setregid(SAVED_GROUP_ID, 0) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = 0; /* (r,e,s) == (x, root, root) */
+                    if (setregid(gid, gid) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = gid;
+                } else { /* (r,e,s) == (z, y, x) */
+                    if (setregid(0, 0) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = 0;
+                    if (setregid(gid, gid) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = gid;
+                }
+            }
+        } else {
+            if (setregid(gid, gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+        }
+#elif defined(HAVE_SETRGID) &amp;&amp; defined (HAVE_SETEGID)
+        if (getgid() == gid) {
+            if (SAVED_GROUP_ID == gid) {
+                if (setegid(gid) &lt; 0) rb_sys_fail(0);
+            } else {
+                if (gid == 0) {
+                    if (setegid(gid) &lt; 0) rb_sys_fail(0);
+                    if (setrgid(SAVED_GROUP_ID) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = 0;
+                    if (setrgid(0) &lt; 0) rb_sys_fail(0);
+                } else {
+                    if (setrgid(0) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = 0;
+                    if (setegid(gid) &lt; 0) rb_sys_fail(0);
+                    if (setrgid(gid) &lt; 0) rb_sys_fail(0);
+                    SAVED_GROUP_ID = gid;
+                }
+            }
+        } else {
+            if (setegid(gid) &lt; 0) rb_sys_fail(0);
+            if (setrgid(gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+        }
+#else
+        rb_notimplement();
+#endif
+    } else { /* unprivileged user */
+#if defined(HAVE_SETRESGID)
+        if (setresgid((getgid() == gid)? -1: gid,
+                      (getegid() == gid)? -1: gid,
+                      (SAVED_GROUP_ID == gid)? -1: gid) &lt; 0) rb_sys_fail(0);
+        SAVED_GROUP_ID = gid;
+#elif defined(HAVE_SETREGID) &amp;&amp; !defined(OBSOLETE_SETREGID)
+        if (SAVED_GROUP_ID == gid) {
+            if (setregid((getgid() == gid)? -1: gid,
+                         (getegid() == gid)? -1: gid) &lt; 0) rb_sys_fail(0);
+        } else if (getgid() != gid) {
+            if (setregid(gid, (getegid() == gid)? -1: gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+        } else if (/* getgid() == gid &amp;&amp; */ getegid() != gid) {
+            if (setregid(getegid(), gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+            if (setregid(gid, -1) &lt; 0) rb_sys_fail(0);
+        } else { /* getgid() == gid &amp;&amp; getegid() == gid */
+            if (setregid(-1, SAVED_GROUP_ID) &lt; 0) rb_sys_fail(0);
+            if (setregid(SAVED_GROUP_ID, gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+            if (setregid(gid, -1) &lt; 0) rb_sys_fail(0);
+        }
+#elif defined(HAVE_SETRGID) &amp;&amp; defined(HAVE_SETEGID)
+        if (SAVED_GROUP_ID == gid) {
+            if (getegid() != gid &amp;&amp; setegid(gid) &lt; 0) rb_sys_fail(0);
+            if (getgid() != gid &amp;&amp; setrgid(gid) &lt; 0) rb_sys_fail(0);
+        } else if (/* SAVED_GROUP_ID != gid &amp;&amp; */ getegid() == gid) {
+            if (getgid() != gid) {
+                if (setrgid(gid) &lt; 0) rb_sys_fail(0);
+                SAVED_GROUP_ID = gid;
+            } else {
+                if (setrgid(SAVED_GROUP_ID) &lt; 0) rb_sys_fail(0);
+                SAVED_GROUP_ID = gid;
+                if (setrgid(gid) &lt; 0) rb_sys_fail(0);
+        }
+        } else if (/* getegid() != gid &amp;&amp; */ getgid() == gid) {
+            if (setegid(gid) &lt; 0) rb_sys_fail(0);
+            if (setrgid(SAVED_GROUP_ID) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+            if (setrgid(gid) &lt; 0) rb_sys_fail(0);
+        } else {
+            errno = EPERM;
+            rb_sys_fail(0);
+        }
+#elif defined HAVE_44BSD_SETGID
+        if (getgid() == gid) {
+            /* (r,e,s)==(gid,?,?) ==&gt; (gid,gid,gid) */
+            if (setgid(gid) &lt; 0) rb_sys_fail(0);
+            SAVED_GROUP_ID = gid;
+        } else {
+            errno = EPERM;
+            rb_sys_fail(0);
+        }
+#elif defined HAVE_SETEGID
+        if (getgid() == gid &amp;&amp; SAVED_GROUP_ID == gid) {
+            if (setegid(gid) &lt; 0) rb_sys_fail(0);
+        } else {
+            errno = EPERM;
+            rb_sys_fail(0);
+        }
+#elif defined HAVE_SETGID
+        if (getgid() == gid &amp;&amp; SAVED_GROUP_ID == gid) {
+            if (setgid(gid) &lt; 0) rb_sys_fail(0);
+        } else {
+            errno = EPERM;
+            rb_sys_fail(0);
+        }
+#else
+        rb_notimplement();
+#endif
+    }
+    return id;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-eid">
+            
+              <b>Process.egid          &rarr; fixnum
+Process::GID.eid      &rarr; fixnum
+Process::Sys.geteid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-eid" name="method-c-eid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the effective group ID for this process. Not available on all
+platforms.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>   <span class="ruby-comment">#=&gt; 500</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-eid_source')" id="l_method-c-eid_source">show</a>
+                
+              </p>
+              <div id="method-c-eid_source" class="dyn-source">
+                <pre>static VALUE
+proc_getegid(VALUE obj)
+{
+    rb_gid_t egid = getegid();
+
+    return GIDT2NUM(egid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-grant_privilege">
+            
+              <b>Process::GID.grant_privilege(integer)    &rarr; fixnum
+Process::GID.eid = integer               &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-grant_privilege" name="method-c-grant_privilege" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Set the effective group ID, and if possible, the saved group ID of the
+process to the given <em>integer</em>. Returns the new effective group ID.
+Not available on all platforms.</p>
+
+<pre class="ruby">[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]          <span class="ruby-comment">#=&gt; [0, 0]</span>
+<span class="ruby-constant">Process</span><span class="ruby-operator">::</span><span class="ruby-constant">GID</span>.<span class="ruby-identifier">grant_privilege</span>(<span class="ruby-value">31</span>)     <span class="ruby-comment">#=&gt; 33</span>
+[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]          <span class="ruby-comment">#=&gt; [0, 33]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-grant_privilege_source')" id="l_method-c-grant_privilege_source">show</a>
+                
+              </p>
+              <div id="method-c-grant_privilege_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_grant_privilege(VALUE obj, VALUE id)
+{
+    rb_setegid_core(NUM2GIDT(id));
+    return id;
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-re_exchange">
+            
+              <b>Process::GID.re_exchange   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-re_exchange" name="method-c-re_exchange" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Exchange real and effective group IDs and return the new effective group
+ID. Not available on all platforms.</p>
+
+<pre class="ruby">[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]   <span class="ruby-comment">#=&gt; [0, 33]</span>
+<span class="ruby-constant">Process</span><span class="ruby-operator">::</span><span class="ruby-constant">GID</span>.<span class="ruby-identifier">re_exchange</span>      <span class="ruby-comment">#=&gt; 0</span>
+[<span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>, <span class="ruby-constant">Process</span>.<span class="ruby-identifier">egid</span>]   <span class="ruby-comment">#=&gt; [33, 0]</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-re_exchange_source')" id="l_method-c-re_exchange_source">show</a>
+                
+              </p>
+              <div id="method-c-re_exchange_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_exchange(VALUE obj)
+{
+    rb_gid_t gid, egid;
+
+    check_gid_switch();
+
+    gid = getgid();
+    egid = getegid();
+
+#if defined(HAVE_SETRESGID)
+    if (setresgid(egid, gid, gid) &lt; 0) rb_sys_fail(0);
+    SAVED_GROUP_ID = gid;
+#elif defined(HAVE_SETREGID) &amp;&amp; !defined(OBSOLETE_SETREGID)
+    if (setregid(egid,gid) &lt; 0) rb_sys_fail(0);
+    SAVED_GROUP_ID = gid;
+#else
+    rb_notimplement();
+#endif
+    return GIDT2NUM(gid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-re_exchangeable-3F">
+            
+              <b>Process::GID.re_exchangeable?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-re_exchangeable-3F" name="method-c-re_exchangeable-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the real and effective group IDs of a process
+may be exchanged on the current platform.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-re_exchangeable-3F_source')" id="l_method-c-re_exchangeable-3F_source">show</a>
+                
+              </p>
+              <div id="method-c-re_exchangeable-3F_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_exchangeable(void)
+{
+#if defined(HAVE_SETRESGID)
+    return Qtrue;
+#elif defined(HAVE_SETREGID) &amp;&amp; !defined(OBSOLETE_SETREGID)
+    return Qtrue;
+#else
+    return Qfalse;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-rid">
+            
+              <b>Process.gid           &rarr; fixnum
+Process::GID.rid      &rarr; fixnum
+Process::Sys.getgid   &rarr; fixnum
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-rid" name="method-c-rid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the (real) group ID for this process.</p>
+
+<pre class="ruby"><span class="ruby-constant">Process</span>.<span class="ruby-identifier">gid</span>   <span class="ruby-comment">#=&gt; 500</span>
+</pre>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-rid_source')" id="l_method-c-rid_source">show</a>
+                
+              </p>
+              <div id="method-c-rid_source" class="dyn-source">
+                <pre>static VALUE
+proc_getgid(VALUE obj)
+{
+    rb_gid_t gid = getgid();
+    return GIDT2NUM(gid);
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-sid_available-3F">
+            
+              <b>Process::GID.sid_available?   &rarr; true or false
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-sid_available-3F" name="method-c-sid_available-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the current platform has saved group ID
+functionality.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-sid_available-3F_source')" id="l_method-c-sid_available-3F_source">show</a>
+                
+              </p>
+              <div id="method-c-sid_available-3F_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_have_saved_id(void)
+{
+#if defined(HAVE_SETRESGID) || defined(HAVE_SETEGID) || defined(_POSIX_SAVED_IDS)
+    return Qtrue;
+#else
+    return Qfalse;
+#endif
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-switch">
+            
+              <b>Process::GID.switch              &rarr; fixnum
+Process::GID.switch {|| block}   &rarr; object
+</b>
+            
+            <a href="../../classes/Process/GID.html#method-c-switch" name="method-c-switch" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Switch the effective and real group IDs of the current process. If a
+<em>block</em> is given, the group IDs will be switched back after the
+block is executed. Returns the new effective group ID if called without a
+block, and the return value of the block if one is given.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-switch_source')" id="l_method-c-switch_source">show</a>
+                
+              </p>
+              <div id="method-c-switch_source" class="dyn-source">
+                <pre>static VALUE
+p_gid_switch(VALUE obj)
+{
+    rb_gid_t gid, egid;
+
+    check_gid_switch();
+
+    gid = getgid();
+    egid = getegid();
+
+    if (gid != egid) {
+        proc_setegid(obj, GIDT2NUM(gid));
+        if (rb_block_given_p()) {
+            under_gid_switch = 1;
+            return rb_ensure(rb_yield, Qnil, p_gid_sw_ensure, SAVED_GROUP_ID);
+        } else {
+            return GIDT2NUM(egid);
+        }
+    }
+    else if (egid != SAVED_GROUP_ID) {
+        proc_setegid(obj, GIDT2NUM(SAVED_GROUP_ID));
+        if (rb_block_given_p()) {
+            under_gid_switch = 1;
+            return rb_ensure(rb_yield, Qnil, p_gid_sw_ensure, egid);
+        } else {
+            return GIDT2NUM(gid);
+        }
+    }
+    else {
+        errno = EPERM;
+        rb_sys_fail(0);
+    }
+}</pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>    
